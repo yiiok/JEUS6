@@ -1,0 +1,31 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+	<form jwcid="form"/>
+	<table class="table">
+		<tr>
+			<th style="width: 20px;text-align: center;"><img jwcid="docImg"/></th>
+			<th style="width: 60%;"><span jwcid="@Insert" value="message:shared.library.name.label"/></th>
+			<th style="width: 20%;text-align: center;"><span jwcid="@Insert" value="message:shared.library.specification-version.label"/></th>
+			<th style="width: 20%;text-align: center;"><span jwcid="@Insert" value="message:shared.library.implementation-version.label"/></th>
+			<th style="width: 20px;text-align: center;"></th>
+		</tr>
+    	<span jwcid="librariesFor">
+    	<tr>
+    		<td></td>
+    		<td><a jwcid="configLink"><span jwcid="@Insert" value="ognl:library.libraryName"/></a></td>
+    		<td style="text-align: center;"><span jwcid="@Insert" value="ognl:library.specificationVersion"/></td>
+    		<td style="text-align: center;"><span jwcid="@Insert" value="ognl:library.implementationVersion"/></td>
+    		<td style="text-align: center;"><a jwcid="deleteLibraryLink" disabled="ognl:!@jeus.tool.webadmin.hivemind.Lock@isEnabledEdit(getSettings(), getVisit())"><img jwcid="deleteImg" alt="delete"/></a></td>
+    	</tr>
+    	</span>
+	</table>
+	<span jwcid="@If" renderTag="ognl:false" condition="ognl:libraries.library.size() > 0">
+		<span dojoType="dijit.Tooltip" connectId="ognl:components.docImg.clientId" jwcid="@Any" position="below, after">
+			<pre jwcid="@Insert" value="ognl:descriptor" renderTag="ognl:true"></pre>
+		</span>
+	</span>
+    <div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+    	<a jwcid="createLink" class="create_link"><span jwcid="create_label"/></a>
+    </div>
+    </span>
+</html>

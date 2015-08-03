@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="jaxb" default="all" basedir=".">
+
+    <target name="do-compile">
+        <mkdir dir="${build.classes.dir}" />
+        <echo>Generating Schema</echo>
+        <schemagen destdir="${build.classes.dir}">
+            <src path="${src.dir}" />
+            <classpath refid="jeus.libraries.classpath" />
+            <classpath refid="classpath" />
+        </schemagen>
+        <echo>Compiling ${module.name}</echo>
+        <javac srcdir="${src.dir}" source="${javac.source}" target="${javac.target}" excludes="${javac.excludes}" debug="${javac.debug}" debuglevel="${javac.debuglevel}" destdir="${build.classes.dir}" includes="**">
+            <classpath refid="jeus.libraries.classpath" />
+            <classpath refid="classpath" />
+        </javac>
+    </target>
+
+    <target name="do-package-jar" />
+
+    <property name="is.app-client.module" value="true" />
+
+    <import file="../../../common/common-build.xml" />
+
+    <taskdef name="schemagen" classname="com.sun.tools.jxc.SchemaGenTask">
+        <classpath refid="jeus.libraries.classpath" />
+    </taskdef>
+
+    <target name="run">
+        <java classname="Main" fork="true">
+        	  <sysproperty key="java.endorsed.dirs"     value="${jeus.home}/lib/endorsed"/>        
+            <classpath refid="jeus.libraries.classpath" />
+            <classpath refid="classpath" />
+        </java>
+    </target>
+
+    <target name="all" depends="build, run" />
+</project>

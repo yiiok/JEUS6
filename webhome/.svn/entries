@@ -1,0 +1,74 @@
+9
+
+dir
+781
+svn://192.168.1.134/JEUS6/testenv/trunk/webhome
+svn://192.168.1.134/JEUS6
+
+
+
+2013-11-05T01:47:36.837163Z
+775
+taeju
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+e2cfb00e-0bd0-4642-a9bb-23a1f3b27570
+
+admin_home.jar
+file
+
+
+
+
+2015-08-03T11:20:09.000000Z
+c842b4dbb8486ba6891cc2a4f98de59b
+2013-11-05T01:47:36.837163Z
+775
+taeju
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+14572767
+
+app_home
+dir
+
+autodeploy
+dir
+
+system_app
+dir
+
+uddi_home
+dir
+

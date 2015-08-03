@@ -1,0 +1,17 @@
+<body jwcid="@Body">
+	<span jwcid="@Script" script="/jeus/tool/webadmin/script/Help.script" helpURL="ognl:helpURL"/>
+	<span jwcid="@Dynamite"/>
+	<div dojoType="dijit.layout.BorderContainer" design="sidebar"
+				style="height: 100%; width: 100%;padding: 0;" gutters="false">
+		<div dojoType="dijit.layout.ContentPane" region="top">
+			<ul class="navigation">
+				<span jwcid="@Navigation" source="ognl:navigations"/>
+			</ul>
+		</div>
+		<div dojoType="dijit.layout.ContentPane" id="mainborder_content" region="center">
+			<span jwcid="@RenderBody"/>
+		</div>
+	</div>
+</body>
+
+

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+xmlns:tns="http://server.fromjava/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AddNumbersImplService" targetNamespace="http://server.fromjava/">
+    <ns5:Policy xmlns:ns5="http://schemas.xmlsoap.org/ws/2004/09/policy" wsu:Id="TmaxBO1TmaxIn1">
+        <ns5:ExactlyOne>
+            <ns5:All>
+                <CallbackHandlerConfiguration xmlns="http://schemas.sun.com/2006/03/wss/client">
+                    <CallbackHandler classname="xwss.saml.SamlCallbackHandler" name="samlHandler" />
+                </CallbackHandlerConfiguration>
+            </ns5:All>
+        </ns5:ExactlyOne>
+    </ns5:Policy>
+    <types>
+        <xsd:schema>
+            <xsd:import namespace="http://server.fromjava/"
+            schemaLocation="https://localhost:8089/doclit-war/AddNumbersImplService?xsd=1" />
+        </xsd:schema>
+    </types>
+    <message name="addNumbers">
+        <part element="tns:addNumbers" name="parameters" />
+    </message>
+    <message name="addNumbersResponse">
+        <part element="tns:addNumbersResponse" name="parameters" />
+    </message>
+    <portType name="AddNumbersImpl">
+        <operation name="addNumbers">
+            <input message="tns:addNumbers" />
+            <output message="tns:addNumbersResponse" />
+        </operation>
+    </portType>
+    <binding name="AddNumbersImplPortBinding" type="tns:AddNumbersImpl">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+        <operation name="addNumbers">
+            <soap:operation soapAction="" />
+            <input>
+                <ns10:PolicyReference xmlns:ns10="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#TmaxBO1TmaxIn1" />
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+        </operation>
+    </binding>
+    <service name="AddNumbersImplService">
+        <port binding="tns:AddNumbersImplPortBinding" name="AddNumbersImplPort">
+            <soap:address location="https://localhost:8089/doclit-war/AddNumbersImplService" />
+        </port>
+    </service>
+</definitions>

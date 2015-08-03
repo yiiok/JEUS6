@@ -1,0 +1,360 @@
+<textarea jwcid="@If" condition="ognl:multipart" renderTag="ognl:true">
+<span jwcid="@RenderBlock" block="component:bodyBlock"></span>
+</textarea>
+<span jwcid="@Else" renderTag="ognl:false">
+<span jwcid="@RenderBlock" block="component:bodyBlock"></span>
+</span>
+
+<span jwcid="bodyBlock@Block">
+<html jwcid="mainBorder" >
+    <span jwcid="wizTabPanel">
+        <span jwcid="select@Block">
+            <title jwcid="@jeus:JEUSForm" title="message:amd.select.title" description="message:amd.select.description" useForm="ognl:false"/>
+            <span jwcid="module_tabpanel">
+                <span jwcid="version_tab@Block">
+                    <form jwcid="versionForm">
+                        <span jwcid="vupload">
+                            <input jwcid="vuploadField" style="width:400px;  border:1px solid #AAAAAA;" />
+                        </span>
+                        <span jwcid="@jeus:Field" field="component:enabledVersionDeployField" label="message:amd.select.enabled_deploy.label" description="message:amd.select.enabled_deploy.descripition">
+                        	<input jwcid="enabledVersionDeployField@Checkbox" value="ognl:enabledVersionDeploy"/>
+                        </span>
+                        <span jwcid="enabledVersion">
+                            <input jwcid="enabledVersionField"/>
+                        </span>
+                        <span jwcid="modified">
+                            <input jwcid="modifiedField" style="width: 500px;height: 150px;" rows="8" dojoType="dijit.form.Textarea"/>
+                        </span>
+                        <div class="form_button_layer">
+                        	<input jwcid="@Button" style="width:100px" class="form_button" onclick="jeus.upload(this);return false;" label="message:common.label.next"/>
+                        </div>
+                        <div style="clear: both;"></div>
+	                    <span jwcid="@jeus:FormSection" title="message:amd.version.control.title"/>
+	                    <table class="table">
+	                    	<tr>
+	                    		<th><span jwcid="@Insert" value="message:amd.version.control.modulename"/></th>
+	                    		<th><span jwcid="@Insert" value="message:amd.version.control.time"/></th>
+	                    		<th><span jwcid="@Insert" value="message:amd.version.control.filename"/></th>
+	                    		<th width="160"></th>
+	                    	</tr>
+	                    	<tr jwcid="@For" source="ognl:managedModuleList" value="ognl:managedModule">
+	                    		<td style="text-align: center"><span jwcid="@Insert" value="ognl:managedModule.moduleName"/></td>
+	                    		<td style="text-align: center">
+	                    			<span jwcid="time@Insert" value="ognl:managedModule.getTime(page.locale)" renderTag="ognl:true"/>
+									<span jwcid="@Any" dojoType="dijit.Tooltip" connectId="ognl:components.time.clientId">
+										<pre jwcid="@Insert" value="ognl:managedModule.description" renderTag="ognl:true"></pre>
+									</span>
+	                    		</td>
+	                    		<td style="text-align: center"><span jwcid="@Insert" value="ognl:managedModule.fileName"/></td>
+	                    		<td style="text-align: center">
+	                    			<a jwcid="@DirectLink" listener="listener:removeManagedModule" parameters="ognl:{managedModule}" renderer="ognl:@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@build('common.message.remove.confirm', managedModule.moduleName)"></a><button class="form_button" jwcid="@Button" label="message:common.label.remove" onclick="jeus.fireEvent(previousSibling, 'click');"/>
+	                    			<a jwcid="@DirectLink" listener="listener:deployManagedModule" parameters="ognl:{managedModule}"></a><button class="form_button" jwcid="@Button" label="message:amd.version.control.deploy" onclick="jeus.fireEvent(previousSibling, 'click');"/>
+	                    		</td>
+	                    	</tr>
+	                    </table>                        
+                    </form>
+                </span>
+                            
+                <span jwcid="upload_tab@Block">
+                	<script type="text/javascript">
+                	dojo.addOnLoad(function(e){
+                		dojo.connect(dojo.byId("uploadField"), "onkeydown", dojo, "stopEvent");
+                	});
+                	</script>
+                    <form jwcid="uploadForm">
+                        <span jwcid="upload">
+                            <input jwcid="uploadField" style="width:400px;  border:1px solid #AAAAAA;" />
+                        </span>
+                        <span jwcid="upload_target">
+                            <input jwcid="upload_targetField"/>
+                        </span>
+                        <div class="form_button_layer">
+							<input jwcid="@Button" style="width:100px" class="form_button" onclick="jeus.upload(this);return false;" label="message:common.label.upload"/>
+                        </div>
+                    </form>
+                </span>
+
+                <span jwcid="absolute_path_tab@Block">
+                    <form jwcid="absolute_pathForm">
+                        <span jwcid="absolute_path">
+                            <input jwcid="absolutePathField" style="width:500px"/>
+                        </span>
+                       	<span jwcid="@jeus:Field" title="" layout="ognl:@jeus.tool.webadmin.component.Field3@EXTENDED_LAYOUT" style="padding-left: 8px; padding-bottom: 15px;">
+                       		<span jwcid="@jeus:FileExplorer" model="ognl:absolutePathFileExplorerModel" currentPath="ognl:absolutePath"></span>
+                       	</span>
+                       	<div>
+                       		<input jwcid="autodeploySelectedCheckbox@Checkbox" value="ognl:autodeploySelected"/><span class="field_description" jwcid="@Insert" value="message:autodeploy.check.description"/>
+                       	</div>
+						<div class="form_button_layer">
+							<input jwcid="absolute_pathNext" style="width:100px" class="form_button"/>
+						</div>
+                    </form>
+                </span>
+
+                <span jwcid="existing_module_tab@Block">
+                    <br/>
+                    <span jwcid="module_selection_tabpanel">
+                        <span jwcid="module_at_apphome@Block">
+                            <form jwcid="module_at_apphomeForm">
+                                <span jwcid="apphome_module">
+                                    <span jwcid="apphome_moduleField"/>
+                                </span>
+                                <div class="form_button_layer">
+                                    <input jwcid="appHomeModuleNext" class="form_button" style="width:100px;"/>
+                                </div>
+                            </form>
+                        </span>
+                        <span jwcid="module_at_selected_dir@Block">
+                            <form jwcid="module_at_selected_dirForm">
+                                <span jwcid="explorer">
+                                    <span jwcid="explorerField"/>
+                                </span>
+                                <br/>
+                                <span jwcid="module">
+                                    <span jwcid="moduleField"/>
+                                </span>
+                                <div class="form_button_layer">
+                                    <input jwcid="moduleNext" class="form_button" style="width:100px;"/>
+                                </div>
+                            </form>
+                        </span>
+                    </span>
+                </span>
+            </span>
+        </span>
+        <span jwcid="targets@Block">
+            <span jwcid="condNoTarget">
+                <form jwcid="noTargetsForm">
+                    <span jwcid="noTarget" class="field_label"/>
+                    <div class="form_button_layer">
+                        <input jwcid="targetsPrevious2" class="form_button" style="width:100px;"/>
+                    </div>
+                </form>
+            </span>
+            <span jwcid="@Else">
+                <form jwcid="targetsForm">
+					<span jwcid="targetsField"/>
+                    <div class="form_button_layer">
+                        <input jwcid="targetsPrevious" class="form_button" style="width:100px;"/>
+                        <input jwcid="targetsNext" class="form_button" style="width:100px;"/>
+                    </div>
+                </form>
+            </span>
+        </span>
+
+		<span jwcid="options@Block">
+			<form jwcid="optionsForm@jeus:JEUSForm" useDefaultButtons="ognl:false" title="message:amd.options.title">
+			<span jwcid="@If" condition="ognl:autodeploySelected" renderTag="ognl:false">
+				<span jwcid="@RenderBlock" block="component:application"></span>
+				<div class="form_button_layer">
+                	<input jwcid="optionsPrevious2" class="form_button" style="width:100px;"/>
+                 	<input jwcid="optionsNext2" class="form_button" style="width:100px;"/>
+                </div>
+			</span>
+			<span jwcid="@Else" renderTag="ognl:false">			
+			    <table class="table">
+					<tr>
+						<th style="width: 20px;text-align: center;"></th>
+						<th style="width: 20%;"><span jwcid="@Insert" value="message:ModuleExplorer.module_name.label"/></th>
+						<th><span jwcid="@Insert" value="message:ModuleExplorer.module_path.label"/></th>
+						<th style="width: 40px;" colspan="2"></th>
+					</tr>
+					<span jwcid="@For" source="ognl:selectedModules" value="ognl:module" renderTag="ognl:false">
+			    	<tr jwcid="@Any" class="ognl:getSelectedModuleClass(module)">
+			    		<td style="text-align: center;">
+			    			<img jwcid="moduleImage@Any" src="ognl:getModuleImage(module.getModuleType()).buildURL()" renderTag="ognl:true"></img>
+			    			<span dojoType="dijit.Tooltip" connectId="ognl:components.moduleImage.clientId" jwcid="moduleDescriptor@Any" position="below, after">
+								<pre jwcid="@Insert" value="ognl:getModuleDescriptor(module)" renderTag="ognl:true"></pre>
+							</span>
+			    		</td>
+			    		<td><span jwcid="@Insert" value="ognl:module.moduleName"/></td>
+			    		<td><span jwcid="@Insert" value="ognl:module.modulePath"/></td>
+			    		<td style="text-align: center;"><a jwcid="@DirectLink" listener="listener:onModifyApplication" parameters="ognl:module"><img jwcid="@Image" image="asset:edit1" alt="message:pmd.app.config.alt"></img></a></td>
+			    		<td style="text-align: center;"><a jwcid="@DirectLink" listener="listener:onModifyComponents" parameters="ognl:module"><img jwcid="@Image" image="asset:edit2" alt="message:pmd.module.config.alt"></img></a></td>
+			    	</tr>
+			    	</span>
+			    </table>
+			    <div jwcid="@If" condition="ognl:application != null" class="deploy_options">
+			    	<span jwcid="@RenderBlock" block="component:application"></span>
+			    </div>
+			    <div jwcid="@If" condition="ognl:tabModel != null" class="deploy_options">
+			    	<span jwcid="@RenderBlock" block="component:components"></span>
+			    </div>
+                <div class="form_button_layer">
+                	<input jwcid="optionsPrevious" class="form_button" style="width:100px;"/>
+                 	<input jwcid="optionsNext" class="form_button" style="width:100px;"/>
+                </div>
+            </span>
+            </form>
+		</span>
+		
+        <span jwcid="components@Block">
+           	<span jwcid="@jeus:FormSection" title="message:amd.options.components.label"></span>
+           	<span jwcid="componentsField"/>
+            
+            <span jwcid="ejb_component@Block">
+					<span jwcid="ejb_componentFormSection"/>
+                    <span jwcid="@RenderBlock" block="component:uriBlock"/>
+					<span jwcid="client_view_path">
+                        <input jwcid="client_view_pathField"/>
+                    </span>
+                    <span jwcid="@RenderBlock" block="component:keep_generatedBlock"/>
+                    <span jwcid="@RenderBlock" block="component:java_permissionBlock"/>
+            </span>
+
+            <span jwcid="web_component@Block">
+					<span jwcid="web_componentFormSection"/>
+                    <span jwcid="@RenderBlock" block="ognl:components.uriBlock"/>
+					<span jwcid="contextRoot">
+                		<span jwcid="contextRootField"/>
+	                </span>
+                    <span jwcid="@RenderBlock" block="component:keep_generatedBlock"/>
+                    <span jwcid="session_timeout">
+                    	<input jwcid="session_timeoutField"/>
+                    </span>                       
+                    <span jwcid="@RenderBlock" block="component:java_permissionBlock"/>
+
+            </span>
+
+            <span jwcid="connector_component@Block">
+					<span jwcid="connector_componentFormSection"/>
+                    <span jwcid="@RenderBlock" block="ognl:components.uriBlock"/>
+
+            </span>
+
+            <span jwcid="client_component@Block">
+					<span jwcid="client_componentFormSection"/>
+                    <span jwcid="@RenderBlock" block="ognl:components.uriBlock"/>
+
+            </span>
+
+            <span jwcid="java_permissionBlock@Block">
+                <span jwcid="check_java_permission">
+                    <span jwcid="java_permission_description">
+                        <input jwcid="java_permission_descriptionField" style="width:98%;" rows="4"/>
+                    </span>
+
+                    <span jwcid="java_permission_spec">
+                        <input jwcid="java_permission_specField" style="width:98%;" rows="6"/>
+                    </span>
+                </span>
+            </span>
+
+            <span jwcid="uriBlock@Block">
+                <span jwcid="uri"/>
+            </span>
+            
+            <span jwcid="keep_generatedBlock@Block"> 
+            	<span jwcid="keep_generated">
+					<span jwcid="keep_generatedField"/>
+                </span>
+            </span>
+            <div class="form_button_layer">
+            	<input jwcid="@Submit" class="form_button" value="message:JEUSForm.ok.label" listener="listener:onModifyOk" message="message:JEUSForm.ok.confirm"/>
+            	<a jwcid="@DirectLink" listener="listener:onModifyCancel" renderer="ognl:@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@build('JEUSForm.cancel.confirm')"></a><input jwcid="@Button" class="form_button" onclick="jeus.fireEvent(previousSibling, 'click');" label="message:JEUSForm.cancel.label"/> 
+            </div>
+
+        </span>
+
+        <span jwcid="application@Block">
+        	<span jwcid="@jeus:FormSection" title="message:amd.options.application.title"></span>
+			<span jwcid="fast_deploy">
+                <input jwcid="fast_deployField"/>
+            </span>
+            <span jwcid="deploy_when_booting">
+                <input jwcid="deploy_when_bootingField"/>
+            </span>
+            <span jwcid="classloading">
+                <input jwcid="classloadingField"/>
+            </span>
+            <span jwcid="class_ftp_unit">
+                <input jwcid="class_ftp_unitField"/>
+            </span>
+            <span jwcid="security_domain_name">
+                <input jwcid="security_domain_nameField"/>
+            </span>
+			<span jwcid="app_keep_generated">
+            	<span jwcid="app_keep_generatedField"/>
+			</span>
+           	<span jwcid="check_autodeploy">
+            	<span jwcid="check_absolute_path"> 
+            	<input jwcid="check_absolute_pathField"/>
+            </span>
+            <span jwcid="auto_deploy">
+            	<input jwcid="auto_deployField"/>
+            </span>
+           	</span>				
+            <span jwcid="check_java_security_permission">
+            	<span jwcid="security_permission_description">
+                	<input jwcid="security_permission_descriptionField" style="width:98%;" rows="4"/>
+				</span>
+				<span jwcid="security_permission_spec">
+                   	<input jwcid="security_permission_specField" style="width:98%;" rows="6"/>
+				</span>
+			</span>	       
+            <div class="form_button_layer" jwcid="@If" condition="ognl:!autodeploySelected">
+            	<input jwcid="@Submit" class="form_button" value="message:JEUSForm.ok.label" listener="listener:onModifyOk" message="message:JEUSForm.ok.confirm"/>
+            	<a jwcid="@DirectLink" listener="listener:onModifyCancel" renderer="ognl:@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@build('JEUSForm.cancel.confirm')"></a><input jwcid="@Button" class="form_button" onclick="jeus.fireEvent(previousSibling, 'click');" label="message:JEUSForm.cancel.label"/>
+            </div>
+        </span>
+
+        <span jwcid="deploy@Block">
+            <span jwcid="condContainerCreated">
+                <form jwcid="deployForm">                 
+                    <span jwcid="runtimeDeploy">
+                        <input jwcid="runtimeDeployField"/>
+                    </span>
+                    <span jwcid="permanentDeploy">
+                        <input jwcid="permanentDeployField"/>
+                    </span>
+                    <span jwcid="@If" condition="ognl:isEnableUndeploy()">
+					<span jwcid="@jeus:Blind" title="message:common.label.advanced">
+						<span jwcid="@jeus:Field" label="message:ModuleController.wtblistener.block.title" description="message:ModuleController.wtblistener.block.description">
+	                		<input jwcid="@Checkbox" value="ognl:enableWTBBlock"/>          	
+	                	</span>
+						<span jwcid="@jeus:Field" label="message:ModuleController.wtblistener.block.type.title" description="message:ModuleController.wtblistener.block.type.description">
+	                		<input jwcid="wtbBlockTypeField"/>          	
+	                	</span>
+	                	<span jwcid="@jeus:Field" field="component:waitField" label="message:ModuleController.wtblistener.block.wait.title" description="message:ModuleController.wtblistener.block.wait.description" unit="message:common.unit.sec">
+	                		<input jwcid="waitField@TextField" value="ognl:WTBBlockWait" displayName="message:ModuleController.wtblistener.block.wait.title" translator="translator:number2" validators="validators:min=0"/>          	
+	                	</span>
+					</span>
+					</span>
+                    <div class="form_button_layer">
+                    	<input jwcid="deployPrevious" class="form_button" style="width:100px;"/>
+                        <input jwcid="deploySubmit" class="form_button" style="width:100px;"/>
+					</div>
+                </form>
+            </span>
+            <span jwcid="@Else" renderTag="ognl:false">
+                <form jwcid="permanentDeployForm">
+                    <div class="form_button_layer">
+                        <input jwcid="deployPrevious2" class="form_button" style="width:100px;"/>
+                        <input jwcid="deploySubmit2" class="form_button" style="width:100px;"/>
+                    </div>
+                </form>
+            </span>
+        </span>
+        <span jwcid="result@Block">
+            <form jwcid="resultForm">
+                <span jwcid="condCompleted">
+                    <span jwcid="completedSection"/>
+                    <span jwcid="completed">
+                        <span jwcid="eachCompletedTarget">
+                            <span jwcid="completedTarget" class="normal_text"/>
+                        </span>
+                    </span>
+                </span>
+                <span jwcid="condFailed">
+                    <span jwcid="failedSection"/>
+                    <span jwcid="failed">
+                        <span jwcid="eachFailedTarget">
+                            <span jwcid="failure"/>
+                        </span>
+                    </span>
+                </span>
+            </form>
+        </span>
+    </span>
+</html>
+</span>

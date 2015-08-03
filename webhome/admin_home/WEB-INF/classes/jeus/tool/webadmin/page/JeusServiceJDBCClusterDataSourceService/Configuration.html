@@ -1,0 +1,27 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <form jwcid="form">
+			<span jwcid="@jeus:Field" field="component:data_source_idField">
+				<input jwcid="data_source_idField@jeus:JAXBInsert" parentElement="ognl:clusterDs" elementName="dataSourceId"/>
+			</span>                 
+            <span jwcid="export_name">
+                <input jwcid="export_nameField"/>
+            </span>
+			<span jwcid="@jeus:Field" field="component:data_source_targetField">
+				<input jwcid="data_source_targetField@jeus:JAXBTextArea" parentElement="ognl:clusterDs" elementName="dataSourceTarget" translator="bean:listTranslator" style="width:98%;" rows="4" nowrap="true" validators="validators:$dataSourceTargetValidator"/>
+			</span>         
+			<span jwcid="@jeus:Field" field="component:load_balanceField">
+				<input jwcid="load_balanceField@jeus:JAXBCheckbox" parentElement="ognl:clusterDs" elementName="loadBalance"/>
+			</span>            
+            <span jwcid="is_pre_conn">
+                <input jwcid="is_pre_connField"/>
+            </span>
+            <span jwcid="use_failback">
+                <input jwcid="use_failbackField"/>
+            </span>            
+            <span jwcid="data_source_name">
+                <input jwcid="data_source_nameField"/>
+            </span>
+        </form>
+    </span>
+</html>

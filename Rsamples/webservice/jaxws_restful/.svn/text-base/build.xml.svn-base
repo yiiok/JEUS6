@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="AddNumbers" default="all" basedir=".">
+
+    <property name="is.war.module" value="true" />
+
+    <import file="../../common/common-build.xml" />
+
+    <target name="build_server" depends="init">
+        <antcall target="do-compile">
+            <param name="javac.excludes" value="restful/client/" />
+        </antcall>
+	<!--
+        <antcall target="wsgen">
+            <param name="sib.file" value="restful.server.AddNumbersImpl" />
+        </antcall>
+	-->
+        <antcall target="do-package-war" />
+    </target>
+
+    <target name="build" depends="build_server">
+    </target>
+
+    <target name="build_client" depends="init">
+        <antcall target="do-compile">
+            <param name="javac.excludes" value="restful/server/" />
+        </antcall>
+    </target>
+
+    <target name="run" depends="build_client">
+        <java classname="restful.client.AddNumbersClient" fork="true">
+        	  <sysproperty key="java.endorsed.dirs"     value="${jeus.home}/lib/endorsed"/>        
+            <classpath refid="jeus.libraries.classpath" />
+            <classpath refid="classpath" />
+        </java>
+    </target>
+
+    <target name="all" depends="build, deploy, run" />
+</project>

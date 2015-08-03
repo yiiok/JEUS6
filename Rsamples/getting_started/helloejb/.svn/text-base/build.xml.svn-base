@@ -1,0 +1,112 @@
+<project name="jpaeg_common" default="build" basedir=".">
+    <property name="appname" value="helloejb"/>
+
+	<import file="../../common/common-build.xml" />
+
+    <property name="build.dir" value="build"/>
+    <property name="dist.dir" value="dist"/>
+
+	 <path id="jeus.libraries">
+        <fileset dir="${jeus.home}/lib/system" includes="*.jar"/>
+    </path>
+
+    <target name="init">
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${dist.dir}"/>
+    </target>
+	
+    <target name="build" depends="init">
+        <antcall target="build_ejb"/>
+        <antcall target="build_web"/>
+        <antcall target="build_ear"/>
+    </target>
+<echo>${appname}</echo>
+    <target name="build_ejb">
+        <antcall target="build_ejbmodule">
+            <param name="module" value="${appname}-ejb"/>
+        </antcall>
+    </target>		
+
+    <target name="build_web">
+        <antcall target="build_webmodule">
+            <param name="module" value="${appname}-war"/>
+            <param name="extra.classpath" value="${build.dir}/${appname}-ejb.jar"/>
+        </antcall>
+    </target>		
+
+    <target name="build_ear">
+        <copy todir="${build.dir}/META-INF">
+            <fileset dir="src/conf">
+            </fileset>
+        </copy>
+        <jar basedir="${build.dir}" destfile="${dist.dir}/${appname}.ear">
+        </jar>
+    </target>
+
+    <target name="build_ejbmodule" if="module">
+        <mkdir dir="${module}/${build.dir}"/>
+
+        <javac srcdir="${module}/src/java" destdir="${module}/${build.dir}">
+            <classpath refid="jeus.libraries"/>
+            <classpath path="${extra.classpath}"/>
+        </javac>
+        <copy todir="${module}/${build.dir}">
+            <fileset dir="${module}/src/java">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy todir="${module}/${build.dir}/META-INF">
+            <fileset dir="${module}/src/conf">
+            </fileset>
+        </copy>
+		
+        <jar destfile="${build.dir}/${module}.jar" basedir="${module}/${build.dir}"/>
+    </target>		
+
+    <target name="build_webmodule">
+        <mkdir dir="${module}/${build.dir}/WEB-INF/classes"/>
+
+        <javac srcdir="${module}/src/java" destdir="${module}/${build.dir}/WEB-INF/classes">
+            <classpath refid="jeus.libraries"/>
+            <classpath path="${extra.classpath}"/>
+        </javac>
+        <copy todir="${module}/${build.dir}/WEB-INF/classes">
+            <fileset dir="${module}/src/java">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy todir="${module}/${build.dir}/META-INF">
+            <fileset dir="${module}/src/conf">
+            </fileset>
+        </copy>
+        <copy todir="${module}/${build.dir}">
+            <fileset dir="${module}/web">
+            </fileset>
+        </copy>
+		
+        <jar destfile="${build.dir}/${module}.war" basedir="${module}/${build.dir}"/>
+    </target>		
+
+    <target name="setup" depends="">
+        <sql src="setup/deleteddl.sql" onerror="continue"
+        url="${derby.url}" userid="app" password="app" 
+        driver="org.apache.derby.jdbc.ClientDriver" classpath="${derby.classpath}" />
+        <sql src="setup/createddl.sql" onerror="continue"
+        url="${derby.url}" userid="app" password="app" 
+        driver="org.apache.derby.jdbc.ClientDriver" classpath="${derby.classpath}" />
+    </target>
+
+    <target name="unsetup" depends="">
+        <sql src="setup/deleteddl.sql" onerror="continue"
+        url="${derby.url}" userid="app" password="app" 
+        driver="org.apache.derby.jdbc.ClientDriver" classpath="${derby.classpath}" />
+    </target>
+
+    <target name="clean">
+        <delete dir="${appname}-ejb/${build.dir}"/>
+        <delete dir="${appname}-war/${build.dir}"/>
+        <delete dir="${build.dir}"/>
+        <delete dir="${dist.dir}"/>
+    </target>
+	
+</project>

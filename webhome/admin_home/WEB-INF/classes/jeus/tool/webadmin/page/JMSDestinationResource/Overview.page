@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JMSDestinationResource.OverviewPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:JMS Destination Configuration"/>
+        
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="new java.lang.String[]{pageName}"/>
+    </component>
+
+    <component id="form" type="jeus:JEUSForm">
+        <binding name="title" value="message:dnc.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="bind" type="Button">
+        <binding name="label" value="message:jds.bind.label"/>
+        <binding name="disabled" value="destination.bindable"/>
+    </component>
+
+    <component id="bindLink" type="DirectLink">
+        <binding name="listener" value="listener:onBind"/>
+        <binding name="parameters" value="destination.name"/>
+    </component>
+
+    <component id="destinationLink" type="ExternalLink">
+        <binding name="page" value="literal:JMSDestinationResource_Configuration"/>
+        <binding name="parameters" value="destination.objectName.canonicalName"/>
+    </component>
+
+    <component id="deleteLink" type="DirectLink">
+        <binding name="listener" value="listener:onDelete"/>
+        <binding name="parameters" value="{destination.name, destination.bindable}"/>
+        <binding name="renderer" value="@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@build('common.message.delete.confirm', destination.name)"/>
+    </component>
+
+    <component id="delete" type="Image">
+        <binding name="image" value="asset:delete"/>
+    </component>
+
+    <component id="createQueueLink" type="ExternalLink">
+        <binding name="page" value="literal:JMSDestinationResource_Create"/>
+        <binding name="parameters" value="{objectName.canonicalName, 'queue'}"/>
+    </component>
+
+    <component id="create_queue_label" type="Insert">
+        <binding name="value" value="message:dnc.create_queue.label"/>
+    </component>
+
+    <component id="createTopicLink" type="ExternalLink">
+        <binding name="page" value="literal:JMSDestinationResource_Create"/>
+        <binding name="parameters" value="{objectName.canonicalName, 'topic'}"/>
+    </component>
+
+    <component id="create_topic_label" type="Insert">
+        <binding name="value" value="message:dnc.create_topic.label"/>
+    </component>
+    
+    <component id="destinationTable" type="jeus:JEUSTable">
+        <binding name="source" value="destinations"/>
+        <binding name="columns" value="literal:dnc.name.label, dnc.exportName.label:exportName, dnc.type.label:type, dnc.message.count.label:messageCount, dnc.pending.message.count.label:pendingMessageCount, dnc.delivered.message.count:deliveredMessageCount, dnc.remaining.pending.message.count:remainingPendingMessageCount, dnc.waiting.ack.message.count:waitingAckMessageCount, dnc.expired.message.count:expiredMessageCount, !dnc.consumer, !dnc.usingBytes, !dnc.action, !dnc.remove"/>
+        <binding name="row" value="destination"/>
+        <binding name="pagesDisplayed" value="@java.lang.Integer@MAX_VALUE"/>
+        <binding name="currentPageClass" value="literal:table_current_page"/>
+        <binding name="columnsClass" value="literal:table_columns"/>
+        <binding name="valuesClass" value="literal:table_values"/>
+        <binding name="pagesLinkClass" value="literal:table_pages_link"/>
+        <binding name="tableClass" value="literal:table"/>
+    </component>    
+
+    <asset name="delete" path="context:/image/table/delete.gif"/>
+
+    <property name="destination"/>
+</page-specification>

@@ -1,0 +1,657 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <span jwcid="authentication">
+            <form jwcid="authenticationForm"/>
+            <span jwcid="authenticationTab">
+                <span jwcid="authentication_repository">
+                    <span jwcid="authentication_repositoryTab">
+                        <span jwcid="authen_xml_repository">
+                            <form jwcid="authen_xml_repositoryForm">
+                                <span jwcid="authen_filename">
+                                    <input jwcid="authen_filenameField"/>
+                                </span>
+                                <span jwcid="authen_filepath">
+                                    <input jwcid="authen_filepathField"/>
+                                </span>
+                                <div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+	                                <input jwcid="authen_xml_ok" class="form_button"/>
+	                                <input jwcid="authen_xml_cancel" class="form_button"/>
+                                </div>
+                            </form>
+                        </span>
+                        <span jwcid="authen_db_repository">
+                            <span jwcid="authen_db_repositoryTab">
+                                <span jwcid="authen_dbexport_repository">
+                                    <form jwcid="authen_exportForm">
+                                        <span jwcid="authen_export_name">
+                                            <input jwcid="authen_export_nameField"/>
+                                        </span>
+                                        <div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+                                            <input jwcid="authen_export_ok" class="form_button"/>
+                                            <input jwcid="authen_export_cancel" class="form_button"/>
+                                        </div>
+                                    </form>
+                                </span>
+                                <span jwcid="authen_dbconfig_repository">
+                                    <form jwcid="authen_db_configForm">
+                                        <span jwcid="authen_vendor">
+                                            <input jwcid="authen_vendorField"/>
+                                        </span>
+                                        <span jwcid="authen_driver">
+                                            <input jwcid="authen_driverField"/>
+                                        </span>
+                                        <span jwcid="authen_url">
+                                            <input jwcid="authen_urlField"/>
+                                        </span>
+                                        <span jwcid="authen_username">
+                                            <input jwcid="authen_usernameField"/>
+                                        </span>
+                                        <span jwcid="authen_password">
+                                            <input jwcid="authen_passwordField"/>
+                                        </span>
+                                        <div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+                                            <input jwcid="authen_db_ok" class="form_button"/>
+                                            <input jwcid="authen_db_cancel" class="form_button"/>
+                                        </div>
+                                    </form>
+                                </span>
+                            </span>
+                        </span>
+                        <span jwcid="authen_custom_repository">
+                            <form jwcid="authen_custom_repositoryForm">
+                                <span jwcid="authen_create_classname">
+                                    <input jwcid="authen_create_classnameField"  style="width:98%"/>
+                                </span>
+                                <span jwcid="authen_create_properties">
+                                    <input jwcid="authen_create_propertiesField" style="width:98%" rows="6"/>
+                                </span>
+                                <div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+                                    <input jwcid="authen_custom_ok" class="form_button"/>
+                                    <input jwcid="authen_custom_cancel" class="form_button"/>
+                                </div>
+                            </form>
+                        </span>
+                    </span>
+                </span>
+                <span jwcid="custom_authentication">
+                    <form jwcid="custom_authenticationForm">
+                        <span jwcid="custom_authentication_classname">
+                            <input jwcid="custom_authentication_classnameField"  style="width:98%"/>
+                        </span>
+                        <span jwcid="custom_authentication_properties">
+                            <input jwcid="custom_authentication_propertiesField" style="width:98%" rows="6"/>
+                        </span>
+                        <div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+                            <input jwcid="custom_authentication_ok" class="form_button"/>
+                            <input jwcid="custom_authentication_cancel" class="form_button"/>
+                            <input jwcid="custom_authentication_reset@Submit" class="form_button" 
+                            	style="margin-left: 5px;" 
+                            	value="message:JEUSForm.reset.label" 
+                            	message="message:JEUSForm.reset.confirm" 
+                            	listener="listener:onCustomAuthenticationReset"/>                            
+						</div>
+                    </form>
+                </span>
+            </span>
+        </span>
+
+        <span jwcid="authorization">
+            <form jwcid="authorizationForm"/>
+            <span jwcid="authorizationTab">
+                <span jwcid="authorization_repository">
+                    <span jwcid="authorization_repositoryTab">
+                        <span jwcid="autho_xml_repository">
+                            <form jwcid="autho_xml_repositoryForm">
+                                <span jwcid="autho_filename">
+                                    <input jwcid="autho_filenameField"/>
+                                </span>
+                                <span jwcid="autho_filepath">
+                                    <input jwcid="autho_filepathField"/>
+                                </span>
+                                <div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+                                    <input jwcid="autho_xml_ok" class="form_button"/>
+                                    <input jwcid="autho_xml_cancel" class="form_button"/>
+                                </div>
+                            </form>
+                        </span>
+                        <span jwcid="autho_db_repository">
+                            <span jwcid="autho_db_repositoryTab">
+                                <span jwcid="autho_dbexport_repository">
+     								<form jwcid="autho_exportForm">
+                                        <span jwcid="autho_export_name">
+                                            <input jwcid="autho_export_nameField"/>
+                                        </span>
+                                        <div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+                                            <input jwcid="autho_export_ok" class="form_button"/>
+                                            <input jwcid="autho_export_cancel" class="form_button"/>
+										</div>
+                                    </form>
+                                </span>
+                                <span jwcid="autho_dbconfig_repository">
+                                    <form jwcid="autho_db_configForm">
+                                        <span jwcid="autho_vendor">
+                                            <input jwcid="autho_vendorField"/>
+                                        </span>
+                                        <span jwcid="autho_driver">
+                                            <input jwcid="autho_driverField"/>
+                                        </span>
+                                        <span jwcid="autho_url">
+                                            <input jwcid="autho_urlField"/>
+                                        </span>
+                                        <span jwcid="autho_username">
+                                            <input jwcid="autho_usernameField"/>
+                                        </span>
+                                        <span jwcid="autho_password">
+                                            <input jwcid="autho_passwordField"/>
+                                        </span>
+                                        <div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+                                            <input jwcid="autho_db_ok" class="form_button"/>
+                                            <input jwcid="autho_db_cancel" class="form_button"/>
+                                        </div>
+                                    </form>
+                                </span>
+                            </span>
+                        </span>
+                        <span jwcid="autho_custom_repository">
+                            <form jwcid="autho_custom_repositoryForm">
+                                <span jwcid="autho_create_classname">
+                                    <input jwcid="autho_create_classnameField"  style="width:98%"/>
+                                </span>
+                                <span jwcid="autho_create_properties">
+                                    <input jwcid="autho_create_propertiesField" style="width:98%" rows="6"/>
+                                </span>
+                                <div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+                                    <input jwcid="autho_custom_ok" class="form_button"/>
+                                    <input jwcid="autho_custom_cancel" class="form_button"/>
+                                </div>
+                            </form>
+                        </span>
+                    </span>
+                </span>
+                <span jwcid="authorization_jacc">
+                    <form jwcid="authorization_jaccForm">
+                        <span jwcid="use_authorization_jacc">
+                            <input jwcid="use_authorization_jaccField"/>
+                        </span>
+                        <div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+                            <input jwcid="authorization_jacc_ok" class="form_button"/>
+                            <input jwcid="authorization_jacc_cancel" class="form_button"/>
+                        </div>
+                    </form>
+                </span>
+                <span jwcid="custom_authorization">
+                    <form jwcid="custom_authorizationForm">
+                        <span jwcid="custom_authorization_classname">
+                            <input jwcid="custom_authorization_classnameField"  style="width:98%"/>
+                        </span>
+                        <span jwcid="custom_authorization_properties">
+                            <input jwcid="custom_authorization_propertiesField" style="width:98%" rows="6"/>
+                        </span>
+                        <div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+                            <input jwcid="custom_authorization_ok" class="form_button"/>
+                            <input jwcid="custom_authorization_cancel" class="form_button"/>
+                            <input jwcid="custom_authorization_reset@Submit" class="form_button" 
+                            	style="margin-left: 5px;" 
+                            	value="message:JEUSForm.reset.label" 
+                            	message="message:JEUSForm.reset.confirm" 
+                            	listener="listener:onCustomAuthorizationReset"/>                               
+                        </div>
+                    </form>
+                </span>
+            </span>
+        </span>
+
+        <span jwcid="login">
+            <form jwcid="loginForm"/>
+            <span jwcid="loginTab">
+                <span jwcid="jaas_login">
+                    <form jwcid="jaas_loginForm"/>
+                    <span jwcid="jaas_loginTab">
+                        <span jwcid="jaas_handler">
+                            <form jwcid="jaas_handlerForm">
+                                <span jwcid="callback_handler_classname">
+                                    <input jwcid="callback_handler_classnameField" style="width:98%"/>
+                                </span>
+                                <div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+                                    <input jwcid="jaas_handler_ok" class="form_button"/>
+                                    <input jwcid="jaas_handler_cancel" class="form_button"/>
+                                </div>
+                            </form>
+                        </span>
+                        <span jwcid="jaas_login_module">
+                            <form jwcid="jaas_login_moduleForm"/>
+                            <table class="table">
+                                <tr>
+                                    <th><span jwcid="module_classname_column"/></th>
+                                    <th><span jwcid="control_flag_column"/></th>
+                                    <th><span jwcid="option_name_column"/></th>
+                                    <th><span jwcid="option_value_column"/></th>
+                                    <th width="20">&nbsp;</th>
+                                </tr>
+                                <tr jwcid="eachLoginModule">
+                                    <td><span jwcid="module_classname_value"/></td>
+                                    <td><span jwcid="control_flag_value"/></td>
+                                    <td><span jwcid="option_name_value"/></td>
+                                    <td><span jwcid="option_value_value"/></td>
+                                    <td align="center"><a jwcid="moduleDeleteLink" disabled="ognl:!@jeus.tool.webadmin.hivemind.Lock@isEnabledEdit(getSettings(), getVisit())"><img jwcid="delete" alt="delete"/></a></td>
+                                </tr>
+                            </table>
+                            <br/>
+                            <form jwcid="jaas_login_module_addForm">
+                                <span jwcid="login_module_classname">
+                                    <input jwcid="login_module_classnameField"/>
+                                </span>
+                                <span jwcid="control_flag">
+                                    <input jwcid="control_flagField"/>
+                                </span>
+                                <span jwcid="jaas_login_options">
+                                    <input jwcid="jaas_login_optionsField" style="width:98%" rows="6"/>
+                                </span>
+                                <div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+                                    <input jwcid="jaas_login_ok" class="form_button"/>
+                                    <input jwcid="jaas_login_cancel" class="form_button"/>
+                                </div>
+                            </form>
+                        </span>
+                    </span>
+                </span>
+                <span jwcid="custom_login">
+                    <form jwcid="custom_loginForm">
+                        <span jwcid="login_classname">
+                            <input jwcid="login_classnameField"  style="width:98%"/>
+                        </span>
+                        <span jwcid="login_properties">
+                            <input jwcid="login_propertiesField" style="width:98%" rows="6"/>
+                        </span>
+                        <div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+                            <input jwcid="login_custom_ok" class="form_button"/>
+                            <input jwcid="login_custom_cancel" class="form_button"/>
+                        </div>
+                    </form>
+                </span>
+            </span>
+        </span>
+
+        <span jwcid="idassertion">
+            <form jwcid="identity_assertionForm"/>
+            <span jwcid="identity_assertionTab">
+                <span jwcid="identity_assertion_default">
+                    <span jwcid="identity_assertion_defaultTab">
+                        <span jwcid="id_config">
+                            <form jwcid="identity_assertion_config_fileForm">
+                                <span jwcid="id_filename">
+                                    <input jwcid="id_filenameField"/>
+                                </span>
+                                <span jwcid="id_filepath">
+                                    <input jwcid="id_filepathField"/>
+                                </span>
+                                <div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+	                                <input jwcid="id_config_ok" class="form_button"/>
+	                                <input jwcid="id_config_cancel" class="form_button"/>
+                                </div>
+                            </form>
+                        </span>
+                        <span jwcid="id_defaultUser">
+                            <form jwcid="identity_assertion_default_userForm">
+                                <span jwcid="cert_attr_type">
+                                    <input jwcid="cert_attr_typeField"/>
+                                </span>
+                                <span jwcid="attribute_type">
+                                    <input jwcid="attribute_typeField"/>
+                                </span>
+                                <span jwcid="attribute_value_delimiter">
+                                    <input jwcid="attribute_value_delimiterField"/>
+                                </span>
+                                <span jwcid="selectScript"/>
+                                <div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+                                    <input jwcid="id_def_mapper_ok" class="form_button"/>
+                                    <input jwcid="id_def_mapper_cancel" class="form_button"/>
+                                </div>
+                            </form>
+                        </span>
+                        <span jwcid="id_customUser">
+                            <form jwcid="identity_assertion_custom_userForm">
+                                <span jwcid="id_custom_user_properies">
+                                    <input jwcid="id_custom_user_properiesField" style="width:98%" rows="6"/>
+                                </span>
+                                <div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+                                    <input jwcid="id_cust_mapper_ok" class="form_button"/>
+                                    <input jwcid="id_cust_mapper_cancel" class="form_button"/>
+                                </div>
+                            </form>
+                        </span>
+                    </span>
+                </span>
+                <span jwcid="identity_assertion_custom">
+                    <form jwcid="identity_assertion_customForm">
+                        <span jwcid="identity_assertion_custom_classname">
+                            <input jwcid="identity_assertion_custom_classnameField"  style="width:98%"/>
+                        </span>
+                        <span jwcid="identity_assertion_custom_properties">
+                            <input jwcid="identity_assertion_custom_propertiesField" style="width:98%" rows="6"/>
+                        </span>
+                        <div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+                            <input jwcid="id_cust_ok" class="form_button"/>
+                            <input jwcid="id_cust_cancel" class="form_button"/>
+                        </div>
+                    </form>
+                </span>
+            </span>
+        </span>
+
+        <span jwcid="crdmapping">
+            <form jwcid="credential_mappingForm"/>
+            <span jwcid="credential_mappingTab">
+                <span jwcid="credential_mapping_default">
+                    <form jwcid="credential_mapping_defaultForm">
+                        <span jwcid="crd_truststore_path">
+                            <input jwcid="crd_truststore_pathField"/>
+                        </span>
+                        <span jwcid="crd_truststore_password">
+                            <input jwcid="crd_truststore_passwordField"/>
+                        </span>
+                        <div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+                            <input jwcid="def_crd_mapping_ok" class="form_button"/>
+                            <input jwcid="def_crd_mapping_cancel" class="form_button"/>
+                        </div>
+                    </form>
+                </span>
+                <span jwcid="credential_mapping_custom">
+                    <form jwcid="credential_mapping_tableForm"/>
+                    <table class="table">
+                        <tr>
+                            <th><span jwcid="cre_mapping_class_name_column"/></th>
+                            <th><span jwcid="cre_mapping_custom_option_name_column"/></th>
+                            <th><span jwcid="cre_mapping_custom_option_value_column"/></th>
+                            <th width="20">&nbsp;</th>
+                        </tr>
+                        <tr jwcid="eachCreMapService">
+                            <td><a jwcid="creMapServiceLink"><span jwcid="cre_mapping_class_name_value"/></a></td>
+                            <td>
+                                <table class="table">
+                                    <tr jwcid="eachCreMapOptionName">
+                                        <td>
+                                            <span jwcid="cre_mapping_option_name_value"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table class="table">
+                                    <tr jwcid="eachCreMapOptionValue">
+                                        <td>
+                                            <span jwcid="cre_mapping_option_value_value"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td>
+                                <a jwcid="creMapDeleteLink" disabled="ognl:!@jeus.tool.webadmin.hivemind.Lock@isEnabledEdit(getSettings(), getVisit())"><img jwcid="deleteCreMap" border="0"/></a>
+                            </td>
+                        </tr>
+                    </table>
+                    <form jwcid="credential_mapping_customForm">
+                        <span jwcid="credential_mapping_custom_classname">
+                            <input jwcid="credential_mapping_custom_classnameField"  style="width:98%"/>
+                        </span>
+                        <span jwcid="credential_mapping_custom_properties">
+                            <input jwcid="credential_mapping_custom_propertiesField" style="width:98%" rows="6"/>
+                        </span>
+                        <div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+                            <input jwcid="cust_crd_mapping_ok" class="form_button"/>
+                            <input jwcid="cust_crd_mapping_cancel" class="form_button"/>
+                        </div>
+                    </form>
+                </span>
+            </span>
+        </span>
+
+        <span jwcid="crdverification">
+            <form jwcid="credential_verificationForm"/>
+            <span jwcid="credential_verificationTab">
+                <span jwcid="credential_verification_default">
+                    <form jwcid="credential_verification_defaultForm">
+                        <span jwcid="verificationTypeRadioGroup">
+                            <input jwcid="noneRadio"/>
+                            <span jwcid="noneField" class="field_label"/>
+                            <br/>
+                            <input jwcid="password_verificationRadio"/>
+                            <span jwcid="password_verificationField" class="field_label"/>
+                            <br/>
+                            <input jwcid="jeus_certificate_verificationRadio"/>
+                            <span jwcid="jeus_certificate_verificationField" class="field_label"/>
+                            <br/>
+                        </span>
+                        <div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+                            <input jwcid="def_crd_verification_ok" class="form_button"/>
+                            <input jwcid="def_crd_verification_cancel" class="form_button"/>
+                        </div>
+                    </form>
+                </span>
+                <span jwcid="credential_verification_custom">
+                    <form jwcid="credential_verification_tableForm"/>
+                    <table class="table">
+                        <tr>
+                            <th><span jwcid="cre_veri_class_name_column"/></th>
+                            <th><span jwcid="cre_veri_custom_option_name_column"/></th>
+                            <th><span jwcid="cre_veri_custom_option_value_column"/></th>
+                            <th width="20">&nbsp;</th>
+                        </tr>
+                        <tr jwcid="eachCreVerService">
+                            <td><a jwcid="creVerServiceLink"><span jwcid="cre_veri_class_name_value"/></a></td>
+                            <td>
+                                <table class="table">
+                                    <tr jwcid="eachCreVerOptionName">
+                                        <td>
+                                            <span jwcid="cre_veri_custom_option_name_value"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table class="table">
+                                    <tr jwcid="eachCreVerOptionValue">
+                                        <td>
+                                            <span jwcid="cre_veri_custom_option_value_value"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td>
+                                <a jwcid="creVerDeleteLink" disabled="ognl:!@jeus.tool.webadmin.hivemind.Lock@isEnabledEdit(getSettings(), getVisit())"><img jwcid="deleteCreVeri" border="0"/></a>
+                            </td>
+                        </tr>
+                    </table>
+                    <form jwcid="credential_verification_customForm">
+                        <span jwcid="credential_verification_custom_classname">
+                            <input jwcid="credential_verification_custom_classnameField" style="width:98%"/>
+                        </span>
+                        <span jwcid="credential_verification_custom_properties">
+                            <input jwcid="credential_verification_custom_propertiesField" style="width:98%" rows="6"/>
+                        </span>
+                        <div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+                            <input jwcid="cust_crd_verification_ok" class="form_button"/>
+                            <input jwcid="cust_crd_verification_cancel" class="form_button"/>
+                        </div>
+                    </form>
+                </span>
+            </span>
+        </span>
+
+        <span jwcid="audit">
+            <form jwcid="auditForm"/>
+            <span jwcid="auditTab">
+                <span jwcid="default_audit_service">
+                    <form jwcid="default_audit_serviceForm">
+                        <span jwcid="audit_file_name">
+                            <input jwcid="audit_file_nameField"/>
+                        </span>
+                        <span jwcid="audit_file_path">
+                            <input jwcid="audit_file_pathField"/>
+                        </span>
+                        <span jwcid="audit_level">
+                            <input jwcid="audit_levelField"/>
+                        </span>
+                        <div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+                            <input jwcid="def_audit_ok" class="form_button"/>
+                            <input jwcid="def_audit_cancel" class="form_button"/>
+                        </div>
+                    </form>
+                </span>
+                <span jwcid="custom_audit_service">
+                    <form jwcid="custom_audit_tableForm"/>
+                    <table class="table">
+                        <tr>
+                            <th><span jwcid="audit_class_name_column"/></th>
+                            <th><span jwcid="audit_custom_option_name_column"/></th>
+                            <th><span jwcid="audit_custom_option_value_column"/></th>
+                            <th width="20">&nbsp;</th>
+                        </tr>
+                        <tr jwcid="eachAuditService">
+                            <td><a jwcid="auditLink"><span jwcid="audit_class_name_value"/></a></td>
+                            <td>
+                                <table class="table">
+                                    <tr jwcid="eachAuditOptionName">
+                                        <td>
+                                            <span jwcid="audit_custom_option_name_value"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table class="table">
+                                    <tr jwcid="eachAuditOptionValue">
+                                        <td>
+                                            <span jwcid="audit_custom_option_value_value"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td>
+                                <a jwcid="auditDeleteLink" disabled="ognl:!@jeus.tool.webadmin.hivemind.Lock@isEnabledEdit(getSettings(), getVisit())"><img jwcid="deleteAudit" border="0"/></a>
+                            </td>
+                        </tr>
+                    </table>
+                    <form jwcid="custom_audit_serviceForm">
+                        <span jwcid="custom_audit_classname">
+                            <input jwcid="custom_audit_classnameField"  style="width:98%"/>
+                        </span>
+                        <span jwcid="custom_audit_properties">
+                            <input jwcid="custom_audit_propertiesField" style="width:98%" rows="6"/>
+                        </span>
+                        <div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+                            <input jwcid="cust_audit_ok" class="form_button"/>
+                            <input jwcid="cust_audit_cancel" class="form_button"/>
+                        </div>
+                    </form>
+                </span>
+            </span>
+        </span>
+        
+        <span jwcid="subject">
+            <form jwcid="subjectForm"/>
+            <span jwcid="subjectTab">
+                <span jwcid="default_subject_service">
+                    <form jwcid="default_subject_serviceForm">
+                        <span jwcid="subject_enable">
+                            <input jwcid="subject_enableField"/>
+                        </span>
+                        <div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+                            <input jwcid="def_subject_ok" class="form_button"/>
+                            <input jwcid="def_subject_cancel" class="form_button"/>
+                        </div>
+                    </form>
+                </span>
+                <span jwcid="custom_subject_service">
+                    <form jwcid="custom_subject_tableForm"/>
+                    <table class="table">
+                        <tr>
+                            <th><span jwcid="subject_class_name_column"/></th>
+                            <th><span jwcid="subject_custom_option_name_column"/></th>
+                            <th><span jwcid="subject_custom_option_value_column"/></th>
+                            <th width="20">&nbsp;</th>
+                        </tr>
+                        <tr jwcid="eachSubjectService">
+                            <td><a jwcid="subjectLink"><span jwcid="subject_class_name_value"/></a></td>
+                            <td>
+                                <table class="table">
+                                    <tr jwcid="eachSubjectOptionName">
+                                        <td>
+                                            <span jwcid="subject_custom_option_name_value"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table class="table">
+                                    <tr jwcid="eachSubjectOptionValue">
+                                        <td>
+                                            <span jwcid="subject_custom_option_value_value"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td>
+                                <a jwcid="subjectDeleteLink" disabled="ognl:!@jeus.tool.webadmin.hivemind.Lock@isEnabledEdit(getSettings(), getVisit())"><img jwcid="deleteSubject" border="0"/></a>
+                            </td>
+                        </tr>
+                    </table>
+                    <form jwcid="custom_subject_serviceForm">
+                        <span jwcid="custom_subject_classname">
+                            <input jwcid="custom_subject_classnameField"  style="width:98%"/>
+                        </span>
+                        <span jwcid="custom_subject_properties">
+                            <input jwcid="custom_subject_propertiesField" style="width:98%" rows="6"/>
+                        </span>
+                        <div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+                            <input jwcid="cust_subject_ok" class="form_button"/>
+                            <input jwcid="cust_subject_cancel" class="form_button"/>
+                        </div>
+                    </form>
+                </span>
+            </span>
+        </span>    
+
+        <span jwcid="custom">
+            <form jwcid="customForm"/>
+            <table class="table">
+                <tr>
+                    <th><span jwcid="class_name_column"/></th>
+                    <th><span jwcid="custom_option_name_column"/></th>
+                    <th><span jwcid="custom_option_value_column"/></th>
+                    <th width="20">&nbsp;</th>
+                </tr>
+                <tr jwcid="eachCustomService">
+                    <td><a jwcid="serviceLink"><span jwcid="class_name_value"/></a></td>
+                    <td>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_inner">
+                            <tr jwcid="eachOptionName">
+                                <td class="table_values"><span jwcid="custom_option_name_value"/></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="table">
+                            <tr jwcid="eachOptionValue">
+                                <td><span jwcid="custom_option_value_value"/></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td align="center"><a jwcid="serviceDeleteLink" disabled="ognl:!@jeus.tool.webadmin.hivemind.Lock@isEnabledEdit(getSettings(), getVisit())"><img jwcid="deleteCustom" border="0"/></a></td>
+                </tr>
+            </table>
+            <form jwcid="customServiceForm">
+                <span jwcid="security_domain_service_custom_classname">
+                    <input jwcid="security_domain_service_custom_classnameField" style="width:98%"/>
+                </span>
+                <span jwcid="security_domain_service_custom_properties">
+                    <input jwcid="security_domain_service_custom_propertiesField" style="width:98%" rows="6"/>
+                </span>
+                <div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+                    <input jwcid="ok" class="form_button"/>
+                    <input jwcid="cancel" class="form_button"/>
+                </div>
+            </form>
+        </span>
+    </span>
+</html>

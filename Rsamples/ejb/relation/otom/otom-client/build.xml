@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<project name="otom-client" default="all" basedir=".">
+    <property name="is.jar.module" value="true"/>
+
+    <import file="../../../../common/common-build.xml"/>
+
+
+    <property name="run.class" value="ejb.relation.otom.Client"/>
+    <target name="all" depends="build, run"/>
+    <target name="run" depends="runjavaclient"/>
+	
+</project>

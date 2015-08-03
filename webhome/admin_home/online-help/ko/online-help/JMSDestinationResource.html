@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta xmlns="" http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>JMS 데스티네이션 리소스</title><link rel="stylesheet" href="../stylesheet.css" type="text/css"/><meta name="generator" content="DocBook XSL Stylesheets V1.72.0"/><link rel="start" href="index.html" title="WebAdmin 온라인 도움말"/><link rel="up" href="index.html" title="WebAdmin 온라인 도움말"/><link rel="prev" href="JMSConnectionResource.html" title="JMS 커넥션 리소스"/><link rel="next" href="JMSDurableSubscriberResource.html" title="JMS Durable Subscriber"/></head><body><div class="section" lang="ko"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="JMSDestinationResource"/>JMS 데스티네이션 리소스</h2></div></div></div>
+  
+
+  
+
+  <p><span class="bold"><strong>네비게이션 경로</strong></span>: Home &gt;
+  <em class="replaceable"><code>node-name</code></em> &gt; 엔진 컨테이너 &gt;
+  <em class="replaceable"><code>container-name</code></em> &gt; 리소스 &gt; JMS &gt;
+  데스티네이션</p>
+
+  <div class="section" lang="ko"><div class="titlepage"><div><div><h3 class="title"><a id="JMSDestinationResource_Overview"/>개요</h3></div></div></div>
+    
+
+    <p>이 페이지는 현재 JMS 엔진에 등록되어 있는 데스티네이션의 목록을 표의 형태로 보여준다. 각 데스티네이션의 다음 속성들이
+    표시된다.</p>
+
+    <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">이름</strong></span></span></dt><dd>
+          <p>JMS 엔진에서 내부적으로 사용하는 데스티네이션 이름.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">익스포트 이름</strong></span></span></dt><dd>
+          <p>JNDI 서버에 등록된 데스티네이션의 이름. JNDI Lookup을 통해 데스티네이션을 얻을 때 클라이언트가 이
+          이름을 사용한다.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">종류</strong></span></span></dt><dd>
+          <p>데스티네이션의 유형. <span class="token">queue</span>와 <span class="token">topic</span> 중 한 가지
+          값이 나타난다.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">메시지 처리 수</strong></span></span></dt><dd>
+          <p>메시지 송신자가 송신하여 해당 데스티네이션에 도착한 메시지의 개수.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">잔여 메시지 수</strong></span></span></dt><dd>
+          <p>해당 데스티네이션에 도착한 메시지 중 아직 메시지 수신자에게 전달을 완료하지 못한 메시지의 개수.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">전달된 메시지 수</strong></span></span></dt><dd>
+          <p>해당 데스티네이션에 도착한 메시지 중 메시지 수신자에게 전달을 완료한 메시지의 개수.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">만료된 메시지 수</strong></span></span></dt><dd>
+          <p>해당 데스티네이션에 도착한 메시지 중 메시지 수신자에게 전달되기 전에 만료된 메시지의 개수.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">Consumer 수</strong></span></span></dt><dd>
+          <p>해당 데스티네이션에 접속한 메시지 수신자의 개수. High는 과거 동시에 접속했던 최대치이며 Current는 현재 개수이다.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">사용중인 메모리(k)</strong></span></span></dt><dd>
+          <p>해당 데스티네이션이 메시지를 저장하기 위해 사용중인 메모리 양. 단위는 Kilobyte이다.
+          High는 과거 사용했던 최대치이며 Current는 현재 사용량이다.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">바인드</strong></span></span></dt><dd>
+          <p><span><strong class="guibutton">바인드</strong></span> 명령. 버튼을 누르면 데스티네이션을 JNDI 서버에 바인드
+          시킨다. 데스티네이션이 아직 JNDI 서버에 바인드 되지 않았을 때에만 활성화 된다.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">삭제</strong></span></span></dt><dd>
+          <p>삭제 명령. 휴지통 아이콘(<span class="inlinemediaobject"><img src="resources/table/delete.gif"/></span>)을 클릭하면 삭제 확인을 묻는 대화상자가 나타나고,
+          <span><strong class="guilabel">확인</strong></span> 버튼을 누르면 해당 데스티네이션을 JMS 엔진에서 삭제한다.</p>
+        </dd></dl></div>
+
+    <p>표 아래에 있는 <span><strong class="guilabel">새 큐 데스티네이션 생성</strong></span> 링크나 <span><strong class="guilabel">새 토픽
+    데스티네이션 생성</strong></span> 링크를 클릭하면 각각 <a href="JMSDestinationResource.html#JMSDestinationResource_Create_queue" title="새 Queue 데스티네이션 생성">새 Queue 데스티네이션 생성</a>, <a href="JMSDestinationResource.html#JMSDestinationResource_Create_topic" title="새 Topic 데스티네이션 생성">새 Topic 데스티네이션 생성</a> 페이지로 이동하여 선택한 종류의 데스티네이션을
+    생성할 수 있다.</p>
+  </div>
+
+  <div class="section" lang="ko"><div class="titlepage"><div><div><h3 class="title"><a id="d4e2056"/>새 데스티네이션 생성</h3></div></div></div>
+    
+
+    <p>새 데스티네이션 생성은 데스티네이션의 종류에 따라 필요한 설정(<a href="JMSDestinationResource.html#JMSDestinationResource_Create_queue" title="새 Queue 데스티네이션 생성">새 Queue 데스티네이션 생성</a>, <a href="JMSDestinationResource.html#JMSDestinationResource_Create_topic" title="새 Topic 데스티네이션 생성">새 Topic 데스티네이션 생성</a>)을 한 뒤, JNDI 서버에 바인드 하는
+    과정으로 이루어진다.</p>
+
+    <div class="section" lang="ko"><div class="titlepage"><div><div><h4 class="title"><a id="JMSDestinationResource_Create_queue"/>새 Queue 데스티네이션 생성</h4></div></div></div>
+      
+
+      <p>이 페이지에서는 새로 생성할 큐의 속성을 지정할 수 있다. 필수적으로 다음 필드를 설정해야 한다.</p>
+
+      <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Name</strong></span></span></dt><dd>
+            <p>JMS 엔진 내부적으로 사용하는 큐 데스티네이션의 이름. JMS 엔진 내에서 유일한 값이어야
+            한다.</p>
+          </dd></dl></div>
+
+      <p>추가로 다음 <span><strong class="guilabel">고급 선택사항</strong></span>을 지정할 수 있다.</p>
+
+      <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Export Name</strong></span></span></dt><dd>
+            <p>클라이언트가 데스티네이션을 JNDI Lookup 하는데 필요한 JNDI 익스포트 이름. JNDI 서버 내에서
+            유일한 이름이어야 한다. 지정하지 않으면 위에서 입력한 <span><strong class="guilabel">Name</strong></span>과 같은 값이
+            사용된다.</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">Multiple Receiver</strong></span></span></dt><dd>
+            <p>새로 생성할 큐로부터 여러 개의 메시지 수신자가 메시지를 받아갈 수 있게 할 것인지의 여부. 체크하면 이
+            큐에 대해 아래에서 설정할 <span><strong class="guilabel">Consumer Limit</strong></span> 만큼의 메시지 수신자가
+            허용된다.</p>
+
+          </dd><dt><span class="term"><span><strong class="guilabel">Consumer Limit</strong></span></span></dt><dd>
+            <p>새로운 큐에 최대로 접근할 수 있는 메시지 수신자의 수. 이 큐에 대한 메시지 수신자의 개수가 이 설정값을
+            넘어서면 메시지 수신자를 생성하려는 클라이언트 측에서 예외가 발생한다.</p>
+
+            <p><span><strong class="guilabel">Multiple Receiver</strong></span> 필드에서 다수의 메시지 수신자를
+            허용하지 않은 경우 여기에 입력한 값은 무시된다. 기본값으로 정수형의 최대값이 입력되어 있다.</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">Limit</strong></span></span></dt><dd>
+            <p>새로 생성할 데스티네이션이 사용할 수 있는 메모리의 최대값(<span class="token">byte</span>).
+            데스티네이션에 남아 있는 메시지가 차지하는 메모리의 크기가 이 값을 넘게 되면 이 데스티네이션에 메시지를 송신하려는
+            클라이언트 측에서 예외가 발생한다. 기본값으로 정수형의 최대값을 사용한다.</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">High Mark</strong></span></span></dt><dd>
+            <p>데스티네이션에 도착한 메시지를 메모리 상에서 관리하는 최대값(<span class="token">byte</span>).
+            데스티네이션이 차지하는 메시지의 크기가 이 값을 넘어가면 새로 송신된 메시지의 내용은 스토리지에만 저장하고 메모리
+            상에서 지운다. 기본값으로 정수형의 최대값을 사용한다.</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">Max Pending Limit</strong></span></span></dt><dd>
+            <p>Queue나 Topic에 MessageListener가 등록되어 있는 경우 Destination에
+            메시지가 도착하자 마자 Consumer로 메시지가 보내지므로 클라이언트가 이 메시지들을 빨리 처리 하지
+            않으면 클라이언트 메모리에 쌓이게 되어 OutOfMemory 에러가 발생할 수 있다.
+            DISPATCH는 되었지만 ACKNOWLEDGE를 수신하지 않은 메시지의 최대 허용범위를 지정하여 이런 문제를
+            방지할 수 있다.</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">Resume Dispatch Factor</strong></span></span></dt><dd>
+            <p>PENDING메시지가 max-pending-limit보다 크게 되면 메시지 전달은 일시적으로 중단된다.
+            클라이언트가 메시지를 완전히 처리한 후 ACKNOWLEDGE들을 보내어 PENDING된 메시지의 수가
+            (max-pending-limit * resume-dispatch-factor) 보다 작거나 같으면 DISPATCH는 다시 시작하게 된다.</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">Message Sort</strong></span></span></dt><dd>
+            <p>이 Queue 데스티네이션에 적용할 Message Sort 설정의 이름을 기술한다.</p>
+         </dd></dl></div>
+    </div>
+
+    <div class="section" lang="ko"><div class="titlepage"><div><div><h4 class="title"><a id="JMSDestinationResource_Create_topic"/>새 Topic 데스티네이션 생성</h4></div></div></div>
+      
+
+      <p>이 페이지에서는 새로 생성할 토픽의 속성을 지정할 수 있다. 필수적으로 다음 필드를 설정해야 한다.</p>
+
+      <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Name</strong></span></span></dt><dd>
+            <p>JMS 엔진 내부적으로 사용하는 토픽 데스티네이션의 이름. JMS 엔진 내에서 유일한 값이어야
+            한다.</p>
+          </dd></dl></div>
+
+      <p>추가로 다음 <span><strong class="guilabel">고급 선택사항</strong></span>을 지정할 수 있다.</p>
+
+      <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Export Name</strong></span></span></dt><dd>
+            <p>클라이언트가 데스티네이션을 JNDI Lookup 하는데 필요한 JNDI 익스포트 이름. JNDI 서버 내에서
+            유일한 이름이어야 한다. 지정하지 않으면 위에서 입력한 <span><strong class="guilabel">Name</strong></span>과 같은 값이
+            사용된다.</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">Consumer Limit</strong></span></span></dt><dd>
+            <p>새로운 토픽에 최대로 접근할 수 있는 메시지 수신자의 수. 이 토픽에 대한 메시지 수신자의 개수가 이
+            설정값을 넘어서면 메시지 수신자를 생성하려는 클라이언트 측에서 예외가 발생한다. 기본값으로 정수형의 최대값이 입력되어
+            있다.</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">Limit</strong></span></span></dt><dd>
+            <p>새로 생성할 데스티네이션이 사용할 수 있는 메모리의 최대값(<span class="token">byte</span>).
+            데스티네이션에 남아 있는 메시지가 차지하는 메모리의 크기가 이 값을 넘게 되면 이 데스티네이션에 메시지를 송신하려는
+            클라이언트 측에서 예외가 발생한다. 기본값으로 정수형의 최대값을 사용한다.</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">High Mark</strong></span></span></dt><dd>
+            <p>데스티네이션에 도착한 메시지를 메모리 상에서 관리하는 최대값(<span class="token">byte</span>).
+            데스티네이션이 차지하는 메시지의 크기가 이 값을 넘어가면 새로 송신된 메시지의 내용은 스토리지에만 저장하고 메모리
+            상에서 지운다. 기본값으로 정수형의 최대값을 사용한다.</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">Max Pending Limit</strong></span></span></dt><dd>
+            <p>Queue나 Topic에 MessageListener가 등록되어 있는 경우 Destination에
+            메시지가 도착하자 마자 Consumer로 메시지가 보내지므로 클라이언트가 이 메시지들을 빨리 처리 하지
+            않으면 클라이언트 메모리에 쌓이게 되어 OutOfMemory 에러가 발생할 수 있다.
+            DISPATCH는 되었지만 ACKNOWLEDGE를 수신하지 않은 메시지의 최대 허용범위를 지정하여 이런 문제를
+            방지할 수 있다.</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">Resume Dispatch Factor</strong></span></span></dt><dd>
+            <p>PENDING메시지가 max-pending-limit보다 크게 되면 메시지 전달은 일시적으로 중단된다.
+            클라이언트가 메시지를 완전히 처리한 후 ACKNOWLEDGE들을 보내어 PENDING된 메시지의 수가
+            (max-pending-limit * resume-dispatch-factor) 보다 작거나 같으면 DISPATCH는 다시 시작하게 된다.</p>
+          </dd></dl></div>
+    </div>
+  </div>
+
+  <div class="section" lang="ko"><div class="titlepage"><div><div><h3 class="title"><a id="d4e2164"/>기본 설정</h3></div></div></div>
+    
+
+    <div class="section" lang="ko"><div class="titlepage"><div><div><h4 class="title"><a id="JMSDestinationResource_Configuration_queue"/>Queue 설정</h4></div></div></div>
+      
+
+      <p><a href="JMSDestinationResource.html#JMSDestinationResource_Create_queue" title="새 Queue 데스티네이션 생성">새 Queue 데스티네이션 생성</a>에서 설정한 것과 같은
+      필드들의 값을 확인하고 변경할 수 있다. 단 <span><strong class="guilabel">Name</strong></span> 필드는 변경할 수 없다. 추가로
+      <span><strong class="guilabel">Type</strong></span> 필드 값으로 이 데스티네이션이 <span class="token">queue</span> 타입임이
+      표시된다.</p>
+    </div>
+
+    <div class="section" lang="ko"><div class="titlepage"><div><div><h4 class="title"><a id="JMSDestinationResource_Statistics_queue"/>Queue 통계</h4></div></div></div>
+      
+
+      <p>이 Queue에 쌓여있는 메시지들에 대한 통계를 확인할 수 있다. 구체적으로는 Message ID, Timestamp, Type등을 리스트로 확인할 수 있고
+      특정 메시지를 선택하면, 자세한 내부 필드의 값도 확인할 수 있다.</p>
+    </div>
+
+    <div class="section" lang="ko"><div class="titlepage"><div><div><h4 class="title"><a id="JMSDestinationResource_Configuration_topic"/>Topic 설정</h4></div></div></div>
+      
+
+      <p><a href="JMSDestinationResource.html#JMSDestinationResource_Create_topic" title="새 Topic 데스티네이션 생성">새 Topic 데스티네이션 생성</a>에서 설정한 것과 같은
+      필드들의 값을 확인하고 변경할 수 있다. 단 <span><strong class="guilabel">Name</strong></span> 필드는 변경할 수 없다. 추가로
+      <span><strong class="guilabel">Type</strong></span> 필드 값으로 이 데스티네이션이 <span class="token">topic</span> 타입임이
+      표시된다.</p>
+    </div>
+  </div>
+</div><div xmlns="" align="center"/></body></html>

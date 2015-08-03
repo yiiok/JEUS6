@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<module id="tacos.dojo" version="1.0.0">    
+        
+    <contribution configuration-id="tapestry.asset.UnprotectedAssets">
+        Unprotect assets for dojo adapter.
+        <unprotected-resource contains="^/dojo/" />
+    </contribution>
+    
+    <implementation service-id="tapestry.js.JavascriptManager">
+        <invoke-factory>
+            <construct class="org.apache.tapestry.javascript.JavascriptManagerImpl">
+                <set-service property="assetSource" service-id="tapestry.asset.AssetSource"/>                
+                <set property="files" value="context:/dojo/dojo/dojo.js,context:/dojo/dojo/jeus.js"/>
+                <set property="formFiles" value=""/>
+                <set property="widgetFiles" value=""/>
+                <set property="folder" value=""/>
+                <set property="tapestryFile" value=""/>
+                <set property="tapestryFolder" value=""/>
+            </construct>
+        </invoke-factory>
+    </implementation>  
+    
+    <service-point id="DojoDelegateFactory" interface="org.apache.hivemind.ServiceImplementationFactory"
+        parameters-occurs="none">
+        Constructs DojoOneShellDelegate.
+        <invoke-factory>
+            <construct class="jeus.tool.webadmin.hivemind.factory.DojoDelegateFactory" />
+        </invoke-factory>
+    </service-point>
+
+    <service-point id="DojoOneShellDelegate" interface="org.apache.tapestry.IRender">
+        <!-- model could be threaded but i see no reason for this ... yet -->
+        <invoke-factory service-id="DojoDelegateFactory"/>
+    </service-point> 
+    
+</module>

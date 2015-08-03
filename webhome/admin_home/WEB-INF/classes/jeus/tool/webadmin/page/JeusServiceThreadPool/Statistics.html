@@ -1,0 +1,34 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+         <form jwcid="statisticsForm">
+            <span jwcid="active"/>
+            <span jwcid="idle"/>
+            <span jwcid="blocked"/>
+            <span jwcid="reconnecting"/>
+			<table border="1" cellpadding="3" width="100%" jwcid="statisticsTable">
+				<span jwcid="tps_tid_labelColumnValue@Block">
+					<span jwcid="@If" condition="ognl:currentStats.status != 'waiting'" renderTag="ognl:false">
+			            <div dojoType="dijit.form.DropDownButton" baseClass="customizeTable">
+							<span jwcid="threadName@Insert" value="ognl:currentStats.tid" renderTag="ognl:true"/>
+							<div dojoType="dijit.TooltipDialog" autofocus="false">
+								<pre jwcid="@Insert" value="ognl:getStackTraceString(currentStats.tid)" renderTag="ognl:true" style="width: 800px; max-height: 500px;overflow: auto;"></pre>	
+							</div>
+						</div>											
+					</span>
+					<span jwcid="@Else" rednerTag="ognl:false">
+						<span jwcid="@Insert" value="ognl:currentStats.tid"/>
+					</span>
+				</span>					
+				<span jwcid="controlColumnHeader@Block"></span>
+				<span jwcid="controlColumnValue@Block">
+					<div style="text-align: center;">
+					<a jwcid="@DirectLink" listener="listener:onInterrupt" parameters="ognl:{currentStats.id, currentStats.tid}" renderer="ognl:@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@build('common.message.interrupt.confirm', new java.lang.Object[]{currentStats.id, currentStats.tid})"></a><button jwcid="@Button" label="Interrupt" class="form_button" onclick="jeus.fireEvent(previousSibling, 'click');" disabled="ognl:currentStats.status == 'waiting'"></button>
+					</div>
+				</span>
+			</table>
+            <div class="form_button_layer">
+				<a jwcid="@PageLink" page="ognl:pageName"></a><input jwcid="@Button" class="form_button" onclick="jeus.fireEvent(previousSibling, 'click');" label="message:common.label.refresh"/>
+            </div>
+        </form>
+    </span>
+</html>

@@ -1,0 +1,5 @@
+<project name="hello-client" default="build" basedir=".">
+    <property name="is.jar.module" value="true"/>
+
+    <import file="../../../common/common-build.xml"/>
+</project>

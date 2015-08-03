@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://tmax.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:sc="http://schemas.sun.com/2006/03/wss/server"
+xmlns:wspp="http://java.sun.com/xml/ns/wsit/policy" targetNamespace="http://tmax.com/" name="NewWebServiceService">
+    <ns1:Policy xmlns:ns1="http://schemas.xmlsoap.org/ws/2004/09/policy" wsu:Id="NewWebServicePortBindingPolicy">
+        <ns1:ExactlyOne>
+            <ns1:All>
+                <ns7:SymmetricBinding xmlns:ns7="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+                    <ns1:Policy>
+                        <ns1:ExactlyOne>
+                            <ns1:All>
+                                <ns7:AlgorithmSuite>
+                                    <ns1:Policy>
+                                        <ns1:ExactlyOne>
+                                            <ns1:All>
+                                                <ns7:TripleDes />
+                                            </ns1:All>
+                                        </ns1:ExactlyOne>
+                                    </ns1:Policy>
+                                </ns7:AlgorithmSuite>
+                                <ns7:IncludeTimestamp />
+                                <ns7:Layout>
+                                    <ns1:Policy>
+                                        <ns1:ExactlyOne>
+                                            <ns1:All>
+                                                <ns7:Strict />
+                                            </ns1:All>
+                                        </ns1:ExactlyOne>
+                                    </ns1:Policy>
+                                </ns7:Layout>
+                                <ns7:OnlySignEntireHeadersAndBody />
+                                <ns7:ProtectionToken>
+                                    <ns1:Policy>
+                                        <ns1:ExactlyOne>
+                                            <ns1:All>
+                                                <ns7:X509Token ns7:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/Never">
+
+                                                    <ns1:Policy>
+                                                        <ns1:ExactlyOne>
+                                                            <ns1:All>
+                                                                <ns7:WssX509V3Token10 />
+                                                            </ns1:All>
+                                                        </ns1:ExactlyOne>
+                                                    </ns1:Policy>
+                                                </ns7:X509Token>
+                                            </ns1:All>
+                                        </ns1:ExactlyOne>
+                                    </ns1:Policy>
+                                </ns7:ProtectionToken>
+                            </ns1:All>
+                        </ns1:ExactlyOne>
+                    </ns1:Policy>
+                </ns7:SymmetricBinding>
+                <ns8:Wss11 xmlns:ns8="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+                    <ns1:Policy>
+                        <ns1:ExactlyOne>
+                            <ns1:All>
+                                <ns8:MustSupportRefEncryptedKey></ns8:MustSupportRefEncryptedKey>
+                                <ns8:MustSupportRefIssuerSerial></ns8:MustSupportRefIssuerSerial>
+                                <ns8:MustSupportRefThumbprint></ns8:MustSupportRefThumbprint>
+                            </ns1:All>
+                        </ns1:ExactlyOne>
+                    </ns1:Policy>
+                </ns8:Wss11>
+                <sc:KeyStore wspp:visibility="private" alias="xws-security-server" storepass="changeit" type="JKS"
+                location="keystore.jks" />
+                <sc:TrustStore wspp:visibility="private" peeralias="xws-security-client" storepass="changeit" type="JKS"
+                location="cacerts.jks" />
+                <sc:ValidatorConfiguration xmlns:sc="http://schemas.sun.com/2006/03/wss/server">
+                    <sc:Validator name="usernameValidator" classname="com.tmax.UsernamePasswordValidator" />
+                </sc:ValidatorConfiguration>
+                <ns9:UsingAddressing xmlns:ns9="http://www.w3.org/2006/05/addressing/wsdl" />
+            </ns1:All>
+        </ns1:ExactlyOne>
+    </ns1:Policy>
+    <ns10:Policy xmlns:ns10="http://schemas.xmlsoap.org/ws/2004/09/policy" wsu:Id="NewWebServicePortBinding_add_Input_Policy">
+        <ns10:ExactlyOne>
+            <ns10:All>
+                <ns11:EncryptedParts xmlns:ns11="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+                    <ns11:Body />
+                </ns11:EncryptedParts>
+                <ns12:SignedParts xmlns:ns12="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+                    <ns12:Body />
+                    <ns12:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+                    <ns12:Header Namespace="http://www.w3.org/2005/08/addressing" Name="To" />
+                    <ns12:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+                    <ns12:Header Name="MessageId" Namespace="http://www.w3.org/2005/08/addressing" />
+                    <ns12:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+                    <ns12:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+                    <ns12:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+                </ns12:SignedParts>
+                <ns13:SignedSupportingTokens xmlns:ns13="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+                    <ns10:Policy>
+                        <ns10:ExactlyOne>
+                            <ns10:All>
+                                <ns13:UsernameToken ns13:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+
+                                    <ns10:Policy>
+                                        <ns10:ExactlyOne>
+                                            <ns10:All>
+                                                <ns13:WssUsernameToken10 />
+                                            </ns10:All>
+                                        </ns10:ExactlyOne>
+                                    </ns10:Policy>
+                                </ns13:UsernameToken>
+                            </ns10:All>
+                        </ns10:ExactlyOne>
+                    </ns10:Policy>
+                </ns13:SignedSupportingTokens>
+            </ns10:All>
+        </ns10:ExactlyOne>
+    </ns10:Policy>
+    <ns14:Policy xmlns:ns14="http://schemas.xmlsoap.org/ws/2004/09/policy" wsu:Id="NewWebServicePortBinding_add_Output_Policy">
+        <ns14:ExactlyOne>
+            <ns14:All>
+                <ns15:EncryptedParts xmlns:ns15="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+                    <ns15:Body />
+                </ns15:EncryptedParts>
+                <ns16:SignedParts xmlns:ns16="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+                    <ns16:Body />
+                    <ns16:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+                    <ns16:Header Namespace="http://www.w3.org/2005/08/addressing" Name="To" />
+                    <ns16:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+                    <ns16:Header Name="MessageId" Namespace="http://www.w3.org/2005/08/addressing" />
+                    <ns16:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+                    <ns16:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+                    <ns16:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+                </ns16:SignedParts>
+            </ns14:All>
+        </ns14:ExactlyOne>
+    </ns14:Policy>
+    <types>
+        <xsd:schema>
+            <xsd:import namespace="http://tmax.com/" schemaLocation="NewWebServiceService.xsd" />
+        </xsd:schema>
+    </types>
+    <message name="add">
+        <part name="parameters" element="tns:add" />
+    </message>
+    <message name="addResponse">
+        <part name="parameters" element="tns:addResponse" />
+    </message>
+    <portType name="NewWebService">
+        <operation name="add">
+            <input message="tns:add" />
+            <output message="tns:addResponse" />
+        </operation>
+    </portType>
+    <binding name="NewWebServicePortBinding" type="tns:NewWebService">
+        <ns17:PolicyReference xmlns:ns17="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#NewWebServicePortBindingPolicy" />
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+        <operation name="add">
+            <soap:operation soapAction="" />
+            <input>
+                <ns18:PolicyReference xmlns:ns18="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                URI="#NewWebServicePortBinding_add_Input_Policy" />
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <ns19:PolicyReference xmlns:ns19="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                URI="#NewWebServicePortBinding_add_Output_Policy" />
+                <soap:body use="literal" />
+            </output>
+        </operation>
+    </binding>
+    <service name="NewWebServiceService">
+        <port name="NewWebServicePort" binding="tns:NewWebServicePortBinding">
+            <soap:address location="http://localhost:8088/usernameAuthentication_war/NewWebServiceService" />
+        </port>
+    </service>
+</definitions>

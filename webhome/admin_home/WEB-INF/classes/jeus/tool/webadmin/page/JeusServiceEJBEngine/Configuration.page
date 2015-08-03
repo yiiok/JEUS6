@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.JeusServiceEJBEngine.ConfigurationPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="message:ejc.title"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="@jeus.tool.webadmin.page.PageNames@getJEUSSERVICE_EJBENGINE_NAMES(objectName)"/>
+        <!--<binding name="subtabNames" value="{'general', 'logging', 'active_mgmt', 'startup_shutdown', 'invoke_http', 'timer_service'}"/>-->
+        <binding name="subtabNames" value="{'general', 'logging', 'active_mgmt', 'invoke_http', 'timer_service'}"/>
+    </component>
+
+    <component id="general" type="Block"/>
+    <component id="logging" type="Block"/>
+    <!-- <component id="startup_shutdown" type="Block"/>-->
+    <component id="active_mgmt" type="Block"/>
+    <component id="invoke_http" type="Block"/>
+    <!--<component id="communication" type="Block"/>-->
+    <component id="timer_service" type="Block"/>
+
+    <!--
+    <component id="iiop" type="Block"/>
+    <component id="http" type="Block"/>
+    -->
+
+    <component id="timer_service_general" type="Block"/>
+    <component id="timer_service_pooling" type="Block"/>
+    <component id="timer_service_durable" type="Block"/>
+
+    <component id="generalForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:ejc.general.title"/>
+        <binding name="success" value="listener:onGeneralOk"/>
+        <binding name="parentElement" value="literal:ejbEngine"/>
+    </component>
+
+    <component id="name" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:ejc.general.name.label"/>
+        <binding name="value" value="objectName.keyPropertyList.name"/>
+    </component>
+
+    <component id="resolution" type="jeus:Field">
+        <binding name="field" value="component:resolutionField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+        <binding name="renderBottom" value="false"/>
+    </component>
+
+    <component id="resolutionField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ejbEngine"/>
+        <binding name="elementName" value="literal:resolution"/>
+        <binding name="translator" value="translator:number2,valueType=Long"/>
+        <binding name="validators" value="validators:min=0"/>
+    </component>
+
+    <component id="enable_user_notify" type="jeus:Field">
+        <binding name="field" value="component:enable_user_notifyField"/>
+        <binding name="renderBottom" value="false"/>
+    </component>
+
+    <component id="enable_user_notifyField" type="jeus:JAXBCheckbox">
+        <binding name="parentElement" value="ejbEngine"/>
+        <binding name="elementName" value="literal:enableUserNotify"/>
+    </component>
+
+    <!--
+    <component id="user_classpath" type="jeus:Field">
+        <binding name="field" value="component:user_classpathField"/>
+        <binding name="description" value="message:ejc.general.user_classpath.description"/>
+        <binding name="label" value="message:ejc.general.user_classpath.label"/>
+    </component>
+
+    <component id="user_classpathField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="ejbEngine"/>
+        <binding name="elementName" value="literal:userClassPath"/>
+    </component>
+    -->
+
+    <component id="loggingForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:ejc.logging.title"/>
+        <binding name="success" value="listener:onLoggingOk"/>
+        <binding name="parentElement" value="engineCommand"/>
+        <binding name="elementName" value="literal:systemLogging"/>
+    </component>
+
+    <component id="logging_panel" type="jeus:Logging">
+        <binding name="logging" value="logging"/>
+    </component>
+
+    <component id="handlerForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:ejc.handler.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+        <binding name="subform" value="true"/>
+        <binding name="parentElement" value="logging"/>
+        <binding name="elementName" value="literal:handler"/>
+    </component>
+
+    <component id="handler_panel" type="jeus:HandlerList">
+        <binding name="handlers" value="handlers"/>
+        <binding name="createPage" value="literal:JeusServiceEJBEngine_CreateHandler"/>
+        <binding name="editPage" value="literal:JeusServiceEJBEngine_EditHandler"/>
+        <binding name="deleteListener" value="listener:onDeleteHandler"/>
+        <binding name="objectName" value="objectName"/>
+        <binding name="jeusType" value="literal:EJBEngine"/>
+    </component>
+
+    <component id="general_blind" type="jeus:Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>
+
+    <!-- active management form -->
+    <component id="active_mgmtForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:ejc.active_mgmt.title"/>
+        <binding name="useForm" value="false"/>
+        <binding name="parentElement" value="ejbEngine"/>
+        <binding name="elementName" value="literal:activeManagement"/>
+    </component>
+
+    <component id="active_mgmt_tab" type="jeus:InnerTabPanel">
+        <binding name="model" value="new jeus.tool.webadmin.component.GeneralTabModel(new java.lang.String[]{'ejc.active_mgmt.general.label','ejc.active_mgmt.email_notify.label'}, new java.lang.String[]{'active_mgmt_general','active_mgmt_email_notify'})"/>
+    </component>
+
+    <component id="active_mgmt_general" type="Block"/>
+    <component id="active_mgmt_email_notify" type="Block"/>
+
+    <component id="active_mgmt_generalForm" type="jeus:JEUSForm">
+        <binding name="success" value="listener:onActiveManagementOk"/>
+    </component>
+
+    <component id="max_blocked_thread" type="jeus:Field">
+        <binding name="field" value="component:max_blocked_threadField"/>
+    </component>
+
+    <component id="max_blocked_threadField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="activeManagement"/>
+        <binding name="elementName" value="literal:maxBlockedThread"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=-1"/>
+    </component>
+
+    <component id="max_idle_time" type="jeus:Field">
+        <binding name="field" value="component:max_idle_timeField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="max_idle_timeField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="activeManagement"/>
+        <binding name="elementName" value="literal:maxIdleTime"/>
+        <binding name="translator" value="translator:number2,valueType=Long"/>
+        <binding name="validators" value="validators:min=0"/>
+    </component>
+
+    <!-- email notify form -->
+    <component id="active_mgmt_email_notifyForm" type="jeus:JEUSForm">
+        <binding name="success" value="listener:onEmailNotifyOk"/>
+        <binding name="refresh" value="listener:onEmailNotifyReset"/>
+    </component>
+
+    <component id="smtp_host_address" type="jeus:Field">
+        <binding name="field" value="component:smtp_host_addressField"/>
+        
+    </component>
+
+    <component id="smtp_host_addressField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="emailNotify"/>
+        <binding name="elementName" value="literal:smtpHostAddress"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="from_address" type="jeus:Field">
+        <binding name="field" value="component:from_addressField"/>
+        
+    </component>
+
+    <component id="from_addressField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="emailNotify"/>
+        <binding name="elementName" value="literal:fromAddress"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="to_address" type="jeus:Field">
+        <binding name="field" value="component:to_addressField"/>
+        
+        
+    </component>
+
+    <component id="to_addressField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="emailNotify"/>
+        <binding name="elementName" value="literal:toAddress"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="cc_address" type="jeus:Field">
+        <binding name="field" value="component:cc_addressField"/>
+    </component>
+
+    <component id="cc_addressField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="emailNotify"/>
+        <binding name="elementName" value="literal:ccAddress"/>
+    </component>
+
+    <component id="bcc_address" type="jeus:Field">
+        <binding name="field" value="component:bcc_addressField"/>
+    </component>
+
+    <component id="bcc_addressField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="emailNotify"/>
+        <binding name="elementName" value="literal:bccAddress"/>
+    </component>
+
+    <component id="invoke_httpForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:ejc.invoke_http.title"/>
+        <binding name="success" value="listener:onInvokeHttpOk"/>
+        <binding name="refresh" value="listener:onInvokeHttpReset"/>
+        <binding name="parentElement" value="ejbEngine"/>
+        <binding name="elementName" value="literal:invokeHttp"/>
+    </component>
+
+    <component id="url" type="jeus:Field">
+        
+        <binding name="field" value="component:urlField"/>
+    </component>
+
+    <component id="urlField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="invokeHttp"/>
+        <binding name="elementName" value="literal:url"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="http_port" type="jeus:Field">
+        
+        <binding name="field" value="component:http_portField"/>
+    </component>
+
+    <component id="http_portField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="invokeHttp"/>
+        <binding name="elementName" value="literal:httpPort"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:required,min=1"/>
+        <binding name="checkDefault" value="false"/>
+    </component>
+
+    <component id="timer_service_titleForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:ejc.timer_service.title"/>
+        <binding name="useForm" value="false"/>
+        <binding name="parentElement" value="ejbEngine"/>
+        <binding name="elementName" value="literal:timerService"/>
+    </component>
+
+
+    <!-- timer service form -->
+    <component id="timer_serviceForm" type="jeus:JEUSForm">
+        <binding name="success" value="listener:onTimerServiceOk"/>
+    </component>
+
+    <component id="timer_service_tab" type="jeus:InnerTabPanel">
+        <binding name="model" value="new jeus.tool.webadmin.component.GeneralTabModel(new java.lang.String[]{'ejc.timer_service.general.label','ejc.timer_service.pooling.label', 'ejc.timer_service.durable.label'}, new java.lang.String[]{'timer_service_general','timer_service_pooling', 'timer_service_durable'})"/>
+    </component>
+
+
+    <component id="min_delivery_interval" type="jeus:Field">
+        <binding name="field" value="component:min_delivery_intervalField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="min_delivery_intervalField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="timerService"/>
+        <binding name="elementName" value="literal:minDeliveryInterval"/>
+        <binding name="translator" value="translator:number2,valueType=Long"/>
+        <binding name="validators" value="validators:min=0"/>
+    </component>
+
+    <component id="max_redelivery_count" type="jeus:Field">
+        <binding name="field" value="component:max_redelivery_countField"/>
+    </component>
+
+    <component id="max_redelivery_countField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="timerService"/>
+        <binding name="elementName" value="literal:maxRedeliveryCount"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=0"/>
+    </component>
+
+    <component id="redelivery_interval" type="jeus:Field">
+        <binding name="field" value="component:redelivery_intervalField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="redelivery_intervalField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="timerService"/>
+        <binding name="elementName" value="literal:redeliveryInterval"/>
+        <binding name="translator" value="translator:number2,valueType=Long"/>
+        <binding name="validators" value="validators:min=0"/>
+    </component>
+
+    <component id="poolingForm" type="jeus:JEUSForm">
+        <!--<binding name="title"  value="message:ejc.timer_service.pooling.title"/>-->
+        <binding name="success" value="listener:onPoolingOk"/>
+        <binding name="refresh" value="listener:onPoolingReset"/>
+        <binding name="subform" value="true"/>
+        <binding name="mbean" value="true"/>
+        <binding name="objectName" value="@jeus.tool.webadmin.util.JMXUtils@getThreadPoolObjectName(objectName, 'EJBTimerExecutor')"/>
+    </component>
+
+    <component id="durable_settingForm" type="jeus:JEUSForm">
+        <binding name="success" value="listener:onDurableSettingOk"/>
+        <binding name="refresh" value="listener:onDurableSettingReset"/>
+        <binding name="subform" value="true"/>
+    </component>
+
+    <component id="min" type="jeus:Field">
+        <binding name="field" value="component:minField"/>
+    </component>
+
+    <component id="minField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="pooling"/>
+        <binding name="elementName" value="literal:min"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="max" type="jeus:Field">
+        <binding name="field" value="component:maxField"/>
+    </component>
+
+    <component id="maxField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="pooling"/>
+        <binding name="elementName" value="literal:max"/>
+		<binding name="validators" value="validators:$maxValidator"/>
+    </component>
+
+    <bean name="maxValidator" class="jeus.tool.webadmin.validator.FieldMinMaxValidator">
+        <set name="minField" value="component:minField"/>
+        <set name="min" value="1"/>
+    </bean>
+
+    <component id="period" type="jeus:Field">
+        <binding name="field" value="component:periodField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="periodField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="pooling"/>
+        <binding name="elementName" value="literal:period"/>
+        <binding name="translator" value="translator:number2,valueType=Long"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+
+    <component id="db_vendor" type="jeus:Field">
+        <binding name="field" value="component:db_vendorField"/>
+        
+    </component>
+
+    <component id="db_vendorField" type="jeus:JAXBPropertySelection">
+        <binding name="parentElement" value="durableSetting"/>
+        <binding name="elementName" value="literal:dbVendor"/>
+        <!--<binding name="model" value="@jeus.tool.webadmin.page.EnumerationSet@EJB_ENGINE_DB_VENDORS"/>-->
+        <binding name="model" value="@jeus.tool.webadmin.page.EnumerationSet@getEnumPropertySelectionModel(@jeus.xml.binding.jeusDD.DbVendorType@class)"/>
+    </component>
+
+    <component id="data_source_name" type="jeus:Field">
+        <binding name="field" value="component:data_source_nameField"/>
+        
+    </component>
+
+    <component id="data_source_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="durableSetting"/>
+        <binding name="elementName" value="literal:dataSourceName"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="engine_type" type="jeus:Field">
+        <binding name="field" value="component:engine_typeField"/>
+        
+    </component>
+
+    <component id="engine_typeField" type="jeus:JAXBPropertySelection">
+        <binding name="parentElement" value="durableSetting"/>
+        <binding name="elementName" value="literal:engineType"/>
+        <binding name="model" value="@jeus.tool.webadmin.page.EnumerationSet@getEnumPropertySelectionModel(@jeus.xml.binding.jeusDD.EngineType@class)"/>
+    </component>
+
+
+    <component id="table_name" type="jeus:Field">
+        <binding name="field" value="component:table_nameField"/>
+    </component>
+
+    <component id="table_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="durableSetting"/>
+        <binding name="elementName" value="literal:tableName"/>
+    </component>
+
+</page-specification>

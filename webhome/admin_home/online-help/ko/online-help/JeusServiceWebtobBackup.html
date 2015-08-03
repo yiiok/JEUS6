@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta xmlns="" http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>JeusServiceWebtobBackup</title><link rel="stylesheet" href="../stylesheet.css" type="text/css"/><meta name="generator" content="DocBook XSL Stylesheets V1.72.0"/><link rel="start" href="index.html" title="WebAdmin 온라인 도움말"/><link rel="up" href="index.html" title="WebAdmin 온라인 도움말"/><link rel="prev" href="WebModule.html" title="웹 모듈"/><link rel="next" href="SharedLibrary.html" title="Shared Library"/></head><body><div class="section" lang="ko"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="JeusServiceWebtobBackup"/>JeusServiceWebtobBackup</h2></div></div></div>
+  
+  
+  <p><span class="bold"><strong>네비게이션 경로</strong></span>: Home &gt;
+  <em class="replaceable"><code>node-name</code></em> &gt; 엔진 컨테이너 &gt;
+  <em class="replaceable"><code>container-name</code></em> &gt; 엔진 &gt; 서블릿 엔진 &gt;
+  <em class="replaceable"><code>context-group-name</code></em> &gt;
+  <em class="replaceable"><code>listener-name</code></em></p>
+
+  <div class="section" lang="ko"><div class="titlepage"><div><div><h3 class="title"><a id="JeusServiceWebtobBackup_Overview"/>개요</h3></div></div></div>
+    
+
+    <p>이 페이지에서는 Webtob 리스너에 대한 각종 정보를 열람하고 설정할 수 있다. 또한 통계 서브탭에서는 설정된 webtob 리스너가 가지고
+    있는 쓰레드 풀의 정보를 표의 형태로 볼 수 있다. </p>
+  </div>
+
+  <div class="section" lang="ko"><div class="titlepage"><div><div><h3 class="title"><a id="JeusServiceWebtobBackup_Configuration"/>Webtob 리스너 설정</h3></div></div></div>
+    
+
+    <p>Webtob 리스너의 설정은 기본 설정, 쓰레드 풀 설정, 백업 설정의 세 가지로 나누어 진다.</p>
+
+    <h4><a id="JeusServiceWebtobBackup_Configuration_general"/>1. 기본
+    설정</h4>
+
+    <p>기본 설정에는 다음 Listener ID, Port 두 개의 필드가 반드시 있어야 한다.</p>
+
+    <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Listener Id</strong></span></span></dt><dd>
+          <p>해당 Listener 를 식별하기 위한 이름이다. 이 항목은 변경이 불가능하고 Id 를 변경하고 싶을 경우에는
+          ContextGroup에서 다시 생생하여야 한다.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">Port</strong></span></span></dt><dd>
+          <p>요청을 받기 위한 port 이다. 포트의 입력값에 대한 특별한 제약사항은 없지만 다른 port 와 충돌되지
+          않도록 주의하여야 한다.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">Webtob Ipcbaseport</strong></span></span></dt><dd>
+          <p>webtob와 processor간의 IPC 통신을 위한 port를 설정할 수 있다.</p>
+        </dd></dl></div>
+
+    <p><span><strong class="guilabel">고급 선택사항</strong></span>은 아래 도움말을 참고로 필요한 항목을 설정한다. Webtob 리스너 전체적으로 
+    큰 영향을 미치는 매우 중요한 항목이므로 신중히 고려하고
+    설정해야 한다.</p>
+
+    <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Output Buffer Size </strong></span></span></dt><dd>
+          <p>byte 단위로 JSP/Servlet 의 결과를 임시 저장하는 버퍼의 크기를 설정한다. 이 버퍼가 가득 차면 웹
+          브라우저로 flush된다.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">Postdata Read Timeout </strong></span></span></dt><dd>
+          <p>Millisecond 단위로 클라이언트로부터 post-data를 읽어올 때 기다리는 최대 시간을
+          설정한다.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">Scheme </strong></span></span></dt><dd>
+          <p>request에 사용되는 protocol</p>
+        </dd></dl></div>
+
+    <h4><a id="JeusServiceWebtobBackup_Configuration_thread_pool"/>2.
+    쓰레드 풀</h4>
+
+    <p>쓰레드 풀은 웹 리스너로 들어오는 요청들을 핸들링 하는 worker thread들을 유지하는데 사용된다. 지정한 포트를
+    통해 새로운 요청을 받으면 해당 pool에서 새로운 worker thread를 할당받아 요청에 대한 업무를 처리한다. 여기에서는
+    쓰레드 풀에 대한 각종 정보를 설정할 수 있다. 다음의 Min 설정은 최초에 몇 개의 쓰레드를 만들 지 결정하므로 반드시 설정해야
+    하는 항목이다.</p>
+
+    <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Min</strong></span></span></dt><dd>
+          <p>최초의 worker thread 개수이자 최소한으로 유지되는 worker thread 의 개수이다.</p>
+        </dd></dl></div>
+
+    <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Max</strong></span></span></dt><dd>
+          <p>쓰레드가 늘어날 수 있는 최대 개수를 의미한다.</p>
+        </dd></dl></div>
+
+    <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Step</strong></span></span></dt><dd>
+          <p>풀의 크기를 늘릴 때 증가되는 worker thread의 개수를 나타낸다. 설정하지 않을 경우 디폴트 값은
+          1이다.</p>
+        </dd></dl></div>
+
+    <p><span><strong class="guilabel">고급 선택사항</strong></span>에서는 쓰레드 풀 자체에 대한 설정과 쓰레드 풀 상태를 통보하기 위한
+    설정으로 나누어진다. 먼저 쓰레드 풀에 대한 설정으로 다음과 같은 항목이 있다. 아래 도움말을 참조하여 필요한 항목을 설정하도록
+    한다.</p>
+
+    <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Max Idle Time </strong></span></span></dt><dd>
+          <p>풀에서 제거되기 전에 worker thread 가 idle 상태로 있는 최대 시간을 말한다.
+          Millisecond 값으로 설정한다.</p>
+        </dd></dl></div>
+
+    <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Max Wait Queue </strong></span></span></dt><dd>
+          <p>요청들을 다루기 위해 새로운 worker thread를 생성하기 전에 request wait queue 큐에
+          넣어질 최대 요청의 개수를 설정한다.</p>
+        </dd></dl></div>
+
+    <p>다음으로 쓰레드의 상태를 통보하기 위한 설정에는 다음과 같은 것들이 있다.</p>
+
+    <div class="variablelist"><dl><dt><span class="term">Max Thread Active Time</span></dt><dd>
+          <p>Millisecond 값으로 쓰레드가 blocking 상태로 간주되는 시간을 설정한다. 가장 길게 실행되는
+          thread의 수행시간에 대략 1.5배정도의 값으로 설정하는 것이 적절하다. 0이거나 음수이면 설정이
+          무시된다.</p>
+        </dd></dl></div>
+
+    <div class="variablelist"><dl><dt><span class="term">Notify Threshold Ratio</span></dt><dd>
+          <p>경고 통지가 e-mail을 이용하여 보내지기 전까지 존재하는 전체 thread갯수 대비 blocked
+          thread의 최대 비율을 설정한다. 1보다 작은 소숫점으로 설정하며 0이거나 음수이면 설정이 무시된다.</p>
+        </dd></dl></div>
+
+    <div class="variablelist"><dl><dt><span class="term">Restart Threshold Ratio</span></dt><dd>
+          <p>restart 가 수행되기 전까지 존재하는 전체 thread갯수 대비 blocked thread의 최대 비율을
+          설정한다. 1보다 작은 소숫점으로 설정하며 0이거나 음수이면 설정이 무시된다.</p>
+        </dd></dl></div>
+
+    <div class="variablelist"><dl><dt><span class="term">Notify Subject</span></dt><dd>
+          <p>Notify-threshold가 초과될 때 보내지는 e-mail의 제목어로 수신자(관리자)가 해당 e-mail에
+          대해 어떤 내용인지 바로 알아볼 수 있는 메세지로 설정한다.</p>
+        </dd></dl></div>
+
+    <div class="variablelist"><dl><dt><span class="term">Restart Subject</span></dt><dd>
+          <p>Restart-threshold가 초과될 때 보내질 e-mail의 제목을 설정하는 것으로 역시 수신자(관리자)가
+          해당 e-mail에 대해 어떤 내용인지 바로 알아볼 수 있게 설정하는 것이 좋다.</p>
+        </dd></dl></div>
+
+    <div class="variablelist"><dl><dt><span class="term">Active Timeout Notification</span></dt><dd>
+          <p>active timeout이 발생할 경우 email notification 유무를 결정한다.</p>
+        </dd></dl></div>
+    
+    
+        <div class="variablelist"><dl><dt><span class="term">Thread Interrupt Execution</span></dt><dd>
+          <p>active timeout 발생 시 해당 thread의 interrupt 발생 유무를 결정한다.</p>
+        </dd></dl></div>
+    
+    
+        <div class="variablelist"><dl><dt><span class="term">Restart Engine Execution</span></dt><dd>
+          <p>restart-threshold-ratio을 넘었을 경우 engine의 restart유무를 결정한다.</p>
+        </dd></dl></div>
+
+
+    <h4><a id="JeusServiceWebtobBackup_Configuration_backup"/>3. Webtob 백업</h4>
+
+    <p>webtob listener의 설정과 유사하다. webtob 백업은 automatic connection recovery 기능을 
+    수행하기 위해 주 Server가 심각한 장애 상태에 들어갔을 때 다음 webtob server에 연결하기 위한
+    연결 정보를 정의한다.
+    </p>
+
+
+    <p/>
+
+    <h4><a id="JeusServiceWebtobBackup_Configuration_miscellaneous"/>4. 기타
+    설정</h4>
+
+    <p>기타 웹 리스너 설정으로 다음과 같은 항목이 있다.</p>
+
+    <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Hth Count </strong></span></span></dt><dd>
+          <p>webtob 설정의 HTH 프로세스 개수와 일치한다.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">Disable Pipe </strong></span></span></dt><dd>
+          <p>webtob server와 web container가 다른 머신에서 수행될 때 필요한 항목으로 pipe 통신을 불가능하게 한다.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">Webtob Address </strong></span></span></dt><dd>
+          <p>webtob server의 ip 주소이다.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">Registration Id </strong></span></span></dt><dd>
+          <p>webtob 설정의 SERVER값과 일치해야하며, 설정하지 않을 경우 Context Group의 이름과 같다.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">Webtob Home </strong></span></span></dt><dd>
+          <p>두개 이상의 webtob가 로컬 머신에서 수행되고, web container가 각각에 연결될 때 필요하다.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">Read Timeout </strong></span></span></dt><dd>
+          <p>webtob의 ping을 체크한다. 설정된 시간 간격내에 ping이 발생하지 않으면 연결이 끊어진 것으로 간주한다.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">Reconnect Timeout </strong></span></span></dt><dd>
+          <p>webtob와 container가 운영도중 연결이 끊어진 경우, 재연결 시도를 위한 제한 시간이다.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">Request Prefetch </strong></span></span></dt><dd>
+          <p>container에서 요청을 처리하는 동안 다른 요청을 webtob로 부터 받아 올 것인지 정한다.</p>
+        </dd></dl></div>
+  </div>
+
+  <div class="section" lang="ko"><div class="titlepage"><div><div><h3 class="title"><a id="JeusServiceWebtobBackup_Statistics"/>통계</h3></div></div></div>
+    
+
+    <p>통계 서브탭에서는 웹 리스너의 통계를 표 형태로 볼 수 있다. 처음 보이는 표는 리스너가 가지고 있는 쓰레드 풀의
+    통계이다. 현재 총 쓰레드 개수와 그 중 활성중인 것과 블럭된 쓰레드를 볼 수 있고, 최대 쓰레드의 개수와 현재 큐에서 대기중인 것이
+    몇 개인지도 볼 수 있다.</p>
+
+    <p>쓰레드 풀 이름을 클릭하면 해당 worker 쓰레드 별로 현재 상태와 만들어진 후 경과된 시간, 쓰레드로 들어온 요청의 총
+    개수, 평균 처리시간, 현재 애플리케이션을 볼 수 있다. 표 편집을 클릭하면 팝업창이 떠서, 페이지 크기 콤보박스에서 한 페이지에
+    보이는 쓰레드의 개수를 설정할 수 있고, 그 아래의 리스트 박스를 편집하여 표에서 보고 싶은 항목을 편집할 수 있다.</p>
+  </div>
+</div><div xmlns="" align="center"/></body></html>

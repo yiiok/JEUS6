@@ -1,0 +1,52 @@
+<body jwcid="@jeus:SubBorder" style="height: 100%; width: 100%; padding: 5px">
+    <span jwcid="dynamite"/>
+    <div jwcid="condRule">
+        <form jwcid="ruleForm">
+            <span jwcid="file_pattern">
+                <span jwcid="file_patternField"/>
+            </span>
+            <span jwcid="task_name">
+                <input jwcid="task_nameField"/>
+            </span>
+            <span jwcid="start_date">
+                <input jwcid="start_dateField"/>
+            </span>
+            <span jwcid="end_date">
+                <input jwcid="end_dateField"/>
+            </span>
+            <span jwcid="pattern_id" class="field_label"/>
+            <a jwcid="regularExpressionDescription">
+                <span jwcid="pattern_id_help" class="field_label"/>
+            </a>
+            <table class="table" style="margin-bottom: 20px;">
+                <!-- table header -->
+                <tr>
+                    <th width="20">&nbsp;</th>
+                    <th width="150"><span jwcid="name_column"/></th>
+                    <th><span jwcid="pattern_column"/></th>
+                    <th><span jwcid="class_name_column"/></th>
+                </tr>
+                <!-- table body -->
+                <tr jwcid="eachField">
+                    <td align="center"><input jwcid="include"/></td>
+                    <td><span jwcid="name_value"/></td>
+                    <td><input jwcid="pattern" style="border:1px solid #AAAAAA;"/></td>
+                    <td align="center" width="100%"><input jwcid="class_name"/></td>
+                </tr>
+            </table>
+            <span jwcid="enable_buffer_size">
+                <input jwcid="enable_buffer_sizeField"/>
+            </span>
+            <span jwcid="buffer_size">
+                <input jwcid="buffer_sizeField"/>
+            </span>
+        </form>
+    </div>
+    <div jwcid="condCompleted">
+    	<div style="margin: 10px 0 0 0;border:1px solid #AAAAAA;">
+			<form jwcid="messageForm">
+				<table jwcid="message"/>
+			</form>        	
+    	</div>
+    </div>
+</body>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.JeusMonitoringRequestThreadMonitoringService.EJBPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="new java.lang.String[]{'JeusMonitoringRequestThreadMonitoringService_Servlet', 'JeusMonitoringRequestThreadMonitoringService_EJB'}"/>
+    </component>
+    
+    <component id="threadForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:JeusMonitoringRequestThreadMonitoringService_EJB.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>    
+    
+    <component id="eachThreadPoolMap" type="For">
+        <binding name="source" value="threadPoolsMap.keySet()"/>
+        <binding name="value" value="threadPoolsKey"/>
+    </component>       
+
+    <component id="threadTable" type="jeus:JEUSTable">
+        <binding name="source" value="threadInfos"/>
+        <binding name="columns" value="literal:!ejm.statistics.thread.id.label:tid, !ejm.statistics.thread.name.label:threadName, !ejm.statistics.thread.state.label:threadState, !ejm.statistics.thread.activeTime.label:activeTime, !control"/>
+        <binding name="row" value="threadInfo"/>
+        <binding name="pagesDisplayed" value="@java.lang.Integer@MAX_VALUE"/>
+        <binding name="currentPageClass" value="literal:table_current_page"/>
+        <binding name="columnsClass" value="literal:table_columns"/>
+        <binding name="valuesClass" value="literal:table_values"/>
+        <binding name="pagesLinkClass" value="literal:table_pages_link"/>
+        <binding name="tableClass" value="literal:table"/>
+        <binding name="showCustomize" value="false"/>
+    </component>    
+
+    <property name="currentView"/>
+    <property name="currentStats"/>
+</page-specification>

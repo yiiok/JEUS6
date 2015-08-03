@@ -1,0 +1,1 @@
+.running_node {font-weight:bold; color: #597FBF; text-decoration:none;}.stopped_node, .failed_node, .exited_node{font-weight:bold; color: #AAAAAA;}.normal_node {font-weight:bold; color: black;}#statusPane .dijitAccordionBody{background: #FFFFFF url("../image/log/logo_background.gif") no-repeat center center; padding: 5px;}

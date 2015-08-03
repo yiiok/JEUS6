@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" codebase="$$codebase">
+   <information>
+      <title>HelloClient</title>
+      <vendor>TmaxSoft</vendor>
+   </information>
+   <resources>
+      <j2se version="1.5+" href="http://java.sun.com/products/autodl/j2se"/>
+      <jar href="hello-client.jar"/>
+      <jar href="jclient.jar"/>
+   </resources>
+   <application-desc main-class="helloejb.HelloClient"/>
+</jnlp>

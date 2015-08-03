@@ -1,0 +1,225 @@
+#!/bin/sh
+# $Id: jeus.properties 18002 2007-01-30 11:49:41Z enrique $
+###############################################################################
+#  This is a script for a JEUS environment.                                   #
+#  This uses the following environment variables.                             #
+#                                                                             #
+#  JEUS_HOME       - The root directory of JEUS installed.                    #
+#  JEUS_BASEPORT   - The base port for JEUS.                                  #
+#  SERVLET_HOME    - The directory for a JEUS Servlet deployment.             #
+#  JEUS_LIBPATH    - The navtive library for JEUS.                            #
+#  JEUS_ENDORSED   - The Java endorsed mechanism libraries for JEUS.          #
+#  JEUS_LANG       - The language for JEUS.                                   #
+#  JEUS_HOSTNAME   - The name of host that JEUS is running                    #
+#  VM_TYPE         - The JAVA which JEUS uses to boot.                        #
+#                    Avaiable values are 'hotspot' and 'old'.                 #
+#                                                                             #
+#  USERNAME        - Administrator name                                       #
+#  PASSWORD        - Administrator password                                   #
+#                                                                             #
+#  JEUS_USERNAME     - User name for appclient or others                      #
+#  JEUS_USERPASSWORD - User password for appclient or others                  #
+#                                                                             #
+#                                                                             #
+#  JAVA_HOME       - Java Home directory.                                     #
+#  JAVA_ARGS       - JVM Parameter(s).                                        #
+#  JAVA_VENDOR     - JVM Vender name.                                         #
+#  SESSION_MEM     - JVM memory argument                                      #
+#                    passed to java for JEUS Session Server                   #
+#  TOOL_CLASSPATH  - classpath for console tool.                              #
+#  SESSION_VERSION - Network protocol for JEUS Session Server.                #
+#                    Available values are 'SOCKET' or 'RMI'                   #
+#                                                                             #
+#  You must set the following variables:                                      #
+#      JEUS_HOME, JEUS_BASEPORT, JAVA_HOME, JAVA_VENDOR                       #
+#                                                                             #
+#  For additional information, please refer to the JEUS Server Guide or       #
+#  visit the following web sites.                                             #
+#                                                                             #
+#  - http://www.tmaxsoft.com(English)                                         #
+#  - http://www.tmax.co.kr(Korean)                                            #
+#  - http://www.tmaxchina.com.cn(Chinese)                                     #
+#  - http://www.tmaxsoft.co.jp(Japanese)                                      #
+#  - http://technet.tmaxsoft.com(English/Korean)                              #
+###############################################################################
+
+#
+# For customizing JEUS environment.
+#
+
+# set up JEUS_HOME.
+#JEUS_HOME=/opt/jeus5
+if [ -z "$JEUS_HOME" ] ; then
+   PRG="$0"
+   progname=`basename "$0"`
+   saveddir=`pwd`
+
+   dirname_prg=`dirname "$PRG"`
+   cd "$dirname_prg"
+
+   while [ -h "$PRG" ] ; do
+      ls=`ls -ld "$PRG"`
+      link=`expr "$ls" : '.*-> \(.*\)$'`
+      if expr "$link" : '/.*' > /dev/null; then
+      PRG="$link"
+      else
+        PRG=`dirname "$PRG"`"/$link"
+      fi
+   done
+
+   JEUS_HOME=`dirname "$PRG"`/..
+
+   cd "$saveddir"
+
+   JEUS_HOME=`cd "$JEUS_HOME" && pwd`
+
+fi
+
+
+# set up JEUS_BASEPORT.
+JEUS_BASEPORT=9736
+
+
+# set up SERVLET_HOME.
+SERVLET_HOME=${JEUS_HOME}/webhome/servlet_home
+
+
+# set up AUTO_DEPLOY_DIR.
+AUTO_DEPLOY_DIR=${JEUS_HOME}/webhome/autodeploy
+
+
+# set up JEUS_WSDIR.
+JEUS_WSDIR=${JEUS_HOME}/webserver
+
+# set up JEUS_LIBPATH.
+JEUS_LIBPATH=${JEUS_HOME}/lib/system
+
+# set up the endorsed JEUS library path.
+JEUS_ENDORSED=${JEUS_HOME}/lib/endorsed
+
+# Select language for JEUS. Available value can be en and ko.
+JEUS_LANG=ko
+
+# set up the host name that JEUS is currently running
+# (especially for the application client)
+JEUS_HOSTNAME=localhost
+
+# set up SESSION_MEM
+SESSION_MEM=
+
+# set up
+#JAVA_HOME=/usr/java/jdk
+
+# setup JAVA_ARGS.
+JAVA_ARGS=
+
+# set up JDK vendor. Possible values are Sun, HP, IBM, etc. Default, Sun.
+JAVA_VENDOR=Sun
+
+export JEUS_HOME JEUS_BASEPORT SERVLET_HOME AUTO_DEPLOY_DIR JEUS_LIBPATH JEUS_ENDORSED JEUS_LANG JEUS_WSDIR JEUS_HOSTNAME
+export JAVA_ARGS JAVA_VENDOR SESSION_MEM
+
+
+###############################################################################
+# This part is for booting JEUS automatically.                                #
+# BE CAREFUL!! THIS IS ONLY FOR TEST AND DEVELOPMENT ENVIRONMENT.             #
+###############################################################################
+
+# Set up administrator name
+USERNAME=
+
+# Set up administrator password
+PASSWORD=
+
+export USERNAME PASSWORD
+
+
+###############################################################################
+# This part is for the authentication of appclication client or others.       #
+# BE CAREFUL!! THIS IS ONLY FOR TEST AND DEVELOPMENT ENVIRONMENT.             #
+###############################################################################
+
+# Set up administrator name
+JEUS_USERNAME=
+
+# Set up administrator password
+JEUS_USERPASSWORD=
+
+export JEUS_USERNAME JEUS_USERPASSWORD
+
+
+###############################################################################
+# This part is for JEUS System environment.                                   #
+# DO NOT MODIFY except a JEUS expert!!                                        #
+###############################################################################
+
+# Set up JEUS session version. The values are 'socket' and 'rmi'.
+SESSION_VERSION=socket
+
+#
+# For Console tool.
+#
+_JEUS_LIB=${JEUS_LIBPATH}/javee.jar:${JEUS_LIBPATH}/jeus.jar:${JEUS_LIBPATH}/jeusutil.jar:${JEUS_LIBPATH}/jeusjaxb.jar:${JEUS_LIBPATH}/jxml-impl.jar:${JEUS_LIBPATH}/xml_resource.jar:${JEUS_LIBPATH}/toolresource.jar
+_JMX_LIB=${JEUS_LIBPATH}/jmxri.jar:${JEUS_LIBPATH}/jmxremote.jar
+_JDMK_LIB=${JEUS_LIBPATH}/jmxtools.jar
+_JAXB_LIB=${JEUS_LIBPATH}/jaxb-api.jar:${JEUS_LIBPATH}/jaxb-impl.jar:${JEUS_LIBPATH}/jaxb1-impl.jar
+
+TOOL_CLASSPATH=${_JEUS_LIB}:${_JMX_LIB}:${_JDMK_LIB}:${_JAXB_LIB}
+TOOL_OPTION="-Djeus.tm.not_use=true"
+
+#
+# If VM_TYPE is not set, determine it.
+#
+if [ -z "$VM_TYPE" ]
+then
+    case $JAVA_VENDOR in
+    Sun)
+        VM_TYPE=hotspot
+        VM_OPTION=-server
+    ;;
+    HP)
+        VM_TYPE=hotspot
+        VM_OPTION=-server
+    ;;
+    IBM)
+        VM_TYPE=old
+        VM_OPTION=-Djeus.dispatcher.blocking=true
+    ;;
+    *)
+        VM_TYPE=old
+        VM_OPTION=
+    esac
+fi
+
+#
+# Set up JVM native library path.
+#
+if [ -z "${LD_LIBRARY_PATH}" ]; then
+    LD_LIBRARY_PATH=$JEUS_HOME/lib/system; export LD_LIBRARY_PATH
+else
+    LD_LIBRARY_PATH=$JEUS_HOME/lib/system:${LD_LIBRARY_PATH}; export LD_LIBRARY_PATH
+fi
+
+export SESSION_VERSION TOOL_CLASSPATH VM_OPTION LD_LIBRARY_PATH
+
+
+#
+# Check significant variables.
+#
+if [ -z "$JEUS_HOME" ]
+then
+    echo "JEUS_HOME is not defined."
+    exit 1
+fi
+
+if [ -z "$JEUS_BASEPORT" ]
+then
+    echo "JEUS_BASEPORT is not defined."
+    exit 1
+fi
+
+if [ -z "$JAVA_HOME" ]
+then
+    echo "JAVA_HOME is not defined."
+    exit 1
+fi

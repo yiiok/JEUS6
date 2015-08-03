@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta xmlns="" http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>가상 호스트</title><link rel="stylesheet" href="../stylesheet.css" type="text/css"/><meta name="generator" content="DocBook XSL Stylesheets V1.72.0"/><link rel="start" href="index.html" title="WebAdmin 온라인 도움말"/><link rel="up" href="index.html" title="WebAdmin 온라인 도움말"/><link rel="prev" href="JeusServiceThreadPool.html" title="쓰레드 풀"/><link rel="next" href="JeusServiceVirtualNode.html" title="가상호스트"/></head><body><div class="section" lang="ko"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="JeusServiceVirtualHost"/>가상 호스트</h2></div></div></div>
+  
+
+  
+
+  <p><span class="bold"><strong>네비게이션 경로</strong></span>: Home &gt;
+  <em class="replaceable"><code>node-name</code></em> &gt; 엔진 컨테이너 &gt;
+  <em class="replaceable"><code>container-name</code></em> &gt; 엔진 &gt; 서블릿 엔진 &gt;
+  <em class="replaceable"><code>context-group-name</code></em> &gt;
+  <em class="replaceable"><code>virtual-host-name</code></em></p>
+
+  <div class="section" lang="ko"><div class="titlepage"><div><div><h3 class="title"><a id="JeusServiceVirtualHost_Configuration"/>개요</h3></div></div></div>
+    
+
+    <p>기본적으로, 가상 호스트는 Web 사이트가 다른 context에게 주어진 context경로 뿐만 아니라 요청 주소에 있는
+    도메인 이름에 의해서도 연결될 수 있도록 한다. 이렇게 함으로써 두 개 이상의 DNS 이름(예,“www1.foo.com and
+    “www2.foo.com) 을 하나의 Web Container에 설정하여 다른 Web context를 서비스할 수 있다.</p>
+  </div>
+
+  <div class="section" lang="ko"><div class="titlepage"><div><div><h3 class="title"><a id="JeusServiceVirtualHost_Configuration"/>가상 호스트 설정 정보</h3></div></div></div>
+    
+
+    <p>이 페이지는 내부적으로 식별되는 가상 호스트 이름(Virtual host name)과 호스트(Host List)의 관계에
+    대해서 볼 수 있다.</p>
+  </div>
+
+  <div class="section" lang="ko"><div class="titlepage"><div><div><h3 class="title"><a id="JeusServiceVirtualHost_Create"/>가상 호스트 생성</h3></div></div></div>
+    
+
+    <p>이 페이지에서 새로운 가상 호스트 설정을 추가할 수 있다. 내부적으로 식별할 수 있는 Virtual Host Name과
+    여기에 맵핑되는 실제 호스트 주소를 설정함으로써 새로운 가상 호스트를 추가할 수 있다. 각 필드에 대한 설명은 필드명을 클릭하면
+    새로운 창에서 볼 수 있다.</p>
+    
+    <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Virtual Host Name </strong></span></span></dt><dd>
+          <p>webtob 설정의 HTH 프로세스 개수와 일치한다.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">Host List </strong></span></span></dt><dd>
+          <p>container에서 요청을 처리하는 동안 다른 요청을 webtob로 부터 받아 올 것인지 정한다.</p>
+        </dd></dl></div>    
+    
+  </div>
+</div><div xmlns="" align="center"/></body></html>

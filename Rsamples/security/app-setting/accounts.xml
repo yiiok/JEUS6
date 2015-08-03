@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<accounts xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+    <users>
+        <user>
+            <name>jeus</name>
+            <password>{base64}amV1cw==</password><!--plain_password=jeus-->
+        </user>
+        <user>
+            <name>administrator</name>
+            <password>{base64}YWRtaW5hZG1pbg==</password><!--plain_password=adminadmin-->
+        </user>
+        <user>
+            <name>developer</name> 
+            <password>{base64}ZGV2ZWxvcGVy</password><!--plain_password=was-->
+        </user>      
+         <user>
+            <name>tester</name>
+            <password>{sha}q02NKl9IChNwZ9oXEAJxzRdmB6E=</password><!--plain_password=qps-->
+         </user>
+        <user>
+            <name>customer</name>
+            <password>king</password>
+        </user>
+    </users>
+</accounts>

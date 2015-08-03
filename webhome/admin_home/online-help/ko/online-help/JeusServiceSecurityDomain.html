@@ -1,0 +1,778 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta xmlns="" http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>보안 도메인</title><link rel="stylesheet" href="../stylesheet.css" type="text/css"/><meta name="generator" content="DocBook XSL Stylesheets V1.72.0"/><link rel="start" href="index.html" title="WebAdmin 온라인 도움말"/><link rel="up" href="index.html" title="WebAdmin 온라인 도움말"/><link rel="prev" href="JeusServiceSchedulerService.html" title="스케줄러 서비스"/><link rel="next" href="FolderApplicationModule.html" title="새 어플리케이션 모듈 배치"/></head><body><div class="section" lang="ko"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="JeusServiceSecurityDomain"/>보안 도메인</h2></div></div></div>
+  
+
+  
+
+  <div class="section" lang="ko"><div class="titlepage"><div><div><h3 class="title"><a id="JeusServiceSecurityDomain_Overview"/>개요</h3></div></div></div>
+    
+
+    <p><span class="bold"><strong>네비게이션 경로</strong></span>: Home &gt;
+    <em class="replaceable"><code>node-name</code></em> &gt; JEUS 매니저 서비스 &gt; 보안 도메인</p>
+
+    <p>보안 도메인(Security Domain) 이란 보안 서비스 인스턴스의 집합이라 할 수 있다.</p>
+
+    <p>보안 도메인은 J2EE 서버 도메인과는 아무런 상관도 없는 별개의 개념으로 서로 다른 어플리케이션이나 JEUS 서브
+    시스템이 각각 별도의 보안 서비스를 사용할 수 있도록 하자는 데 있다. 보안 도메인은 보안 서비스를 각 어플리케이션별로 분리하는
+    역할을 하게 된다.</p>
+
+    <p>하나의 보안 시스템에 여러 개의 도메인이 동시에 있으며 도메인명은 모두 대문자로 쓰고 "_DOMAIN"으로 끝나는 것이
+    보통이다. 이것은 꼭 지켜야 되는 것은 아니고, 추천되는 명명법이다.</p>
+
+    <p>이 페이지에서는 현 노드에 적용되는 보안 도메인 목록을 표의 형태로 볼 수 있다. 표에는 도메인 별로 다음의 정보가
+    표시된다.</p>
+
+    <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">이름</strong></span></span></dt><dd>
+          <p>현 노드에 적용되고 있는 보안 도메인 이름. 클릭하면 해당 보안 도메인의 <a href="JeusServiceSecurityDomain.html#JeusServiceSecurityDomain_Configuration" title="보안 도메인 설정">보안 도메인 설정</a> 설정 페이지로
+          이동한다.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">계정 개수</strong></span></span></dt><dd>
+          <p>보안 도메인에 등록된 사용자 계정 개수.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">삭제</strong></span></span></dt><dd>
+          <p>휴지통 아이콘(<span class="inlinemediaobject"><img src="resources/table/delete.gif"/></span>)을 클릭하면 삭제 확인 대화상자가 나타나고
+          <span><strong class="guibutton">확인</strong></span> 버튼을 누르면 해당 보안 도메인을 현 노드에서 제거한다.</p>
+        </dd></dl></div>
+
+    <p>보안 도메인 목록 아래에 있는 <span><strong class="guibutton">새 보안 도메인 생성</strong></span> 링크를 클릭하면 <a href="JeusServiceSecurityDomain.html#JeusServiceSecurityDomain_Create" title="새 보안 도메인 생성">새 보안 도메인 생성</a> 페이지로 이동하여 새로운 보안 도메인을 현 노드에
+    추가할 수 있다.</p>
+  </div>
+
+  <div class="section" lang="ko"><div class="titlepage"><div><div><h3 class="title"><a id="JeusServiceSecurityDomain_Create"/>새 보안 도메인 생성</h3></div></div></div>
+    
+
+    <p><span class="bold"><strong>네비게이션 경로</strong></span>: Home &gt;
+    <em class="replaceable"><code>node-name</code></em> &gt; 보안 도메인 &gt;
+    <em class="replaceable"><code>SecurityService</code></em></p>
+
+    <p>필수적으로 다음 두 개 필드를 설정해야 한다.</p>
+
+    <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">원본 도메인 이름</strong></span></span></dt><dd>
+          <p>새로운 보안 도메인 생성을 위해 원본 도메인을 선택한다.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">도메인 이름</strong></span></span></dt><dd>
+          <p>새로 생성하고자 하는 도메인 이름을 입력한다. 한 노드 내에서 같은 도메인 이름이 중복되어서는 생성되어서는
+          안된다.</p>
+        </dd></dl></div>
+  </div>
+
+  <div class="section" lang="ko"><div class="titlepage"><div><div><h3 class="title"><a id="JeusServiceSecurityDomain_Configuration"/>보안 도메인 설정</h3></div></div></div>
+    
+
+    <p><span class="bold"><strong>네비게이션 경로</strong></span>: Home &gt;
+    <em class="replaceable"><code>node-name</code></em> &gt; 보안 도메인 &gt;
+    d<em class="replaceable"><code>omain-name</code></em></p>
+
+    <p>이 페이지에서는 도메인 별로 적용하는 세부적인 보안 설정을 <span><strong class="guilabel">서비스</strong></span> 서브탭과
+    <span><strong class="guilabel">계정</strong></span> 서브탭, <span><strong class="guilabel">정책</strong></span> 서브탭을 통해 확인 및 수정할 수
+    있다.</p>
+
+    <div class="section" lang="ko"><div class="titlepage"><div><div><h4 class="title"><a id="d4e3380"/>서비스</h4></div></div></div>
+      
+
+      <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">캐쉬</strong></span></span></dt><dd>
+            <p><a href="JeusServiceSecurityDomain.html#JeusServiceSecurityDomain_Cache" title="캐쉬">캐쉬</a>캐쉬 정보
+            설정탭</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">키 스토어</strong></span></span></dt><dd>
+            <p><a href="JeusServiceSecurityDomain.html#JeusServiceSecurityDomain_Keystore" title="키 스토어">키 스토어</a>키 스토어
+            정보 설정 탭</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">인증</strong></span></span></dt><dd>
+            <p><a href="JeusServiceSecurityDomain.html#JeusServiceSecurityDomain_Services_authentication" title="인증 서비스">인증 서비스</a>인증
+            서비스를 위한 상세 설정 탭</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">권한 부여</strong></span></span></dt><dd>
+            <p><a href="JeusServiceSecurityDomain.html#JeusServiceSecurityDomain_Services_authorization" title="권한 부여 서비스">권한 부여 서비스</a>권한 부여
+            서비스를 위한 상세 설정 탭</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">로그인</strong></span></span></dt><dd>
+            <p><a href="JeusServiceSecurityDomain.html#JeusServiceSecurityDomain_Services_login" title="로그인 서비스">로그인 서비스</a>로그인 서비스를 위한
+            상세 설정 탭</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">아이디 검증</strong></span></span></dt><dd>
+            <p><a href="JeusServiceSecurityDomain.html#JeusServiceSecurityDomain_Services_idassertion" title="아이디 검증 서비스">아이디 검증 서비스</a>아이텐티티
+            어셜션 서비스를 위한 상세 설정 탭</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">크리덴셜 매핑</strong></span></span></dt><dd>
+            <p><a href="JeusServiceSecurityDomain.html#JeusServiceSecurityDomain_Services_crdmapping" title="크리덴셜 매핑서비스">크리덴셜 매핑서비스</a>크리덴셜 매핑
+            서비스를 위한 상세 설정 탭</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">크리덴셜 검증</strong></span></span></dt><dd>
+            <p><a href="JeusServiceSecurityDomain.html#JeusServiceSecurityDomain_Services_crdverification" title="크리덴셜 검증 서비스">크리덴셜 검증 서비스</a>크리덴셜
+            검증 서비스를 위한 상세 설정 탭</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">검사</strong></span></span></dt><dd>
+            <p><a href="JeusServiceSecurityDomain.html#JeusServiceSecurityDomain_Services_audit" title="감사 서비스">감사 서비스</a>감사 서비스를 위한 상세
+            설정 탭</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">주제</strong></span></span></dt><dd>
+            <p><a href="JeusServiceSecurityDomain.html#JeusServiceSecurityDomain_Services_subject" title="주제 서비스">주제 서비스</a>주제 서비스를 위한
+            상세 설정 탭</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">커스텀 서비스</strong></span></span></dt><dd>
+            <p><a href="JeusServiceSecurityDomain.html#JeusServiceSecurityDomain_Services_custom" title="커스텀 서비스">커스텀 서비스</a>커스텀 서비스를 위한
+            상세 설정 탭</p>
+          </dd></dl></div>
+    </div>
+
+    <div class="section" lang="ko"><div class="titlepage"><div><div><h4 class="title"><a id="d4e3449"/>계정</h4></div></div></div>
+      
+
+      <p><a href="JeusServiceSecurityDomain.html#JeusServiceSecurityDomain_Accounts_0" title="메모리 정보">메모리 정보</a>도메인 별 계정 정보
+      설정탭</p>
+    </div>
+
+    <div class="section" lang="ko"><div class="titlepage"><div><div><h4 class="title"><a id="d4e3453"/>정책</h4></div></div></div>
+      
+
+      <p><a href="JeusServiceSecurityDomain.html#JeusServiceSecurityDomain_Policies_0" title="메모리 정보">메모리 정보</a>도메인 별 정책 정보
+      설정탭</p>
+    </div>
+  </div>
+
+  <div class="section" lang="ko"><div class="titlepage"><div><div><h3 class="title"><a id="d4e3457"/>보안 도메인 서비스 설정</h3></div></div></div>
+    
+
+    <p>다음과 같이 도메인 별 보안 서비스를 설정한다.</p>
+
+    <div class="section" lang="ko"><div class="titlepage"><div><div><h4 class="title"><a id="JeusServiceSecurityDomain_Cache"/>캐쉬</h4></div></div></div>
+      
+
+      <p>다음과 같이 도메인별 인증 서비스의 사용자 관리에 적용될 캐쉬 정보를 설정한다.</p>
+
+      <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Min</strong></span></span></dt><dd>
+              <p>인증 권한 부여 서비스 수행에 적용할 cache min size값</p>
+            </dd><dt><span class="term"><span><strong class="guilabel">Max</strong></span></span></dt><dd>
+              <p>인증 권한 부여 서비스 수행에 적용할 cache max size값</p>
+            </dd><dt><span class="term"><span><strong class="guilabel">Timeout</strong></span></span></dt><dd>
+              <p>인증 권한 부여 서비스 수행에 적용할 cache timeout값</p>
+            </dd></dl></div>
+    </div>
+
+    <div class="section" lang="ko"><div class="titlepage"><div><div><h4 class="title"><a id="JeusServiceSecurityDomain_Keystore"/>키 스토어</h4></div></div></div>
+      
+
+      <p>다음과 같이 도메인별 적용할 keystore관련 정보를 설정한다.</p>
+
+      <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Keystore Path</strong></span></span></dt><dd>
+            <p>keystore 파일 절대 경로</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">Keystore Alias</strong></span></span></dt><dd>
+            <p>keystore 의 인증서에 대한 alias</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">Keystore Password</strong></span></span></dt><dd>
+            <p>keystore 파일 패스워드</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">Keystore Keypassword</strong></span></span></dt><dd>
+            <p>keystore 키 패스워드</p>
+          </dd><dt><span class="term">Truststore Path</span></dt><dd>
+            <p>truststore 파일 절대 경로</p>
+          </dd><dt><span class="term">Truststore Password</span></dt><dd>
+            <p>truststore 파일 패스워드</p>
+          </dd></dl></div>
+    </div>
+
+    <div class="section" lang="ko"><div class="titlepage"><div><div><h4 class="title"><a id="JeusServiceSecurityDomain_Services_authentication"/>인증 서비스</h4></div></div></div>
+      
+
+      <p>인증 서비스는 Subject를 인증하기 위한 클래스이다. 즉, 파라미터로 넘겨받은 Subject가 Subject
+      저장소에 등록되어 있는 실제 Subject와 일치하는지 검증하는 것이다.</p>
+
+      <p>XML 파일이나 데이터 베이스와 같은 전형적인 저장소에 등록된 계정정보를 런타임에
+      jeus.security.base.Subject 인스턴스를 특정 저장소 타입에 저장하여 Subject 검증시
+      이용한다.</p>
+
+      <p>다음과 같이 도메인별 적용할 인증 서비스 정보를 설정한다.</p>
+
+      <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">라파지토리 정보</strong></span></span></dt><dd>
+            <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">XML 파일 리파지토리</strong></span></span></dt><dd>
+                  <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Filename</strong></span></span></dt><dd>
+                        <p>user/group security 정보를 포함한 xml configuration
+                        file 이름</p>
+                      </dd><dt><span class="term"><span><strong class="guilabel">Filepath</strong></span></span></dt><dd>
+                        <p>user/group security 정보를 포함한 xml configuration
+                        file 경로</p>
+                      </dd></dl></div>
+                </dd><dt><span class="term"><span><strong class="guilabel">데이터베이스 리파지토리</strong></span></span></dt><dd>
+                  <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Export Name 설정</strong></span></span></dt><dd>
+                          <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Datasource Export
+                              Name</strong></span></span></dt><dd>
+                                <p>JEUSMain.xml에 정의된 datasource중 하나의 export name을
+                                정의</p>
+                              </dd></dl></div>
+                        </dd><dt><span class="term"><span><strong class="guilabel">DB Config 설정</strong></span></span></dt><dd>
+                          <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Vendor</strong></span></span></dt><dd>
+                                <p>디비 벤더 정보</p>
+                              </dd><dt><span class="term"><span><strong class="guilabel">Driver</strong></span></span></dt><dd>
+                                <p>드라이브 정보</p>
+                              </dd><dt><span class="term"><span><strong class="guilabel">Url</strong></span></span></dt><dd>
+                                <p>데이타 소스 URL정보</p>
+                              </dd><dt><span class="term">Username</span></dt><dd>
+                                <p>데이타소스에 대한 계정</p>
+                              </dd><dt><span class="term">Password</span></dt><dd>
+                                <p>데이타소스에 대한 계정 패스워드</p>
+                              </dd></dl></div>
+                        </dd></dl></div>
+                </dd><dt><span class="term"><span><strong class="guilabel">사용자 리파지토리</strong></span></span></dt><dd>
+                  <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Classname</strong></span></span></dt><dd>
+                        <p>jeus.security.spi의 클래스들 중 하나를 확장한 Java
+                        클래스명</p>
+                      </dd><dt><span class="term"><span><strong class="guilabel">속성들</strong></span></span></dt><dd>
+                        <p>선택사항으로 해당 보안 서비스에 name-value쌍으로 속성을 정의</p>
+                      </dd></dl></div>
+                </dd></dl></div>
+          </dd><dt><span class="term"><span><strong class="guilabel">사용자 서비스</strong></span></span></dt><dd>
+            <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Classname</strong></span></span></dt><dd>
+                  <p>jeus.security.spi의 클래스들 중 하나를 확장한 Java 클래스명</p>
+                </dd><dt><span class="term"><span><strong class="guilabel">속성들</strong></span></span></dt><dd>
+                  <p>선택사항으로 해당 보안 서비스에 name-value쌍으로 속성을 정의</p>
+                </dd></dl></div>
+          </dd></dl></div>
+    </div>
+
+    <div class="section" lang="ko"><div class="titlepage"><div><div><h4 class="title"><a id="JeusServiceSecurityDomain_Services_authorization"/>권한 부여 서비스</h4></div></div></div>
+      
+
+      <p>권한 부여 서비스는 보안 시스템에서 권한 체크와 관련된 메소드를 정의하고 있다. 이 SPI의 목적은 다음과 같은 질문에
+      답하는 것이다. "Subject S는 A라는 액션을 실행할 권한이 있는가?"</p>
+
+      <p>XML 파일이나 데이터베이스과 같은 전형적인 저장소에 등록된 계정정보를 런타임에
+      jeus.security.base.Policy인스턴스를 특정 저장소 타입에 저장하여 권한 체크에 이용한다.</p>
+
+      <p>다음과 같이 도메인별 적용할 권한 부여 서비스 정보를 설정한다.</p>
+
+      <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">라파지토리 정보</strong></span></span></dt><dd>
+              <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">XML 파일 리파지토리증</strong></span></span></dt><dd>
+                    <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Filename</strong></span></span></dt><dd>
+                          <p>Policy 정보를 포함한 xml configuration file
+                          이름</p>
+                        </dd><dt><span class="term"><span><strong class="guilabel">Filepath</strong></span></span></dt><dd>
+                          <p>Policy정보를 포함한 xml configuration file 경로</p>
+                        </dd></dl></div>
+                  </dd><dt><span class="term"><span><strong class="guilabel">데이터베이스 리파지토리</strong></span></span></dt><dd>
+                    <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Export Name 설정</strong></span></span></dt><dd>
+                            <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Datasource Export
+                                Name</strong></span></span></dt><dd>
+                                  <p>JEUSMain.xml에 정의된 datasource중 하나의 export name을
+                                  정의.</p>
+                                </dd></dl></div>
+                          </dd><dt><span class="term"><span><strong class="guilabel">DB Config 설정</strong></span></span></dt><dd>
+                            <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Vendor</strong></span></span></dt><dd>
+                                  <p>디비 벤더 정보</p>
+                                </dd><dt><span class="term"><span><strong class="guilabel">Driver</strong></span></span></dt><dd>
+                                  <p>드라이브 정보</p>
+                                </dd><dt><span class="term"><span><strong class="guilabel">Url</strong></span></span></dt><dd>
+                                  <p>데이타 소스 URL정보</p>
+                                </dd><dt><span class="term">Username</span></dt><dd>
+                                  <p>데이타소스에 대한 계정</p>
+                                </dd><dt><span class="term">Password</span></dt><dd>
+                                  <p>데이타소스에 대한 계정 패스워드</p>
+                                </dd></dl></div>
+                          </dd></dl></div>
+                  </dd><dt><span class="term"><span><strong class="guilabel">사용자 리파지토리</strong></span></span></dt><dd>
+                    <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Classname</strong></span></span></dt><dd>
+                          <p>jeus.security.spi의 클래스들 중 하나를 확장한 Java
+                          클래스명</p>
+                        </dd><dt><span class="term"><span><strong class="guilabel">속성들</strong></span></span></dt><dd>
+                          <p>선택사항으로 해당 보안 서비스에 name-value쌍으로 속성을 정의</p>
+                        </dd></dl></div>
+                  </dd></dl></div>
+            </dd><dt><span class="term"><span><strong class="guilabel">JACC 서비스</strong></span></span></dt><dd>
+              <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">JACC 사용</strong></span></span></dt><dd>
+                    <p>JACC 서비스 적용 여부 체크</p>
+                  </dd></dl></div>
+            </dd><dt><span class="term"><span><strong class="guilabel">사용자 서비스</strong></span></span></dt><dd>
+              <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Classname</strong></span></span></dt><dd>
+                    <p>jeus.security.spi의 클래스들 중 하나를 확장한 Java 클래스명</p>
+                  </dd><dt><span class="term"><span><strong class="guilabel">속성들</strong></span></span></dt><dd>
+                    <p>선택사항으로 해당 보안 서비스에 name-value쌍으로 속성을 정의</p>
+                  </dd></dl></div>
+            </dd></dl></div>
+    </div>
+
+    <div class="section" lang="ko"><div class="titlepage"><div><div><h4 class="title"><a id="JeusServiceSecurityDomain_Services_login"/>로그인 서비스</h4></div></div></div>
+      
+
+      <p>로그인 서비스의 목적은 Subject를 현재 실행중인 쓰레드에 결합시키는 메커니즘을 제공하는 것이다.</p>
+
+      <p>성공적으로 인증되면 로그인은 정상적으로 진행되어, Subject와 쓰레드가 결합하게 되지만, 인증에 실패하면 로그인은
+      더 이상 진행되지 않는다. Subject가 성공적으로 로그인한 후에, 로그인된 Subject를 대상으로 권한 체크가 이루어 진다.
+      따라서, 로그인 서비스는 인증과 권한 체크, 양쪽 모두에 걸쳐있다고 할 수 있다. 로그인의 반대 개념은 로그아웃으로, 현재
+      Subject를 실행 쓰레드로부터 분리하는 과정이다. 로그인 서비스 이면에는 다음과 같은 스택 기반 오퍼레이션이 있다. 여러 개의
+      서로 다른 Subject로 로그인했을 경우, 최근에 로그인한 Subject부터 스택의 최상단에 차곡차곡 쌓이게 된다. 그리고
+      나서, 권한 체크에는 스택의 최상단에 놓인 Subject(가장 최근에 로그인한 Subject)를 사용한다. 이 Subject가
+      로그아웃 하고 나면, 스택으로 부터 제거되고, 바로 직전에 로그인한 Subject가 익스포트되어 활성화 된다.</p>
+
+      <p>현재 JEUS 보안 시스템에서는 위의 설명에 부합되는 기본 로그인 서비스가 제공이 되면 J2SE에서 언급되는 JAAS
+      인증 메커니즘을 부여하기 위해서는 다음과 같이 도메인별 로그인 서비스 정보를 설정한다.</p>
+
+      <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">JAAS 로그인</strong></span></span></dt><dd>
+              <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">핸들러</strong></span></span></dt><dd>
+                    <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Callback Handler
+                        Classname</strong></span></span></dt><dd>
+                          <p>JAAS callback handler facotry 클래스 이름</p>
+                        </dd></dl></div>
+                  </dd><dt><span class="term"><span><strong class="guilabel">로그인 모듈</strong></span></span></dt><dd>
+                    <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Login Module
+                        Classname</strong></span></span></dt><dd>
+                          <p>LoginModule를 implements한 패키지를 포함한 클래스
+                          이름</p>
+                        </dd><dt><span class="term"><span><strong class="guilabel">Control Flag</strong></span></span></dt><dd>
+                          <p>authentication 적용 방식에 대한 정의(Required,
+                          Requisite, sufficient, optional)</p>
+                        </dd><dt><span class="term">속성들</span></dt><dd>
+                          <p>LoginModule 초기화시에 적용하고자 하는 속성을 정의</p>
+                        </dd></dl></div>
+                  </dd></dl></div>
+            </dd><dt><span class="term"><span><strong class="guilabel">사용자 서비스</strong></span></span></dt><dd>
+              <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Classname</strong></span></span></dt><dd>
+                    <p>jeus.security.spi의 클래스들 중 하나를 확장한 Java 클래스명</p>
+                  </dd><dt><span class="term"><span><strong class="guilabel">속성들</strong></span></span></dt><dd>
+                    <p>선택사항으로 해당 보안 서비스에 name-value쌍으로 속성을 정의</p>
+                  </dd></dl></div>
+            </dd></dl></div>
+    </div>
+
+    <div class="section" lang="ko"><div class="titlepage"><div><div><h4 class="title"><a id="JeusServiceSecurityDomain_Services_idassertion"/>아이디 검증 서비스</h4></div></div></div>
+      
+
+      <p>Subject의 사용자명(username)이 제공되지 않는 경우에 필요하다(즉, 메인 Principal이 null일
+      때이다). 이 경우에는 Subject로부터 Credential을 가져와서, cert-user-map.xml 의 정보를 기반으로
+      Credential이 어느 사용자명에 매칭되는지 알아 보게 된다. 매칭된 사용자명은 이후 인증 과정에 사용된다.</p>
+
+      <p>다음과 같이 도메인별 적용할 아이디 검증 서비스 정보를 설정한다. </p><div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">기본 서비스 정보</strong></span></span></dt><dd>
+              <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">설정 파일</strong></span></span></dt><dd>
+                    <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Filename</strong></span></span></dt><dd>
+                          <p>certificate와 사용자의 매핑 정보가 기입된 파일 이름. 설정되어 있지
+                          않으면 기본 cert-user-map.xml</p>
+                        </dd><dt><span class="term"><span><strong class="guilabel">Filepath</strong></span></span></dt><dd>
+                          <p>certificate와 사용자의 매핑 정보가 기입된 파일 경로. 설정되어 있지
+                          않으면 기본
+                          %JEUS_HOME%/config/security/domain-name</p>
+                        </dd></dl></div>
+                  </dd><dt><span class="term"><span><strong class="guilabel">기본 사용자 매퍼</strong></span></span></dt><dd>
+                    <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Cert Attr Type</strong></span></span></dt><dd>
+                            <p>Certificate type의 credential에 대한 username을
+                            mapping하기 위한 속성값(SKI, issure_serial,
+                            SubjectDN)</p>
+                          </dd><dt><span class="term"><span><strong class="guilabel">Attribute Type</strong></span></span></dt><dd>
+                            <p>Cert Attr Type이 SubjectDN인 경우 SubjectDN 의
+                            key값</p>
+                          </dd><dt><span class="term">Attribute Value Delimiter</span></dt><dd>
+                            <p>SubjectDN 의 value값을 구분하기 위한 Delimiter값</p>
+                          </dd></dl></div>
+                  </dd><dt><span class="term"><span><strong class="guilabel">커스텀 사용자 매퍼</strong></span></span></dt><dd>
+                    <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">속성들</strong></span></span></dt><dd>
+                          <p>credential을 mapping하기 위한 관련 정보들을 name-value쌍으로
+                          property 값으로 정의.</p>
+                        </dd></dl></div>
+                  </dd></dl></div>
+            </dd><dt><span class="term"><span><strong class="guilabel">사용자 서비스 </strong></span></span></dt><dd>
+              <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Classname</strong></span></span></dt><dd>
+                    <p>jeus.security.spi의 클래스들 중 하나를 확장한 Java 클래스명</p>
+                  </dd><dt><span class="term"><span><strong class="guilabel">속성들</strong></span></span></dt><dd>
+                    <p>선택사항으로 해당 보안 서비스에 name-value쌍으로 속성을 정의</p>
+                  </dd></dl></div>
+            </dd></dl></div>
+    </div>
+
+    <div class="section" lang="ko"><div class="titlepage"><div><div><h4 class="title"><a id="JeusServiceSecurityDomain_Services_crdmapping"/>크리덴셜 매핑서비스</h4></div></div></div>
+      
+
+      <p>크리덴셜 매핑서비스는 Subject의 사용자명(username)이 제공되지 않는 경우에 필요하다(즉, 메인
+      Principal이 null일 때이다). 이 경우에는 Subject로부터 Credential을 가져와서, Credential이
+      어느 사용자명에 매칭되는지 알아 보게 된다. 매칭된 사용자명은 이후 인증 과정에 사용된다. 전형적인 예로
+      java.security.Certificate 인스턴스를 들 수 있다. 이 인스턴스는 Certificate Credential을
+      사용하므로, 메인 Principal 을 가지고 있지 않다. 이 경우 인증 과정 동안, Sujbect 로부터 Certificate
+      Credential을 얻어 와서 Certificate 저장소로부터 Certificate를 통해 사용자명을 역추적하고, 결국
+      매칭되는 사용자 명을 리턴해 준다.</p>
+
+      <p>다음과 같이 도메인별 적용할 크리덴셜 매핑 서비스 정보를 설정한다.</p>
+
+      <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">기본 서비스</strong></span></span></dt><dd>
+              <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Truststore Path</strong></span></span></dt><dd>
+                    <p>현 도메인에 적용할 truststore file 경로를 정의</p>
+                  </dd><dt><span class="term"><span><strong class="guilabel">Truststore Password</strong></span></span></dt><dd>
+                    <p>현 도메인에 적용할 truststore file에 대한 password를 정의</p>
+                  </dd></dl></div>
+            </dd><dt><span class="term"><span><strong class="guilabel">사용자 서비스</strong></span></span></dt><dd>
+              <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Classname</strong></span></span></dt><dd>
+                    <p>jeus.security.spi의 클래스들 중 하나를 확장한 Java 클래스명</p>
+                  </dd><dt><span class="term"><span><strong class="guilabel">속성들</strong></span></span></dt><dd>
+                    <p>선택사항으로 해당 보안 서비스에 name-value쌍으로 속성을 정의</p>
+                  </dd></dl></div>
+            </dd></dl></div>
+    </div>
+
+    <div class="section" lang="ko"><div class="titlepage"><div><div><h4 class="title"><a id="JeusServiceSecurityDomain_Services_crdverification"/>크리덴셜 검증 서비스</h4></div></div></div>
+      
+
+      <p>크리덴셜 검증 서비스는 새로운 타입의 Proof Credential을 지원하기 위해 사용된다. proof
+      Credential이란 파라미터로 넘어온 Subject가 실제 존재하는 Subject인지 검증하기 위해 사용되는
+      Credential을 말한다. Proof Credential의 전형적인 예가 바로 패스워드이다
+      (jeus.security.resource.Password 클래스로 구현된다).</p>
+
+      <p>다음과 같이 도메인별 적용할 크리덴셜 검증 서비스 정보를 설정한다.</p>
+
+      <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">기본 서비스</strong></span></span></dt><dd>
+              <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">검증 서비스를 사용하지 않음 </strong></span></span></dt><dd>
+                    <p>크리덴셜 검증 서비스 사용하지 않음</p>
+                  </dd><dt><span class="term"><span><strong class="guilabel">패스워드 검증 </strong></span></span></dt><dd>
+                    <p>패스워드 정보로 검증</p>
+                  </dd><dt><span class="term"><span><strong class="guilabel">JEUS 인증서 검증 </strong></span></span></dt><dd>
+                    <p>인증서 정보로 검증</p>
+                  </dd></dl></div>
+            </dd><dt><span class="term"><span><strong class="guilabel">사용자 서비스</strong></span></span></dt><dd>
+              <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Classname</strong></span></span></dt><dd>
+                    <p>jeus.security.spi의 클래스들 중 하나를 확장한 Java 클래스명</p>
+                  </dd><dt><span class="term"><span><strong class="guilabel">속성들</strong></span></span></dt><dd>
+                    <p>선택사항으로 해당 보안 서비스에 name-value쌍으로 속성을 정의</p>
+                  </dd></dl></div>
+            </dd></dl></div>
+    </div>
+
+    <div class="section" lang="ko"><div class="titlepage"><div><div><h4 class="title"><a id="JeusServiceSecurityDomain_Services_audit"/>감사 서비스</h4></div></div></div>
+      
+
+      <p>감사 서비스는 이벤트를 기록하는 로거를 구현한다. 이벤트는 일반 텍스트나 XML파일에 기록되기도 하지만, 때때로
+      부인방지를 위해 암호화된 파일이 사용되기도 한다.</p>
+
+      <p>다음과 같이 도메인별 적용할 감사 서비스 정보를 설정한다.</p>
+
+      <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">기본 서비스</strong></span></span></dt><dd>
+              <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Filename</strong></span></span></dt><dd>
+                    <p>감사를 위한 로그 파일. 설정되어 있지 않은 경우 기본 audit.log파일에
+                    생성.</p>
+                  </dd><dt><span class="term"><span><strong class="guilabel">Filepath</strong></span></span></dt><dd>
+                    <p>감사를 위한 로그 파일 경로</p>
+                  </dd><dt><span class="term">Audit Level</span></dt><dd>
+                    <p>감사를 위한 로그 메세지 레벨 설정</p>
+                  </dd></dl></div>
+            </dd><dt><span class="term"><span><strong class="guilabel">사용자 서비스</strong></span></span></dt><dd>
+              <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Classname</strong></span></span></dt><dd>
+                    <p>jeus.security.spi의 클래스들 중 하나를 확장한 Java 클래스명</p>
+                  </dd><dt><span class="term"><span><strong class="guilabel">속성들</strong></span></span></dt><dd>
+                    <p>선택사항으로 해당 보안 서비스에 name-value쌍으로 속성을 정의</p>
+                  </dd></dl></div>
+            </dd></dl></div>
+    </div>
+
+    <div class="section" lang="ko"><div class="titlepage"><div><div><h4 class="title"><a id="JeusServiceSecurityDomain_Services_subject"/>주제 서비스</h4></div></div></div>
+      
+
+      <p>주제 서비스는 Subject가 가지고 있는 Credential이 유효한지 아닌지를 체크하는데 사용된다. 이 말은 때때로
+      Credential이 유효하지 않는 경우도 있음을 나타낸다(유효하지 않는 Credential은 곧 Subject가 유효하지 않다는
+      말이고, 결과적으로 해당 Subject로는 로그인할 수 없다는 것을 나타낸다).</p>
+
+      <p>다음과 같이 도메인별 적용할 감사 서비스 정보를 설정한다.</p>
+
+      <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">기본 서비스</strong></span></span></dt><dd>
+              <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Default Subject Validation
+                  Service</strong></span></span></dt><dd>
+                    <p>기본 Subject Validation Service 사용 여부 결정</p>
+                  </dd></dl></div>
+            </dd><dt><span class="term"><span><strong class="guilabel">사용자 서비스</strong></span></span></dt><dd>
+              <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Classname</strong></span></span></dt><dd>
+                    <p>jeus.security.spi의 클래스들 중 하나를 확장한 Java 클래스명</p>
+                  </dd><dt><span class="term"><span><strong class="guilabel">속성들</strong></span></span></dt><dd>
+                    <p>선택사항으로 해당 보안 서비스에 name-value쌍으로 속성을 정의</p>
+                  </dd></dl></div>
+            </dd></dl></div>
+    </div>
+
+    <div class="section" lang="ko"><div class="titlepage"><div><div><h4 class="title"><a id="JeusServiceSecurityDomain_Services_custom"/>커스텀 서비스</h4></div></div></div>
+      
+
+      <p>사용자 서비스는 JEUS가 기본적으로 제공하는 서비스(캐쉬, 키 스토어 서비스를 제외한 모든 서비스)와 중복되어 설정할
+      수 없다. 따라서 사용자 서비스를 등록하게 되면 기존에 등록한 JEUS의 서비스 설정이 모두 삭제된다. 또한 JEUS가 제공하는
+      서비스 각각에 대해서도 사용자 서비스를 등록할 수 있으며, 이 경우에도 마찬가지로 각각의 서비스에 대해 JEUS가 기본적으로
+      지원하는 기능이 삭제된다.</p>
+
+      <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">사용자 서비스</strong></span></span></dt><dd>
+              <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Classname</strong></span></span></dt><dd>
+                    <p>jeus.security.spi의 클래스들 중 하나를 확장한 Java 클래스명</p>
+                  </dd><dt><span class="term"><span><strong class="guilabel">속성들</strong></span></span></dt><dd>
+                    <p>선택사항으로 해당 보안 서비스에 name-value쌍으로 속성을 정의</p>
+                  </dd></dl></div>
+            </dd></dl></div>
+    </div>
+  </div>
+
+  <div class="section" lang="ko"><div class="titlepage"><div><div><h3 class="title"><a id="d4e4017"/>계정</h3></div></div></div>
+    
+
+    <p>인증 서비스를 위한 계정을 수정, 삭제, 생성 할 수 있는 페이지이다.</p>
+
+    <div class="section" lang="ko"><div class="titlepage"><div><div><h4 class="title"><a id="JeusServiceSecurityDomain_Accounts_0"/>메모리 정보</h4></div></div></div>
+      
+
+      <p>현재 메모리 상에 관리되고 있는 사용자 계정 정보를 수정 , 삭제, 생성한다. 계정에 대한 메모리 정보 페이지에서
+      수정된 사항은 리파지토리 계정 정보에 반영이 되지 않는다.</p>
+
+      <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">계정</strong></span></span></dt><dd>
+              <p>현재 메모리 상에서 관리 되고 있는 계정 정보 리스트, 런타임 시에 보여지는 Subject에 대한
+              정보</p>
+            </dd></dl></div>
+
+      <p>계정 리스트에서 특정 계정에 대한 계정 수정할 경우 다음과 같은 항목들을 기입해야 한다.</p>
+
+      <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">이름</strong></span></span></dt><dd>
+            <p>선택한 계정 이름. 수정 불가</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">패스워드 알고리즘</strong></span></span></dt><dd>
+            <p>계정 패스워드 알고리즘(base64, SHA, DES, DESede, AES, SEED, Blowfish)
+            선택</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">패스워드 </strong></span></span></dt><dd>
+            <p>계정 패스워드 입력</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">패스워드 확인</strong></span></span></dt><dd>
+            <p>계정 패스워드 재입력</p>
+          </dd></dl></div>
+
+      <p>계정 리스트에서 특정 계정에 대한 계정을 삭제할 경우 해당 계정 선택 후 삭제 버튼을 누른다.</p>
+
+      <p>계정 리스트에 새로운 계정을 생성할 경우 생성 버튼을 누른 후 다음의 항목을 기입해야 한다.</p>
+
+      <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">이름</strong></span></span></dt><dd>
+            <p>계정 리스트에 존재하지 않는 새로 생성할 계정 이름 입력</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">패스워드 알고리즘</strong></span></span></dt><dd>
+            <p>계정 패스워드 알고리즘(base64, SHA, DES, DESede, AES, SEED, Blowfish)
+            선택</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">패스워드 </strong></span></span></dt><dd>
+            <p>계정 패스워드 입력</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">패스워드 확인</strong></span></span></dt><dd>
+            <p>계정 패스워드 재입력</p>
+          </dd></dl></div>
+    </div>
+
+    <div class="section" lang="ko"><div class="titlepage"><div><div><h4 class="title"><a id="JeusServiceSecurityDomain_Accounts_1"/>리파지토리 정보</h4></div></div></div>
+      
+
+      <p>accounts.xml 에 정의된 사용자 및 그룹 정보에 대한 생성 및 수정, 삭제 하는 페이지. 이 페이지를 통해
+      변동된 계정 정보는 리파지토리에 반영이 된다.</p>
+
+      <div class="section" lang="ko"><div class="titlepage"><div><div><h5 class="title"><a id="JeusServiceSecurityDomain_UserConfiguration"/><span class="bold"><strong>사용자 정보</strong></span></h5></div></div></div>
+        
+
+        <p>accounts.xml에 정의된 사용자 리스트 정보를 보여준다.</p>
+
+        <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">이름</strong></span></span></dt><dd>
+              <p>accounts.xml 에 등록된 사용자 이름. 특정 사용자의 이름을 클릭하면 해당 계정 정보를 수정할
+              수 있는 페이지로 이동</p>
+            </dd><dt><span class="term"><span><strong class="guilabel">패스워드 </strong></span></span></dt><dd>
+              <p>암호화 정보에 따라 encryption된 패스워드</p>
+            </dd><dt><span class="term"><span><strong class="guilabel">그룹</strong></span></span></dt><dd>
+              <p>해당 사용자가 속한 그룹 리스트, 하나의 사용자는 여러 그룹에 포함될 수 있다.</p>
+            </dd><dt><span class="term">설명</span></dt><dd>
+              <p>사용자에 대한 상세 설명</p>
+            </dd><dt><span class="term"><span><strong class="guilabel">삭제</strong></span></span></dt><dd>
+              <p>휴지통 아이콘(<span class="inlinemediaobject"><img src="resources/table/delete.gif"/></span>)을 클릭하면 삭제 확인 대화상자가 나타나고
+              <span><strong class="guibutton">확인</strong></span> 버튼을 누르면 선택한 사용자 정보가 삭제</p>
+            </dd></dl></div>
+      </div>
+
+      <div class="section" lang="ko"><div class="titlepage"><div><div><h5 class="title"><a id="JeusServiceSecurityDomain_GroupConfiguration"/><span class="bold"><strong>그룹 정보</strong></span></h5></div></div></div>
+        
+
+        <p>accounts.xml에 정의된 그룹 리스트 정보를 보여준다.</p>
+
+        <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">이름</strong></span></span></dt><dd>
+              <p>accounts.xml 에 등록된 그룹 이름. 특정 그룹 이름을 클릭하면 해당 그룹 정보를 수정할 수
+              있는 페이지로 이동</p>
+            </dd><dt><span class="term"><span><strong class="guilabel">서브 그룹</strong></span></span></dt><dd>
+              <p>해당 그룹의 속해 있는 하위 그룹 이름 리스트, 해당 그룹에 동일한 역할을 부여할 수 있도록
+              nested하게 속할 그룹 이름들을 정의한다.</p>
+            </dd><dt><span class="term">설명</span></dt><dd>
+              <p>그룹에 대한 상세 설명</p>
+            </dd><dt><span class="term"><span><strong class="guilabel">삭제</strong></span></span></dt><dd>
+              <p>휴지통 아이콘(<span class="inlinemediaobject"><img src="resources/table/delete.gif"/></span>)을 클릭하면 삭제 확인 대화상자가 나타나고
+              <span><strong class="guibutton">확인</strong></span> 버튼을 누르면 선택한 사용자 정보가 삭제</p>
+            </dd></dl></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" lang="ko"><div class="titlepage"><div><div><h3 class="title"><a id="d4e4139"/>정책</h3></div></div></div>
+    
+
+    <p>승인 서비스를 위한 정책을 수정, 삭제, 생성 할 수 있는 페이지 이다.</p>
+
+    <div class="section" lang="ko"><div class="titlepage"><div><div><h4 class="title"><a id="JeusServiceSecurityDomain_Policies_0"/>메모리 정보</h4></div></div></div>
+      
+
+      <p>현재 메모리 상에 관리되고 있는 사용자 계정 정보를 수정, 삭제, 생성한다. 정책에 대한 메모리 정보 페이지에서 수정된
+      사항은 리파지토리 계정 정보에 반영이 되지 않는다.</p>
+
+      <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">컨텍스트 식별자</strong></span></span></dt><dd>
+            <p>현재 메모리 상에서 관리 되고 있는 policy의 컨텍스트 이름 리스트</p>
+          </dd></dl></div>
+
+      <p>context란 권한 부여 체크가 일어나는 범위를 나타낸다. JEUS 시스템이 JEUS 리소스에 대해 사용하는 디폴트
+      context id는 "default"이다</p>
+
+      <p>정책에서 특정 컨텍스트를 삭제할 경우 해당 컨텍스트 식별자를 선택 후 삭제 버튼을 누른다.</p>
+
+      <p>정책에 새로운 컨텍스트를 생성할 경우에 생성 버튼을 누른 후 새 컨텍스트 식별자 입력한다.</p>
+
+      <p>컨텍스트 식별자 리스트에서 특정 컨텍스트를 선택하여 다음과 같은 항목들을 수정한다.</p>
+
+      <div class="section" lang="ko"><div class="titlepage"><div><div><h5 class="title"><a id="d4e4155"/>역할</h5></div></div></div>
+        
+
+        <p>선택한 컨텍스트에 부여된 역할 권한 정보를 수정, 삭제, 생성 한다.</p>
+
+        <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">역할</strong></span></span></dt><dd>
+              <p>현재 컨텍스트에 부여된 역할 리스트</p>
+            </dd></dl></div>
+
+        <p>역할 리스트에서 특정 역할을 선택하여 다음과 같은 항목들을 수정한다</p>
+
+        <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">이름</strong></span></span></dt><dd>
+              <p>선택한 역할 이름. 수정 불가</p>
+            </dd><dt><span class="term"><span><strong class="guilabel">클래스 이름</strong></span></span></dt><dd>
+              <p>RolePermission 클래스 이름, JEUS에서는 기본으로
+              jeus.security.resource.RolePermission을 적용. 수정 불가.</p>
+            </dd><dt><span class="term"><span><strong class="guilabel">행동 </strong></span></span></dt><dd>
+              <p>RolePermission에 부여된 action정보. 기본은 없음. 수정 불가</p>
+            </dd><dt><span class="term"><span><strong class="guilabel">주역</strong></span></span></dt><dd>
+              <p>현재 정의된 계정 리스트 중 해당 역할 권한을 부여할 principal 리스트를 정의</p>
+            </dd><dt><span class="term"><span><strong class="guilabel">검사</strong></span></span></dt><dd>
+              <p>RolePermission에 대한 unchecked 여부 정의, 해당 옵션을 체크하면 Role
+              Permission이 체크되지 않는다(즉 Permission이 암시하는 Role에 누구나 접근할 수
+              있다)</p>
+            </dd><dt><span class="term"><span><strong class="guilabel">제외</strong></span></span></dt><dd>
+              <p>RolePermission에 대한 excluded 여부 정의, 해당 옵션을 체크하면 Role
+              Permission이 배제된다(즉 Permission이 암시하는 Role에 아무도 접근할 수가 없다).</p>
+            </dd></dl></div>
+
+        <p>역할 리스트에서 특정 컨텍스트에 대한 역할 권한을 삭제할 경우 해당 역할 선택 후 삭제 버튼을 누른다.</p>
+
+        <p>역할 리스트에 특정 컨텍스트에 대한 새로운 역할 권한을 생성할 경우 생성 버튼을 누른 후 다음의 항목을 기입해야
+        한다.</p>
+
+        <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">이름</strong></span></span></dt><dd>
+              <p>컨텍스트에 새로이 부여할 역할 이름 기입</p>
+            </dd><dt><span class="term"><span><strong class="guilabel">클래스 이름</strong></span></span></dt><dd>
+              <p>RolePermission 클래스 이름, JEUS에서는 기본으로
+              jeus.security.resource.RolePermission을 적용</p>
+            </dd><dt><span class="term"><span><strong class="guilabel">행동 </strong></span></span></dt><dd>
+              <p>RolePermission에 부여된 action정보. 기본은 없음</p>
+            </dd><dt><span class="term"><span><strong class="guilabel">주역</strong></span></span></dt><dd>
+              <p>현재 정의된 계정 리스트 중 해당 역할 권한을 부여할 principal 리스트를 정의</p>
+            </dd><dt><span class="term"><span><strong class="guilabel">검사</strong></span></span></dt><dd>
+              <p>RolePermission에 대한 unchecked 여부 정의, 해당 옵션을 체크하면 Role
+              Permission이 체크되지 않는다(즉 Permission이 암시하는 Role에 누구나 접근할 수
+              있다)</p>
+            </dd><dt><span class="term"><span><strong class="guilabel">제외</strong></span></span></dt><dd>
+              <p>RolePermission에 대한 excluded 여부 정의, 해당 옵션을 체크하면 Role
+              Permission이 배제된다(즉 Permission이 암시하는 Role에 아무도 접근할 수가 없다)</p>
+            </dd></dl></div>
+      </div>
+
+      <div class="section" lang="ko"><div class="titlepage"><div><div><h5 class="title"><a id="d4e4229"/><span class="bold"><strong>리소스</strong></span></h5></div></div></div>
+        
+
+        <p>선택한 컨텍스트에 부여된 리소스 권한 정보를 수정, 삭제, 생성 한다.</p>
+
+        <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">리소스</strong></span></span></dt><dd>
+              <p>현재 컨텍스트에 부여된 리소스 리스트</p>
+            </dd></dl></div>
+
+        <p>리소스 리스트에서 특정 리소스를 선택하여 다음과 같은 항목들을 수정한다</p>
+
+        <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">이름</strong></span></span></dt><dd>
+              <p>선택한 리소스 이름. 수정 불가</p>
+            </dd><dt><span class="term"><span><strong class="guilabel">클래스 이름</strong></span></span></dt><dd>
+              <p>ResourcePermission 클래스 이름, JEUS에서는 기본으로
+              jeus.security.resource.ResourcePermission을 적용. 수정 불가.</p>
+            </dd><dt><span class="term"><span><strong class="guilabel">행동 </strong></span></span></dt><dd>
+              <p>ResourcePermission 부여된 action정보. 기본은 없음. 수정 불가</p>
+            </dd><dt><span class="term"><span><strong class="guilabel">주역</strong></span></span></dt><dd>
+              <p>현재 정의된 계정 리스트 중 해당 리소스의 권한을 부여할 principal 리스트를 정의</p>
+            </dd><dt><span class="term"><span><strong class="guilabel">검사</strong></span></span></dt><dd>
+              <p>ResourcePermission 대한 unchecked 여부 정의, 해당 옵션을 체크하면
+              Resource Permission이 체크되지 않는다(즉 Permission이 암시하는 Role에 누구나 접근할 수
+              있다)</p>
+            </dd><dt><span class="term"><span><strong class="guilabel">제외</strong></span></span></dt><dd>
+              <p>ResourcePermission 대한 excluded 여부 정의, 해당 옵션을 체크하면 Resource
+              Permission이 배제된다(즉 Permission이 암시하는 Role에 아무도 접근할 수가 없다).</p>
+            </dd></dl></div>
+
+        <p>리소스 리스트에서 특정 컨텍스트에 대한 리소스 권한을 삭제할 경우 해당 리소스 선택 후 삭제 버튼을
+        누른다.</p>
+
+        <p>리소스 리스트에 특정 컨텍스트에 대한 새로운 리소스 권한을 생성할 경우 생성 버튼을 누른 후 다음의 항목을 기입해야
+        한다.</p>
+
+        <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">이름</strong></span></span></dt><dd>
+              <p>컨텍스트에 새로이 부여할 리소스 이름</p>
+            </dd><dt><span class="term"><span><strong class="guilabel">클래스 이름</strong></span></span></dt><dd>
+              <p>ResourcePermission 클래스 이름, JEUS에서는 기본으로
+              jeus.security.resource.ResourcePermission을 적용</p>
+            </dd><dt><span class="term"><span><strong class="guilabel">행동 </strong></span></span></dt><dd>
+              <p>ResourcePermission 부여된 action정보. 기본은 없음</p>
+            </dd><dt><span class="term"><span><strong class="guilabel">주역</strong></span></span></dt><dd>
+              <p>현재 정의된 계정 리스트 중 해당 리소스 권한을 부여할 사용자 리스트를 정의</p>
+            </dd><dt><span class="term"><span><strong class="guilabel">검사</strong></span></span></dt><dd>
+              <p>ResourcePermission 대한 unchecked 여부 정의, 해당 옵션을 체크하면
+              Resource Permission이 체크되지 않는다(즉 Permission이 암시하는 Role에 누구나 접근할 수
+              있다)</p>
+            </dd><dt><span class="term"><span><strong class="guilabel">제외</strong></span></span></dt><dd>
+              <p>ResourcePermission 대한 excluded 여부 정의, 해당 옵션을 체크하면 Resource
+              Permission이 배제된다(즉 Permission이 암시하는 Role에 아무도 접근할 수가 없다).</p>
+            </dd></dl></div>
+      </div>
+    </div>
+
+    <div class="section" lang="ko"><div class="titlepage"><div><div><h4 class="title"><a id="JeusServiceSecurityDomain_Policies_1"/>리파지토리 정보</h4></div></div></div>
+      
+
+      <p>policies.xml 에 정의된 장책 정보에 대한 생성 및 수정, 삭제 하는 페이지, 이 페이지를 통해 변동된 계정
+      정보는 리파지토리에 반영이 된다.</p>
+
+      <div class="section" lang="ko"><div class="titlepage"><div><div><h5 class="title"><a id="JeusServiceSecurityDomain_RoleConfiguration"/><span class="bold"><strong>역할 정보</strong></span></h5></div></div></div>
+        
+
+        <p>policies.xml 정의된 사용자 리스트 정보를 보여준다.</p>
+
+        <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">이름</strong></span></span></dt><dd>
+              <p>policies.xml 에 등록된 역할 이름. 특정 역할 이름을 클릭하면 해당 역할 권한 정보를 수정할
+              수 있는 페이지로 이동</p>
+            </dd><dt><span class="term"><span><strong class="guilabel">주역 </strong></span></span></dt><dd>
+              <p>해당 역할에 부여된 principal 리스트</p>
+            </dd><dt><span class="term"><span><strong class="guilabel">행동</strong></span></span></dt><dd>
+              <p>이 role permission 객체에 대한 action을 정의한다. default로 사용되는 role
+              permission은 정해진 action이 없음</p>
+            </dd><dt><span class="term">클래스 이름</span></dt><dd>
+              <p>java.security.Permission을 상속한 Java 클래스명. 지정하지 않으면 JEUS에서
+              기본적으로 제공하는 jeus.security.resource.RolePermission이 사용된다</p>
+            </dd><dt><span class="term">검사</span></dt><dd>
+              <p>RolePermission의 unchecked 여부, 해당 옵션을 체크하면 Role Permission이
+              체크되지 않는다(즉 Permission이 암시하는 Role에 누구나 접근할 수 있다)</p>
+            </dd><dt><span class="term">제외</span></dt><dd>
+              <p>RolePermission의 excluded 여부, 해당 옵션을 체크하면 Role Permission이
+              배제된다(즉 Permission이 암시하는 Role에 아무도 접근할 수가 없다)</p>
+            </dd><dt><span class="term"><span><strong class="guilabel">삭제</strong></span></span></dt><dd>
+              <p>휴지통 아이콘(<span class="inlinemediaobject"><img src="resources/table/delete.gif"/></span>)을 클릭하면 삭제 확인 대화상자가 나타나고
+              <span><strong class="guibutton">확인</strong></span> 버튼을 누르면 선택한 사용자 정보가 삭제</p>
+            </dd></dl></div>
+      </div>
+
+      <div class="section" lang="ko"><div class="titlepage"><div><div><h5 class="title"><a id="JeusServiceSecurityDomain_ResourceConfiguration"/><span class="bold"><strong>리소스 정보</strong></span></h5></div></div></div>
+        
+
+        <p>policies.xml 정의된 그룹 리스트 정보를 보여준다.</p>
+
+        <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">컨텍스트 식별자</strong></span></span></dt><dd>
+              <p>role-resource 매핑이 적용 되는 context id(보통 이 태그는 사용되지
+              않는다).</p>
+            </dd><dt><span class="term"><span><strong class="guilabel">이름</strong></span></span></dt><dd>
+              <p>Role을 맵핑하는 Resource 이름</p>
+            </dd><dt><span class="term">역할</span></dt><dd>
+              <p>해당 resource에 부여된 role 리스트</p>
+            </dd><dt><span class="term">행동</span></dt><dd>
+              <p>선택적인 값으로 resource permission클래스의 생성자에 넘길 actions 값</p>
+            </dd><dt><span class="term">클래스 이름</span></dt><dd>
+              <p>java.security.Permission을 상속한 Java 클래스명. 이 클래스는 resource
+              permission에 사용된다. 지정하지 않으면 JEUS에서 기본적으로 제공하는
+              jeus.security.resource.ResourcePermission이 사용된다</p>
+            </dd><dt><span class="term">검사</span></dt><dd>
+              <p>RolePermission의 unchecked 여부, 해당 옵션을 체크하면 Resource
+              Permission이 체크되지 않는다(즉 Permission이 암시하는 Role에 누구나 접근할 수
+              있다)</p>
+            </dd><dt><span class="term">제외</span></dt><dd>
+              <p>RolePermission의 excluded 여부, 해당 옵션을 체크하면 Resource
+              Permission이 배제된다(즉 Permission이 암시하는 Role에 아무도 접근할 수가 없다).</p>
+            </dd><dt><span class="term"><span><strong class="guilabel">삭제</strong></span></span></dt><dd>
+              <p>휴지통 아이콘(<span class="inlinemediaobject"><img src="resources/table/delete.gif"/></span>)을 클릭하면 삭제 확인 대화상자가 나타나고
+              <span><strong class="guibutton">확인</strong></span> 버튼을 누르면 선택한 사용자 정보가 삭제</p>
+            </dd></dl></div>
+      </div>
+    </div>
+  </div>
+</div><div xmlns="" align="center"/></body></html>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusMonitoringThreadMonitoringService.InfosPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Thread Monitoring Infos"/>
+        
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="new java.lang.String[] {'JeusMonitoringThreadMonitoringService_Infos'}"/>
+    </component>
+
+    <component id="infosForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:tmo.infos.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="keepAliveTime" type="jeus:Field">
+        <binding name="field" value="component:keepAliveTimeField"/>
+        <binding name="renderUnderline" value="true"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="keepAliveTimeField" type="TextField">
+        <binding name="displayName" value="message:tpmo.overview.keepAliveTime.label"/>
+        <binding name="value" value="keepAliveTime"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:required,min=1"/>
+    </component>
+
+    <component id="maxPoolSize" type="jeus:Field">
+        <binding name="field" value="component:maxPoolSizeField"/>
+        <binding name="renderUnderline" value="true"/>
+    </component>
+
+    <component id="maxPoolSizeField" type="TextField">
+        <binding name="displayName" value="message:tpmo.overview.maximumPoolSize.label"/>
+        <binding name="value" value="maxPoolSize"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:required,min=1"/>
+    </component>
+
+    <component id="corePoolSize" type="jeus:Field">
+        <binding name="field" value="component:corePoolSizeField"/>
+        <binding name="renderUnderline" value="true"/>
+    </component>
+
+    <component id="corePoolSizeField" type="TextField">
+        <binding name="displayName" value="message:tpmo.overview.corePoolSize.label"/>
+        <binding name="value" value="corePoolSize"/>
+        <binding name="validators" value="validators:required,$maxValidator"/>
+    </component>
+    
+    <component id="allowsCoreThreadTimeOut" type="jeus:Field">
+        <binding name="field" value="component:allowsCoreThreadTimeOutField"/>
+        <binding name="renderUnderline" value="true"/>
+    </component>
+
+    <component id="allowsCoreThreadTimeOutField" type="Checkbox">
+        <binding name="displayName" value="message:tpmo.overview.allowsCoreThreadTimeOut.label"/>
+        <binding name="value" value="allowsCoreThreadTimeOut"/>
+    </component>    
+	
+	<component id="threadInfoTable" type="jeus:JEUSTableView">
+		<binding name="source" value="threadInfos"/>
+		<binding name="columns" value="literal:!tmo.infos.name:threadName, !tmo.infos.id:threadId, !tmo.infos.active:active, !tmo.infos.priority:priority, !tmo.infos.state:threadState, !tmo.infos.interrupted:interrupted, !tmo.infos.alive:alive, !tmo.infos.daemon:daemon, !tmo.infos.waitedTime:waitedTime, !tmo.infos.runTime:runTime"/>
+		<binding name="showCustomize" value="false"/>
+	</component>	
+
+    <component id="workerThreadLabel" type="Insert">
+        <binding name="value" value="message:tmo.infos.tableField.lable"/>
+    </component>
+
+    <component id="poolConfigOk" type="Submit">
+        <binding name="value" value="message:JEUSForm.ok.label"/>
+        <binding name="listener" value="listener:onPoolConfigOk"/>
+    </component>
+
+    <component id="poolConfigCancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+
+    <component id="refreshButton" type="Any">
+        <binding name="element" value="literal:input"/>
+        <binding name="value" value="message:common.label.refresh"/>
+    </component>
+
+    <bean name="maxValidator" class="jeus.tool.webadmin.validator.FieldMinMaxValidator">
+        <set name="maxField" value="component:maxPoolSizeField"/>
+        <set name="min" value="1"/>
+    </bean>
+    
+    <property name="thread"/>
+    <property name="stackTrace"/>
+  
+</page-specification>

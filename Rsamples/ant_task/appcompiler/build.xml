@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<project name="example" default="appcompiler" basedir=".">
+	
+	<import file="../../common/common-build.xml" />
+	
+    <property name="java.library.path"
+              value="${java.library.path};${jeus.home}/lib/system"/>
+
+    <property name="client" value=""/>
+    <property name="keep" value="false"/>
+	<property name="jspmap" value="false"/>
+    <property name="ejbjar" value=""/>
+	<property name="jeusejbdd" value=""/>
+    <property name="name" value="ejb"/>
+    <property name="targetfile" value="ejb.jar"/>
+
+    <path id="jeus.libraries">
+        <fileset dir="${jeus.home}/lib/system" includes="*.jar"/>
+    </path>
+
+    <taskdef resource="jeus/util/ant/jeusant.properties">
+        <classpath>
+            <path refid="jeus.libraries"/>
+        </classpath>
+    </taskdef>
+
+    <target name="appcompiler">
+		<appcompiler jeusHome="${jeus.home}"
+                     keep="${keep}"
+					 jspmap="${jspmap}"
+					 target="${targetfile}"/>
+
+	</target>
+			 
+</project>

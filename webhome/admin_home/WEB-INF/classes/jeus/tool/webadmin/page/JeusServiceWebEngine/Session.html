@@ -1,0 +1,92 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <span jwcid="general">
+        <form jwcid="session_configForm">
+		 	<span jwcid="distributable">
+                <input jwcid="distributableField"/>
+            </span>
+  		 	<span jwcid="shared">
+                <input jwcid="sharedField"/>
+            </span>
+            <span jwcid="timeout">
+                <input jwcid="timeoutField"/>
+            </span>
+            <span jwcid="reloadPersistent">
+                <input jwcid="reloadPersistentField"/>
+            </span>
+            <span jwcid="urlRewriting">
+                <input jwcid="urlRewritingField"/>
+            </span>       
+            <span jwcid="session_id_cookieSection"/>
+ 		 	<span jwcid="jsessionidName">
+                <input jwcid="jsessionidNameField"/>
+            </span>
+            <span jwcid="version">
+                <input jwcid="versionField"/>
+            </span>
+            <span jwcid="domain">
+                <input jwcid="domainField"/>
+            </span>
+            <span jwcid="cookie_path">
+                <input jwcid="cookie_pathField"/>
+            </span>
+            <span jwcid="max_age">
+                <input jwcid="max_ageField"/>
+            </span>
+            <span jwcid="secure">
+                <input jwcid="secureField"/>
+            </span>
+        </form>
+        </span>
+        <span jwcid="p2p">
+            <form jwcid="p2pForm"/>
+            <span jwcid="condP2P">
+	            <span jwcid="p2p_tab">
+	                <span jwcid="p2p_general">
+	                    <form jwcid="p2p_generalForm">
+	                        <span jwcid="engineName">
+	                            <input jwcid="engineNameField"/>
+	                        </span>
+	                        <span jwcid="replicationGroup">
+	                            <input jwcid="replicationGroupField"/>
+	                        </span>
+	                        <span jwcid="backupGroup">
+	                            <input jwcid="backupGroupField"/>
+	                        </span>	
+	                        <span jwcid="location">
+	                            <input jwcid="locationField"/>
+	                        </span>	                                                	                        	                        
+	                    </form>
+	                </span>
+	                <span jwcid="p2p_file_db">
+	                    <form jwcid="p2p_file_dbForm">
+	                        <span jwcid="startup_clear_to">
+	                            <input jwcid="startup_clear_toField"/>
+	                        </span>
+	                        <span jwcid="path">
+	                            <input jwcid="pathField"/>
+	                        </span>
+	                        <span jwcid="passivation_to">
+	                            <input jwcid="passivation_toField"/>
+	                        </span>
+	                        <span jwcid="min_hole">
+	                            <input jwcid="min_holeField"/>
+	                        </span>
+	                        <span jwcid="packing_rate">
+	                            <input jwcid="packing_rateField"/>
+	                        </span>
+	                        <div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+	                            <input jwcid="file_db_ok" class="form_button"/>
+	                            <input jwcid="file_db_cancel" class="form_button"/>
+	                            <input jwcid="file_db_reset" class="form_button" style="margin-left: 5px;"/>
+							</div>
+	                    </form>
+	                </span>
+	            </span>
+            </span>
+            <span jwcid="@Else">
+                <span jwcid="p2p_warning"/>
+            </span>
+        </span>
+    </span>
+</html>

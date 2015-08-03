@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceMQExtResourceService.ConfigurationPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:MQ Data Source Service Configuration"/>
+        
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="new java.lang.String[]{pageName}"/>
+        <binding name="subtabNames" value="{'properties'}"/>
+        <binding name="notFound" value="mq == null || mqResourceSpecification == null"/>
+        <binding name="notFoundBlock" value="component:notFound"/>
+    </component>
+
+    <component id="properties" type="Block"/>
+    
+    <component id="notFound" type="Block"/>
+
+    <component id="propertiesForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:mqc.properties.title2"/>
+        <binding name="success" value="listener:onPropertiesOk"/>
+    </component>
+
+    <component id="export_name" type="jeus:ReadOnlyTextField">
+        <binding name="parentElement" value="mq"/>
+        <binding name="elementName" value="literal:exportName"/>
+    </component>
+
+    <component id="vendor" type="jeus:ReadOnlyTextField">
+        <binding name="parentElement" value="mq"/>
+        <binding name="elementName" value="literal:vendor"/>
+    </component>
+
+    <component id="mq_factory_class_name" type="jeus:ReadOnlyTextField">
+        <binding name="parentElement" value="mq"/>
+        <binding name="elementName" value="literal:factoryClassName"/>
+    </component>
+
+    <component id="mq_resource_type" type="jeus:ReadOnlyTextField">
+        <binding name="parentElement" value="mq"/>
+        <binding name="elementName" value="literal:resourceType"/>
+    </component>
+
+    <component id="condQueueType" type="If">
+        <binding name="condition" value="mq.resourceType == @jeus.xml.binding.jeusDD.TypeResourceType@Q"/>
+    </component>
+
+    <component id="queue" type="jeus:Field">
+        <binding name="field" value="component:queueField"/>
+    </component>
+
+    <component id="queueField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="mq"/>
+        <binding name="elementName" value="literal:queue"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="condQueueManager" type="If">
+        <binding name="condition" value="mq.vendor == @jeus.xml.binding.jeusDD.JmsVendorType@IBMMQ and mq.resourceType == @jeus.xml.binding.jeusDD.TypeResourceType@QCF"/>
+    </component>
+
+    <component id="queue_manager" type="jeus:Field">
+        <binding name="field" value="component:queue_managerField"/>
+    </component>
+
+    <component id="queue_managerField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="mq"/>
+        <binding name="elementName" value="literal:queueManager"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="condTopicType" type="If">
+        <binding name="condition" value="mq.resourceType == @jeus.xml.binding.jeusDD.TypeResourceType@T"/>
+    </component>
+
+    <component id="topic" type="jeus:Field">
+        <binding name="field" value="component:topicField"/>
+    </component>
+
+    <component id="topicField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="mq"/>
+        <binding name="elementName" value="literal:topic"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="additional_properties" type="jeus:Field">
+        <binding name="field" value="component:additional_propertiesField"/>
+    </component>
+
+    <component id="additional_propertiesField" type="jeus:JAXBTextArea">
+		<binding name="parentElement" value="mq"/>
+        <binding name="elementName" value="literal:property"/>
+        <binding name="translator" value="bean:typePropertyTranslator"/>
+    </component>
+	
+	<bean name="typePropertyTranslator" class="jeus.tool.webadmin.component.translator.TypePropertyTranslator"/>
+
+
+    <component id="condFound" type="If">
+       <binding name="condition" value="mq != null"/>
+    </component>
+
+    <component id="condNotFound" type="If">
+       <binding name="condition" value="mq == null"/>
+    </component>
+
+    <component id="tabPanel2" type="jeus:TabPanel">
+        <binding name="pageNames" value="new java.lang.String[]{pageName}"/>
+    </component>
+
+    <component id="dsForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:mqc.properties.title2"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="no_datasource" type="Insert">
+        <binding name="value" value="message:mqc.no.label"/>
+    </component>
+
+
+
+</page-specification>

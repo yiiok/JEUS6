@@ -1,0 +1,51 @@
+<project name="withwsdl-war" default="build" basedir=".">
+
+    <property name="is.war.module" value="true" />
+
+    <import file="../../../../../common/common-build.xml" />
+
+    <target name="do-package-war">
+        <dirname file="${module.file}" property="destfile.dir" />
+        <mkdir dir="${destfile.dir}" />
+
+        <mkdir dir="${build.war.dir}" />
+        <!-- Build war -->
+
+        <!-- Add to WEB-INF/classes -->
+        <if>
+            <available file="${build.classes.dir}" type="dir" />
+            <then>
+                <copy todir="${build.war.dir}/WEB-INF/classes">
+                    <fileset dir="${build.classes.dir}" />
+                </copy>
+            </then>
+        </if>
+
+        <!-- Add web pages to root -->
+        <copy todir="${build.war.dir}">
+            <fileset dir="${src.web}" />
+        </copy>
+
+        <!-- Add libraries to WEB-INF/lib -->
+        <if>
+            <available file="${libdir}" type="dir" />
+            <then>
+                <copy todir="${build.war.dir}/WEB-INF/lib">
+                    <fileset dir="${libdir}" />
+                </copy>
+            </then>
+        </if>
+
+        <antcall target="wsdl2java">
+            <param name="wsdl2java.option" value="-import:client -d ${build.war.dir}/WEB-INF/classes -package echo -outputmapping ${build.war.dir}/WEB-INF/DocLitEchoService-mapping.xml -compile http://localhost:8088/DocLitEchoService/DocLitEchoService?WSDL" />
+        </antcall>
+
+        <get src="http://localhost:8088/DocLitEchoService/DocLitEchoService?WSDL" dest="${build.war.dir}/WEB-INF/wsdl/DocLitEchoService.wsdl" />
+
+        <jar file="${module.file}" filesonly="true">
+            <fileset dir="${build.war.dir}">
+            </fileset>
+        </jar>
+    </target>
+
+</project>

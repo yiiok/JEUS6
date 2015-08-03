@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JMSClientResource.OverviewPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:JMS Client Resource Overview"/>
+        
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="new java.lang.String[]{pageName}"/>
+    </component>
+
+    <component id="overviewForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:clr.overview.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="clientsTable" type="jeus:JEUSTable">
+        <binding name="source" value="clients"/>
+        <binding name="columns" value="literal:clr.overview.name.label, clr.overview.host.remoteAddress.label:remoteAddress, clr.overview.connected.time.label"/>
+        <binding name="row" value="currentView"/>
+        <binding name="currentPageClass" value="literal:table_current_page"/>
+        <binding name="columnsClass" value="literal:table_columns"/>
+        <binding name="valuesClass" value="literal:table_values"/>
+        <binding name="pagesLinkClass" value="literal:table_pages_link"/>
+        <binding name="tableClass" value="literal:table"/>
+    </component>
+
+    <component id="clr_overview_name_labelColumnValue" type="Block"/>
+    <component id="clientLink" type="DirectLink">
+        <binding name="listener" value="listener:onDetail"/>
+        <binding name="parameters" value="currentView.entryName"/>
+    </component>
+
+    <component id="client" type="Insert">
+        <binding name="value" value="currentView.entryName"/>
+    </component>
+
+    <property name="currentView"/>
+</page-specification>

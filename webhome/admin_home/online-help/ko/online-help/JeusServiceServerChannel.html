@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta xmlns="" http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>JMS 서비스 채널</title><link rel="stylesheet" href="../stylesheet.css" type="text/css"/><meta name="generator" content="DocBook XSL Stylesheets V1.72.0"/><link rel="start" href="index.html" title="WebAdmin 온라인 도움말"/><link rel="up" href="index.html" title="WebAdmin 온라인 도움말"/><link rel="prev" href="JeusServiceSchedulerJob.html" title="스케줄러 작업"/><link rel="next" href="JeusServiceSessionContainer.html" title="세션 컨테이너"/></head><body><div class="section" lang="ko"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="JeusServiceServerChannel"/>JMS 서비스 채널</h2></div></div></div>
+  
+
+  
+
+  <p><span class="bold"><strong>네비게이션 경로</strong></span>: Home &gt;
+  <em class="replaceable"><code>node-name</code></em> &gt; 엔진 컨테이너 &gt;
+  <em class="replaceable"><code>container-name</code></em> &gt; 엔진 &gt; JMS 엔진</p>
+
+  <div class="section" lang="ko"><div class="titlepage"><div><div><h3 class="title"><a id="JeusServiceServerChannel_Create"/>새 서비스 채널 생성 - 기본 설정</h3></div></div></div>
+    
+
+    <p>JMS 엔진 설정의 <a href="JeusServiceJMSEngine.html#JeusServiceJMSEngine_Configuration_server_channel" title="서비스 채널">서비스 채널</a> 페이지에서
+    <span><strong class="guilabel">새 서비스 채널 생성</strong></span> 링크를 클릭하여 이 페이지로 이동할 수 있다.</p>
+
+    <p>우선 새로 추가할 서비스 채널의 이름을 <span><strong class="guilabel">Name</strong></span> 필드에 입력한다. 이 이름은
+    <a href="JMSConnectionFactoryResource.html" title="JMS 커넥션 팩토리">JMS 커넥션 팩토리</a>를 설정할 때 사용된다.</p>
+
+    <p>다음으로 서비스를 제공할 주소를 지정해야 하는데, <span class="token">jms-tcp-address</span>와
+    <span class="token">server-url</span>이라는 두 가지 <span><strong class="guilabel">Address Type</strong></span> 중 어느
+    것을 선택하느냐에 따라 입력 방식이 다르다.</p>
+
+    <div class="variablelist"><dl><dt><span class="term"><span class="token">jms-tcp-address</span> 방식</span></dt><dd>
+          <p><span><strong class="guilabel">Server Address</strong></span> 필드에 IP 주소를,
+          <span><strong class="guilabel">Port</strong></span> 필드에 TCP 포트 번호를 입력한다.
+          포트 번호가 0이거나 지정되지 않으면 JEUS 엔진 컨테이너의 Base Port를 통해 서비스 된다.</p>
+        </dd><dt><span class="term"><span class="token">server-url</span> 방식</span></dt><dd>
+          <p><span><strong class="guilabel">Server Url</strong></span> 필드에 서비스를 제공할 URL을 입력한다. TCP
+          프로토콜을 사용하는 경우 <code class="uri">tcp://HOST:PORT</code>의 형식으로 입력한다. 또는 JEUS 엔진
+          컨테이너의 Base Port를 통해 서비스 하기 위해 <code class="uri">oneport</code>라고 설정한다.</p>
+
+          <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">참고</h3>
+            <p><code class="uri">oneport</code>는 Base Port를 통해 JNDI, JMS 등 여러 가지 서비스를 제공할
+            수 있게 해주는 JEUS의 포트 통합 기능이다.</p>
+          </div>
+        </dd></dl></div>
+
+    <p>추가로 다음 <span><strong class="guilabel">고급 선택사항</strong></span>을 설정할 수 있다.</p>
+
+    <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Client Limit</strong></span></span></dt><dd>
+          <p>이 서비스 채널로 접속할 수 있는 최대 클라이언트 수를 설정한다. 기본값으로
+          <span class="token">1000</span>이 지정되어 있다.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">Backlog Size</strong></span></span></dt><dd>
+          <p>서비스 채널의 backlog 크기를 지정한다. 기본값으로 <span class="token">100</span>이
+          지정되어 있다.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">Blocking Socket</strong></span></span></dt><dd>
+          <p>체크하면 서비스 채널이 Blocking 소켓을 사용하여 클라이언트와 통신하게 된다. 기본 설정으로
+          Blocking 소켓을 사용하지만 다수의 클라이언트가 접속했을 때 서버에 걸리는 부하를 줄이기 위해서는
+          Non-Blocking 소켓을 사용하는 것을 권장한다.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">Read Buffer Size</strong></span>, </span><span class="term"><span><strong class="guilabel">Write Buffer Size</strong></span></span></dt><dd>
+          <p>새로 추가할 서비스 채널이 사용할 Read/Write 버퍼의 크기를 바이트 단위로 설정한다. 기본값으로
+          <span class="token">65536</span>(64KB)이 지정되어 있다.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">Connection Timeout</strong></span></span></dt><dd>
+          <p>지정한 시간 동안 아무런 요청이 없는 클라이언트와의 연결을 종료하도록 설정한다. 기본값으로
+          120분이 지정되어 있다.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">Client Keepalive Timeout</strong></span></span></dt><dd>
+          <p>클라이언트와의 연결이 비정상적으로 종료됐을 때 클라이언트가 커넥션 Failover를 시도하여 다시 연결될 경우를
+          위해 재접속을 기다리는 시간을 설정한다. 이 기간 동안 클라이언트가 생성한 서버 측 리소스는 해제되지 않는다. 기본값으로
+          30초가 지정되어 있다.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">Check Security</strong></span></span></dt><dd>
+          <p>이 필드에 체크하고 서비스 채널을 생성하면 다음과 같은 <a href="JeusServiceSecurityDomain.html" title="보안 도메인">보안 도메인</a>의 <span><strong class="guilabel">정책</strong></span> 설정이
+          적용된다.</p>
+
+          <div class="itemizedlist"><ul type="disc"><li>
+              <p><span class="token">jeus.jms.client.connectionFactory</span>
+              <span><strong class="guilabel">Permission</strong></span>을 갖고
+              <span class="token">createConnection</span> <span><strong class="guilabel">Action</strong></span>이
+              허용되지 않은 사용자는 커넥션을 생성할 수 없다.</p>
+            </li><li>
+              <p><span class="token">jeus.jms.destination.creation</span>
+              <span><strong class="guilabel">Permission</strong></span>을 갖고
+              <span class="token">createDestination</span> <span><strong class="guilabel">Action</strong></span>이
+              허용되지 않은 사용자는 동적으로 데스티네이션을 생성할 수 없다.</p>
+            </li></ul></div>
+        </dd><dt><span class="term"><span><strong class="guilabel">Backup Service URL</strong></span></span></dt><dd><p>Failover 설정시에 Backup으로 동작할 서버의 Service Channel의 URL을 설정한다. 자신이 Backup서버일 경우에는
+        Active의 Service Channel의 URL을 설정한다.</p></dd></dl></div>
+
+    <p>기본 설정을 마친 뒤 <span><strong class="guibutton">다음</strong></span> 버튼을 누르면 SSL 설정 페이지로 이동한다.</p>
+  </div>
+
+  <div class="section" lang="ko"><div class="titlepage"><div><div><h3 class="title"><a id="JeusServiceServerChannel_SSL"/>새 서비스 채널 생성 - SSL 설정</h3></div></div></div>
+    
+
+    <p>SSL 기능을 사용하려면 우선 <span><strong class="guilabel">Use SSL</strong></span> 필드를 체크한다.
+    그러면 SSL에 관한 다음과 같은 추가적인 설정을 할 수 있다.</p>
+
+    <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Protocol</strong></span></span></dt><dd>
+          <p>SSL에 사용할 통신 프로토콜을 설정한다. 기본값으로 TLS가 지정되어 있다.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">Key Store Type</strong></span></span></dt><dd>
+          <p>SSL 키 스토어의 종류를 설정한다. 기본값으로 JKS가 지정되어 있다.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">Key Store File</strong></span></span></dt><dd>
+          <p>키 스토어 파일의 절대 경로를 입력한다.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">Key Store Pass</strong></span></span></dt><dd>
+          <p>키 스토어 파일에 접근하기 위한 비밀번호를 입력한다.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">Key Managerment Algorithm</strong></span></span></dt><dd>
+          <p>키의 관리에 사용하는 알고리즘을 설정한다. 기본값으로 SunX509가 지정되어 있다.</p>
+        </dd></dl></div>
+
+    <p><span><strong class="guilabel">Client Auth</strong></span> 필드를 체크하면 SSL 클라이언트의 인증에 필요한
+    다음과 같은 추가 설정을 할 수 있다.</p>
+
+    <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Trust Store Type</strong></span></span></dt><dd>
+          <p>SSL 클라이언트를 인증할 trust 스토어의 종류를 설정한다. 기본값으로 JKS가 지정되어 있다.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">Trust Store File</strong></span></span></dt><dd>
+          <p>trust 스토어 파일의 절대 경로를 입력한다.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">Trust Store Pass</strong></span></span></dt><dd>
+          <p>trust 스토어 파일에 접근하기 위한 비밀번호를 입력한다.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">Trust Management Algorithm</strong></span></span></dt><dd>
+          <p>trust의 관리에 사용하는 알고리즘을 설정한다. 기본값으로 SunX509가 지정되어 있다.</p>
+        </dd></dl></div>
+
+    <p><span><strong class="guibutton">이전</strong></span> 버튼을 누르면 기본 설정 페이지로 이동한다.</p>
+
+    <p>모든 설정을 마친 뒤 <span><strong class="guibutton">생성</strong></span> 버튼을 누르면 JMS 엔진에 새 서비스 채널이
+    추가되면서 <a href="JeusServiceJMSEngine.html#JeusServiceJMSEngine_Configuration_server_channel" title="서비스 채널">서비스 채널</a>
+    페이지로 이동한다.</p>
+  </div>
+
+  <div class="section" lang="ko"><div class="titlepage"><div><div><h3 class="title"><a id="JeusServiceServerChannel_Configuration"/>서비스 채널 - 설정</h3></div></div></div>
+    
+
+    <p>JMS 엔진 설정의 <a href="JeusServiceJMSEngine.html#JeusServiceJMSEngine_Configuration_server_channel" title="서비스 채널">서비스 채널</a> 페이지에 표시된
+    서비스 채널 목록에서 특정 서비스 채널의 이름을 클릭하면 이 페이지로 이동하여 설정 정보를 확인 및 수정할 수 있다.</p>
+
+    <p>여기에서는 서비스 채널의 이름(<span><strong class="guilabel">Name</strong></span> 필드)과 서비스 주소
+    유형(<span><strong class="guilabel">Address Type</strong></span> 필드)을 제외하고 서비스 채널을 생성할 때 입력했던 것과 같은
+    항목들을 설정할 수 있다. 각 항목에 대한 설명은 <a href="JeusServiceServerChannel.html#JeusServiceServerChannel_Create" title="새 서비스 채널 생성 - 기본 설정">새 서비스 채널 생성 - 기본 설정</a> 과 <a href="JeusServiceServerChannel.html#JeusServiceServerChannel_SSL" title="새 서비스 채널 생성 - SSL 설정">새 서비스 채널 생성 - SSL 설정</a> 페이지의 도움말에 나와 있다.</p>
+  </div>
+</div><div xmlns="" align="center"/></body></html>

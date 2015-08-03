@@ -1,0 +1,89 @@
+9
+
+dir
+781
+svn://192.168.1.134/JEUS6/testenv/trunk/lib
+svn://192.168.1.134/JEUS6
+
+
+
+2013-11-05T01:47:36.837163Z
+775
+taeju
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+e2cfb00e-0bd0-4642-a9bb-23a1f3b27570
+
+README.txt
+file
+
+
+
+
+2015-08-03T11:22:15.000000Z
+d9d678f1ea697a44e2bc4a9ce8fb780f
+2010-11-03T05:03:25.047495Z
+594
+jungeun_lee
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5263
+
+application
+dir
+
+client
+dir
+
+datasource
+dir
+
+endorsed
+dir
+
+etc
+dir
+
+licenses
+dir
+
+schemas
+dir
+
+shared
+dir
+
+system
+dir
+

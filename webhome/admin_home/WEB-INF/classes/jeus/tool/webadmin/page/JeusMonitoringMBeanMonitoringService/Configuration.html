@@ -1,0 +1,62 @@
+<body jwcid="@jeus:SubBorder" style="height: 100%; width: 100%; padding: 5px">
+	<script jwcid="@Script" script="/jeus/tool/webadmin/script/WordBreak.script" />
+    <span jwcid="tabPanel">
+        <form jwcid="informationForm">
+            <span jwcid="node_name"/>
+			<span jwcid="mbean_name" class="field_content word_break"/>
+            <span jwcid="className"/>
+            <span jwcid="description"/>
+        </form>
+        <span jwcid="config_tabpanel">
+            <span jwcid="attribute_tab@Block">
+                <form jwcid="attributeForm">
+                    <table jwcid="attributeTable">
+                    <span jwcid="attribute_nameColumnValue@Block">
+                        <a jwcid="attributeLink"><span jwcid="attributeName"/></a>
+                    </span>
+					<span jwcid="attribute_accessColumnValue@Block">
+                        <span jwcid="@Insert" value="ognl:@jeus.tool.webadmin.page.JeusMonitoringMBeanMonitoringService.MBeanMonitoringUtils@getAccess(attributeInfo)"/>
+                    </span>
+					<span jwcid="attribute_typeColumnValue@Block">
+                        <span jwcid="@Insert" value="ognl:@jeus.tool.webadmin.page.JeusMonitoringMBeanMonitoringService.MBeanMonitoringUtils@getType(attributeInfo.type)"/>
+                    </span>
+					<span jwcid="attribute_valueColumnValue@Block">
+						<span jwcid="@If" condition="ognl:attributeInfo.isReadable()">
+                        	<span jwcid="@Insert" value="ognl:@jeus.tool.webadmin.page.JeusMonitoringMBeanMonitoringService.MBeanMonitoringUtils@getValue(value)"/>
+                        </span>
+                    </span>
+                    </table>
+                </form>
+            </span>
+            <span jwcid="operation_tab@Block">
+                <form jwcid="operationForm">
+                    <table jwcid="operationTable">
+                    <span jwcid="operation_nameColumnValue@Block">
+                        <a jwcid="operationLink"><span jwcid="operationName"/></a>
+                    </span>
+					<span jwcid="operation_typeColumnValue@Block">
+                        <span jwcid="@Insert" value="ognl:@jeus.tool.webadmin.page.JeusMonitoringMBeanMonitoringService.MBeanMonitoringUtils@getType(operationInfo.returnType)"/>
+                    </span>   
+					<span jwcid="operation_impactColumnValue@Block">
+                        <span jwcid="@Insert" value="ognl:@jeus.tool.webadmin.page.JeusMonitoringMBeanMonitoringService.MBeanMonitoringUtils@getImpact(operationInfo.impact)"/>
+                    </span>
+					<span jwcid="operation_paramNumberColumnValue@Block">
+                        <span jwcid="@Insert" value="ognl:operationInfo.signature.length"/>
+                    </span>
+                    </table>
+                </form>
+            </span>
+            <span jwcid="notification_tab@Block">
+                <form jwcid="notificationForm">
+                    <table jwcid="notificationTable">
+					<span jwcid="notification_typesColumnValue@Block">
+						<div jwcid="@For" source="ognl:notificationInfo.notifTypes" value="ognl:notifType">
+                        	<span jwcid="@Insert" value="ognl:notifType"/>
+                        </div>
+                    </span>                    	
+                    </table>
+                </form>
+            </span>
+        </span>
+    </span>
+</body>

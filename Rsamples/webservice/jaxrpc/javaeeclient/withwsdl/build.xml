@@ -1,0 +1,14 @@
+<project name="withwsdl" default="all" basedir=".">
+    <property name="is.ear.module" value="true" />
+
+    <import file="../../../../common/common-build.xml" />
+
+    <path id="sub-components">
+        <filelist dir="./withwsdl-war" files="build.xml" />
+    </path>
+
+    <target name="all" depends="build, deploy, run" />
+
+    <property name="run.uri" value="EchoJspClient/helloClient.jsp" />
+    <target name="run" depends="launch" />
+</project>

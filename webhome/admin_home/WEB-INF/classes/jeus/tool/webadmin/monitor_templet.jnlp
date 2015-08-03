@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0+" codebase="${codebase}">
+	<information>
+		<title>WebManager MBean Monitoring</title>
+		<vendor>TmaxSoft</vendor>
+		<homepage href="http://www.tmax.co.kr"/>
+		<description>JEUS Webmanager MBean Monitor</description> 
+		<description kind="short">MBean Monitor</description>
+		<offline-allowed/> 
+	</information>
+    <security> 
+        <all-permissions/>
+    </security> 	
+	<resources>
+		<j2se version="1.5+"/>
+		<jar href="monitor_jnlp.jar"/>
+		<jar href="jcommon-1.0.9.jar"/>
+		<jar href="jfreechart-1.0.5.jar"/>
+	</resources>
+	<application-desc main-class="jeus.tool.webadmin.jnlp.DrawingChart">
+		<argument>${url}</argument>
+		<argument>${monitor_name}</argument>
+		<argument>${monitor_type}</argument>
+	</spplication-desc>
+</jnlp>

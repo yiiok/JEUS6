@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="secureConversation-war" default="all" basedir=".">
+
+    <property name="is.war.module" value="true" />
+
+    <import file="../../../../../common/common-build.xml" />
+
+    <target name="-pre-compile">
+        <mkdir dir="${build.classes.dir}" />
+        <antcall target="wsimport">
+            <param name="package.name" value="wssc.sc.server" />
+            <param name="binding.file" value="" />
+            <param name="wsdl.file"
+                   value="-extension ${src.web}/WEB-INF/wsdl/PingService.wsdl" />
+        </antcall>
+    </target>
+
+    <property name="run.uri" value="secureConversation-war/serverwar" />
+
+    <target name="run" depends="launch" />
+
+    <target name="all" depends="build, deploy, run" />
+
+    <target name="do-compile">
+
+        <if>
+            <available file="${src.dir}" type="dir" />
+            <then>
+                <echo>Compiling ${module.name}...</echo>
+                <mkdir dir="${build.classes.dir}" />
+                <javac srcdir="${src.dir}"
+                       source="${javac.source}"
+                       target="${javac.target}"
+                       excludes="${javac.excludes}"
+                       debug="${javac.debug}"
+                       debuglevel="${javac.debuglevel}"
+                       destdir="${build.classes.dir}"
+                       includes="**">
+                    <classpath refid="classpath" />
+                    <classpath refid="jeus.libraries.classpath" />
+                </javac>
+            </then>
+        </if>
+
+        <!-- copy src/conf files to META-INF -->
+        <if>
+            <available file="${src.conf}" type="dir" />
+            <then>
+                <mkdir dir="${build.classes.dir}/META-INF" />
+                <copy todir="${build.classes.dir}/META-INF">
+                    <fileset dir="${src.conf}" includes="**/*" />
+                </copy>
+            </then>
+        </if>
+    </target>
+
+</project>

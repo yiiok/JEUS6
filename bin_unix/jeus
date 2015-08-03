@@ -1,0 +1,99 @@
+#!/bin/sh
+# $Id$
+
+# set up JEUS_HOME.
+if [ -z "$JEUS_HOME" ] ; then
+   PRG="$0"
+   progname=`basename "$0"`
+   saveddir=`pwd`
+
+   dirname_prg=`dirname "$PRG"`
+   cd "$dirname_prg"
+
+   while [ -h "$PRG" ] ; do
+      ls=`ls -ld "$PRG"`
+      link=`expr "$ls" : '.*-> \(.*\)$'`
+      if expr "$link" : '/.*' > /dev/null; then
+      PRG="$link"
+      else
+        PRG=`dirname "$PRG"`"/$link"
+      fi
+   done
+
+   JEUS_HOME=`dirname "$PRG"`/..
+
+   cd "$saveddir"
+
+   JEUS_HOME=`cd "$JEUS_HOME" && pwd`
+
+fi
+
+# set JEUS properties
+. "${JEUS_HOME}/bin/jeus.properties"
+
+# set boot parameter
+BOOT_PARAMETER=$*
+
+if [ ! -z "${USERNAME}" ]
+then
+    BOOT_PARAMETER="-U${USERNAME} -P${PASSWORD} $*"
+fi
+
+# if the option "-h" is set just print out the help message without starting process
+case ${BOOT_PARAMETER} in
+  *-h*)
+      echo "
+jeus  start JEUS Server
+
+Usage:
+      jeus [-h] [-protectkey] [-d] [-xml] [-U<username>] [-P<password>]
+           [-f<filename>] [-D<property=value>] [-properties=<filename>]
+
+      arguments:
+        -h: show this help page
+        -protectkey: use protected secret key
+        -d: boot dynamic mode
+        -xml: use XML (deprecated)
+        -U<username>: set username
+        -P<password>: set password
+        -f<filename>: set filename of username and password
+        -D<property=value>: set system property. This option can be used more
+                            than once.
+        -properties=<filename>: set system properties from the specified
+                                system property file.
+      "
+      exit;;
+esac
+
+# echo environment
+echo "***************************************************************"
+echo "  - JEUS Home         : ${JEUS_HOME}                           "
+echo "  - JEUS Base Port    : ${JEUS_BASEPORT}                       "
+echo "  - Java Vendor       : ${JAVA_VENDOR}                         "
+echo "  - Added Java Option : ${JAVA_ARGS}                           "
+echo "***************************************************************"
+
+# execute jeus with echo
+set -x
+"${JAVA_HOME}/bin/java" $VM_OPTION  $SESSION_MEM                            \
+    -Xbootclasspath/p:"${JEUS_HOME}/lib/system/extension.jar"               \
+    -classpath "${JEUS_HOME}/lib/system/bootstrap.jar"                      \
+    -Dsun.rmi.dgc.client.gcInterval=3600000                                 \
+    -Dsun.rmi.dgc.server.gcInterval=3600000                                 \
+    -Djava.library.path="${JEUS_LIBPATH}"                                   \
+    -Djava.endorsed.dirs="${JEUS_HOME}/lib/endorsed"                        \
+    -Djava.naming.factory.initial=jeus.jndi.JNSContextFactory               \
+    -Djava.naming.factory.url.pkgs=jeus.jndi.jns.url                        \
+    -Djava.net.preferIPv4Stack=true                                         \
+    -Djava.util.logging.config.file="${JEUS_HOME}/bin/logging.properties"   \
+    -Djava.util.logging.manager=jeus.util.logging.JeusLogManager            \
+    -Djeus.home="${JEUS_HOME}"                                              \
+    -Djeus.log.home="${JEUS_HOME}/logs"                                     \
+    -Djeus.baseport=${JEUS_BASEPORT}                                        \
+    -Djeus.jvm.version=${VM_TYPE}                                           \
+    -Djeus.tm.checkReg=true                                                 \
+    -Djeus.tool.webadmin.locale.language=${JEUS_LANG}                       \
+    -Djeus.net.reuseAddress=true                                            \
+    -Djeus.properties.replicate=jeus,sun.rmi,java.util,java.net             \
+    ${JAVA_ARGS}                                                            \
+    jeus.server.JeusBootstrapper ${BOOT_PARAMETER}

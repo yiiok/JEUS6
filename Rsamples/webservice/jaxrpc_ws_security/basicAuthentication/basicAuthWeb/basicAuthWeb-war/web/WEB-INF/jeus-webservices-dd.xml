@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jeus-webservices-dd xmlns="http://www.tmaxsoft.com/xml/ns/jeus" version="6.0">
+    <service>
+        <webservice-description-name>BA_DocLitEchoService</webservice-description-name>
+        <port>
+            <port-component-name>EchoPort</port-component-name>
+        </port>
+    </service>
+</jeus-webservices-dd>

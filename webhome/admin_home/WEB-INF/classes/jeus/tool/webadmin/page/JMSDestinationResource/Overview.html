@@ -1,0 +1,54 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <form jwcid="form">
+			<table border="1" cellpadding="3" width="100%" jwcid="destinationTable">
+				<span jwcid="dnc_name_labelColumnValue@Block">
+					<a jwcid="destinationLink"><span jwcid="@Insert" value="ognl:destination.name"/></a>
+				</span>				
+				<span jwcid="dnc_actionColumnValue@Block">
+					<div style="text-align: center;">
+						<a jwcid="bindLink"></a><input jwcid="bind" onclick="jeus.fireEvent(previousSibling, 'click');" class="form_button"/>
+					</div>
+				</span>	
+				<span jwcid="dnc_removeColumnHeader@Block"></span>
+				<span jwcid="dnc_removeColumnValue@Block">
+					<div style="text-align: center;">
+						<a jwcid="deleteLink" disabled="ognl:!@jeus.tool.webadmin.hivemind.Lock@isEnabledEdit(getSettings(), getVisit())"><img jwcid="delete" alt="delete"/></a>
+					</div>
+				</span>
+				<span jwcid="dnc_consumerColumnValue@Block">
+					<table style="border: none;border-collapse: collapse;">
+						<tr>
+							<td style="border: none;padding: 2px;">High</td>
+							<td style="border: none;padding: 2px;"><span jwcid="@Insert" value="ognl:destination.consumerHigh"></span></td>
+						</tr>
+						<tr>
+							<td style="border: none;padding: 2px;">Current</td>
+							<td style="border: none;padding: 2px;"><span jwcid="@Insert" value="ognl:destination.consumer"></span></td>
+						</tr>
+					</table>
+				</span>
+				<span jwcid="dnc_usingBytesColumnValue@Block">
+					<table style="border: none;border-collapse: collapse;">
+						<tr>
+							<td style="border: none;padding: 2px;">High</td>
+							<td style="border: none;padding: 2px;"><span jwcid="@Insert" value="ognl:destination.usingBytesHigh"></span></td>
+						</tr>
+						<tr>
+							<td style="border: none;padding: 2px;">Current</td>
+							<td style="border: none;padding: 2px;"><span jwcid="@Insert" value="ognl:destination.usingBytes"></span></td>
+						</tr>
+					</table>				
+				</span>				
+			</table>   
+			<div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+				<a jwcid="createQueueLink" class="create_link"><span jwcid="create_queue_label"/></a>
+	            <a jwcid="createTopicLink" class="create_link"><span jwcid="create_topic_label"/></a>
+			</div>
+	        <div class="form_button_layer">
+				<a jwcid="@PageLink" page="ognl:pageName"></a><input jwcid="@Button" class="form_button" onclick="jeus.fireEvent(previousSibling, 'click');" label="message:common.label.refresh"/>
+	        </div>
+        </form>
+
+    </span>
+</html>

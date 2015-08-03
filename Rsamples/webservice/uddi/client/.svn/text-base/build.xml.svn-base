@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="jeusuddi" default="all" basedir=".">
+
+    <target name="do-compile">
+        <echo>Compiling ${module.name}</echo>
+        <mkdir dir="${build.classes.dir}" />
+        <javac srcdir="${src.dir}" source="${javac.source}" target="${javac.target}" excludes="${javac.excludes}" debug="${javac.debug}" debuglevel="${javac.debuglevel}" destdir="${build.classes.dir}" includes="**">
+            <classpath refid="jeus.libraries.classpath" />
+            <classpath refid="classpath" />
+        </javac>
+    </target>
+
+    <property name="is.app-client.module" value="true" />
+
+    <import file="../../../common/common-build.xml" />
+
+    <target name="run">
+        <java classname="FindTModelSample" fork="true">
+        	  <sysproperty key="java.endorsed.dirs"     value="${jeus.home}/lib/endorsed"/>        
+            <classpath refid="jeus.libraries.classpath" />
+            <classpath refid="classpath" />
+        </java>
+        <java classname="SaveBusinessSample" fork="true">
+        	  <sysproperty key="java.endorsed.dirs"     value="${jeus.home}/lib/endorsed"/>        
+            <classpath refid="jeus.libraries.classpath" />
+            <classpath refid="classpath" />
+        </java>
+        <java classname="FindBusinessSample" fork="true">
+        	  <sysproperty key="java.endorsed.dirs"     value="${jeus.home}/lib/endorsed"/>        
+            <classpath refid="jeus.libraries.classpath" />
+            <classpath refid="classpath" />
+        </java>
+        <java classname="DeleteBusinessSample" fork="true">
+        	  <sysproperty key="java.endorsed.dirs"     value="${jeus.home}/lib/endorsed"/>        
+            <classpath refid="jeus.libraries.classpath" />
+            <classpath refid="classpath" />
+        </java>
+    </target>
+
+    <target name="all" depends="build, run" />
+</project>

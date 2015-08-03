@@ -1,0 +1,29 @@
+#!/bin/sh
+if [ -z "$JEUS_HOME" ] ; then
+   PRG="$0"
+   progname=`basename "$0"`
+   saveddir=`pwd`
+
+   dirname_prg=`dirname "$PRG"`
+   cd "$dirname_prg"
+
+   while [ -h "$PRG" ] ; do
+      ls=`ls -ld "$PRG"`
+      link=`expr "$ls" : '.*-> \(.*\)$'`
+      if expr "$link" : '/.*' > /dev/null; then
+      PRG="$link"
+      else
+        PRG=`dirname "$PRG"`"/$link"
+      fi
+   done
+
+   JEUS_HOME=`dirname "$PRG"`/..
+
+   cd "$saveddir"
+
+   JEUS_HOME=`cd "$JEUS_HOME" && pwd`
+
+fi
+
+java -classpath ${JEUS_HOME}/lib/system/jeus.jar:${JEUS_HOME}/lib/system/Tmax_JSecure_jdk15x_bc127_p1_obf.jar:${JEUS_HOME}/lib/system/jeusutil.jar:${JEUS_HOME}/lib/system/tmaxjce_jdk15x.jar:${JEUS_HOME}/lib/client/clientcontainer.jar -Djeus.home=${JEUS_HOME} jeus.security.util.EncryptionTool $*
+    

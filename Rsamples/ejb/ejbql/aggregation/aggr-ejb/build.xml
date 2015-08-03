@@ -1,0 +1,6 @@
+<project name="aggr-ejb" default="build" basedir=".">
+    <property name="is.ejb-jar.module" value="true"/>
+
+    <import file="../../../../common/common-build.xml"/>
+
+</project>

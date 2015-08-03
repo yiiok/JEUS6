@@ -1,0 +1,442 @@
+<?xml version="1.0"?>
+<!--
+$Id: common-build.xml 755 2007-04-30 04:28:49Z wjkim $
+-->
+<project name="common-build" basedir=".">
+    <dirname property="common.basedir" file="${ant.file.common-build}"/>
+    <dirname property="antfile.dir" file="${ant.file}"/>
+    <property name="samples.home" value="${common.basedir}/.."/>
+
+    <property environment="env"/>
+    <property file="${antfile.dir}/build.properties"/>
+    <property file="${samples.home}/build.properties"/>
+    <property file="${common.basedir}/build.properties"/>
+
+    <import file="${common.basedir}/app-server.xml"/>
+
+    <path id="common-build.classpath">
+        <fileset dir="${common.basedir}/lib" includes="*.jar"/>
+    </path>
+
+    <!-- ant-contrib taskdefs -->
+    <taskdef resource="net/sf/antcontrib/antlib.xml" classpathref="common-build.classpath"/>
+
+    <property name="extra.classpath" value="" description="User classpath list"/>
+    <!-- overrided by each build.xml -->
+    <!--<path id="javaee.classpath"/>--> <!-- overrided by AS vendor -->
+
+    <path id="classpath">
+        <dirset dir="${antfile.dir}/..">
+            <include name="**/build/classes"/>
+        </dirset>
+        <pathelement location="${build.classes.dir}"/>
+        <pathelement path="${extra.classpath}"/>
+        <path refid="javaclient.classpath"/>
+    </path>
+
+    <macrodef name="iterate-subcomponents">
+        <attribute name="target"/>
+        <sequential>
+            <subant target="@{target}" failonerror="false">
+                <buildpath refid="sub-components"/>
+            </subant>
+        </sequential>
+    </macrodef>
+
+    <!-- Dummy placeholder targets. They can be overridden by application build file -->
+    <target name="-pre-init"/>
+    <target name="-pre-compile"/>
+    <target name="-post-compile"/>
+    <target name="-pre-package"/>
+    <target name="-post-package"/>
+    <target name="-pre-setup"/><!--TODO-->
+    <target name="-pre-deploy"/><!--TODO-->
+    <target name="-pre-clean"/>
+    <target name="-post-clean"/>
+
+    <target name="build" depends="init, do-build" description="Build modules"/>
+    <target name="compile" depends="-pre-compile, do-compile, -post-compile" description="Compile classes"/>
+    <target name="package" depends="-pre-package, do-package, -post-package" description="Package module"/>
+    
+    <!--=======================================================================-->
+
+    <!-- set module.file property -->
+    <condition property="module.file" value="${dist.dir}/${module.name}.war">
+        <istrue value="${is.war.module}"/>
+    </condition>
+    <condition property="module.file" value="${dist.dir}/${module.name}.rar">
+        <istrue value="${is.rar.module}"/>
+    </condition>
+    <condition property="module.file" value="${dist.dir}/${module.name}.ear">
+        <istrue value="${is.ear.module}"/>
+    </condition>
+    <property name="module.file" value="${dist.dir}/${module.name}.jar"/>
+
+    <target name="init" depends="-pre-init">
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${dist.dir}"/>
+    </target>
+
+    <target name="do-build">
+        <if>
+            <or>
+                <istrue value="${is.ear.module}"/>
+                <istrue value="${is.multi.module}"/>
+            </or>
+            <then>
+                <iterate-subcomponents target="build"/>
+            </then>
+        </if>
+        <antcall target="compile"/>
+        <antcall target="package"/>
+    </target>
+
+    <target name="deploy" depends="init, -pre-deploy">
+        <if>
+            <istrue value="${is.multi.module}"/>
+            <then>
+                <iterate-subcomponents target="deploy"/>
+            </then>
+            <elseif>
+                <or>
+                    <istrue value="${is.ear.module}"/>
+                    <istrue value="${is.ejb-jar.module}"/>
+                    <istrue value="${is.war.module}"/>
+                    <istrue value="${is.rar.module}"/>
+                    <istrue value="${is.app-client.module}"/>
+                </or>
+                <then>
+                    <antcall target="do-deploy" description="call app-server impl">
+                        <param name="file" value="${module.file}"/>
+                    </antcall>
+                </then>
+            </elseif>
+        </if>
+    </target>
+
+    <target name="undeploy" depends="init">
+        <if>
+            <istrue value="${is.multi.module}"/>
+            <then>
+                <iterate-subcomponents target="undeploy"/>
+            </then>
+            <elseif>
+                <or>
+                    <istrue value="${is.ear.module}"/>
+                    <istrue value="${is.ejb-jar.module}"/>
+                    <istrue value="${is.war.module}"/>
+                    <istrue value="${is.rar.module}"/>
+                    <istrue value="${is.app-client.module}"/>
+                </or>
+                <then>
+                    <antcall target="do-undeploy" description="call app-server impl">
+                        <param name="file" value="${module.file}"/>
+                    </antcall>
+                </then>
+            </elseif>
+        </if>
+    </target>
+
+    <target name="wsgen">
+        <antcall target="do-wsgen">
+            <param name="sib.file" value="${sib.file}"/>
+        </antcall>
+    </target>
+
+    <target name="wsimport">
+        <antcall target="do-wsimport">
+            <param name="package.name" value="${package.name}"/>
+            <param name="binding.file" value="${binding.file}"/>
+            <param name="wsdl.file" value="${wsdl.file}"/>
+        </antcall>
+    </target>
+
+    <target name="java2wsdl">
+        <antcall target="do-java2wsdl">
+            <param name="java2wsdl.option" value="${java2wsdl.option}"/>
+        </antcall>
+    </target>
+
+    <target name="wsdl2java">
+        <antcall target="do-wsdl2java">
+            <param name="wsdl2java.option" value="${wsdl2java.option}"/>
+        </antcall>
+    </target>
+
+    <target name="wsdl2uddi">
+        <antcall target="do-wsdl2uddi">
+            <param name="wsdl2uddi.option" value="${wsdl2uddi.option}"/>
+        </antcall>
+    </target>
+
+    <target name="keytool">
+        <antcall target="do-keytool">
+            <param name="keytool.option" value="${keytool.option}"/>
+        </antcall>
+    </target>
+
+    <target name="clean" depends="-pre-clean, do-clean, -post-clean"/>
+    <target name="do-clean">
+        <if>
+            <or>
+                <istrue value="${is.ear.module}"/>
+                <istrue value="${is.multi.module}"/>
+            </or>
+            <then>
+                <iterate-subcomponents target="clean"/>
+            </then>
+        </if>
+
+        <delete dir="${build.dir}"/>
+        <delete dir="${dist.dir}"/>
+    </target>
+
+    <!--=======================================================================-->
+    
+    <target name="do-compile">
+        
+        <if>
+            <available file="${src.dir}" type="dir"/>
+            <then>
+                <echo>Compiling ${module.name}...</echo>
+                <mkdir dir="${build.classes.dir}"/>
+                <javac srcdir="${src.dir}"
+                       source="${javac.source}"
+                       target="${javac.target}"
+                       excludes="${javac.excludes}"
+                       debug="${javac.debug}"
+                       debuglevel="${javac.debuglevel}"
+                       destdir="${build.classes.dir}"
+                       includes="**">
+                    <classpath refid="classpath"/>
+                </javac>
+            </then>
+        </if>
+
+        <!-- copy src/conf files to META-INF -->
+        <if>
+            <available file="${src.conf}" type="dir"/>
+            <then>
+                <mkdir dir="${build.classes.dir}/META-INF"/>
+                <copy todir="${build.classes.dir}/META-INF">
+                    <fileset dir="${src.conf}" includes="**/*"/>
+                </copy>
+            </then>
+        </if>
+    </target>
+
+    <target name="do-package">
+        <if>
+            <istrue value="${is.ear.module}"/>
+            <then>
+                <antcall target="do-package-ear"/>
+            </then>
+        </if>
+        <if>
+            <or>
+                <istrue value="${is.ejb-jar.module}"/>
+                <istrue value="${is.jar.module}"/>
+                <istrue value="${is.app-client.module}"/>
+            </or>
+            <then>
+                <antcall target="do-package-jar">
+                </antcall>
+            </then>
+        </if>
+        <if>
+            <istrue value="${is.war.module}"/>
+            <then>
+                <antcall target="do-package-war">
+                </antcall>
+            </then>
+        </if>
+        <if>
+            <istrue value="${is.rar.module}"/>
+            <then>
+                <antcall target="do-package-jar">
+                </antcall>
+            </then>
+        </if>
+    </target>
+
+    <!-- package EAR -->
+    <target name="do-package-ear">
+        <echo message="building ear package"/>
+        <delete dir="${ear.build.dir}"/>
+        <mkdir dir="${ear.build.dir}"/>
+
+        <if>
+            <available file="${src.conf}" type="dir"/>
+            <then>
+                <mkdir dir="${ear.build.dir}/META-INF"/>
+                <copy todir="${ear.build.dir}/META-INF">
+                    <fileset dir="${src.conf}" includes="**/*"/>
+                </copy>
+            </then>
+        </if>
+
+        <dirname property="ear.dir" file="${ear.build.dir}/MANIFEST/"/>
+        <subant target="copy-dist" failonerror="false">
+            <property name="target.dist.dir" value="${ear.dir}"/>
+            <buildpath refid="sub-components"/>
+        </subant>
+
+        <jar file="${module.file}" basedir="${ear.build.dir}">
+        </jar>
+
+    </target>
+
+    <target name="copy-dist" if="target.dist.dir">
+        <mkdir dir="${target.dist.dir}"/>
+        <copy todir="${target.dist.dir}">
+            <fileset dir="${dist.dir}" includes="**/*"/>
+        </copy>
+    </target>
+
+    <!-- package jar file -->
+    <target name="do-package-jar">
+        <dirname file="${module.file}" property="destfile.dir"/>
+        <mkdir dir="${destfile.dir}"/>
+
+        <!-- Build jar -->
+        <if>
+            <available file="${src.conf}/MANIFEST.MF"/>
+            <then>
+                <!-- jar with manifest -->
+                <jar file="${module.file}" manifest="${src.conf}/MANIFEST.MF">
+                    <fileset dir="${build.classes.dir}"/>
+                </jar>
+            </then>
+            <else>
+                <!-- jar without manifest -->
+                <jar file="${module.file}">
+                    <fileset dir="${build.classes.dir}"/>
+                </jar>
+            </else>
+        </if>
+    </target>
+
+    <!-- package WAR -->
+    <target name="do-package-war">
+        <dirname file="${module.file}" property="destfile.dir"/>
+        <mkdir dir="${destfile.dir}"/>
+
+        <mkdir dir="${build.war.dir}"/>
+        <!-- Build war -->
+        
+        <!-- Add to WEB-INF/classes -->
+        <if>
+            <available file="${build.classes.dir}" type="dir"/>
+            <then>
+                <copy todir="${build.war.dir}/WEB-INF/classes">
+                    <fileset dir="${build.classes.dir}"/>
+                </copy>
+            </then>
+        </if>
+        
+        <!-- Add web pages to root -->
+        <copy todir="${build.war.dir}">
+            <fileset dir="${src.web}"/>
+        </copy>
+        
+        <!-- Add libraries to WEB-INF/lib -->
+        <if>
+            <available file="${libdir}" type="dir"/>
+            <then>
+                <copy todir="${build.war.dir}/WEB-INF/lib">
+                    <fileset dir="${libdir}"/>
+                </copy>
+            </then>
+        </if>
+
+        <jar file="${module.file}" filesonly="true">
+            <fileset dir="${build.war.dir}">
+            </fileset>
+        </jar>
+
+    </target>
+
+
+    <!--=======================================================================-->
+    <target name="getBrowser" unless="default.browser">
+
+        <condition property="browser" value="rundll32">
+            <os family="windows"/>
+        </condition>
+
+        <condition property="browser" value="/usr/bin/open">
+            <and>
+                <os family="mac"/>
+            </and>
+        </condition>
+
+        <condition property="browser" value="/usr/bin/firefox">
+            <and>
+                <os family="unix"/>
+                <available file="/usr/bin/firefox"/>
+            </and>
+        </condition>
+
+        <condition property="browser" value="/usr/bin/mozilla">
+            <and>
+                <os family="unix"/>
+                <available file="/usr/bin/mozilla"/>
+            </and>
+        </condition>
+	<condition property="browser" value="/usr/bin/konqueror">
+            <and>
+                <os family="unix"/>
+		<available file="/usr/bin/konqueror"/>
+            </and>
+	</condition>
+
+        <property name="default.browser" value="${browser}"/>
+    </target>
+
+    <!-- This target launches a browser for the specified URL -->
+    <target name="launch" depends="getBrowser" description="launches the application in a browser">
+
+        <!-- Default the value of run.uri to be module.name -->
+        <property name="run.uri" value="${module.name}"/>
+        <echo>
+            Trying to launch the browser with the url
+            http://${javaee.server.name}:${javaee.server.port}/${run.uri}
+
+            If the above does not work, you may open a browser and copy and paste the above URL.
+        </echo>
+        <fail unless="default.browser" message="Could not find brower, please set default.browser"/>
+
+        <condition property="extra-args" value="url.dll,FileProtocolHandler">
+            <os family="windows"/>
+        </condition>
+        <condition property="extra-args" value="">
+            <not>
+                <os family="windows"/>
+            </not>
+        </condition>
+        <exec executable="${default.browser}" spawn="true">
+            <arg line="${extra-args} http://${javaee.server.name}:${javaee.server.port}/${run.uri}"/>
+        </exec>
+    </target>
+    
+    <target name="runjavaclient" description="run stand-alone java client">
+        <fail unless="run.class">$${run.class} should be the main class name</fail>
+        <java fork="true" failonerror="true" classname="${run.class}">
+            <sysproperty key="java.naming.provider.url"     value="${java.naming.provider.url}:${jeus.baseport}"/>
+            <sysproperty key="java.naming.factory.initial"  value="${java.naming.factory.initial}"/>
+            <sysproperty key="java.naming.factory.url.pkgs" value="jeus.jndi.jns.url"/>
+            <sysproperty key="jeus.baseport" value="${jeus.baseport}"/>
+	    <arg line ="${client.arg}"/>
+            <classpath>
+                <pathelement path="${module.file}"/>
+                <path refid="standalonejavaclient.classpath"/>
+            </classpath>
+        </java>
+    </target>
+
+    <target name="runappclient" description="run app-client module with container">
+        <antcall target="do-runappclient">
+            <param name="client" value="${module.file}"/>
+        </antcall>
+    </target>
+</project>
