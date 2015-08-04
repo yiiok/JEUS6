@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceLogAnalyzerService.AnalysisPage">
+    <component id="condAvailable" type="If">
+        <binding name="condition" value="(onLine == true and logger != null) or (onLine == false)"/>
+        <binding name="renderTag" value="false"/>
+    </component>
+
+    <component id="condUnavailable" type="Else">
+        <binding name="renderTag" value="false"/>
+    </component>
+
+    <component id="logo" type="Image">
+        <binding name="image" value="asset:logo"/>
+    </component>
+
+    <component id="description_top" type="Image">
+        <binding name="image" value="asset:description_top"/>
+    </component>
+
+    <component id="description_bottom" type="Image">
+        <binding name="image" value="asset:description_bottom"/>
+    </component>
+
+    <asset name="logo" path="context:/image/log/logo.gif"/>
+    <asset name="description_top" path="context:/image/log/logo_description_top.gif"/>
+    <asset name="description_bottom" path="context:/image/log/logo_description_bottom.gif"/>
+    
+    <!-- handler -->
+    <component id="dynamite" type="jeus:Dynamite"/>
+
+    <component id="condOnLine" type="If">
+        <binding name="condition" value="onLine"/>
+        <binding name="renderTag" value="false"/>
+    </component>
+
+    <component id="handlerForm" type="jeus:JEUSForm">
+        <binding name="title" value="messages.format('la.handler.title', logger)"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="condHasFileHandlers" type="If">
+        <binding name="condition" value="fileHandlers.length != 0"/>
+        <binding name="renderTag" value="false"/>
+    </component>
+
+    <component id="handler_owner" type="jeus:ReadOnlyTextField">
+        <binding name="value" value="fileHandlers[0].owner"/>
+        <binding name="label" value="message:la.handler.handler_owner.label"/>
+    </component>
+
+    <component id="name_column" type="Insert">
+        <binding name="value" value="message:la.handler.name.label"/>
+    </component>
+
+    <component id="pattern_column" type="Insert">
+        <binding name="value" value="message:la.handler.pattern.label"/>
+    </component>
+
+
+    <component id="level_column" type="Insert">
+        <binding name="value" value="message:la.handler.level.label"/>
+    </component>
+
+    <component id="actions_column" type="Insert">
+        <binding name="value" value="message:la.handler.actions.label"/>
+    </component>
+
+    <component id="eachFileHandler" type="For">
+        <binding name="source" value="fileHandlers"/>
+        <binding name="value" value="fileHandler"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="name_value" type="Insert">
+        <binding name="value" value="fileHandler.name"/>
+    </component>
+
+    <component id="pattern_value" type="Insert">
+        <binding name="value" value="fileHandler.pattern"/>
+    </component>
+
+    <component id="level_value" type="Insert">
+        <binding name="value" value="fileHandler.level"/>
+    </component>
+
+    <component id="analysisLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceLogAnalyzerService_Rule"/>
+        <binding name="parameters" value="{logAnalyzerName, fileHandler.pattern, fileHandler.formatterClassName, fileHandler.logRecordClassName, fileHandler.loggerType}"/>
+    </component>
+
+    <component id="analysis" type="Button">
+        <binding name="label" value="message:la.handler.analysis.label"/>
+    </component>
+
+    <component id="stack_trace" type="Button">
+        <binding name="label" value="message:la.handler.stack_trace.label"/>
+    </component>
+
+    <component id="stack_traceLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceLogAnalyzerService_StackTrace"/>
+        <binding name="parameters" value="{logAnalyzerName, fileHandler.pattern}"/>
+    </component>
+
+
+    <component id="offLineForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:la.offline.title"/>
+        <binding name="success" value="listener:onOffLineOk"/>
+    </component>
+
+    <component id="file_pattern" type="jeus:Field">
+        <binding name="field" value="component:file_patternField"/>
+    </component>
+
+    <component id="file_patternField" type="TextField">
+        <binding name="value" value="filePattern"/>
+        <binding name="displayName" value="message:la.offline.file_pattern.label"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="formatter_class_name" type="jeus:Field">
+        <binding name="field" value="component:formatter_class_nameField"/>
+    </component>
+
+    <component id="formatter_class_nameField" type="TextField">
+        <binding name="value" value="formatterClassName"/>
+        <binding name="displayName" value="message:la.offline.formatter_class_name.label"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <property name="fileHandler"/>
+
+    <property name="filePattern" initial-value="@jeus.util.JeusProperties@JEUS_LOG_HOME"/>
+    <property name="formatterClassName" initial-value="'jeus.util.logging.UserAccessFormatter'"/>
+    <property name="logRecordClassName" initial-value="'jeus.util.logging.JeusAccessRecord'"/>
+
+</page-specification>

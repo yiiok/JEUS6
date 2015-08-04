@@ -1,0 +1,34 @@
+<project name="jmxclientsetup" default="all" basedir=".">
+    <property name="is.multi.module" value="false"/>
+    <property name="is.jar.module" value="true"/>
+
+    <import file="../../common/common-build.xml"/>
+
+    <target name="all" depends="build, run"/>
+
+    <target name="run">
+        <echo>Please execute run-1, run-2, or run-3</echo>
+    </target>
+
+    <target name="run-1">
+        <antcall target="runjavaclient">
+            <param name="run.class" value="jmxclient.JMXClientUsingJeusUtility"/>
+            <param name="client.arg" value="${hostname} ${username} ${password}"/>
+        </antcall>
+    </target>
+  
+    <target name="run-2">
+        <antcall target="runjavaclient">
+            <param name="run.class" value="jmxclient.JMXClientUsingJndi"/>
+            <param name="client.arg" value="${hostname} ${username} ${password} ${target-name}"/>
+        </antcall>
+    </target>
+
+    <target name="run-3">
+        <antcall target="runjavaclient">
+            <param name="run.class" value="jmxclient.JMXClientUsingJmxUrl"/>
+            <param name="client.arg" value="${hostname} ${username} ${password} ${connector-exportname}"/>
+        </antcall>
+    </target>
+
+</project>

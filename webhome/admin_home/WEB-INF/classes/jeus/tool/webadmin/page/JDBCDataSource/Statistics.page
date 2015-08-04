@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JDBCDataSource.StatisticsPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:JDBC DataSource Statistics"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="@jeus.tool.webadmin.page.PageNames@JDBCDATASOURCE_NAMES"/>
+    </component>
+
+    <component id="form" type="jeus:JEUSForm">
+        <binding name="title" value="message:jds.statistics.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="minPoolSize" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:jds.minpool.size.label"/>
+        <binding name="value" value="stats.minPoolSize"/>
+    </component>
+
+    <component id="maxPoolSize" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:jds.maxpool.size.label"/>
+        <binding name="value" value="stats.maxPoolSize"/>
+    </component>
+
+    <component id="poolSize" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:jds.pool.connection.label"/>
+        <binding name="value" value="stats.poolSize"/>
+    </component>
+
+    <component id="freePoolSize" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:jds.freepool.connection.label"/>
+        <binding name="value" value="stats.freePoolSize"/>
+    </component>
+
+    <component id="createCount" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:jds.create.count.label"/>
+        <binding name="value" value="stats.createCount"/>
+    </component>
+
+    <component id="closeCount" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:jds.close.count.label"/>
+        <binding name="value" value="stats.closeCount"/>
+    </component>
+
+    <component id="waitingThreadCount" type="jeus:RangeStatisticField">
+        <binding name="label" value="message:jds.waiting.thread.count.label"/>
+        <binding name="range" value="stats.waitingThreadCount"/>
+        <binding name="renderUnderline" value="true"/>
+    </component>
+
+    <component id="connectionUseTime" type="jeus:TimeStatisticField">
+        <binding name="label" value="message:jds.connection.use.time.label"/>
+        <binding name="time" value="stats.useTime"/>
+        <binding name="renderUnderline" value="true"/>
+    </component>
+
+    <component id="connectionWaitTime" type="jeus:TimeStatisticField">
+        <binding name="label" value="message:jds.connection.wait.time.label"/>
+        <binding name="time" value="stats.waitTime"/>
+        <binding name="renderUnderline" value="true"/>
+    </component>
+
+    <component id="refreshButton" type="Submit">
+        <binding name="value" value="message:common.label.refresh"/>
+    </component>
+</page-specification>

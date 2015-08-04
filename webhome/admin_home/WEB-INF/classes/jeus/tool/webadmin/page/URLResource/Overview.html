@@ -1,0 +1,41 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <form jwcid="form">
+        </form>
+        <table class="table">
+            <tr>
+                <th>
+                    <span jwcid="export_name_column"/>
+                </th>
+                <th>
+                    <span jwcid="url_column"/>
+                </th>
+                <th width="20">
+                    &nbsp;
+                </th>
+            </tr>
+            <tr jwcid="eachUrlEntry">
+                <td>
+                    <a jwcid="urlLink"><span jwcid="export_name_value"/></a>
+                </td>
+                <td>
+                    <span jwcid="url_value"/>
+                </td>
+                <td align="center">
+                    <a jwcid="deleteLink" disabled="ognl:!@jeus.tool.webadmin.hivemind.Lock@isEnabledEdit(getSettings(), getVisit())"><img jwcid="delete" alt="delete"/></a>
+                </td>
+            </tr>
+        </table>
+        <form jwcid="urlForm">
+            <span jwcid="export_name">
+                <input jwcid="export_nameField"/>
+            </span>
+            <span jwcid="url">
+                <input jwcid="urlField" style="width:400px;"/>
+            </span>
+            <div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+                <input jwcid="add" class="form_button" style="width:100px;"/>
+            </div>
+        </form>
+    </span>
+</html>

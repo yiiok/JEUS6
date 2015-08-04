@@ -1,0 +1,16 @@
+<project name="ejbql-aggregation" default="all" basedir=".">
+    <property name="is.multi.module" value="true"/>
+
+    <import file="../../../common/common-build.xml"/>
+
+    <path id="sub-components">
+        <filelist dir="./aggr-ejb" files="build.xml"/>
+        <filelist dir="./aggr-client" files="build.xml"/>
+    </path>
+
+    <target name="all" depends="build, deploy, run, undeploy"/>
+
+    <target name="run">
+        <ant dir="./aggr-client" target="run" inheritall="false"/>
+    </target>
+</project>

@@ -1,0 +1,28 @@
+<html jwcid="mainBorder" >
+<span jwcid="tabPanel">
+    <form jwcid="form">
+        <span jwcid="@jeus:Field" label="message:jms.message.selector.label">
+            <span jwcid="@TextField" value="ognl:selector" style="width:350px;"></span>
+            <span jwcid="search@Submit" value="message:common.search" style="width:100px" class="form_button"></span>
+        </span>	        
+        <table jwcid="statisticsTable">
+			<span jwcid="jms_message_idColumnValue@Block">
+                <a jwcid="@ExternalLink" page="JMSDestinationResource_Message" parameters="ognl:{objectName, messageInfo}"><span jwcid="@Insert" value="ognl:messageInfo.Id"/></a>
+           	</span>
+           	<span jwcid="commandColumnHeader@Block">
+           	</span>
+           	<span jwcid="commandColumnValue@Block">
+				<div style="text-align: center;">
+					<a jwcid="@DirectLink" listener="listener:onRemove" parameters="ognl:messageInfo.id" renderer="ognl:@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@build('common.message.remove.confirm', messageInfo.id)"><img jwcid="delete" alt="delete"/></a>
+				</div>           	
+           	</span>
+        </table>
+        <ul class="button_layer_left">
+        	<li><a jwcid="@DirectLink" listener="listener:onRemoveAll" renderer="ognl:@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@build('jms.message.removeall.confirm')"></a><input jwcid="@Button" label="message:common.label.remove_all" class="form_button" onclick="jeus.fireEvent(previousSibling, 'click');" disabled="ognl:tableModel.getRowCount() == 0"/></li>
+        </ul>        
+			   <div class="form_button_layer">
+				    <a jwcid="@ExternalLink" page="ognl:pageName" parameters="ognl:objectName"></a><input jwcid="@Button" class="form_button" onclick="jeus.fireEvent(previousSibling, 'click');" label="message:common.label.refresh"/>
+        </div>          
+    </form>
+</span>
+</html>

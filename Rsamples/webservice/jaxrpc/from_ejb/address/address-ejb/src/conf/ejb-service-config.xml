@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<web-services-config xmlns="http://www.tmaxsoft.com/xml/ns/jeus">	
+	<service>
+		<service-name>AddressBookService</service-name>
+		<target-namespace>urn:AddressBookService</target-namespace>
+		<output-wsdl-file>wsdl/AddressBookService.wsdl</output-wsdl-file>
+		<style>wrapped</style>
+		<use>literal</use>		
+		<interface>
+		    <endpoint-interface-class>address.AddressBookIF</endpoint-interface-class>			
+		</interface>
+	</service>
+</web-services-config>

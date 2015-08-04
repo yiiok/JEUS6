@@ -1,0 +1,33 @@
+<project name="cal4UsingExceptionAsSOAPFault-client" default="build" basedir=".">
+    
+    <property name="is.app-client.module" value="true" />
+
+    <import file="../../../../common/common-build.xml" />
+
+    <target name="run-wsdl2java">
+        <antcall target="wsdl2java">
+            <param name="wsdl2java.option" value="-gen:client -d ${build.classes.dir} -package com.test.calc -compile -verbose http://localhost:8088/Calculator4Service/Calculator4Service?WSDL" />
+        </antcall>
+    </target>
+
+    <target name="do-compile">
+        <echo>Compiling ${module.name}</echo>
+        <mkdir dir="${build.classes.dir}" />
+        <javac srcdir="${src.dir}" source="${javac.source}" target="${javac.target}" excludes="${javac.excludes}" debug="${javac.debug}" debuglevel="${javac.debuglevel}" destdir="${build.classes.dir}" includes="**">
+            <classpath refid="jeus.libraries.classpath" />
+            <classpath refid="classpath" />
+        </javac>
+    </target>
+
+    <target name="compile" depends="run-wsdl2java, -pre-compile, do-compile, -post-compile" description="Compile classes" />
+
+    <target name="run" depends="build">
+        <java classname="CalcClient" fork="true">
+            <arg line="2 div 0" />
+	    <sysproperty key="java.endorsed.dirs"     value="${jeus.home}/lib/endorsed"/>
+            <classpath refid="jeus.libraries.classpath" />
+            <classpath refid="classpath" />
+        </java>
+    </target>
+        
+</project>

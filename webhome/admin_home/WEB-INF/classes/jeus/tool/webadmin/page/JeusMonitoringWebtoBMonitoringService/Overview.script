@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE script PUBLIC
+	"-//Apache Software Foundation//Tapestry Script Specification 3.0//EN"
+	"http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
+<script>
+
+<input-symbol key="key" required="yes"/>
+<input-symbol key="target" required="yes"/>
+<initialization>
+dojo.connect(dojo.byId('${target}'), 'onchange', (function(){
+	var value = dojo.cookie('${key}');
+	if(dojo.isString(value)){
+		dojo.byId('${target}').value = value;
+	}
+	return function(e){
+		dojo.cookie('${key}', e.target.value);
+	};
+})());
+</initialization>
+</script>

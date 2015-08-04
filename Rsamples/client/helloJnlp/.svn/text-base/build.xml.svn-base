@@ -1,0 +1,17 @@
+<project name="helloJnlp" default="all" basedir=".">
+    <property name="is.ear.module" value="true"/>
+
+    <import file="../../common/common-build.xml"/>
+
+    <target name="all" depends="build, deploy, run"/>
+
+    <path id="sub-components">
+        <filelist dir="./hello-ejb" files="build.xml"/>
+        <filelist dir="./hello-client" files="build.xml"/>
+        <filelist dir="./hello-war" files="build.xml"/>
+    </path>
+
+    <property name="run.uri" value="hello/index.html"/>
+    <target name="run" depends="launch"/>
+	
+</project>

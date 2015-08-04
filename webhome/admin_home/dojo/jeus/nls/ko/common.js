@@ -1,0 +1,1 @@
+({"refresh":"새로 고침","hide":"숨기기","detail":"자세히 보기","elementDocument":"요소 문서","resetConfirm":"입력된 사항을 모두 지우시겠습니까?","filePattern":"파일 패턴","info":"정보","bufferSize":"버퍼 크기","confirm":"확인"})

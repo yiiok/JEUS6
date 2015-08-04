@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    name="NewWebServiceService" targetNamespace="http://tmax.com/" xmlns:tns="http://tmax.com/"
+    xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+    xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+    xmlns:wsaws="http://www.w3.org/2005/08/addressing" xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy"
+    xmlns:sc="http://schemas.sun.com/2006/03/wss/server" xmlns:wspp="http://java.sun.com/xml/ns/wsit/policy">
+	<wsp:Policy wsu:Id="NewWebServicePortBindingPolicy">
+		<wsp:ExactlyOne>
+			<wsp:All>
+				<wsaws:UsingAddressing xmlns:wsaws="http://www.w3.org/2006/05/addressing/wsdl" />
+				<sp:SymmetricBinding>
+					<wsp:Policy>
+						<sp:ProtectionToken>
+							<wsp:Policy>
+								<sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/Never">
+									<wsp:Policy>
+										<sp:WssX509V3Token10 />
+									</wsp:Policy>
+								</sp:X509Token>
+							</wsp:Policy>
+						</sp:ProtectionToken>
+						<sp:Layout>
+							<wsp:Policy>
+								<sp:Strict />
+							</wsp:Policy>
+						</sp:Layout>
+						<sp:IncludeTimestamp />
+						<sp:OnlySignEntireHeadersAndBody />
+						<sp:AlgorithmSuite>
+							<wsp:Policy>
+								<sp:TripleDes />
+							</wsp:Policy>
+						</sp:AlgorithmSuite>
+					</wsp:Policy>
+				</sp:SymmetricBinding>
+				<sp:Wss11>
+					<wsp:Policy>
+						<sp:MustSupportRefIssuerSerial />
+						<sp:MustSupportRefThumbprint />
+						<sp:MustSupportRefEncryptedKey />
+					</wsp:Policy>
+				</sp:Wss11>
+                <sc:KeyStore wspp:visibility="private" alias="xws-security-server" storepass="changeit" type="JKS"
+                    location="keystore.jks" />
+                <sc:TrustStore wspp:visibility="private" peeralias="xws-security-client" storepass="changeit" type="JKS"
+                    location="cacerts.jks" />
+				<sc:ValidatorConfiguration xmlns:sc="http://schemas.sun.com/2006/03/wss/server">
+					<sc:Validator name="usernameValidator" classname="com.tmax.UsernamePasswordValidator" />
+				</sc:ValidatorConfiguration>
+			</wsp:All>
+		</wsp:ExactlyOne>
+	</wsp:Policy>
+
+	<wsp:Policy wsu:Id="NewWebServicePortBinding_add_Input_Policy">
+		<wsp:ExactlyOne>
+			<wsp:All>
+				<sp:SignedSupportingTokens>
+					<wsp:Policy>
+						<sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+							<wsp:Policy>
+								<sp:WssUsernameToken10 />
+							</wsp:Policy>
+						</sp:UsernameToken>
+					</wsp:Policy>
+				</sp:SignedSupportingTokens>
+				<sp:EncryptedParts>
+					<sp:Body />
+				</sp:EncryptedParts>
+				<sp:SignedParts>
+					<sp:Body />
+					<sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+					<sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+					<sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+					<sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+					<sp:Header Name="MessageId" Namespace="http://www.w3.org/2005/08/addressing" />
+					<sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+					<sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+				</sp:SignedParts>
+			</wsp:All>
+		</wsp:ExactlyOne>
+	</wsp:Policy>
+
+	<wsp:Policy wsu:Id="NewWebServicePortBinding_add_Output_Policy">
+		<wsp:ExactlyOne>
+			<wsp:All>
+				<sp:EncryptedParts>
+					<sp:Body />
+				</sp:EncryptedParts>
+				<sp:SignedParts>
+					<sp:Body />
+					<sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+					<sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+					<sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+					<sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+					<sp:Header Name="MessageId" Namespace="http://www.w3.org/2005/08/addressing" />
+					<sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+					<sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+				</sp:SignedParts>
+			</wsp:All>
+		</wsp:ExactlyOne>
+	</wsp:Policy>
+
+    <message name="add" />
+    <message name="addResponse" />
+    <portType name="NewWebService">
+        <wsdl:operation name="add">
+            <wsdl:input message="tns:add" />
+            <wsdl:output message="tns:addResponse" />
+        </wsdl:operation>
+    </portType>
+    <binding name="NewWebServicePortBinding" type="tns:NewWebService">
+        <wsp:PolicyReference URI="#NewWebServicePortBindingPolicy" />
+        <wsdl:operation name="add">
+            <wsdl:input>
+                <wsp:PolicyReference URI="#NewWebServicePortBinding_add_Input_Policy" />
+            </wsdl:input>
+            <wsdl:output>
+                <wsp:PolicyReference URI="#NewWebServicePortBinding_add_Output_Policy" />
+            </wsdl:output>
+        </wsdl:operation>
+    </binding>
+    <service name="NewWebServiceService">
+        <wsdl:port name="NewWebServicePort" binding="tns:NewWebServicePortBinding" />
+    </service>
+</definitions>

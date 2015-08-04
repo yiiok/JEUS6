@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="secureConversation-client" default="all" basedir=".">
+
+    <property name="is.app-client.module" value="true" />
+
+    <import file="../../../../../common/common-build.xml" />
+
+    <target name="-pre-compile">
+        <mkdir dir="${build.classes.dir}" />
+        <antcall target="wsimport">
+            <param name="package.name" value="wssc.sc.client" />
+            <param name="binding.file" value="" />
+            <param name="wsdl.file"
+                   value="-extension http://localhost:8088/secureConversation-war/serverwar?wsdl" />
+        </antcall>
+    </target>
+
+    <target name="run">
+        <java classname="wssc.sc.client.PingClient" fork="yes">
+            <classpath refid="jeus.libraries.classpath" />
+            <classpath refid="classpath" />
+            <sysproperty key="java.endorsed.dirs" value="${jeus.home}/lib/endorsed"/>
+        </java>
+    </target>
+
+    <target name="all" depends="build, run" />
+
+    <target name="do-compile">
+
+        <if>
+            <available file="${src.dir}" type="dir" />
+            <then>
+                <echo>Compiling ${module.name}...</echo>
+                <mkdir dir="${build.classes.dir}" />
+                <javac srcdir="${src.dir}"
+                       source="${javac.source}"
+                       target="${javac.target}"
+                       excludes="${javac.excludes}"
+                       debug="${javac.debug}"
+                       debuglevel="${javac.debuglevel}"
+                       destdir="${build.classes.dir}"
+                       includes="**">
+                    <classpath refid="classpath" />
+                    <classpath refid="jeus.libraries.classpath" />
+                </javac>
+            </then>
+        </if>
+
+        <!-- copy src/conf files to META-INF -->
+        <if>
+            <available file="${src.conf}" type="dir" />
+            <then>
+                <mkdir dir="${build.classes.dir}/META-INF" />
+                <copy todir="${build.classes.dir}/META-INF">
+                    <fileset dir="${src.conf}" includes="**/*" />
+                </copy>
+            </then>
+        </if>
+    </target>
+
+</project>

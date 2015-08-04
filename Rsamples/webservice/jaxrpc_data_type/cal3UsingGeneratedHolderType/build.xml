@@ -1,0 +1,24 @@
+<project name="cal3UsingGeneratedHolderType" default="all" basedir=".">
+
+    <property name="is.ear.module" value="true" />
+
+    <import file="../../../common/common-build.xml" />
+
+    <path id="sub-components">
+        <filelist dir="./cal3UsingGeneratedHolderType-war" files="build.xml" />
+    </path>
+
+    <target name="all" depends="build, deploy, run, runclient" />
+
+    <property name="run.uri" value="Calculator3Service/Calculator3Service" />
+    <target name="run" depends="launch" />
+
+    <target name="runclient">
+        <ant dir="./cal3UsingGeneratedHolderType-client" target="run" inheritall="false" />
+    </target>
+
+    <target name="clean" depends="-pre-clean, do-clean, -post-clean">
+        <ant dir="./cal3UsingGeneratedHolderType-client" target="clean" inheritall="false" />
+    </target>
+
+</project>

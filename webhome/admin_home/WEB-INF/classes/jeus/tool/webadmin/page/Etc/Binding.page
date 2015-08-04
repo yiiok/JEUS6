@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.Etc.BindingPage">
+    <component id="bindingForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:Etc_Binding.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="condHasName" type="If">
+        <binding name="condition" value="name != null"/>
+    </component>
+
+    <component id="name" type="jeus:ReadOnlyTextField">
+        <binding name="value" value="binding.get('name')"/>
+        <binding name="label" value="message:Etc_Binding.name.label"/>
+    </component>
+
+    <component id="class" type="jeus:ReadOnlyTextField">
+        <binding name="value" value="binding.get('class')"/>
+        <binding name="label" value="message:Etc_Binding.class.label"/>
+    </component>
+</page-specification>

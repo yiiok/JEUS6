@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta xmlns="" http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>EJB</title><link rel="stylesheet" href="../stylesheet.css" type="text/css"/><meta name="generator" content="DocBook XSL Stylesheets V1.72.0"/><link rel="start" href="index.html" title="WebAdmin 온라인 도움말"/><link rel="up" href="index.html" title="WebAdmin 온라인 도움말"/><link rel="prev" href="AppClientModule.html" title="어플리케이션 클라이언트 설정"/><link rel="next" href="EJBModule.html" title="EJB 모듈"/></head><body><div class="section" lang="ko"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="EJB"/>EJB</h2></div></div></div>
+  
+
+  
+
+  <div class="section" lang="ko"><div class="titlepage"><div><div><h3 class="title"><a id="EJB_Configuration"/>설정</h3></div></div></div>
+    
+
+    <p>이 페이지에서는 디플로이된 EJB 정보를 확인 할 수 있다. <a href="EJBModule.html#EJBModule_Configuration_general" title="기본 설정">기본 설정</a> 페이지에서 볼 수 있는 정보와 동일 하므로 참조하도록
+    한다.</p>
+  </div>
+
+  <div class="section" lang="ko"><div class="titlepage"><div><div><h3 class="title"><a id="EJB_Statistics"/>통계</h3></div></div></div>
+    
+
+    <p>이 페이지는 이 빈에 대한 통계 정보를 보여준다. 생성, 삭제, 요청, 커밋, 롤백 요소는 <a href="EJBModule.html#EJBModule_Configuration_general" title="기본 설정">기본 설정</a>에서 동일하게 다루고 있으므로 참조하도록
+    한다.</p>
+
+    <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">타임아웃 롤백 수</strong></span></span></dt><dd>
+            <p>롤백된 횟수 중 타임아웃으로 롤백된 횟수</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">총 빈 인스턴스 수 </strong></span></span></dt><dd>
+            <p>현재 시간까지 생성되어 삭제 되지 않은 빈 인스턴스 개수</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">수행 중인 빈 인스턴스 수 </strong></span></span></dt><dd>
+            <p>현재 풀에 있지 않고 active 상태인 빈 인스턴스의 개수</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">요청 받을 수 있는 빈 인스턴스 수</strong></span></span></dt><dd>
+            <p>현재 시간까지 생성되어 요청이 오면 바로 처리할 수 있는 빈 인스턴스 개수. Stateful 세션빈과 엔터티
+            빈의 경우 passivation된 빈 인스턴스에 대해서는 여기에 포함되지 않는다.</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">passivation된 빈 인스턴스 수 </strong></span></span></dt><dd>
+            <p>Stateful 세션빈과 엔터티 빈의 경우 메모리에서 인스턴스를 삭제하는 passivation이 일어날 수
+            있다. passivation된 빈 인스턴스 개수.</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">타임아웃으로 삭제된 빈 인스턴스 수 </strong></span></span></dt><dd>
+            <p>Stateful 세션빈과 엔터티 빈의 경우 사용자가 remove를 호출 하지 않아도
+            disconnect-timeout이 지나면 자동으로 빈 인스턴스를 삭제해 준다. timeout으로 삭제된 빈 인스턴스
+            개수.</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">컨넥션 총 수 </strong></span></span></dt><dd>
+            <p>client와 빈 인스턴스를 연결해 주는 컨넥션의 총 개수</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">사용중인 컨넥션 수 </strong></span></span></dt><dd>
+            <p>총 컨넥션 중에 요청 처리를 위해 client와 빈 인스턴스를 연결하고 있는 컨넥션의 개수</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">최대 쓰레드 수 </strong></span></span></dt><dd>
+            <p>이 빈에게 할당될 수 있는 최대 쓰레드 개수</p>
+          </dd><dt><span class="term">수행 쓰레드 수</span></dt><dd>
+            <p>현재 요청을 처리 중인 쓰레드 개수</p>
+          </dd><dt><span class="term">웹서비스</span></dt><dd>
+            <p>웹서비스의 유무</p>
+          </dd></dl></div>
+  </div>
+</div><div xmlns="" align="center"/></body></html>

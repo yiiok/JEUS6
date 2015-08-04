@@ -1,0 +1,84 @@
+<body jwcid="@jeus:SubBorder" style="height: 100%; width: 100%; padding: 5px">
+	<script jwcid="@Script" script="/jeus/tool/webadmin/script/WordBreak.script" />
+    <span jwcid="dynamite"/>
+    <span jwcid="tabPanel">
+        <form jwcid="controlForm">
+            <span jwcid="name"/>
+			<span jwcid="mbeanName" class="field_content word_break"/>
+            <span jwcid="description"/>
+            <span jwcid="type"/>
+            <span jwcid="@If" condition="ognl:attributeInfo != null" renderTag="ognl:false">
+                <span jwcid="access"/>
+                <span jwcid="@If" condition="ognl:attributeInfo.readable" renderTag="ognl:false">                        
+              		<span jwcid="@If" condition="ognl:attributeInfo.writable" renderTag="ognl:false">
+	                    <span jwcid="attributeValue">
+	                        <input jwcid="attributeValueField"/>
+	                    </span>
+	                    <div class="form_button_layer">
+	                        <input jwcid="controlButton" class="form_button" style="width:100px;"/>
+	                    </div>
+	                </span>
+	                <span jwcid="@Else" renderTag="ognl:false">
+	                    <span jwcid="@jeus:Field" label="message:mmo.configure.mbean.value">
+	                    	<span jwcid="@If" condition="ognl:attributeValue instanceof java.util.Map" renderTag="ognl:false">
+		                		<div jwcid="@For" source="ognl:attributeValue.keySet()" value="ognl:attribute" class="word_break">
+		                			<span jwcid="@Insert" value="ognl:attribute"/>=<span jwcid="@Insert" value="ognl:attributeValue.get(attribute)"/>
+		                		</div>	                    	
+	                    	</span>
+	                    	<span jwcid="@Else" renderTag="ognl:false">
+		                		<div jwcid="@For" source="ognl:attributeValue" value="ognl:attribute" class="word_break">
+		                			<span jwcid="@Insert" value="ognl:attribute"/>
+		                		</div>
+	                		</span>
+	                	</span>
+	                </span>
+                </span>
+                <span jwcid="@Else" renderTag="ognl:false">
+                	<span jwcid="@If" condition="ognl:attributeInfo.writable" renderTag="ognl:false">
+	                    <span jwcid="@jeus:Field" field="component:attributeValue2Field">
+	                        <input jwcid="attributeValue2Field@TextField" value="ognl:attributeValue" displayName="message:mmo.configure.mbean.value" validators="validators:required"/>
+	                    </span>
+	                    <div class="form_button_layer">
+	                        <input jwcid="@Submit" value="message:mmo.control.mbean.ok" class="form_button" style="width:100px;"/>
+	                    </div>
+	                </span>
+                </span>
+            </span>
+            <span jwcid="@Else" renderTag="ognl:false">
+                <span jwcid="impact"/>
+                <span jwcid="@If" condition="ognl:returnValue != null" renderTag="ognl:false">
+                	<span jwcid="@jeus:FormSection" title="message:mmo.configure.mbean.return"/>
+                	<span jwcid="@jeus:Field" label="message:mmo.configure.mbean.result">
+                    	<span jwcid="@If" condition="ognl:returnValue instanceof java.util.Map" renderTag="ognl:false">
+	                		<div jwcid="@For" source="ognl:returnValue.keySet()" value="ognl:return" class="word_break">
+	                			<span jwcid="@Insert" value="ognl:return"/>=<span jwcid="@Insert" value="ognl:returnValue.get(return)"/>
+	                		</div>	                    	
+                    	</span>
+                    	<span jwcid="@Else" renderTag="ognl:false">
+	                		<div jwcid="@For" source="ognl:returnValue" value="ognl:return" class="word_break">
+	                			<span jwcid="@Insert" value="ognl:return"/>
+	                		</div>
+                		</span>                	
+                	</span>
+                </span>
+		        <span jwcid="@If" condition="ognl:operationInfo.signature.length > 0" renderTag="ognl:false">
+		        	<span jwcid="@jeus:FormSection" title="message:mmo.configure.mbean.parameter"/>
+	                <table jwcid="parameterTable">
+					<span jwcid="parameter_typeColumnValue@Block">
+                        <span jwcid="@Insert" value="ognl:@jeus.tool.webadmin.page.JeusMonitoringMBeanMonitoringService.MBeanMonitoringUtils@getType(parameterInfo.type)"/>
+                    </span>   	                
+	                <span jwcid="parameter_valueColumnValue@Block">
+	                    <span jwcid="parameter_value">
+	                        <input jwcid="parameter_valueField"/>
+	                    </span>
+	                </span>
+	                </table>
+		        </span>
+                <div class="form_button_layer">
+                    <input jwcid="controlButton2" class="form_button" style="width:100px;"/>
+                </div>                
+            </span>
+
+        </form>
+   </span>
+</body>

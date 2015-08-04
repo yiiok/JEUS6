@@ -1,0 +1,26 @@
+<html jwcid="mainBorder">
+    <span jwcid="tabPanel">
+	<form jwcid="statisticsForm">
+	    <span jwcid="@If" condition="ognl:statsList != null and !statsList.empty">
+			<table border="1" cellpadding="3" width="100%" style="text-align:center;" jwcid="statisticsTable"/>
+			<span jwcid="jca_export_name_labelColumnValue@Block">
+		    	<a jwcid="@ExternalLink" page="JCAResource_Statistics" parameters="ognl:currentStats.objectName">
+		    		<span jwcid="export_name"/>
+		    	</a>
+		    </span>
+		    <span jwcid="jca_actions_labelColumnValue@Block">
+			    <a jwcid="@DirectLink" listener="listener:onRefresh" parameters="ognl:currentStats.objectName"></a><input jwcid="@Button" label="message:jca.connectionfactory.refresh" onclick="jeus.fireEvent(previousSibling, 'click');" class="form_button"/>
+				<a jwcid="enable_disableLink"></a><input jwcid="enable_disable" class="form_button" onclick="jeus.fireEvent(previousSibling, 'click');"/>
+            	<a jwcid="shrinkLink"></a><input jwcid="shrink" class="form_button" onclick="jeus.fireEvent(previousSibling, 'click');"/>
+               	<a jwcid="resyncLink"></a><input jwcid="resync" class="form_button" onclick="jeus.fireEvent(previousSibling, 'click');"/>
+            </span>
+			<div class="form_button_layer">
+                <a jwcid="@PageLink" page="ognl:pageName"></a><input jwcid="@Button" class="form_button" onclick="jeus.fireEvent(previousSibling, 'click');" label="message:common.label.refresh"/>
+            </div>
+		</span>
+		<span jwcid="@Else">
+			<span jwcid="@Insert" class="field_label" value="message:jca.no_connectionfactory.label"/>
+		</span>
+    </form>
+    </span>
+</html>

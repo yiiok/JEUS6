@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.WebModule.ControlPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:WEB Module Control"/>
+        
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="@jeus.tool.webadmin.page.PageNames@WEB_MODULE_NAMES"/>
+        <binding name="subtabNames" value="subtabNames"/>
+    </component>
+
+    <component id="start" type="Block"/>
+    <component id="stop" type="Block"/>
+    <component id="undeploy" type="Block"/>
+    <component id="redeploy" type="Block"/>
+
+    <component id="start_controller" type="jeus:ModuleController">
+        <binding name="title" value="message:wmc.start.title"/>
+        
+        <binding name="objectName" value="objectName"/>
+        <binding name="state" value="@jeus.management.j2ee.StateManageable@STOPPED"/>
+        <binding name="command" value="@javax.enterprise.deploy.shared.CommandType@START"/>
+    </component>
+
+    <component id="stop_controller" type="jeus:ModuleController">
+        <binding name="title" value="message:wmc.stop.title"/>
+        <binding name="objectName" value="objectName"/>
+        <binding name="state" value="@jeus.management.j2ee.StateManageable@RUNNING"/>
+        <binding name="command" value="@javax.enterprise.deploy.shared.CommandType@STOP"/>
+    </component>
+
+    <component id="undeploy_controller" type="jeus:ModuleController">
+        <binding name="title" value="message:wmc.undeploy.title"/>
+        <binding name="objectName" value="objectName"/>
+        <binding name="state" value="-1"/> 
+        <binding name="command" value="@javax.enterprise.deploy.shared.CommandType@UNDEPLOY"/>
+    </component>
+    
+    <component id="redeploy_controller" type="jeus:ModuleController">
+        <binding name="title" value="message:wmc.redeploy.title"/>
+        <binding name="objectName" value="objectName"/>
+        <binding name="state" value="-1"/> 
+        <binding name="useWTBBlock" value="true"/>
+        <binding name="command" value="@javax.enterprise.deploy.shared.CommandType@REDEPLOY"/>
+    </component>    
+
+</page-specification>

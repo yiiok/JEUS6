@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<project name="ejb/basic/messageDriven/mdb" default="all" basedir=".">
+    <property name="is.multi.module" value="true"/>
+
+    <import file="../../../common/common-build.xml"/>
+
+    <path id="sub-components">
+        <filelist dir="./mdb-ejb" files="build.xml"/>
+        <filelist dir="./mdb-client" files="build.xml"/>
+    </path>
+
+    <target name="all" depends="build, deploy, run, undeploy"/>
+    <target name="run">
+        <ant dir="./mdb-client" target="run" inheritall="false"/>
+    </target>
+</project>

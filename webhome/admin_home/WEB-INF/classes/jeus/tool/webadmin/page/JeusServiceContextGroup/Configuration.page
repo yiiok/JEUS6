@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceContextGroup.ConfigurationPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Context Group Configuration"/>        
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="@jeus.tool.webadmin.page.PageNames@getCONTEXT_GROUP_NAMES(objectName)"/>
+        <binding name="subtabNames" value="{'general', 'virtual_host','encoding', 'access_log', 'user_log', 'jsp_engine', 'response_header', 'session_config'}"/>
+        <binding name="notFound" value="contextGroup == null"/>
+        <binding name="notFoundBlock" value="component:notFound"/>
+    </component>
+
+    <component id="general" type="Block"/>
+    <component id="virtual_host" type="Block"/>
+    <component id="encoding" type="Block"/>
+    <component id="access_log" type="Block"/>
+    <component id="user_log" type="Block"/>
+    <component id="session_config" type="Block"/>
+    <component id="jsp_engine" type="Block"/>
+    <component id="response_header" type="Block"/>
+    <component id="notFound" type="Block"/>
+
+    <component id="generalForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:cgc.general.title2"/>
+        <binding name="success" value="listener:onGeneralOk"/>
+        <binding name="parentElement" value="webContainer"/>
+        <binding name="elementName" value="literal:contextGroup"/>
+    </component>
+
+    <component id="group_name" type="jeus:ReadOnlyTextField">
+        <binding name="parentElement" value="contextGroup"/>
+        <binding name="elementName" value="literal:groupName"/>
+    </component>
+
+    <component id="general_blind" type="jeus:Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>
+
+    <component id="attach_stacktrace_on_error" type="jeus:Field">
+        <binding name="field" value="component:attach_stacktrace_on_errorField"/>
+    </component>
+
+    <component id="attach_stacktrace_on_errorField" type="jeus:JAXBCheckbox">
+        <binding name="parentElement" value="contextGroup"/>
+        <binding name="elementName" value="literal:attachStacktraceOnError"/>
+    </component>
+
+    <component id="virtual_hostForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:cgc.virtual_host.title"/>
+        <binding name="useForm" value="false"/>
+        <binding name="parentElement" value="contextGroup"/>
+        <binding name="elementName" value="literal:virtualHost"/>
+    </component>
+
+    <component id="virtual_host_name_column" type="Insert">
+        <binding name="value" value="message:cgc.virtual_host.name.label"/>
+    </component>
+
+    <component id="eachVirtualHost" type="For">
+        <binding name="source" value="virtualHosts"/>
+        <binding name="value" value="virtualHost"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="virtual_host_name_value" type="Insert">
+        <binding name="value" value="virtualHost.virtualHostName"/>
+    </component>
+
+    <component id="virtual_hostLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceVirtualHost_Configuration"/>
+        <binding name="parameters" value="getVirtualHostObjectName(virtualHost.virtualHostName)"/>
+    </component>
+
+    <component id="deleteVirtualHostLink" type="DirectLink">
+        <binding name="listener" value="listener:onDeleteVirtualHost"/>
+        <binding name="parameters" value="virtualHost.virtualHostName"/>
+        <binding name="renderer" value="@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@build('common.message.delete.confirm', virtualHost.virtualHostName)"/>
+    </component>
+
+    <component id="deleteVirtualHost" type="Image">
+        <binding name="image" value="asset:delete"/>
+    </component>
+
+    <component id="createVirtualHostLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceVirtualHost_Create"/>
+        <binding name="parameters" value="{objectName.canonicalName, 'New'}"/>
+    </component>
+
+    <component id="createVirtualHost" type="Insert">
+        <binding name="value" value="message:cgc.virtual_host.create.label"/>
+    </component>
+
+   <component id="access_logForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:cgc.access_log.title"/>
+        <binding name="success" value="listener:onAccessLogOk"/>
+    </component>
+
+    <component id="enable_access_log" type="jeus:Field">
+        <binding name="field" value="component:enable_access_logField"/>
+    </component>
+
+    <component id="enable_access_logField" type="jeus:JAXBCheckbox">
+        <binding name="parentElement" value="accessLog"/>
+        <binding name="elementName" value="literal:enable"/>
+    </component>
+
+    <component id="access_log_format" type="jeus:Field">
+        <binding name="field" value="component:access_log_formatField"/>
+    </component>
+
+    <component id="access_log_formatField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="accessLog"/>
+        <binding name="elementName" value="literal:format"/>
+    </component>
+
+    <component id="access_log_logging_panel" type="jeus:Logging">
+        <binding name="logging" value="accessLog"/>
+    </component>
+
+    <component id="access_log_handlerForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:cgc.handler.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+        <binding name="subform" value="true"/>
+    </component>
+
+    <component id="access_log_handler_panel" type="jeus:HandlerList">
+        <binding name="handlers" value="accessLogHandlers"/>
+        <binding name="createPage" value="literal:JeusServiceContextGroup_CreateAccessLogHandler"/>
+        <binding name="editPage" value="literal:JeusServiceContextGroup_EditAccessLogHandler"/>
+        <binding name="deleteListener" value="listener:onDeleteAccessLogHandler"/>
+        <binding name="objectName" value="objectName"/>
+        <binding name="jeusType" value="literal:ContextGroupAccessLog"/>
+    </component>
+
+   <component id="user_logForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:cgc.user_log.title"/>
+        <binding name="success" value="listener:onUserLogOk"/>
+    </component>
+
+    <component id="user_log_logging_panel" type="jeus:Logging">
+        <binding name="logging" value="userLog"/>
+    </component>
+
+    <component id="user_log_handlerForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:cgc.handler.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+        <binding name="subform" value="true"/>
+    </component>
+
+    <component id="user_log_handler_panel" type="jeus:HandlerList">
+        <binding name="handlers" value="userLogHandlers"/>
+        <binding name="createPage" value="literal:JeusServiceContextGroup_CreateUserLogHandler"/>
+        <binding name="editPage" value="literal:JeusServiceContextGroup_EditUserLogHandler"/>
+        <binding name="deleteListener" value="listener:onDeleteUserLogHandler"/>
+        <binding name="objectName" value="objectName"/>
+        <binding name="jeusType" value="literal:ContextGroupUserLog"/>
+    </component>
+
+    <component id="encodingForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:cgc.encoding.title"/>
+        <binding name="success" value="listener:onEncodingOk"/>
+    </component>
+
+    <component id="request_encodingSection" type="jeus:FormSection">
+        <binding name="title" value="message:cgc.encoding.request.title"/>
+    </component>
+
+    <component id="req_default" type="jeus:Field">
+        <binding name="field" value="component:req_defaultField"/>
+    </component>
+
+    <component id="req_defaultField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="requestEncoding"/>
+        <binding name="elementName" value="literal:default"/>
+    </component>
+
+    <component id="req_forced" type="jeus:Field">
+        <binding name="field" value="component:req_forcedField"/>
+    </component>
+
+    <component id="req_forcedField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="requestEncoding"/>
+        <binding name="elementName" value="literal:forced"/>
+    </component>
+
+    <component id="response_encodingSection" type="jeus:FormSection">
+        <binding name="title" value="message:cgc.encoding.response.title"/>
+    </component>
+
+    <component id="res_default" type="jeus:Field">
+        <binding name="field" value="component:res_defaultField"/>
+    </component>
+
+    <component id="res_defaultField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="responseEncoding"/>
+        <binding name="elementName" value="literal:default"/>
+    </component>
+
+    <component id="res_forced" type="jeus:Field">
+        <binding name="field" value="component:res_forcedField"/>
+    </component>
+
+    <component id="res_forcedField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="responseEncoding"/>
+        <binding name="elementName" value="literal:forced"/>
+    </component>
+
+    <component id="requesturl_encodingSection" type="jeus:FormSection">
+        <binding name="title" value="message:cgc.encoding.requesturl.title"/>
+    </component>
+
+    <component id="requesturl_default" type="jeus:Field">
+        <binding name="field" value="component:requesturl_defaultField"/>
+    </component>
+
+    <component id="requesturl_defaultField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="requestUrlEncoding"/>
+        <binding name="elementName" value="literal:default"/>
+    </component>
+
+    <component id="requesturl_forced" type="jeus:Field">
+        <binding name="field" value="component:requesturl_forcedField"/>
+    </component>
+
+    <component id="requesturl_forcedField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="requestUrlEncoding"/>
+        <binding name="elementName" value="literal:forced"/>
+    </component>
+
+    <component id="jsp_engineForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:cgc.jsp_engine.title"/>
+        <binding name="success" value="listener:onJspEngineOk"/>
+        <binding name="parentElement" value="contextGroup"/>
+        <binding name="elementName" value="literal:jspEngine"/>
+    </component>
+
+    <component id="keep_generated" type="jeus:Field">
+        <binding name="field" value="component:keep_generatedField"/>
+    </component>
+
+    <component id="keep_generatedField" type="jeus:JAXBCheckbox">
+        <binding name="parentElement" value="jspEngine"/>
+        <binding name="elementName" value="literal:keepGenerated"/>
+    </component>
+
+    <component id="java_compiler" type="jeus:Field">
+        <binding name="field" value="component:java_compilerField"/>
+    </component>
+
+    <component id="java_compilerField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="jspEngine"/>
+        <binding name="elementName" value="literal:javaCompiler"/>
+    </component>
+
+    <component id="jsp_engine_blind" type="jeus:Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>
+
+   <component id="jsp_work_dir" type="jeus:Field">
+        <binding name="field" value="component:jsp_work_dirField"/>
+    </component>
+
+    <component id="jsp_work_dirField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="jspEngine"/>
+        <binding name="elementName" value="literal:jspWorkDir"/>
+    </component>
+
+   <component id="compile_output_dir" type="jeus:Field">
+        <binding name="field" value="component:compile_output_dirField"/>
+    </component>
+
+    <component id="compile_output_dirField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="jspEngine"/>
+        <binding name="elementName" value="literal:compileOutputDir"/>
+    </component>
+
+   <component id="compile_option" type="jeus:Field">
+        <binding name="field" value="component:compile_optionField"/>
+    </component>
+
+    <component id="compile_optionField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="jspEngine"/>
+        <binding name="elementName" value="literal:compileOption"/>
+    </component>
+
+   <component id="compile_encoding" type="jeus:Field">
+        <binding name="field" value="component:compile_encodingField"/>
+    </component>
+
+    <component id="compile_encodingField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="jspEngine"/>
+        <binding name="elementName" value="literal:compileEncoding"/>
+    </component>
+
+    <component id="check_included_jspfile" type="jeus:Field">
+        <binding name="field" value="component:check_included_jspfileField"/>
+    </component>
+
+    <component id="check_included_jspfileField" type="jeus:JAXBCheckbox">
+        <binding name="parentElement" value="jspEngine"/>
+        <binding name="elementName" value="literal:checkIncludedJspfile"/>
+    </component>
+
+    <component id="session_configForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:cgc.session_config.title"/>
+        <binding name="success" value="listener:onSessionConfigOk"/>
+		<binding name="refresh" value="listener:onSessionConfigReset"/>              
+        <binding name="parentElement" value="contextGroup"/>
+        <binding name="elementName" value="literal:sessionConfig"/>
+    </component>
+    
+   <component id="timeout" type="jeus:Field">
+        <binding name="field" value="component:timeoutField"/>
+        <binding name="unit" value="message:common.unit.minutes"/>
+    </component>
+
+    <component id="timeoutField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="sessionConfig"/>
+        <binding name="elementName" value="literal:timeout"/>
+		<binding name="translator" value="translator:number2"/>
+    </component>
+
+    <component id="distributable" type="jeus:Field">
+        <binding name="field" value="component:distributableField"/>
+    </component>
+
+    <component id="distributableField" type="jeus:JAXBCheckbox">
+        <binding name="parentElement" value="sessionConfig"/>
+        <binding name="elementName" value="literal:distributable"/>
+    </component>
+    
+    <component id="shared" type="jeus:Field">
+        <binding name="field" value="component:sharedField"/>
+    </component>
+
+    <component id="sharedField" type="jeus:JAXBCheckbox">
+        <binding name="parentElement" value="sessionConfig"/>
+        <binding name="elementName" value="literal:shared"/>
+    </component>
+
+    <component id="reloadPersistent" type="jeus:Field">
+        <binding name="field" value="component:reloadPersistentField"/>
+    </component>
+
+    <component id="reloadPersistentField" type="jeus:JAXBCheckbox">
+        <binding name="parentElement" value="sessionConfig"/>
+        <binding name="elementName" value="literal:reloadPersistent"/>
+    </component>
+
+    <component id="urlRewriting" type="jeus:Field">
+        <binding name="field" value="component:urlRewritingField"/>
+    </component>
+
+    <component id="urlRewritingField" type="jeus:JAXBCheckbox">
+        <binding name="parentElement" value="sessionConfig"/>
+        <binding name="elementName" value="literal:urlRewriting"/>
+    </component>
+
+    <component id="session_id_cookieSection" type="jeus:FormSection">
+        <binding name="title" value="message:cgc.session_config.cookie.title"/>
+    </component>
+
+   <component id="jsessionidName" type="jeus:Field">
+        <binding name="field" value="component:jsessionidNameField"/>
+    </component>
+
+    <component id="jsessionidNameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="sessionCookie"/>
+        <binding name="elementName" value="literal:jsessionidName"/>
+    </component>
+    
+   <component id="version" type="jeus:Field">
+        <binding name="field" value="component:versionField"/>
+    </component>
+
+    <component id="versionField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="sessionCookie"/>
+        <binding name="elementName" value="literal:version"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=0"/>
+    </component>
+
+   <component id="domain" type="jeus:Field">
+        <binding name="field" value="component:domainField"/>
+    </component>
+
+    <component id="domainField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="sessionCookie"/>
+        <binding name="elementName" value="literal:domain"/>
+    </component>
+
+   <component id="path" type="jeus:Field">
+        <binding name="field" value="component:pathField"/>
+    </component>
+
+    <component id="pathField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="sessionCookie"/>
+        <binding name="elementName" value="literal:path"/>
+    </component>
+
+   <component id="max_age" type="jeus:Field">
+        <binding name="field" value="component:max_ageField"/>
+        <binding name="unit" value="message:common.unit.sec"/>
+    </component>
+
+    <component id="max_ageField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="sessionCookie"/>
+        <binding name="elementName" value="literal:maxAge"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=-1"/>
+    </component>
+
+    <component id="secure" type="jeus:Field">
+        <binding name="field" value="component:secureField"/>
+    </component>
+
+    <component id="secureField" type="jeus:JAXBCheckbox">
+        <binding name="parentElement" value="sessionCookie"/>
+        <binding name="elementName" value="literal:secure"/>
+    </component>
+    
+    <component id="response_headerForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:cgc.response_header.title"/>
+        <binding name="success" value="listener:onResponseHeaderOk"/>
+        <binding name="parentElement" value="contextGroup"/>
+        <binding name="elementName" value="literal:responseHeader"/>
+    </component>   
+ 
+    <component id="custom_headerSection" type="jeus:FormSection">
+        <binding name="parentElement" value="responseHeader"/>
+        <binding name="elementName" value="literal:customHeader"/>        
+    </component>
+     
+    <component id="header_field" type="jeus:Field">
+        <binding name="field" value="component:header_fieldField"/>
+        <binding name="layout" value="@jeus.tool.webadmin.component.Field3@EXTENDED_LAYOUT"/>
+    </component>
+
+    <component id="header_fieldField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="customHeader"/>
+        <binding name="elementName" value="literal:headerField"/>
+        <binding name="translator" value="bean:customHeaderTranslator"/>
+    </component>
+
+
+    <bean name="customHeaderTranslator" class="jeus.tool.webadmin.component.translator.CustomHeaderTranslator"/>
+
+    <asset name="delete" path="context:/image/table/delete.gif"/>
+
+    <property name="virtualHost"/>
+</page-specification>

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta xmlns="" http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>JDBC 데이터 소스와 연결 풀</title><link rel="stylesheet" href="../stylesheet.css" type="text/css"/><meta name="generator" content="DocBook XSL Stylesheets V1.72.0"/><link rel="start" href="index.html" title="WebAdmin 온라인 도움말"/><link rel="up" href="index.html" title="WebAdmin 온라인 도움말"/><link rel="prev" href="JeusServiceWebEngine.html" title="서블릿 엔진"/><link rel="next" href="JMSClientResource.html" title="JMS 클라이언트 리소스"/></head><body><div class="section" lang="ko"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="JDBCDataSource"/>JDBC 데이터 소스와 연결 풀</h2></div></div></div>
+  
+
+  
+
+  <p><span class="bold"><strong>네비게이션 경로</strong></span>: Home &gt;
+  <em class="replaceable"><code>node-name</code></em> &gt; 엔진 컨테이너 &gt;
+  <em class="replaceable"><code>container-name</code></em> &gt; 리소스 &gt; JDBC</p>
+
+  <div class="section" lang="ko"><div class="titlepage"><div><div><h3 class="title"><a id="JDBCDataSource_Overview"/>개요</h3></div></div></div>
+    
+
+    <p>이 페이지에서는 현재 엔진 컨테이너에 생성 되어 있는 데이터 소스 및 커넥션 풀의 정보를 간략히 보여준다. 데이터 소스
+    정보 테이블은 다음과 같은 요소로 구성되어 있다.</p>
+
+    <div class="itemizedlist"><ul type="disc"><li>
+        <p><span class="bold"><strong>데이터 소스 ID</strong></span></p>
+
+        <p>데이터 소스를 구별하는 ID. 새 JDBC 데이터 소스 생성시 데이터 소스 ID를 입력하지 않았을 경우에는 익스포트
+        이름이 데이터 소스 ID가 된다. 데이터 소스 ID를 클릭하면 데이터 소스 통계 페이지로 이동한다.</p>
+      </li><li>
+        <p><span class="bold"><strong>현재 연결된 커넥션 수</strong></span></p>
+
+        <p>데이터 소스의 커넥션 풀에 존재하는 모든(active, idle 모두 포함) 커넥션의 개수</p>
+      </li><li>
+        <p><span class="bold"><strong>사용 가능한 커넥션 수</strong></span></p>
+
+        <p>데이터 소스의 커넥션 풀에 존재하는 사용 가능한(idle) 커넥션의 개수</p>
+      </li><li>
+        <p><span class="bold"><strong>명령</strong></span></p>
+
+        <div class="itemizedlist"><ul type="circle"><li>
+            <p>재구성</p>
+
+            <p>데이터 소스의 커넥션 풀에 존재하는 커넥션을 새로운 커넥션으로 교체한다. 기존 커넥션에 문제가 생겨 사용할
+            수 없을 경우 새로운 커넥션으로 풀을 재구성할 수 있다. 어플리케이션에서 사용중인 기존 커넥션은 커넥션 풀에 반납될 때
+            교체된다.</p>
+          </li></ul></div>
+
+        <div class="itemizedlist"><ul type="circle"><li>
+            <p>비활성화</p>
+
+            <p>데이터 소스를 사용 불능 상태로 만든다.</p>
+          </li></ul></div>
+
+        <div class="itemizedlist"><ul type="circle"><li>
+            <p>풀 크기 재조정</p>
+
+            <p>커넥션의 개수를 최소값까지 줄인다. 불필요하게 늘어난 유휴 커넥션을 제거할 수 있다.</p>
+          </li></ul></div>
+      </li></ul></div>
+  </div>
+
+  <div class="section" lang="ko"><div class="titlepage"><div><div><h3 class="title"><a id="d4e1526"/>JDBC 데이터 소스 - 통계</h3></div></div></div>
+    
+
+    <p>이 페이지에서는 데이터 소스의 커넥션 풀 통계 정보를 자세히 보여준다.</p>
+
+    <div class="itemizedlist"><ul type="disc"><li>
+        <p><span class="bold"><strong>최소 풀 크기</strong></span></p>
+
+        <p>사용자가 설정한, 커넥션의 최소 개수</p>
+      </li><li>
+        <p><span class="bold"><strong>최대 풀 크기</strong></span></p>
+
+        <p>사용자가 설정한, 커넥션의 최대 개수</p>
+      </li><li>
+        <p><span class="bold"><strong>현재 연결된 커넥션 수</strong></span></p>
+
+        <p>커넥션 풀에 존재하는 모든(active, idle 모두 포함) 커넥션의 개수</p>
+      </li><li>
+        <p><span class="bold"><strong>사용 가능한 커넥션 수</strong></span></p>
+
+        <p>커넥션 풀에 존재하는 사용 가능한(idle) 커넥션의 개수</p>
+      </li><li>
+        <p><span class="bold"><strong>물리 커넥션 생성</strong></span></p>
+
+        <p>현재까지 생성된 커넥션의 개수. 모자란 커넥션을 채우기 위한 커넥션 생성시 또는 문제가 생긴 커넥션을 교체하기 위한
+        커넥션 생성시 이 값이 늘어날 수 있으므로 '현재 연결된 커넥션 수'보다 큰 값일 수 있다.</p>
+      </li><li>
+        <p><span class="bold"><strong>물리 커넥션 닫음</strong></span></p>
+
+        <p>현재까지 커넥션 풀로부터 제거된 커넥션의 개수. 커넥션은 문제가 생겨 사용이 불가능해진 경우 등에 커넥션 풀로부터
+        제거되는데 이 때 이 값이 늘어나게 된다.</p>
+      </li><li>
+        <p><span class="bold"><strong>대기중인 쓰레드 </strong></span></p>
+
+        <p>커넥션을 얻기 위해 대기하고 있는 쓰레드의 개수. 이 값은 enable-wait 설정이 true인 경우에만 의미가
+        있으며 다음의 세 항목으로 표시된다.</p>
+
+        <div class="itemizedlist"><ul type="circle"><li>
+            <p>Low : 현재까지 샘플링 된 값 중 가장 작은 값</p>
+          </li></ul></div>
+
+        <div class="itemizedlist"><ul type="circle"><li>
+            <p>Current : 가장 최근 샘플링 된 값</p>
+          </li></ul></div>
+
+        <div class="itemizedlist"><ul type="circle"><li>
+            <p>High : 현재까지 샘플링 된 값 중 가장 큰 값</p>
+          </li></ul></div>
+      </li><li>
+        <p><span class="bold"><strong>커넥션 사용 시간(ms)</strong></span></p>
+
+        <p>커넥션을 커넥션 풀로부터 얻어간 때부터 커넥션 풀로 반환할 때까지 걸린 시간을 msec. 단위로 나타내며 다음의 세
+        항목으로 표시된다.</p>
+
+        <div class="itemizedlist"><ul type="circle"><li>
+            <p>Min : 현재까지 샘플링 된 값 중 가장 작은 값</p>
+          </li></ul></div>
+
+        <div class="itemizedlist"><ul type="circle"><li>
+            <p>Mean : 현재까지 샘플링 된 값들의 평균 값</p>
+          </li></ul></div>
+
+        <div class="itemizedlist"><ul type="circle"><li>
+            <p>Max : 현재까지 샘플링 된 값 중 가장 큰 값</p>
+          </li></ul></div>
+      </li><li>
+        <p><span class="bold"><strong>커넥션 대기 시간(ms)</strong></span></p>
+
+        <p><span class="bold"><strong><span class="emphasis"><em>커넥션을 얻기 위해 대기한 시간을 msec. 단위로
+        나태내며 다음의 세 항목으로 표시된다.</em></span></strong></span></p>
+
+        <div class="itemizedlist"><ul type="circle"><li>
+            <p>Min : 현재까지 샘플링 된 값 중 가장 작은 값</p>
+          </li></ul></div>
+
+        <div class="itemizedlist"><ul type="circle"><li>
+            <p>Mean : 현재까지 샘플링 된 값들의 평균 값</p>
+          </li></ul></div>
+
+        <div class="itemizedlist"><ul type="circle"><li>
+            <p>Max : 현재까지 샘플링 된 값 중 가장 큰 값</p>
+          </li></ul></div>
+      </li></ul></div>
+  </div>
+
+  <div class="section" lang="ko"><div class="titlepage"><div><div><h3 class="title"><a id="d4e1595"/>JDBC 데이터 소스 - 커넥션</h3></div></div></div>
+    
+
+    <p>이 페이지에서는 커넥션 풀에 존재하는 커넥션의 통계 정보를 자세히 보여주며 커넥션에 대한 몇가지 오퍼레이션 수행을
+    지원한다.</p>
+
+    <div class="itemizedlist"><ul type="disc"><li>
+        <p><span class="bold"><strong>ID</strong></span></p>
+
+        <p>커넥션 ID</p>
+      </li><li>
+        <p><span class="bold"><strong>State</strong></span></p>
+
+        <p>커넥션이 현재 어플리케이션에 의해 사용되고 있는지(active) 또는 사용되고 있지 않은지(idle)지
+        나타낸다.</p>
+      </li><li>
+        <p><span class="bold"><strong>State Time(s)</strong></span></p>
+
+        <p>sec. 단위의 State 지속시간. 어플리케이션이 오랜 시간 커넥션을 사용하거나 제대로 반납하지 않았다면
+        State가 active인 생태로 이 값이 매우 클 것이다.</p>
+      </li><li>
+        <p><span class="bold"><strong>Type</strong></span></p>
+
+        <p>커넥션 풀에 의해 풀링 관리되고 있는(pooled) 커넥션인지 또는 일회성으로 생성된(disposable)
+        커넥션인지 나타낸다.</p>
+      </li><li>
+        <p><span class="bold"><strong>연결 반환</strong></span></p>
+
+        <p>관리자가 강제로 어플리케이션이 사용중인 커넥션을 반납할 수 있다. 이 기능은 어플리케이션이 커넥션 반납을 하지 않아
+        누수 상태가 되었을 때 사용해야 한다. 반납 과정에서 JDBC 드라이버에서 에러가 발생했을 경우에는 그 커넥션은 버려진다.
+        단, 글로벌 트랜잭션이 진행중인 경우에는 바로 반납이 되지 않고 트랜잭션이 끝나면 반납된다. SQL 작업이나 로컬 트랜잭션이
+        진행중인 연결에 강제 반납 명령을 내릴 경우에는 JEUS에서 이를 막을 수 없으므로 예기치 않은 에러가 발생할 수 있다.
+        따라서 이 기능을 사용하기 전에 반드시 커넥션이 누수 상태임을 확인하기 바란다.</p>
+      </li><li>
+        <p><span class="bold"><strong>강제 끊기</strong></span></p>
+
+        <p>관리자가 어플리케이션이 사용중인 커넥션을 강제로 끊어버릴 수 있다. 주로 로컬 트랜잭션, 글로벌 트랜잭션, SQL
+        작업이 너무 오래 걸릴 경우 이 기능을 사용하면 된다. 물론 연결은 무조건 커넥션 풀에서 제거된다. JEUS가 연결을 끊는
+        방법은 JDBC 드라이버의 물리적 커넥션을 닫는 것이다(javax.sql.PooledConnection#close() 호출).
+        만약 물리적 커넥션을 닫을 때 드라이버 내부적으로 소켓을 끊지 않는다면 커넥션이 끊기기 않을 수도 있다. 만약 DBA 권한을
+        가진 데이터 소스(&lt;delegation-dba&gt;) 설정을 했을 경우에는 물리적 커넥션을 닫기 전에 먼저 세션 킬
+        명령을 내린다. 단, 세션 킬 명령은 티베로, 오라클, Sybase에서 지원된다.</p>
+      </li></ul></div>
+  </div>
+
+  <div class="section" lang="ko"><div class="titlepage"><div><div><h3 class="title"><a id="JDBCDataSource_Reconfigure"/>JDBC 데이터 소스 - 재설정</h3></div></div></div>
+    
+
+    <p>이 페이지에서는 커넥션 풀 정보를 재설정 할 수 있다. 단, 서버 설정에는 반영되지 않으므로 JEUSMain.xml에
+    반영하고 싶다면 'JEUS 매니저 리소스-&gt;JDBC' 메뉴로 가서 재설정하기 바란다.</p>
+
+    <div class="itemizedlist"><ul type="disc"><li>
+        <p><span class="bold"><strong>Min</strong></span></p>
+
+        <p>커넥션 풀의 최소 크기를 설정한다.</p>
+      </li><li>
+        <p><span class="bold"><strong>Max</strong></span></p>
+
+        <p>커넥션 풀의 최대 크기를 설정한다.</p>
+      </li><li>
+        <p><span class="bold"><strong>Step</strong></span></p>
+
+        <p>커넥션 풀의 사이즈 증가 폭을 설정한다.</p>
+      </li></ul></div>
+  </div>
+</div><div xmlns="" align="center"/></body></html>

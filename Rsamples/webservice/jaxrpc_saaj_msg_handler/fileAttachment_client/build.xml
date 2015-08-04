@@ -1,0 +1,16 @@
+<project name="fileAttachment_client" default="all" basedir=".">
+
+    <property name="is.ear.module" value="true" />
+
+    <import file="../../../common/common-build.xml" />
+
+    <path id="sub-components">
+        <filelist dir="./fileAttachmentClient-war" files="build.xml" />
+    </path>
+
+    <target name="all" depends="build, deploy, run" />
+
+    <property name="run.uri" value="FileAttachmentServiceClient/helloClient.jsp" />
+    <target name="run" depends="launch" />
+
+</project>

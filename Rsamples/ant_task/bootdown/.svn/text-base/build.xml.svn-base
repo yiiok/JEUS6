@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+
+<project name="example" default="boot" basedir=".">
+
+	<import file="../../common/common-build.xml" />
+	
+    <property name="java.library.path"
+              value="${java.library.path};${jeus.home}/lib/system"/>
+
+    <property name="node.name" value="${jeus.vhostname}"/>
+    <property name="username" value="${jeus.admin.username}"/>
+	<property name="password" value="${jeus.admin.password}"/>
+    <property name="jeusexit" value="false"/>
+
+    <path id="jeus.libraries">
+        <fileset dir="${jeus.home}/lib/system" includes="*.jar"/>
+    </path>
+
+	<taskdef resource="jeus/util/ant/jeusant.properties">
+        <classpath>
+			<pathelement location="${jeus.home}/classes"/>
+            <path refid="jeus.libraries"/>
+        </classpath>
+    </taskdef>
+
+    <target name="init">
+    </target>
+
+    <target name="boot" depends="init">
+        <boot node="${node.name}"
+	          username="${username}"
+			  password="${password}"/>
+    </target>
+
+    <target name="down" depends="init">
+        <down node="${node.name}"
+	          username="${username}"
+			  password="${password}"
+			  jeusexit="${jeusexit}"/>
+    </target>
+
+</project>

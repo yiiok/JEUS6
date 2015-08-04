@@ -1,0 +1,16 @@
+<project name="EJBScheduleSample" default="all" basedir=".">
+    <property name="is.multi.module" value="true"/>
+
+    <import file="../../common/common-build.xml"/>
+
+    <path id="sub-components">
+        <filelist dir="./ejbschedule-ejb" files="build.xml"/>
+        <filelist dir="./ejbschedule-client" files="build.xml"/>
+    </path>
+
+    <target name="all" depends="build, deploy, run, undeploy"/>
+
+    <target name="run">
+        <ant dir="./ejbschedule-client" target="run" inheritall="false"/>
+    </target>
+</project>

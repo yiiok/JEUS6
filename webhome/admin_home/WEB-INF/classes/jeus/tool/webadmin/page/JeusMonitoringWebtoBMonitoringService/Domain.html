@@ -1,0 +1,32 @@
+<body jwcid="@jeus:SubBorder" style="height: 100%; width: 100%; padding: 5px">
+    <span jwcid="tabPanel">
+        <form jwcid="form">
+        	<span jwcid="@If" condition="ognl:infos == null" renderTag="ognl:false">
+				<span jwcid="@Insert" value="message:wtbmo.common.error01" class="field_label"></span>        	
+        	</span>
+        	<table jwcid="@Else" class="table">
+        		<tr>
+        			<th>NO</th>
+        			<th>Node Name</th>
+        			<th>Node Port</th>
+        			<th>RAC Port</th>
+        			<th>Shared Memory Segment Key</th>
+        			<th>Shm Size</th>
+        			<th>HTH</th>
+        		</tr>
+        		<tr jwcid="@For" source="ognl:infos" value="ognl:info" volatile="ognl:true">
+        			<td align="center"><span jwcid="@Insert" value="ognl:info[0]"></span></td>
+        			<td align="center"><span jwcid="@Insert" value="ognl:info[1]"></span></td>
+        			<td align="center"><span jwcid="@Insert" value="ognl:info[2]"></span></td>
+        			<td align="center"><span jwcid="@Insert" value="ognl:info[3]"></span></td>
+        			<td align="center"><span jwcid="@Insert" value="ognl:info[4]"></span></td>
+        			<td align="center"><span jwcid="@Insert" value="ognl:info[5]"></span></td>
+        			<td align="center"><span jwcid="@Insert" value="ognl:info[6]"></span></td>
+        		</tr>
+        	</table>
+            <div class="form_button_layer">
+            	<a jwcid="@PageLink" page="ognl:pageName"></a><input jwcid="@Button" class="form_button" onclick="jeus.fireEvent(previousSibling, 'click');" label="message:common.label.refresh"/>
+            </div>
+        </form>
+    </span>
+</body>

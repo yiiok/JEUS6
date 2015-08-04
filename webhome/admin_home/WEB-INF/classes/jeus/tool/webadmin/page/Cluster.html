@@ -1,0 +1,8 @@
+<body jwcid="@Body">
+<ul id="nodelist">
+	<li jwcid="@For" source="ognl:nodeList" value="ognl:node" class="ognl:nodestate">
+		<a jwcid="@DirectLink" parameters="ognl:node.name" listener="listener:onChangeNode" disabled="ognl:nodestate == 'exited'" onclick="jeus.loading.show();"><span jwcid="@Insert" value="ognl:node.name"/></a>
+	</li>
+</ul>
+</body>
+

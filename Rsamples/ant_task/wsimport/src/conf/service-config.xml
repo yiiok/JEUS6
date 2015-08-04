@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-services-config xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+    <policy>
+		<endpoint-policy-subject>
+			<portcomponent-wsdl-name>AddNumbersPort</portcomponent-wsdl-name>
+            <addressing-policy>
+                <www-w3-org />
+            </addressing-policy>
+            <rm-policy />
+        </endpoint-policy-subject>
+    </policy>
+</web-services-config>

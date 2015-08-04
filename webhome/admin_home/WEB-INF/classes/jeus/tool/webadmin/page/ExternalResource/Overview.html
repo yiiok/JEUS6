@@ -1,0 +1,94 @@
+<html jwcid="mainBorder@jeus:MainBorder" title="literal:External Resource Overview">
+<span jwcid="tabPanel@jeus:TabPanel" pageNames="ognl:{pageName}">
+	<form jwcid="form@jeus:JEUSForm" title="message:extresource.overview.title" useDefaultButtons="ognl:false">
+		<table class="table">
+			<tr>
+				<th style="width: 50px;">&nbsp;</th>
+				<th style="width: 40%;"><span jwcid="@Insert" value="message:extresource.table.name"/></th>
+				<th style="width: 60%;"><span jwcid="@Insert" value="message:extresource.table.class"/></th>
+				<th style="width: 50px;">&nbsp;</th>
+			</tr>
+			<span jwcid="@For" source="ognl:extResources" value="ognl:extResource" index="ognl:index" renderTag="ognl:false">
+			<tr>
+				<td><img jwcid="docImg"/>
+					<span dojoType="dijit.Tooltip" connectId="ognl:components.docImg.clientId" jwcid="@Any" position="below, after">
+						<pre jwcid="@Insert" value="ognl:descriptor" renderTag="ognl:true"></pre>
+					</span>		
+				</td>
+				<td><a jwcid="@DirectLink" listener="listener:onSelectExternalResource" parameters="ognl:index"><span jwcid="@Insert" value="ognl:extResource.name"/></a></td>
+				<td><span jwcid="@Insert" value="ognl:extResource.className"/></td>
+				<td><a jwcid="@DirectLink" listener="listener:onDeleteExternalResource" parameters="ognl:index"><img jwcid="@Image" image="asset:delete" alt="delete"/></a></td>
+			</tr>
+			</span>
+		</table>
+		<div class="form_button_layer">
+			<a jwcid="@DirectLink" listener="listener:onCreateExtResource" class="create_link"><span jwcid="@Insert" value="message:create.extresource"></span></a>
+		</div>
+	</form>
+	<div jwcid="configExtResouce@If" condition="ognl:selectedExtResouce != null" renderTag="ognl:true">
+		<form jwcid="subForm@jeus:JEUSForm" title="message:extresource.overview.config.title" subform="ognl:true" success="listener:onAddExternalResource">
+			<span jwcid="name">
+				<input jwcid="nameField"/>
+			</span>	
+			<span jwcid="className">
+				<input jwcid="classNameField"/>
+			</span>	
+			<span jwcid="namePrefix">
+				<input jwcid="namePrefixField"/>
+			</span>			
+			<fieldset jwcid="extResourceProperty@Any" class="fieldset">
+				<legend class="legend"><span jwcid="@Insert" value="message:extresource.property.title"/></legend>
+				<div jwcid="erpTable@Any">
+				<div class="form_button_layer">
+					<a jwcid="@DirectLink" listener="listener:onCreateProperty" class="create_link" updateComponents="ognl:{'erpConfig'}"><span jwcid="@Insert" value="message:create.extresource.property"></span></a>
+				</div>				
+				<table class="table">
+					<tr>
+						<th style="width: 40%;"><span jwcid="@Insert" value="message:extresource.table.key"/></th>
+						<th style="width: 60%;"><span jwcid="@Insert" value="message:extresource.table.value"/></th>
+						<th style="width: 50px;">&nbsp;</th>
+					</tr>
+					<tr jwcid="@For" source="ognl:properties" value="ognl:property" index="ognl:propertyIndex">
+						<td><a jwcid="@DirectLink" listener="listener:onSelectProperty" parameters="ognl:propertyIndex" updateComponents="ognl:{'erpConfig'}"><span jwcid="@Insert" value="ognl:property.key"/></a></td>
+						<td><span jwcid="@Insert" value="ognl:property.value"/></td>
+						<td><a jwcid="@DirectLink" listener="listener:onDeleteProperty" parameters="ognl:propertyIndex" updateComponents="ognl:{'extResourceProperty'}"><img jwcid="@Image" image="asset:delete" alt="delete"/></a></td>			
+					</tr>
+				</table>
+				</div>
+				<div jwcid="erpConfig@Any">
+					<span jwcid="@If" condition="ognl:selectedProperty != null" renderTag="ognl:false">
+						<span jwcid="@jeus:FormSection" title="ognl:selectedPropertyIndex == -1? messages.getMessage('extresource.add.title') : messages.getMessage('extresource.modify.title')"/>
+						<span jwcid="key">
+							<input jwcid="keyField"/>
+						</span>	
+						<span jwcid="value">
+							<input jwcid="valueField"/>
+						</span>	
+						<div class="form_button_layer">
+							<submit jwcid="okProperty" class="form_button"/>
+						</div>
+					</span>
+				</div>
+			</fieldset>
+			<table id="propertyGroup" class="table">
+				<caption><span jwcid="@Insert" value="message:extresource.property.group.title"/></caption>
+				<tr>
+					<th style="width: 50px;">&nbsp;</th>
+					<th style="width: 30%;"><span jwcid="@Insert" value="message:extresource.table.name.prefix"/></th>
+					<th style="width: 70%;"><span jwcid="@Insert" value="message:extresource.table.properties"/></th>
+					<th style="width: 50px;">&nbsp;</th>
+				</tr>
+				<tr jwcid="@For" source="ognl:propertyGroups" value="ognl:propertyGroup" index="ognl:propertyGroupIndex">
+					<td></td>
+					<td><span jwcid="@Insert" value="ognl:propertyGroup.namePrefix"/></td>
+					<td><span jwcid="@Insert" value="ognl:propertyGroupProperties"/></td>
+					<td><a jwcid="@LinkSubmit" listener="listener:onModifyPropertyGroup" parameters="ognl:propertyGroupIndex"><img jwcid="@Image" image="asset:modify" alt="modify"/></a><a jwcid="@DirectLink" listener="listener:onDeletePropertyGroup" parameters="ognl:propertyGroupIndex"><img jwcid="@Image" image="asset:delete" alt="delete"/></a></td>			
+				</tr>
+			</table>
+			<div class="form_button_layer">
+				<a jwcid="@LinkSubmit" listener="listener:onModifyPropertyGroup" parameters="ognl:-1" class="create_link"><span jwcid="@Insert" value="message:create.extresource.propertygroup"></span></a>
+			</div>						
+		</form>
+	</div>
+</span>
+</html>

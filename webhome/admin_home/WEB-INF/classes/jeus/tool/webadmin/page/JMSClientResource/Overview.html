@@ -1,0 +1,21 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+		<form jwcid="overviewForm">
+            <table border="1" cellpadding="3" width="100%" jwcid="clientsTable">
+            <span jwcid="clr_overview_name_labelColumnValue">
+                <a jwcid="clientLink"><span jwcid="client"/></a>
+            </span>
+            <span jwcid="clr_overview_connected_time_labelColumnValue@Block">
+            	<span jwcid="@Insert" value="ognl:getTime(currentView.startTime)" renderTag="ognl:false"/>
+            </span>
+            </table>
+            <span jwcid="@If" condition="ognl:detail != null" renderTag="ognl:false">
+            	<span jwcid="@jeus:FormSection" title="message:clr.overview.entry.detail.label"/>
+            	<pre jwcid="@Insert" value="ognl:detail" renderTag="ognl:true"></pre>
+            </span>
+	        <div class="form_button_layer">
+	        	<a jwcid="@DirectLink" listener="listener:onRefresh"></a><input jwcid="@Button" class="form_button" onclick="jeus.fireEvent(previousSibling, 'click');" label="message:common.label.refresh"/>
+			</div>
+        </form>
+    </span>
+</html>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<project name="EJBScheduleClient" default="all" basedir=".">
+    <property name="is.jar.module" value="true"/>
+
+    <import file="../../../common/common-build.xml"/>
+
+    <target name="run" depends="runappclient"/> 
+</project>
+

@@ -1,0 +1,74 @@
+9
+
+dir
+781
+svn://192.168.1.134/JEUS6/testenv/tags/fix8/webhome
+svn://192.168.1.134/JEUS6
+
+
+
+2011-11-02T04:33:53.144743Z
+712
+taeju
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+e2cfb00e-0bd0-4642-a9bb-23a1f3b27570
+
+admin_home.jar
+file
+
+
+
+
+2015-08-04T02:13:15.000000Z
+0c1f4f2e0e9a6feb950fe0359ac1febc
+2011-11-02T04:33:53.144743Z
+712
+taeju
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+14557457
+
+app_home
+dir
+
+autodeploy
+dir
+
+system_app
+dir
+
+uddi_home
+dir
+

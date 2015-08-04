@@ -1,0 +1,45 @@
+<html jwcid="mainBorder" >
+    <span jwcid="condFound">
+        <span jwcid="tabPanel">
+            <!-- general, storage, thread_pool, cluster, backup, primary -->
+            <span jwcid="notFound">
+                &nbsp;
+            </span>
+            <span jwcid="properties">
+                <form jwcid="propertiesForm">
+                        <!-- always required -->
+                        <span jwcid="vendor"/>
+                        <span jwcid="mq_factory_class_name"/>
+                        <span jwcid="mq_resource_type"/>
+                        <span jwcid="export_name"/>
+
+                        <span jwcid="condQueueType">
+                            <span jwcid="queue">
+                                <input jwcid="queueField"/>
+                            </span>
+                        </span>
+                        <span jwcid="condQueueManager">
+                            <span jwcid="queue_manager">
+                                <input jwcid="queue_managerField"/>
+                            </span>
+                        </span>
+                        <span jwcid="condTopicType">
+                            <span jwcid="topic">
+                                <input jwcid="topicField"/>
+                            </span>
+                        </span>
+                        <span jwcid="additional_properties">
+                            <input jwcid="additional_propertiesField" style="width:98%;" rows="10" nowrap="true"/>
+                        </span>
+                </form>
+            </span>
+        </span>
+    </span>
+    <span jwcid="condNotFound">
+        <span jwcid="tabPanel2">
+            <form jwcid="dsForm">
+            </form>
+            <span jwcid="no_datasource" class="field_label"/>
+        </span>
+    </span>
+</html>

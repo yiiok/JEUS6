@@ -1,0 +1,30 @@
+<span jwcid="$content$">
+	<div jwcid="condHasTargets" id="ognl:clientId" class="targetExplorer">
+		<div jwcid="@Insert" value="ognl:label" class="field_label"></div>
+		<div class="targetExplorerRoot">
+			<input jwcid="allCheck"/><span jwcid="@Insert" class="field_label" value="message:TargetExplorer.all_check.label"/>
+			<div class="targetExplorerSub" jwcid="eachNode">
+				<input jwcid="nodeCheck"/><span jwcid="nodeName" class="target_explorer_nodename"/>
+				<div class="targetExplorerSub" jwcid="eachContainer">
+					<input jwcid="containerCheck"/><span jwcid="containerName"/>
+					<span jwcid="condOption">
+						<input jwcid="containerOption"/>
+						<span jwcid="eachContextGroup">
+							<select jwcid="virtualHostSelect" size="3">
+		                        <span jwcid="eachVirtualHost">
+		                            <option jwcid="virtualHostOption"/>
+		                        </span>
+		                    </select>
+	                    </span>
+					</span>
+				</div>
+				<span class="seperator" jwcid="condHasNext">
+					<div class="seperator"/>
+				</span>
+			</div>
+		</div>
+	</div>
+	<div jwcid="@Else" class="targetExplorer">
+		<div jwcid="@Insert" value="ognl:noTargetMessage" class="field_label"></div>
+	</div>
+</span>

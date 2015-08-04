@@ -1,0 +1,36 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <form jwcid="form">
+        	<table class="table">
+        		<tr>
+        			<th><span jwcid="@Insert" value="message:wtbmo.overview.name"></span></th>
+        			<th><span jwcid="@Insert" value="message:wtbmo.overview.address"></span></th>
+        			<th><span jwcid="@Insert" value="message:wtbmo.overview.port"></span></th>
+        			<th><span jwcid="@Insert" value="message:wtbmo.overview.wsracd"></span></th>
+        			<th></th>
+        		</tr>
+        		<tr jwcid="@For" source="ognl:monitor.list" value="ognl:webtoB">
+        			<td align="center">
+        				<span jwcid="@If" condition="ognl:webtoB.connected" renderTag="ognl:false">
+        					<a jwcid="wtbLink"><span jwcid="@Insert" value="ognl:webtoB.name"></span></a>
+        				</span>
+        				<span jwcid="@Else" renderTag="ognl:false">
+        					<span jwcid="@Insert" value="ognl:webtoB.name"></span>
+        				</span>
+        			</td>
+        			<td align="center"><span jwcid="@Insert" value="ognl:webtoB.address"></span></td>
+        			<td align="center"><span jwcid="@Insert" value="ognl:webtoB.port"></span></td>
+        			<td align="center"><input jwcid="wsracd@Any" type="text" value="" style="text-align: center;"></input></td>
+        			<td align="center">
+        				<a jwcid="wtb_connect@DirectLink" listener="listener:connect" parameters="ognl:webtoB.toString()"></a><input jwcid="@Button" class="form_button" onclick="jeus.fireEvent(previousSibling, 'click');" label="message:wtbmo.overview.connect" disabled="ognl:webtoB.connected"/>
+        				<a jwcid="wtb_disconnect@DirectLink" listener="listener:disconnect" parameters="ognl:webtoB.toString()"></a><input jwcid="@Button" class="form_button" onclick="jeus.fireEvent(previousSibling, 'click');" label="message:wtbmo.overview.disconnect" disabled="ognl:!webtoB.connected"/>
+        			</td>
+        			<span jwcid="@Script" script="Overview.script" key="ognl:webtoB.toString()" target="ognl:components.wsracd.clientId"/>
+        		</tr>
+        	</table>
+            <div class="form_button_layer">
+            	<a jwcid="wtb_refresh@DirectLink" listener="listener:refresh"></a><input jwcid="@Button" class="form_button" onclick="jeus.fireEvent(previousSibling, 'click');" label="message:common.label.refresh"/>
+            </div>
+        </form>
+    </span>
+</html>

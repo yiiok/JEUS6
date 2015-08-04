@@ -1,0 +1,150 @@
+<body jwcid="@Body">
+	<span jwcid="@jeus:Dynamite"/>
+	<div id="mainborder_content">
+    <span jwcid="tabPanel">
+        <form jwcid="accountsForm"/>
+        <span jwcid="accountsTab">
+            <span jwcid="memory">
+                <form jwcid="memoryForm">
+                    <span jwcid="accounts">
+                        <input jwcid="accountsField" style="width:100%;"/>
+                    </span>
+                    <div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+                    	<input jwcid="modify" class="form_button" style="width:100px;"/>&nbsp;<input jwcid="remove" class="form_button" style="width:100px;"/>&nbsp;&nbsp;<input jwcid="create" class="form_button" style="width:100px;"/>
+                    </div>
+                </form>
+                <span jwcid="condModify">
+                    <form jwcid="modifyForm">
+                        <input jwcid="hiddenAccount"/>
+                        <span jwcid="modify_name"/>
+                        <span jwcid="modify_algorithm">
+                            <input jwcid="modify_algorithmField"/>
+                        </span>
+                        <span jwcid="modify_password">
+                            <input jwcid="modify_passwordField"/>
+                        </span>
+                        <span jwcid="modify_confirm_password">
+                            <input jwcid="modify_confirm_passwordField"/>
+                        </span>
+                    </form>
+                </span>
+                <span jwcid="condCreate">
+                    <form jwcid="createForm">
+                        <div class="form_button_layer">
+                        	<input jwcid="close" class="form_button" style="width:100px;"/>
+                        </div>
+                        <span jwcid="name">
+                            <input jwcid="nameField"/>
+                        </span>
+                        <span jwcid="algorithm">
+                            <input jwcid="algorithmField"/>
+                        </span>
+                        <span jwcid="password">
+                            <input jwcid="passwordField"/>
+                        </span>
+                        <span jwcid="confirm_password">
+                            <input jwcid="confirm_passwordField"/>
+                        </span>
+                    </form>
+                </span>
+            </span>
+            <span jwcid="repository">
+                <form jwcid="repositoryForm"/>
+                <span jwcid="userTableLabel" class="field_label"/>
+                <table class="table">
+                    <tr>
+                        <th><span jwcid="user_name_column"/></th>
+                        <th><span jwcid="user_password_column"/></th>
+                        <th><span jwcid="user_group_column"/></th>
+                        <th><span jwcid="user_description_column"/></th>
+                        <th width="20">&nbsp;</th>
+                    </tr>
+                    <tr jwcid="eachUser">
+                        <td><a jwcid="userConfigLink"><span jwcid="user_name_value"/></a></td>
+                        <td><span jwcid="user_password_value"/></td>
+                        <td>
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr jwcid="eachUserGroup">
+                                    <td class="table_values_noborder"><span jwcid="user_group_value"/></td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td><span jwcid="user_description_value"/></td>
+                        <td align="center"><a jwcid="userDeleteLink" disabled="ognl:!@jeus.tool.webadmin.hivemind.Lock@isEnabledEdit(getSettings(), getVisit())"><img jwcid="delete" alt="delete"/></a></td>
+                    </tr>
+                </table>
+                <div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+            		<a jwcid="createUserLink" class="create_link"><span jwcid="create_user_label"/></a>
+            	</div>
+                <br/><br/>
+                <span jwcid="groupTableLabel" class="field_label" style="clear: both;"/>
+                <table width="100%" border="1" cellspacing="0" cellpadding="0" class="table">
+                    <tr>
+                        <th><span jwcid="group_name_column"/></th>
+                        <th><span jwcid="sub_group_column"/></th>
+                        <th><span jwcid="group_description_column"/></th>
+                        <th width="20">&nbsp;</th>
+                    </tr>
+                    <tr jwcid="eachGroup">
+                        <td><a jwcid="groupConfigLink"><span jwcid="group_name_value"/></a></td>
+                        <td>
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr jwcid="eachSubGroup">
+                                    <td class="table_values_noborder"><span jwcid="sub_group_value"/></td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td><span jwcid="group_description_value"/></td>
+                        <td align="center"><a jwcid="groupDeleteLink" disabled="ognl:!@jeus.tool.webadmin.hivemind.Lock@isEnabledEdit(getSettings(), getVisit())"><img jwcid="delete2" alt="delete"/></a></td>
+                    </tr>
+                </table>
+                <div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+            		<a jwcid="createGroupLink" class="create_link"><span jwcid="create_group_label"/></a>
+            	</div>
+                <div jwcid="configLayer@Any" style="clear: both;">
+                <span jwcid="@If" condition="ognl:user != null" renderTag="ognl:false">
+                <form jwcid="repositoryConfigUserForm">
+                	<span jwcid="@If" condition="ognl:createMode" renderTag="ognl:false">
+                    <span jwcid="user_name">
+                        <input jwcid="user_nameField"/>
+                    </span>
+                    </span>
+                    <span jwcid="@Else" renderTag="ognl:false">
+                    	<input jwcid="@jeus:ReadOnlyTextField" parentElement="ognl:user" elementName="name"/>
+                    </span>
+                    <span jwcid="user_password">
+                        <input jwcid="user_algorithmField"/>
+                        <input jwcid="user_passwordField"/>
+                    </span>
+                    <span jwcid="user_group">
+                        <input jwcid="user_groupField" class="field_label"/>
+                    </span>
+                    <span jwcid="user_description">
+                        <input jwcid="user_descriptionField" style="width:90%"/>
+                    </span>
+                </form>
+                </span>
+                <span jwcid="@If" condition="ognl:group != null" renderTag="ognl:false">
+                <form jwcid="repositoryConfigGroupForm">
+                	<span jwcid="@If" condition="ognl:createMode" renderTag="ognl:false">
+                    <span jwcid="group_name">
+                        <input jwcid="group_nameField"/>
+                    </span>
+                    </span>
+                    <span jwcid="@Else" renderTag="ognl:false">
+                    	<input jwcid="@jeus:ReadOnlyTextField" parentElement="ognl:group" elementName="name"/>
+                    </span>
+                    <span jwcid="sub_group">
+                        <input jwcid="sub_groupField" class="field_label"/>
+                    </span>
+                    <span jwcid="group_description">
+                        <input jwcid="group_descriptionField" style="width:90%"/>
+                    </span>
+                </form>
+                </span>
+                </div>
+            </span>
+        </span>
+    </span>
+    </div>
+</body>

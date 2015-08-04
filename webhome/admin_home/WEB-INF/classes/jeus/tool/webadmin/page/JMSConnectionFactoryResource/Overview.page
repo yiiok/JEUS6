@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JMSConnectionFactoryResource.CvsStableOverviewPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:JMS Connection Factory Configuration"/>
+        
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="new java.lang.String[]{pageName}"/>
+    </component>
+
+    <component id="form" type="jeus:JEUSForm">
+        <binding name="title" value="message:cfr.overview.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="export_name_column" type="Insert">
+        <binding name="value" value="message:cfr.overview.export_name.label"/>
+    </component>
+
+    <component id="type_column" type="Insert">
+        <binding name="value" value="message:cfr.overview.type.label"/>
+    </component>
+
+    <component id="name_column" type="Insert">
+        <binding name="value" value="message:cfr.overview.name.label"/>
+    </component>
+
+    <component id="actions_column" type="Insert">
+        <binding name="value" value="message:jds.actions.label"/>
+    </component>
+
+    <component id="eachConnectionFactory" type="For">
+        <binding name="source" value="connectionFactories"/>
+        <binding name="value" value="connectionFactory"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="type_value" type="Insert">
+        <binding name="value" value="connectionFactory.type"/>
+    </component>
+
+    <component id="export_name_value" type="Insert">
+        <binding name="value" value="connectionFactory.exportName"/>
+    </component>
+
+    <component id="name_value" type="Insert">
+        <binding name="value" value="connectionFactory.name"/>
+    </component>
+
+    <component id="connectionFactoryLink" type="ExternalLink">
+        <binding name="page" value="literal:JMSConnectionFactoryResource_Configuration"/>
+        <binding name="parameters" value="connectionFactory.objectName.canonicalName"/>
+    </component>
+
+    <component id="bind" type="Button">
+        <binding name="label" value="message:jds.bind.label"/>
+		<binding name="disabled" value="objectName.domain == 'XML' or connectionFactory.objectName.domain != 'XML'"/>        
+    </component>
+
+    <component id="bindLink" type="DirectLink">
+        <binding name="listener" value="listener:onBind"/>
+        <binding name="parameters" value="connectionFactory.name"/>
+
+    </component>
+
+    <component id="deleteLink" type="DirectLink">
+        <binding name="listener" value="listener:onDelete"/>
+        <binding name="parameters" value="connectionFactory.name"/>
+        <binding name="renderer" value="@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@build('common.message.delete.confirm', connectionFactory.name)"/>
+    </component>
+
+    <component id="delete" type="Image">
+        <binding name="image" value="asset:delete"/>
+    </component>
+
+    <component id="createLink" type="ExternalLink">
+        <binding name="page" value="literal:JMSConnectionFactoryResource_Create"/>
+        <binding name="parameters" value="{objectName.canonicalName, 'New'}"/>
+    </component>
+
+    <component id="create_label" type="Insert">
+        <binding name="value" value="message:cfr.create.label"/>
+    </component>
+
+    <asset name="delete" path="context:/image/table/delete.gif"/>
+
+    <property name="connectionFactory"/>
+</page-specification>

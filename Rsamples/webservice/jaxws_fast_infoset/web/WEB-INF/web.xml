@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:ns2="http://java.sun.com/xml/ns/persistence">
+    <servlet>
+        <servlet-name>fastinfoset</servlet-name>
+        <servlet-class>fastinfoset.server.AddNumbersImpl</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>fastinfoset</servlet-name>
+        <url-pattern>/addnumbers</url-pattern>
+    </servlet-mapping>
+</web-app>

@@ -1,0 +1,100 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+    	<span jwcid="general@Block">
+	        <form jwcid="form">
+	            <span jwcid="name">
+	            </span>
+				<span jwcid="typeSelection">
+	           		<span jwcid="@If" condition="ognl:serviceConfigType == 'server-url'" renderTag="ognl:false">
+						<span jwcid="serverUrl">
+	      		            	<input jwcid="serverUrlField"/>
+	                	</span>
+					</span>
+					<span jwcid="@Else" renderTag="ognl:false">
+		                <span jwcid="server_address">
+		                    <input jwcid="server_addressField"/>
+		                </span>
+			            <span jwcid="port">
+			                <input jwcid="portField"/>
+			            </span>		                
+					</span>            	
+	            </span>            
+	            <span jwcid="general_blind">
+	                <span jwcid="client_limit">
+	                    <input jwcid="client_limitField"/>
+	                </span>
+	                <span jwcid="backlog_size">
+	                    <input jwcid="backlog_sizeField"/>
+	                </span>
+	                <span jwcid="blocking_socket">
+	                    <input jwcid="blocking_socketField"/>
+	                </span>
+	                <!-- 
+	                <span jwcid="directByteBuffer">
+	                	<input jwcid="directByteBufferField"/>
+	                </span>
+	                 -->
+	                <span jwcid="read_buffer_size">
+	                    <input jwcid="read_buffer_sizeField"/>
+	                </span>
+	                <span jwcid="write_buffer_size">
+	                    <input jwcid="write_buffer_sizeField"/>
+	                </span>
+	                <span jwcid="connection_timeout">
+	                    <input jwcid="connection_timeoutField"/>
+	                </span>
+	                <span jwcid="check_security">
+	                    <input jwcid="check_securityField"/>
+	                </span>	                
+	                <span jwcid="client_keepalive_timeout">
+	                    <input jwcid="client_keepalive_timeoutField"/>
+	                </span>
+					<span jwcid="@jeus:Field" field="component:backup_service_urlField">
+			        	<input jwcid="backup_service_urlField@jeus:JAXBTextField" parentElement="ognl:serviceConfig" elementName="backupServiceUrl"/>
+		            </span>   	                
+
+	            </span>
+	        </form>    	
+    	</span>
+    	<span jwcid="ssl@Block">
+	        <form jwcid="sslform">
+       	    	<span jwcid="@jeus:Field" field="component:useSslField">
+               		<span jwcid="useSslField@Checkbox" value="ognl:useSsl" parentElement="ognl:serviceConfig" elementName="useSsl" onclick="dojo.xhrPost({form:this.form, content:{'submitmode': 'refresh'}, load: function(response, ioArgs){dijit.byId('rightPane').setContent(response);}});" disabled="ognl:!@jeus.tool.webadmin.hivemind.Lock@isEnabledEdit(getSettings(), getVisit())"></span>
+               	</span>
+               	<div jwcid="@Any" style="ognl:useSsl ? 'display:block;' : 'display:none;'">
+	               	<span jwcid="@jeus:Field" field="component:protocolField">
+	               		<span jwcid="protocolField@jeus:JAXBTextField" parentElement="ognl:sslConfiguration" elementName="protocol" disabled="ognl:!useSsl"></span>
+	               	</span>
+	               	<span jwcid="@jeus:Field" field="component:keyStoreTypeField">
+	               		<span jwcid="keyStoreTypeField@jeus:JAXBTextField" parentElement="ognl:sslConfiguration" elementName="keyStoreType" disabled="ognl:!useSsl"></span>
+	               	</span>
+	               	<span jwcid="@jeus:Field" field="component:keyStoreFileField">
+	               		<span jwcid="keyStoreFileField@jeus:JAXBTextField" parentElement="ognl:sslConfiguration" elementName="keyStoreFile" disabled="ognl:!useSsl" validators="validators:required" style="width: 98%;"></span>
+	               	</span>
+	               	<span jwcid="@jeus:Field" field="component:keyStorePassField">
+	               		<span jwcid="keyStorePassField@jeus:JAXBTextField" parentElement="ognl:sslConfiguration" elementName="keyStorePass" disabled="ognl:!useSsl" validators="validators:required"></span>
+	               	</span>
+	               	<span jwcid="@jeus:Field" field="component:keyManagementAlgorithmField">
+	               		<span jwcid="keyManagementAlgorithmField@jeus:JAXBTextField" parentElement="ognl:sslConfiguration" elementName="keyManagementAlgorithm" disabled="ognl:!useSsl"></span>
+	               	</span>
+		                                                	
+	               	<span jwcid="useClientAuth@jeus:ExtendedCheckbox" value="ognl:useClientAuth" parentElement="ognl:sslConfiguration" elementName="clientAuth" disabled="ognl:!useSsl || !@jeus.tool.webadmin.hivemind.Lock@isEnabledEdit(getSettings(), getVisit())">
+	               		<span jwcid="@jeus:Field" field="component:trustStoreTypeField">	
+	                		<span jwcid="trustStoreTypeField@jeus:JAXBTextField" parentElement="ognl:clientAuth" elementName="trustStoreType" disabled="ognl:!useClientAuth"></span>
+	                	</span>
+	                	<span jwcid="@jeus:Field" field="component:trustStoreFileField">
+	                		<span jwcid="trustStoreFileField@jeus:JAXBTextField" parentElement="ognl:clientAuth" elementName="trustStoreFile" disabled="ognl:!useClientAuth" validators="validators:required" style="width: 98%;"></span>
+	                	</span>
+	                	<span jwcid="@jeus:Field" field="component:trustStorePassField">
+	                		<span jwcid="trustStorePassField@jeus:JAXBTextField" parentElement="ognl:clientAuth" elementName="trustStorePass" disabled="ognl:!useClientAuth" validators="validators:required"></span>
+	                	</span>
+	                	<span jwcid="@jeus:Field" field="component:trustManagementAlgorithmField">
+	                		<span jwcid="trustManagementAlgorithmField@jeus:JAXBTextField" parentElement="ognl:clientAuth" elementName="trustManagementAlgorithm" disabled="ognl:!useClientAuth"></span>
+	                	</span>               	
+	               	</span> 
+               	</div>
+	        </form>    	
+    	</span>
+
+    </span>
+</html>

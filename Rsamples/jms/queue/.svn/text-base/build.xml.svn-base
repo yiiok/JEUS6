@@ -1,0 +1,30 @@
+<project name="jms/queue" default="all" basedir=".">
+    <property name="is.multi.module" value="false"/>
+    <property name="is.jar.module" value="true"/>
+
+    <import file="../../common/common-build.xml"/>
+
+    <target name="all" depends="build, run"/>
+
+    <target name="run">
+        <echo>Please execute send, browse, or receive</echo>
+    </target>
+
+    <target name="send">
+        <antcall target="runjavaclient">
+            <param name="run.class" value="jms.queue.QueueSend"/>
+        </antcall>
+    </target>
+
+    <target name="browse">
+        <antcall target="runjavaclient">
+            <param name="run.class" value="jms.queue.QueueBrowse"/>
+        </antcall>
+    </target>
+
+    <target name="receive">
+        <antcall target="runjavaclient">
+            <param name="run.class" value="jms.queue.QueueReceive"/>
+        </antcall>
+    </target>
+</project>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="wsgen" default="build" basedir=".">
+
+    <property name="is.app-client.module" value="true" />
+
+    <import file="../../common/common-build.xml" />
+
+    <taskdef name="wsgen" classname="jeus.webservices.jaxws.tools.WsGen2">
+        <classpath refid="jeus.libraries.classpath" />
+    </taskdef>
+
+    <target name="-post-compile">
+        <wsgen sei="fromjava.server.AddNumbersImpl"
+               verbose="true"
+               destdir="${build.classes.dir}"
+			   classpath="${build.classes.dir};${jeus.home}/lib/system/javaee.jar"
+               resourcedestdir="${build.classes.dir}"
+               sourcedestdir="${build.classes.dir}"
+			   genwsdl="true"
+			   policy="${src.conf}/service-config.xml" />
+    </target>
+
+</project>

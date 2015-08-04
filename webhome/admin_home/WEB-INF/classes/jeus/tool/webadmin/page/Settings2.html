@@ -1,0 +1,50 @@
+<span jwcid="@jeus:MainBorder" title="Settings2">
+<span jwcid="@jeus:TabPanel" pageNames="ognl:new java.lang.String[]{'Settings', pageName}">
+	<form jwcid="settingForm@jeus:JEUSForm" 
+		title="message:settings.config.title" 
+		description="message:settings.config.description"
+		useDefaultButtons="ognl:false">
+		<span jwcid="@jeus:ReadOnlyTextField" label="message:main.node.title" value="ognl:visit.nodeName"/>
+		<div jwcid="config@Any">
+			<table class="table">
+				<tr>
+					<th>name</th>
+					<th width="220">time</th>
+					<th width="150"></th>
+				</tr>
+				<tr jwcid="@For" source="ognl:source" value="ognl:backup">
+					<td>
+						<span jwcid="name@Any"><span jwcid="@Insert" value="ognl:backup.name"/></span>
+						<span jwcid="@Any" dojoType="dijit.Tooltip" connectId="ognl:components.name.clientId">
+							<pre jwcid="@Insert" value="ognl:backup.description" renderTag="ognl:true"></pre>
+						</span>
+					</td>
+					<td width="220" align="center"><span jwcid="@Insert" value="ognl:backup.getTime(page.locale)"/></td>
+					<td width="150" align="center">
+						<input jwcid="@Submit" class="form_button" value="message:common.label.apply" message="ognl:messages.format('common.label.apply.confirm', backup.name)" listener="listener:onApply" parameters="ognl:backup.name" disabled="ognl:backup.name == visit.nodeName"/>
+						<input jwcid="@Submit" class="form_button" value="message:common.label.remove" message="ognl:messages.format('common.message.remove.confirm', backup.name)" listener="listener:onRemove" parameters="ognl:backup.name" disabled="ognl:backup.name == visit.nodeName"/>
+					</td>
+				</tr>
+			</table>
+			<div class="form_button_layer">
+				<a jwcid="@DirectLink" listener="listener:onDuplicate"></a><button class="form_button" jwcid="@Button" label="message:common.label.backup" onclick="jeus.fireEvent(previousSibling, 'click');"/>
+			</div>
+			<div jwcid="configDuplicate@Any" style="margin-top: 20px;">
+				<span jwcid="@If" condition="ognl:config">
+				<span jwcid="@jeus:FormSection" title="message:setting.duplicate.title"/>
+				<span jwcid="@jeus:Field" label="message:setting.duplicate.target" field="component:targetField">
+					<input jwcid="targetField@TextField" value="ognl:targetName" validators="validators:required" displayName="message:setting.duplicate.target"/>
+				</span>
+				<span jwcid="@jeus:Field" label="message:setting.duplicate.description" field="component:descriptionField">
+					<input jwcid="descriptionField@TextArea" value="ognl:description" displayName="message:setting.duplicate.description" style="width: 100%;" rows="8"/>
+				</span>				
+				<div class="form_button_layer">
+					<input jwcid="@Submit" class="form_button" value="message:JEUSForm.ok.label" message="message:JEUSForm.ok.confirm" listener="listener:onDuplicateOK"/>
+					<input jwcid="@Submit" class="form_button" value="message:JEUSForm.cancel.label" listener="listener:onDuplicateCancel"/>
+				</div>
+				</span>
+			</div>
+		</div>	
+	</form>
+</span>
+</span>

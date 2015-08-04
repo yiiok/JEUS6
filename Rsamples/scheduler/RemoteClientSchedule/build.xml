@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<project name="RemoteClientScheduleSample" default="all" basedir=".">
+    <property name="is.jar.module" value="true"/>
+    <import file="../../common/common-build.xml"/>
+
+    <target name="all" depends="init, build, sample_copy"/>
+    <target name="sample_copy" depends="init, build">
+        <copy file="${dist.dir}/RemoteClientScheduleSample.jar" todir="${env.JEUS_HOME}/lib/application"/>
+        <echo>If the copy operation has succeeded, please start JEUS. And if JEUS is already running, restart it please.</echo>
+    </target>
+
+    <property name="run.class" value="sample.scheduler.RemoteClientSchedule"/>
+    <target name="run" depends="runjavaclient"/>
+</project>

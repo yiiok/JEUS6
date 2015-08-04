@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.LoginPage">
+	
+    <component id="condFailed" type="If">
+        <binding name="condition" value="failed"/>
+        <binding name="renderTag" value="false"/>
+    </component>
+
+    <component id="alertScript" type="Script">
+        <binding name="script" value="literal:/jeus/tool/webadmin/script/Alert.script"/>
+        <binding name="message" value="message:common.exception.login_fail"/>
+    </component>
+
+    <component id="username" type="TextField">
+        <binding name="value" value="userName"/>
+        <binding name="displayName" value="message:Login.username.label"/>
+    </component>
+
+    <component id="password" type="TextField">
+        <binding name="hidden" value="true"/>
+        <binding name="value" value="password"/>
+        <binding name="displayName" value="message:Login.password.label"/>
+    </component>
+    
+    <asset name="login_css" path="context:/css/login.css"/>
+    <asset name="login_image" path="context:/image/login/b_login.gif"/>
+</page-specification>

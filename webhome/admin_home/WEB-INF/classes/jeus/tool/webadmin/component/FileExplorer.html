@@ -1,0 +1,12 @@
+<span jwcid="$content$">
+    <ul id="fe_directory">
+     	<li><a jwcid="rootLink"><span jwcid="node"/>:</a></li>
+     	<li jwcid="eachDirectory"><a jwcid="directoryLink"><span jwcid="@Insert" value="ognl:directory"/></a></li>
+     	<li><span jwcid="@Insert" value="ognl:currentDirectory"/></li>
+    </ul>
+    <ul id="fe_file">
+     	<span jwcid="@For" source="ognl:model.listFiles()" value="ognl:fileview" renderTag="ognl:false">
+     	<li><a jwcid="fileLink" class="folder"><span jwcid="@Insert" value="ognl:directory"/></a></li>
+     	</span>
+    </ul>
+</span>

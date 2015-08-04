@@ -1,0 +1,1 @@
+({"refresh":"Refresh","hide":"Hide","detail":"Detail","elementDocument":"Element Document","resetConfirm":"Do you want to cancel?","filePattern":"File Pattern","info":"Information","bufferSize":"Buffer Size","confirm":"Confirmation"})

@@ -1,0 +1,6 @@
+<project name="withoutwsdl-war" default="build" basedir=".">
+    <property name="is.war.module" value="true" />
+
+    <import file="../../../../../common/common-build.xml" />
+
+</project>

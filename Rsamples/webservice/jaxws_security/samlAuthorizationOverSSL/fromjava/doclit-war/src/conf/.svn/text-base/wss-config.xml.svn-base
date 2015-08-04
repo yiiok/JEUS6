@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-services-config xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+    <policy>
+        <endpoint-policy-subject>
+            
+            <security-policy>
+                <security-binding>
+                    <transport-binding>
+                        <transport-token>
+                            <https-token/>
+                        </transport-token>
+                    </transport-binding>
+                </security-binding>
+            </security-policy>
+            <operation-policy-subject>
+                <operation-java-name>addNumbers</operation-java-name>
+                <input-message-policy-subject>
+                    <security-policy>
+                        <supporting-token>
+                            <signed-supporting-token>
+                                <saml-token>
+                                
+                                </saml-token>
+                            </signed-supporting-token>
+                        </supporting-token>
+                    </security-policy>
+                </input-message-policy-subject>
+            </operation-policy-subject>
+        </endpoint-policy-subject>
+    </policy>
+</web-services-config>
