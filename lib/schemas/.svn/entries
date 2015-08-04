@@ -1,34 +1,0 @@
-9
-
-dir
-781
-svn://192.168.1.134/JEUS6/testenv/tags/fix8/lib/schemas
-svn://192.168.1.134/JEUS6
-
-
-
-2011-10-10T06:56:54.429183Z
-686
-taeju
-
-
-svn:special svn:externals svn:needs-lock
-
-
-
-
-
-
-
-
-
-
-
-e2cfb00e-0bd0-4642-a9bb-23a1f3b27570
-
-javaee
-dir
-
-jeus
-dir
-

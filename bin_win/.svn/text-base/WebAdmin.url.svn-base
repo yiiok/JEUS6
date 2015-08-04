@@ -1,7 +1,0 @@
-[DEFAULT]
-BASEURL=http://localhost:8088/examples/index.jsp
-[InternetShortcut]
-URL=http://localhost:21008/webadmin
-Modified=C0B1F9C9F314C50100
-IconIndex=0
-IconFile=@ICON@

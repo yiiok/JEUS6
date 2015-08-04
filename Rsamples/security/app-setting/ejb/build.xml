@@ -1,8 +1,0 @@
-<project name="security-ejb" default="all" basedir=".">
-    <property name="is.ejb-jar.module" value="true"/>
-
-    <import file="../../../common/common-build.xml"/>
-    
-		<target name="all" depends="build, deploy"/>
-
-</project>

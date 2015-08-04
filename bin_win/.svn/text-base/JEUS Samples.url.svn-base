@@ -1,7 +1,0 @@
-[DEFAULT]
-BASEURL=http://localhost:8088/examples/index.jsp
-[InternetShortcut]
-URL=http://localhost:8088/examples/index.jsp
-Modified=40510BC1F314C5012A
-IconIndex=0
-IconFile=@ICON@

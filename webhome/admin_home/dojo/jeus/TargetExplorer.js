@@ -1,8 +1,0 @@
-/*
-	Copyright (c) 2004-2009, The Dojo Foundation All Rights Reserved.
-	Available via Academic Free License >= 2.1 OR the modified BSD license.
-	see: http://dojotoolkit.org/license for details
-*/
-
-
-if(!dojo._hasResource["jeus.TargetExplorer"]){dojo._hasResource["jeus.TargetExplorer"]=true;dojo.provide("jeus.TargetExplorer");dojo.require("dijit._Widget");dojo.declare("jeus.TargetExplorer",dijit._Widget,{postCreate:function(){dojo.query("input[type=checkbox][id^=allCheck]",this.domNode).forEach(function(_1){var _2=dojo.query("input[type=checkbox]:not([id^=allCheck])",this.domNode);this.connect(_1,"onclick",function(){_2.forEach(function(_3){_3.checked=_1.checked;});});_2.forEach(function(_4){this.connect(_4,"onclick",function(){if(!_4.checked){_1.checked=false;}});},this);},this);dojo.query("input[type=checkbox][id^=nodeCheck]",this.domNode).forEach(function(_5){var _6=dojo.query("input[type=checkbox]:not([id^=nodeCheck])",_5.parentNode.parentNode.parentNode);this.connect(_5,"onclick",function(){_6.forEach(function(_7){_7.checked=_5.checked;});});_6.forEach(function(_8){this.connect(_8,"onclick",function(){if(!_8.checked){_5.checked=false;}});},this);},this);dojo.query("select[id^=containerOption]",this.domNode).forEach(function(_9){var _a=dojo.query("select[id^=virtualHostSelect]",_9.parentNode.parentNode);this.connect(_9,"onchange",function(){var _b=_9.selectedIndex;_a.forEach(function(_c){dojo.style(_c,{display:"none",visibility:"hidden"});});dojo.style(_a[_b],{display:"inline",visibility:"visible"});});var _d=_9.selectedIndex;_a.forEach(function(_e){dojo.style(_e,{display:"none",visibility:"hidden"});});dojo.style(_a[_d],{display:"inline",visibility:"visible"});},this);}});}

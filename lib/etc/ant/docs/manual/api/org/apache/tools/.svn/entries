@@ -1,43 +1,0 @@
-9
-
-dir
-781
-svn://192.168.1.134/JEUS6/testenv/tags/fix8/lib/etc/ant/docs/manual/api/org/apache/tools
-svn://192.168.1.134/JEUS6
-
-
-
-2010-02-18T07:06:40.054832Z
-548
-jungeun_lee
-
-
-svn:special svn:externals svn:needs-lock
-
-
-
-
-
-
-
-
-
-
-
-e2cfb00e-0bd0-4642-a9bb-23a1f3b27570
-
-ant
-dir
-
-bzip2
-dir
-
-mail
-dir
-
-tar
-dir
-
-zip
-dir
-

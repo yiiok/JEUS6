@@ -1,5 +1,0 @@
-#!/bin/sh
-
-JMS_CLASSPATH=${JEUS_HOME}/lib/system/bootstrap.jar
-${JAVA_HOME}/bin/java -classpath $JMS_CLASSPATH -Djeus.home=${JEUS_HOME} -Djava.naming.factory.initial=jeus.jndi.JEUSContextFactory -Djava.naming.factory.url.pkgs=jeus.jndi.jns.url -Djeus.baseport=${JEUS_BASEPORT}  -Djava.library.path=${JEUS_HOME}/lib/system jeus.server.Bootstrapper jeus.jms.console.JMSConsole $* 
-
