@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jeus-ejb-dd xmlns="http://www.tmaxsoft.com/xml/ns/jeus" version="6.0">
+    <module-info/>
+    <beanlist>
+        <jeus-bean>
+            <ejb-name>mdbtest</ejb-name>
+            <connection-factory-name>basic/QueueCF</connection-factory-name>
+            <destination>queue/Example1</destination>
+            <max-message>10</max-message>
+        </jeus-bean>
+    </beanlist>
+</jeus-ejb-dd>
+

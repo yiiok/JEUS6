@@ -1,0 +1,164 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <span jwcid="notFound">
+            &nbsp;
+        </span>
+        <span jwcid="general">
+            <form jwcid="generalForm">
+                <span jwcid="group_name"/>
+                <span jwcid="general_blind">
+                    <span jwcid="attach_stacktrace_on_error">
+                        <input jwcid="attach_stacktrace_on_errorField"/>
+                    </span>
+                </span>
+            </form>
+        </span>
+        <span jwcid="virtual_host">
+            <form jwcid="virtual_hostForm">
+            </form>
+            <table class="table">
+                <tr>
+                    <th>
+                        <span jwcid="virtual_host_name_column"/>
+                    </th>
+                    <th width="20">
+                        &nbsp;
+                    </th>
+                </tr>
+                <tr jwcid="eachVirtualHost">
+                    <td class="table_values">
+                        <a jwcid="virtual_hostLink"><span jwcid="virtual_host_name_value"/></a>
+                    </td>
+                    <td class="table_values" align="center">
+                        <a jwcid="deleteVirtualHostLink" disabled="ognl:!@jeus.tool.webadmin.hivemind.Lock@isEnabledEdit(getSettings(), getVisit())"><img jwcid="deleteVirtualHost" alt="delete"/></a>
+                    </td>
+                </tr>
+            </table>
+            <div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+            	<a jwcid="createVirtualHostLink" class="create_link"><span jwcid="createVirtualHost"/></a>
+            </div>
+        </span>
+
+
+        <span jwcid="encoding">
+            <form jwcid="encodingForm">
+                <span jwcid="requesturl_encodingSection"/>
+                <span jwcid="requesturl_default">
+                    <input jwcid="requesturl_defaultField"/>
+                </span>
+                <span jwcid="requesturl_forced">
+                    <input jwcid="requesturl_forcedField"/>
+                </span>
+                <span jwcid="request_encodingSection"/>
+                <span jwcid="req_default">
+                    <input jwcid="req_defaultField"/>
+                </span>
+                <span jwcid="req_forced">
+                    <input jwcid="req_forcedField"/>
+                </span>
+                <span jwcid="response_encodingSection"/>
+                <span jwcid="res_default">
+                    <input jwcid="res_defaultField"/>
+                </span>
+                <span jwcid="res_forced">
+                    <input jwcid="res_forcedField"/>
+                </span>
+            </form>
+        </span>
+        <span jwcid="access_log">
+            <form jwcid="access_logForm">
+                <span jwcid="enable_access_log">
+                    <input jwcid="enable_access_logField"/>
+                </span>
+                <span jwcid="access_log_format">
+                    <input jwcid="access_log_formatField" style="width:98%;"/>
+                </span>
+                <span jwcid="access_log_logging_panel"/>
+            </form>
+            <form jwcid="access_log_handlerForm">
+                <span jwcid="access_log_handler_panel"/>
+            </form>
+        </span>
+        <span jwcid="user_log">
+            <form jwcid="user_logForm">
+                <span jwcid="user_log_logging_panel"/>
+            </form>
+            <form jwcid="user_log_handlerForm">
+                <span jwcid="user_log_handler_panel"/>
+            </form>
+        </span>
+        <span jwcid="jsp_engine">
+            <form jwcid="jsp_engineForm">
+                <span jwcid="keep_generated">
+                    <input jwcid="keep_generatedField"/>
+                </span>
+                <span jwcid="java_compiler">
+                    <input jwcid="java_compilerField"/>
+                </span>
+                <span jwcid="jsp_work_dir">
+                    <input jwcid="jsp_work_dirField"/>
+                </span>
+                <span jwcid="jsp_engine_blind">
+                    <span jwcid="compile_output_dir">
+                        <input jwcid="compile_output_dirField" style="width:98%;"/>
+                    </span>
+                    <span jwcid="compile_option">
+                        <input jwcid="compile_optionField" style="width:98%;"/>
+                    </span>
+                    <span jwcid="compile_encoding">
+                        <input jwcid="compile_encodingField"/>
+                    </span>
+                    <span jwcid="check_included_jspfile">
+                        <input jwcid="check_included_jspfileField"/>
+                    </span>
+                </span>
+            </form>
+        </span>
+        <span jwcid="response_header">
+            <form jwcid="response_headerForm">
+            	<span jwcid="custom_headerSection"/>
+                <span jwcid=header_field>
+                    <input jwcid="header_fieldField" style="width:400px;" rows="6"/>
+                </span>
+            </form>
+        </span>
+        <span jwcid="session_config">
+			<form jwcid="session_configForm">
+				<span jwcid="distributable">
+                    <input jwcid="distributableField"/>
+                </span>
+				<span jwcid="shared">
+                    <input jwcid="sharedField"/>
+                </span>
+                <span jwcid="timeout">
+                    <input jwcid="timeoutField"/>
+                </span>
+                <span jwcid="reloadPersistent">
+                    <input jwcid="reloadPersistentField"/>
+                </span>
+                <span jwcid="urlRewriting">
+                    <input jwcid="urlRewritingField"/>
+                </span>
+                <span jwcid="session_id_cookieSection"/>
+				<span jwcid="jsessionidName">
+                    <input jwcid="jsessionidNameField"/>
+                </span>
+                <span jwcid="version">
+                    <input jwcid="versionField"/>
+                </span>
+                <span jwcid="domain">
+                    <input jwcid="domainField"/>
+                </span>
+                <span jwcid="path">
+                    <input jwcid="pathField"/>
+                </span>
+                <span jwcid="max_age">
+                    <input jwcid="max_ageField"/>
+                </span>
+                <span jwcid="secure">
+                    <input jwcid="secureField"/>
+                </span>
+           </form>
+        </span>
+    </span>
+</html>

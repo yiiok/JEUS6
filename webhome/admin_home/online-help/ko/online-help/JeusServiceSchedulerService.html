@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta xmlns="" http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>스케줄러 서비스</title><link rel="stylesheet" href="../stylesheet.css" type="text/css"/><meta name="generator" content="DocBook XSL Stylesheets V1.72.0"/><link rel="start" href="index.html" title="WebAdmin 온라인 도움말"/><link rel="up" href="index.html" title="WebAdmin 온라인 도움말"/><link rel="prev" href="JeusServiceSessionServerService.html" title="중앙 세션 서버"/><link rel="next" href="JeusServiceSecurityDomain.html" title="보안 도메인"/></head><body><div class="section" lang="ko"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="JeusServiceSchedulerService"/>스케줄러 서비스</h2></div></div></div>
+  
+
+  
+
+  <p><span class="bold"><strong>네비게이션 경로</strong></span>: HOME &gt;
+  <em class="replaceable"><code>node-name</code></em> &gt; JEUS 매니저 서비스 &gt; 스케줄러</p>
+
+  <div class="section" lang="ko"><div class="titlepage"><div><div><h3 class="title"><a id="JeusServiceSchedulerService_Configuration"/>설정</h3></div></div></div>
+    
+
+    <p>이 페이지에서는 JEUS Scheduler Service를 제공하는데 필요한 쓰레드 풀을 설정하거나 새로운 스케줄러 작업을
+    추가할 수 있다.</p>
+
+    <p><a id="JeusServiceSchedulerService_Configuration"/></p><div class="variablelist"><dl><dt><span class="term">쓰레드 풀</span></dt><dd>
+            <p>JEUS Scheduler는 사용자가 등록한 여러 개의 작업을 각각에 해당하는 스케줄에 맞춰서 수행해야 하기
+            때문에 쓰레드에 대한 관리가 필요하다.</p>
+
+            <p><span class="bold"><strong>Min</strong></span></p>
+
+            <p>필드 설명 참조 바람.</p>
+
+            <p><span class="bold"><strong>Max</strong></span></p>
+
+            <p>필드 설명 참조 바람.</p>
+
+            <p><span class="bold"><strong>Period</strong></span></p>
+
+            <p>필드 설명 참조 바람.</p>
+          </dd></dl></div><div class="variablelist"><dl><dt><span class="term">작업 목록</span></dt><dd>
+            <p>새로 추가한 스케줄러의 리스트가 나타나는 부분이다. 여기에 나열된 작업들은 서버를 구동할 때마다 자동으로
+            스케줄링 된다.</p>
+
+            <p><span class="bold"><strong>클래스 이름</strong></span></p>
+
+            <p><code class="interfacename">jeus.schedule.ScheduleListener</code>를
+            구현한 스케줄러 작업 클래스의 이름을 의미한다.</p>
+
+            <p><span class="bold"><strong>이름</strong></span></p>
+
+            <p>이 작업에 해당하는 이름을 의미한다.</p>
+
+            <p><span class="bold"><strong>시작 시간</strong></span></p>
+
+            <p>이 작업을 최초로 수행할 시작 시간을 의미한다.</p>
+
+            <p><span class="bold"><strong>종료 시간</strong></span></p>
+
+            <p>이 작업을 최종적으로 종료할 시간을 의미한다. 없다면 끝나지 않는다는 것을 의미한다.</p>
+
+            <p><span class="bold"><strong>간격</strong></span></p>
+
+            <p>이 작업이 수행되는 시간 간격 또는 작업 주기를 의미한다.</p>
+
+            <p><span class="bold"><strong>작업 수</strong></span></p>
+
+            <p>작업의 최대 수행 횟수를 의미한다. '-1'일 경우 제한이 없음을 의미한다.</p>
+          </dd></dl></div>
+
+    <p/>
+  </div>
+</div><div xmlns="" align="center"/></body></html>

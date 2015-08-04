@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta xmlns="" http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>세션 컨테이너</title><link rel="stylesheet" href="../stylesheet.css" type="text/css"/><meta name="generator" content="DocBook XSL Stylesheets V1.72.0"/><link rel="start" href="index.html" title="WebAdmin 온라인 도움말"/><link rel="up" href="index.html" title="WebAdmin 온라인 도움말"/><link rel="prev" href="JeusServiceServerChannel.html" title="JMS 서비스 채널"/><link rel="next" href="JeusServiceSnmpAgentService.html" title="JeusServiceSnmpAgentService"/></head><body><div class="section" lang="ko"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="JeusServiceSessionContainer"/>세션 컨테이너</h2></div></div></div>
+  
+
+  
+
+  <p><span class="bold"><strong>네비게이션 경로</strong></span>: Home &gt;
+  <em class="replaceable"><code>node-name</code></em> &gt; 엔진 컨테이너 &gt;
+  <em class="replaceable"><code>container-name</code></em>&gt; 엔진 &gt; 서블릿 엔진 &gt; 세션
+  컨테이너</p>
+
+  <div class="section" lang="ko"><div class="titlepage"><div><div><h3 class="title"><a id="JeusServiceSessionContainer_Statistics"/>통계</h3></div></div></div>
+    
+
+    <p>서블릿 엔진의 세션 컨테이너에 대한 통계치를 보여준다.</p>
+
+    <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">종류</strong></span></span></dt><dd>
+          <p>크게 중앙식, 분산식 두 종류가 있으며 중앙식의 경우 <a href="JeusServiceSessionContainer.html#JeusServiceSessionContainer_Statistics_centralized" title="중앙 세션 서버를 사용하는 세션 컨테이너">중앙 세션 서버를 사용하는 세션 컨테이너</a>를,
+          분산식의 경우 <a href="JeusServiceSessionContainer.html#JeusServiceSessionContainer_Statistics_distributed" title="분산 세션 서버를 사용하는 세션 컨테이너">분산 세션 서버를 사용하는 세션 컨테이너</a>를
+          참조한다.</p>
+        </dd></dl></div>
+
+    <div class="section" lang="ko"><div class="titlepage"><div><div><h4 class="title"><a id="JeusServiceSessionContainer_Statistics_centralized"/>중앙 세션 서버를 사용하는 세션 컨테이너</h4></div></div></div>
+      
+
+      <p>서블릿 엔진에서 중앙 세션 서버를 사용할 때의 세션 컨테이너의 통계치를 보여준다.</p>
+
+      <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">로컬 메모리(활성) 세션 개수</strong></span></span></dt><dd>
+            <p>세션 컨테이너의 로컬 메모리에 저장되어 있는 현재의 활성화된 세션의 개수를 의미한다.</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">원격 세션 서버의 메모리(활성) 세션 개수 </strong></span></span></dt><dd>
+            <p>JEUS 매니저에 존재하는 원격 세션 서버의 현재 활성화된 세션의 개수를 의미한다. 즉, 원격 세션 서버의
+            메모리에 저장되어 있는 세션의 개수이다.</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">원격 세션 서버의 파일 스토리지(비활성) 세션 개수 </strong></span></span></dt><dd>
+            <p>JEUS 매니저에 존재하는 원격 세션 서버의 현재 비활성화된 세션의 개수를 의미한다. 즉, 원격 세션 서버의
+            파일 스토리지에 저장되어 있는 세션의 개수이다.</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">현재 사용 중인 Connection 개수 </strong></span></span></dt><dd>
+            <p>세션 컨테이너가 현재 로컬에서 사용하고 있는 총 Connection 개수를 의미한다.</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">주 세션 서버 이름 </strong></span></span></dt><dd>
+            <p>세션 컨테이너가 지정한 주(Primary) 세션 서버 이름을 의미한다.</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">백업 세션 서버 이름 </strong></span></span></dt><dd>
+            <p>세션 컨테이너가 지정한 백업(Backup) 세션 서버 이름을 의미한다.</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">현재 사용중인 세션 서버</strong></span></span></dt><dd>
+            <p>세션 컨테이너가 지정한 주(Primary), 백업(Backup) 세션 서버 중에서 현재 사용중인 세션 서버를
+            의미한다.</p>
+          </dd></dl></div>
+    </div>
+
+    <div class="section" lang="ko"><div class="titlepage"><div><div><h4 class="title"><a id="JeusServiceSessionContainer_Statistics_distributed"/>분산 세션 서버를 사용하는 세션 컨테이너</h4></div></div></div>
+      
+
+      <p>서블릿 엔진에서 분산 세션 서버를 사용할 때 세션 컨테이너의 통계치를 보여준다.</p>
+
+      <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">로컬 메모리(활성) 세션 개수</strong></span></span></dt><dd>
+            <p>세션 컨테이너의 로컬 메모리에 저장되어 있는 현재의 활성화된 세션의 개수를 의미한다.</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">파일 스토리지(비활성) 세션 개수 </strong></span></span></dt><dd>
+            <p>세션 컨테이너의 파일 스토리지에 저장되어 있는 비활성화된 세션의 개수를 의미한다.</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">파일 스토리지 크기 </strong></span></span></dt><dd>
+            <p>세션 컨테이너의 파일 스토리지에 저장되어 있는 비활성화된 세션의 총 크기를 의미한다. 단위는
+            byte이다.</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">원격 백업 세션 서버의 메모리(활성) 세션 개수 </strong></span></span></dt><dd>
+            <p>백업 세션 서버가 존재할 때, 백업 세션 컨테이너의 메모리에 저장되어 있는 현재의 활성화된 세션의 개수를
+            의미한다.</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">원격 백업 세션 서버의 파일 스토리지(비활성) 세션 개수 </strong></span></span></dt><dd>
+            <p>백업 세션 서버가 존재할 때, 백업 세션 컨테이너의 파일 스토리지에 저장되어 있는 비활성화된 세션의 개수를
+            의미한다.</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">원격 백업 세션 서버의 파일 스토리지 크기 </strong></span></span></dt><dd>
+            <p>백업 세션 서버가 존재할 때, 백업 세션 컨테이너의 파일 스토리지에 저장되어 있는 비활성화된 세션의 총
+            크기를 의미한다. 단위는 byte이다.</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">현재 사용 중인 Connection 개수 </strong></span></span></dt><dd>
+            <p>세션 컨테이너가 현재 로컬에서 사용하고 있는 총 Connection 개수를 의미한다.</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">세션 서버 이름 </strong></span></span></dt><dd>
+            <p>현 세션 컨테이너의 세션 서버 이름을 의미한다.</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">백업 세션 서버 이름 </strong></span></span></dt><dd>
+            <p>백업 세션 서버가 존재할 때, 백업 세션 컨테이너의 세션 서버 이름을 의미한다.</p>
+          </dd></dl></div>
+    </div>
+  </div>
+</div><div xmlns="" align="center"/></body></html>

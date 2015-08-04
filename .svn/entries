@@ -1,0 +1,144 @@
+9
+
+dir
+781
+svn://192.168.1.134/JEUS6/testenv/tags/fix8
+svn://192.168.1.134/JEUS6
+
+
+
+2011-11-07T00:37:30.883137Z
+714
+taeju
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+e2cfb00e-0bd0-4642-a9bb-23a1f3b27570
+
+Applications
+dir
+
+JDBCDrivers
+dir
+
+PersistenceLibrary
+dir
+
+Rderby
+dir
+
+Rsamples
+dir
+
+SharedLibrary
+dir
+
+Tconfig
+dir
+
+ThirdPartyLicenses.txt
+file
+
+
+
+
+2015-08-04T02:19:44.000000Z
+1c4c873f4a5f5c8a15ecf17da9cf41b9
+2009-07-15T06:53:54.873011Z
+465
+leechigon
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+116
+
+bin_rnd
+dir
+
+bin_unix
+dir
+
+bin_win
+dir
+
+lib
+dir
+
+license
+dir
+
+logs
+dir
+
+readme.txt
+file
+
+
+
+
+2015-08-04T02:20:19.000000Z
+84e6597c98b946a2ba0cd9d8c9b17adb
+2010-02-22T01:55:39.310741Z
+553
+jungeun_lee
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+11147
+
+sample-scripts
+dir
+
+webhome
+dir
+
+webserver
+dir
+

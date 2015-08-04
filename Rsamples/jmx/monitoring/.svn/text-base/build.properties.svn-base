@@ -1,0 +1,12 @@
+# JMX setup environment
+hostname=localhost
+
+# MODIFY ACCORDING TO YOUR ENVIRONMENT
+username=jeus
+
+# MODIFY ACCORDING TO YOUR ENVIRONMENT
+password=jeus
+
+# target-name is the container name
+# MODIFY ACCORDING TO YOUR ENVIRONMENT
+target-name=example_container1

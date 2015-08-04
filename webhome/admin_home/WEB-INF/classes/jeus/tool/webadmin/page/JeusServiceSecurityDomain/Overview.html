@@ -1,0 +1,29 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <form jwcid="domainForm">
+	        <table class="table">
+	            <tr>
+	                <th><span jwcid="name_column"/></th>
+	                <th><span jwcid="subjects_column"/></th>
+	                <th width="20">&nbsp;</th>
+	            </tr>
+	            <tr jwcid="eachDomain">
+	                <td><a jwcid="domainLink"><span jwcid="name_value"/></a></td>
+	                <td align="center">
+	                    <span jwcid="condNotXml">
+	                        <span jwcid="subjects_value"/>
+	                    </span>
+	                </td>
+	                <td align="center">
+	                    <span jwcid="condNotReserved">
+	                        <a jwcid="deleteLink" disabled="ognl:!@jeus.tool.webadmin.hivemind.Lock@isEnabledEdit(getSettings(), getVisit())"><img jwcid="delete" alt="delete"/></a>
+	                    </span>
+	                </td>
+	            </tr>
+	        </table>
+	        <div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+	        	<a jwcid="createLink" class="create_link"><span jwcid="create_label"/></a>
+	        </div>
+        </form>
+    </span>
+</html>

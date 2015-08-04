@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE script PUBLIC
+	"-//Apache Software Foundation//Tapestry Script Specification 3.0//EN"
+	"http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
+<script>
+<initialization>
+<![CDATA[
+if(!dojo.isIE){
+	dojo.query('.word_break', this.containerNode || this.domNode).forEach(function(src){
+		var str = src.innerHTML;
+		if(!!str){
+			str = str.replace(/&nbsp;/g, ' ');
+			src.innerHTML = dojo.trim(str).split('').join('<span style="font-size:0;"> </span>');
+		}
+	});
+}
+]]>
+</initialization>
+</script>

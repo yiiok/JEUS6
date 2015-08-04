@@ -1,0 +1,16 @@
+<project name="ejbql-relationQuery" default="all" basedir=".">
+    <property name="is.multi.module" value="true"/>
+
+    <import file="../../../common/common-build.xml"/>
+
+    <path id="sub-components">
+        <filelist dir="./rq-ejb" files="build.xml"/>
+        <filelist dir="./rq-client" files="build.xml"/>
+    </path>
+
+    <target name="all" depends="build, deploy, run, undeploy"/>
+
+    <target name="run">
+        <ant dir="./rq-client" target="run" inheritall="false"/>
+    </target>
+</project>

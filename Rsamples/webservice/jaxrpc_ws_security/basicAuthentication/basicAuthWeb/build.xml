@@ -1,0 +1,24 @@
+<project name="basicAuthWeb" default="all" basedir=".">
+
+    <property name="is.ear.module" value="true" />
+
+    <import file="../../../../common/common-build.xml" />
+
+    <path id="sub-components">
+        <filelist dir="./basicAuthWeb-war" files="build.xml" />
+    </path>
+
+    <target name="all" depends="build, deploy, run, runclient" />
+
+    <property name="run.uri" value="BA_DocLitEchoService/BA_DocLitEchoService" />
+    <target name="run" depends="launch" />
+
+    <target name="runclient">
+        <ant dir="./basicAuthWeb-client" target="run" inheritall="false" />
+    </target>
+
+    <target name="clean" depends="-pre-clean, do-clean, -post-clean">
+        <ant dir="./basicAuthWeb-client" target="clean" inheritall="false" />
+    </target>
+
+</project>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jeus-ejb-dd xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+		<module-info>
+				<keep-generated>true</keep-generated>
+				<role-permission>
+						<principal>jeus</principal>
+						<principal>developer</principal>						
+						<role>laboratory</role>
+				</role-permission>
+				<role-permission>
+						<principal>customer</principal>
+						<principal>developer</principal>
+						<principal>tester</principal>
+						<role>ejbrole</role>
+				</role-permission>
+		</module-info>
+		
+		<beanlist>
+				<jeus-bean>
+						<ejb-name>public</ejb-name>
+						<export-name>public</export-name>
+						<local-export-name>public_Local</local-export-name>
+						<run-as-identity>
+								<principal-name>tester</principal-name>
+						</run-as-identity>
+				</jeus-bean>
+				<jeus-bean>
+						<ejb-name>admin</ejb-name>
+						<export-name>admin</export-name>
+						<local-export-name>private_Local</local-export-name>
+				</jeus-bean>
+				<jeus-bean>
+						<ejb-name>secret</ejb-name>
+						<export-name>secret</export-name>
+						<local-export-name>secret_Local</local-export-name>
+				</jeus-bean>
+		</beanlist>
+</jeus-ejb-dd>
+		

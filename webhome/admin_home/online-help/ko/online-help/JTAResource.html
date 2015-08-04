@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta xmlns="" http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>트랜잭션</title><link rel="stylesheet" href="../stylesheet.css" type="text/css"/><meta name="generator" content="DocBook XSL Stylesheets V1.72.0"/><link rel="start" href="index.html" title="WebAdmin 온라인 도움말"/><link rel="up" href="index.html" title="WebAdmin 온라인 도움말"/><link rel="prev" href="JMSSessionResource.html" title="JMS 세션 리소스"/><link rel="next" href="JeusServiceJDBCDataSourceService.html" title="JDBC 데이터 소스"/></head><body><div class="section" lang="ko"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="JTAResource"/>트랜잭션</h2></div></div></div>
+  
+
+  
+
+  <p><span class="bold"><strong>네비게이션 경로</strong></span>: Home &gt;
+  <em class="replaceable"><code>node-name</code></em> &gt; 엔진 컨테이너 &gt;
+  <em class="replaceable"><code>container-name</code></em> &gt; 리소스 &gt; 트랜잭션</p>
+
+  <div class="section" lang="ko"><div class="titlepage"><div><div><h3 class="title"><a id="JTAResource_Configuration_Overview"/>트랜잭션 화면의 개요</h3></div></div></div>
+    
+
+    <p>트랜잭션 관련 항목에서는 현재 트랜잭션의 통계를 보거나, 관련 설정을 조회 및 변경할 수 있다. 이 화면은 설정을 위한
+    '설정' 탭과 통계 보기를 위한 '통계' 탭으로 구성된다.</p>
+  </div>
+
+  <div class="section" lang="ko"><div class="titlepage"><div><div><h3 class="title"><a id="JTAResource_Configuration_general"/>트랜잭션 기본 설정</h3></div></div></div>
+    
+
+    <p>트랜잭션 기본설정은 '설정'탭 하위의 '기본 설정' 탭으로 이동하면 된다. 이 탭에서는 기본적으로 다음과 같은 값을 지정할
+    수 있다.</p>
+
+    <div class="itemizedlist"><ul type="disc"><li>
+        <p><span class="bold"><strong>Use NIO 체크 박스</strong></span></p>
+
+        <p>TM 사이의 통신을 Nonblocking I/O를 이용하여 할 것인지 결정한다. TM 사이의 통신은 루트
+        코디네이터와 서브 코디네이터 간의 통신 등을 의미한다.</p>
+      </li></ul></div>
+
+    <p>이와 더불어 각종 예외 상황에 대처할 수 있는 여러 가지 타임아웃 설정을 제공한다. 이 설정은 같은 화면의 고급 선택사항을
+    클릭하여 설정한다.</p>
+
+    <div class="itemizedlist"><ul type="disc"><li>
+        <p><span class="bold"><strong>Active Timeout</strong></span></p>
+
+        <p>글로벌 트랜잭션이 시작되면 이 시간 안에 commit 등의 의사결정이 실행되어야 한다. 그렇지 않으면 트랜잭션
+        매니저가 rollback 시켜버린다.</p>
+      </li><li>
+        <p><span class="bold"><strong>Prepare Timeout</strong></span></p>
+
+        <p>서브 코디네이터가 이 루트 코디네이터로 부터 의사결정을 받기 위해 대기할 시간. 시간이 경과하면 다시 prepare
+        응답 메세지를 보내고 의사 결정을 기다린다.</p>
+      </li><li>
+          <p><span class="bold"><strong>Prepared Timeout</strong></span></p>
+
+          <p>transaction이 commit되어 Root Coordinator로부터 prepare message를 받으면
+              Sub Coordinator는 prepare에 대한 응답을 Root Coordinator로 보내고 global decision을 기다린다.
+              Sub Coordinator는 자신의 Root Coordinator로부터 여기에 설정된 시간 안에 global decision을 받아야 한다.
+              만약 이 시간 내에 받질 못하면, Root Coordinator 로 다시 ‘prepare’에 대한 응답 메시지를 보낸다.
+              그래도 여전히 시간 내에 global decision이 오지 않는다면, Root Coordinator로 메시지를 보내고
+              global decision을 기다리기를 계속 한다.</p>
+        </li><li>
+        <p><span class="bold"><strong>Commit Timeout</strong></span></p>
+
+        <p>루트 코디네이터는 서브 코디네이터와 리소스 매니저에게 commit 메세지를 보낸 후 이 시간 이내에 결과를 받아야
+        한다. 만약 결과가 오지 않으면, 루트 코디네이터는 트랜잭션이 완전히 끝나지 않았음을 기록한다.</p>
+      </li><li>
+        <p><span class="bold"><strong>Recovery Timeout</strong></span></p>
+
+        <p>이 값은 트랜잭션 복구 시에 사용된다. 트랜잭션 매니저는 트랜잭션 복구를 위해서 복구될 트랜잭션 정보를 가져오려고
+        한다. 만약 다른 트랜잭션 매니저에서 이 시간 내에 복구 정보를 알려주지 않으면, 트랜잭션 복구를 시스템 관리자에게 남겨두고
+        더 이상 진행하지 않는다.</p>
+      </li><li>
+        <p><span class="bold"><strong>Uncompleted Timeout</strong></span></p>
+
+        <p>트랜잭션 매니저는 전체 트랜잭션 처리를 완료하기 위해, 실패한 글로벌 트랜잭션의 목록을 보관한다. 완료되지 못한
+        글로벌 트랜잭션의 정보는 복구 처리시에 사용되므로, 이 타임 아웃 시간까지 보관된다. 그러므로 이 시간이 너무 짧으면 복구
+        정보가 빨리 지워지게 되고, 트랜잭션 매니저가 해당 글로벌 트랜잭션의 무결성을 복구할 수 없게 된다. 그 결과 글로벌 트랜잭션
+        복구를 위해서, 시스템 관리자가 많은 작업을 직접 처리해야만 한다.</p>
+      </li><li>
+        <p><span class="bold"><strong>Capacity</strong></span></p>
+
+        <p>트랜잭션 매니저가 처리할 수 있는 트랜잭션의 값을 의미한다. 이 값을 사용해서 JEUS 트랜잭션 매니저는 내부
+        구조를 최적화시킨다. 트랜잭션 매니저가 동시에 처리하는 글로벌 트랜잭션의 개수를 고려해서 값을 정한다.</p>
+      </li><li>
+          <p><span class="bold"><strong>Tx Log Dir</strong></span></p>
+
+          <p>현재의 Transaction Manager의 Recovery용 log file이 저장되는 directory를 설정한다.
+              설정하지 않았을 경우 default로 ${JEUS_HOME}/logs/TM을 사용한다.</p>
+        </li></ul></div>
+  </div>
+
+  <div class="section" lang="ko"><div class="titlepage"><div><div><h3 class="title"><a id="JTAResource_Configuration_pooling"/>풀 설정</h3></div></div></div>
+    
+
+    <p>트랜잭션 매니저는 각각의 트랜잭션을 쓰레드를 이용해 처리한다. 이 화면에서는 해당 쓰레드 풀에 관련된 설정을 한다.
+    '설정' 탭의 '쓰레드 풀 설정' 서브탭에 존재한다. 이 화면에서는 다음과 같은 항목을 설정할 수 있다.</p>
+
+    <div class="itemizedlist"><ul type="disc"><li>
+        <p><span class="bold"><strong>Min</strong></span></p>
+
+        <p>쓰레드 풀의 최소 크기를 지정한다.</p>
+      </li><li>
+        <p><span class="bold"><strong>Max</strong></span></p>
+
+        <p>쓰레드 풀의 최대 크기를 지정한다.</p>
+      </li><li>
+        <p><span class="bold"><strong>Period</strong></span></p>
+
+        <p>쓰레드 풀에 저장 되어 있는 쓰레드의 수를 조정하는 간격을 의미한다. 이 값은 충분히 크게 잡도록 한다. (10분
+        이상)</p>
+      </li></ul></div>
+  </div>
+
+  <div class="section" lang="ko"><div class="titlepage"><div><div><h3 class="title"><a id="JTAResource_Statistics"/>트랜잭션 통계</h3></div></div></div>
+    
+
+    <p>이 화면에서는 현재 동작하고 있는 트랜잭션들의 통계 내용을 보여준다. 각각의 항목은 다음을 의미한다.</p>
+
+    <div class="itemizedlist"><ul type="disc"><li>
+        <p><span class="bold"><strong>활성 수</strong></span></p>
+
+        <p>현재 활성화 되어있는 트랜잭션의 수를 나타낸다.</p>
+      </li><li>
+        <p><span class="bold"><strong>commit 수</strong></span></p>
+
+        <p>commit 된 트랜잭션의 수를 나타낸다.</p>
+      </li><li>
+        <p><span class="bold"><strong>rollback 수</strong></span></p>
+
+        <p>rollback 된 트랜잭션의 수를 나타낸다.</p>
+      </li><li>
+        <p><span class="bold"><strong>타임아웃 수</strong></span></p>
+
+        <p>트랜잭션 중, 타임아웃에 걸린 트랜잭션의 수. 이 값은 전체적으로 타임아웃이 몇 번 일어났는가를
+        의미한다.</p>
+      </li><li>
+        <p><span class="bold"><strong>타임아웃 rollback 수</strong></span></p>
+
+        <p>타임아웃에 걸려 rollback 된 트랜잭션의 수를 나타낸다.</p>
+      </li><li>
+        <p><span class="bold"><strong>활성 타임 아웃 수</strong></span></p>
+
+        <p>활성 타임 아웃(Active Timeout)에 걸린 트랜잭션의 수를 나타낸다.</p>
+      </li><li>
+        <p><span class="bold"><strong>준비 타임 아웃 수</strong></span></p>
+
+        <p>준비 타임 아웃(Prepare Timeout)에 걸린 트랜잭션의 수를 나타낸다.</p>
+      </li><li>
+        <p><span class="bold"><strong>준비된(Prepared) 타임아웃 수</strong></span></p>
+
+        <p>준비된 타임 아웃(Prepared Timeout)에 걸린 트랜잭션의 수를 나타낸다.</p>
+      </li><li>
+        <p><span class="bold"><strong>commit 타임 아웃 수</strong></span></p>
+
+        <p>commit 타임아웃(Commit Timeout)에 걸린 트랜잭션의 수를 나타낸다.</p>
+      </li><li>
+        <p><span class="bold"><strong>미완료 commit 수</strong></span></p>
+
+        <p>현재 commit 대기이거나, 어떠한 이유로든 commit이 아직 되지 않은 트랜잭션의 수를 나타낸다.</p>
+      </li><li>
+        <p><span class="bold"><strong>평균 수행시간</strong></span></p>
+
+        <p>한 트랜잭션이 시작되어 완료되는데 걸린 평균 시간을 나타낸다.</p>
+      </li></ul></div>
+  </div>
+</div><div xmlns="" align="center"/></body></html>

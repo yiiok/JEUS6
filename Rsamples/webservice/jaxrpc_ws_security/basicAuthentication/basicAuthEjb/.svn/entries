@@ -1,0 +1,74 @@
+9
+
+dir
+781
+svn://192.168.1.134/JEUS6/testenv/tags/fix8/Rsamples/webservice/jaxrpc_ws_security/basicAuthentication/basicAuthEjb
+svn://192.168.1.134/JEUS6
+
+
+
+2009-07-15T06:53:54.873011Z
+465
+leechigon
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+e2cfb00e-0bd0-4642-a9bb-23a1f3b27570
+
+basicAuthEjb-client
+dir
+
+basicAuthEjb-ejb
+dir
+
+basicAuthEjb-war
+dir
+
+build.xml
+file
+
+
+
+
+2015-08-04T02:19:16.000000Z
+e73fc34ecfca6ef0898e6fb96a96c718
+2009-07-15T06:53:54.873011Z
+465
+leechigon
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+826
+
+src
+dir
+

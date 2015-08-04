@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta xmlns="" http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>세션 라우터</title><link rel="stylesheet" href="../stylesheet.css" type="text/css"/><meta name="generator" content="DocBook XSL Stylesheets V1.72.0"/><link rel="start" href="index.html" title="WebAdmin 온라인 도움말"/><link rel="up" href="index.html" title="WebAdmin 온라인 도움말"/><link rel="prev" href="JeusServiceP2PSessionServerService.html" title="분산 세션 서버"/><link rel="next" href="JeusServiceSessionServerService.html" title="중앙 세션 서버"/></head><body><div class="section" lang="ko"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="JeusServiceSessionRouter"/>세션 라우터</h2></div></div></div>
+  
+
+  
+
+  <p><span class="bold"><strong>네비게이션 경로</strong></span>: Home &gt;
+  <em class="replaceable"><code>node-name</code></em> &gt; JEUS 매니저 서비스 &gt; 분산 세션 서버 &gt;
+  <em class="replaceable"><code>servlet-engine-name</code></em> 또는
+  <em class="replaceable"><code>ejb-engine-name</code></em></p>
+
+  <div class="section" lang="ko"><div class="titlepage"><div><div><h3 class="title"><a id="JeusServiceSessionRouter_Configuration"/>설정</h3></div></div></div>
+    
+
+    <div class="section" lang="ko"><div class="titlepage"><div><div><h4 class="title"><a id="JeusServiceSessionRouter_Configuration_general"/>기본 설정</h4></div></div></div>
+      
+
+      <p>분산 세션 서버를 사용할 때 엔진별 세션 서버(세션 라우터)의 기본 설정을 정의한다.</p>
+
+      <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Engine Name</strong></span></span></dt><dd>
+            <p>해당 분산 세션 서버의 엔진 이름 정보를 의미한다. 보통 EJB 엔진에서 사용할 경우
+            <em class="replaceable"><code>ejb-engine-name</code></em> , 서블릿 엔진에서 사용할 경우
+            <em class="replaceable"><code>servlet-engine-name</code></em>이 나타나며, 이는 해당 엔진 당
+            고유한 분산 세션 서버 이름을 의미한다.</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">Replication Group</strong></span></span></dt><dd>
+            <p>해당 분산 세션 서버의 논리적인 그룹 이름을 지정해 준다. 이 지정된 이름은 다른 분산 세션 서버 설정에서
+            아래의 Backup Group의 설정에 필요하다. 즉, 다른 분산 세션 서버에서 해당 세션 서버를 되도록이면 백업
+            서버로 사용하고자 할때 Backup Group에 해당 설정값을 적어주면 된다.</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">Backup Group</strong></span></span></dt><dd>
+            <p>특별히 선호하는 백업 분산 세션 그룹의 이름을 설정한다. 다른 분산 세션 서버 설정 중의
+            Replication Group의 값을 적어주면 된다. 이 값이 설정되었을 경우 설정 값의 그룹을 백업 분산 세션
+            서버로 선택하는데 최우선 조건으로 사용한다.</p>
+          </dd><dt><span class="term"><span><strong class="guilabel">Location</strong></span></span></dt><dd>
+            <p>해당 분산 세션 서버의 물리적인 Machine이름, 즉 위치(Location) 정보를 설정한다. 하나의 서버
+            이름일 수도 있고 여러 서버가 rack안에 구성된 경우 rack의 상징적인 이름일 수도 있다. 내부적으로 백업 분산
+            세션 서버를 구성할 때 여기서 설정된 Location 정보와 되도록이면 다른 Location에 존재하는 분산 세션
+            서버를 백업으로 선택할 것이다.</p>
+          </dd></dl></div>
+    </div>
+
+    <div class="section" lang="ko"><div class="titlepage"><div><div><h4 class="title"><a id="JeusServiceSessionRouter_Configuration_file_db"/>파일 스토리지</h4></div></div></div>
+      
+
+      <p><a href="JeusServiceP2PSessionServerService.html#JeusServiceP2PSessionServerService_Configuration_default_file_db" title="파일 스토리지">파일 스토리지</a>
+      의 설정과 동일하다. 단, 여기서 설정한 파일 스토리지 설정은 상위 설정보다 우선하므로, 세션 라우터별 특별한 파일 스토리지를
+      설정할 수 있다.</p>
+    </div>
+  </div>
+
+  <div class="section" lang="ko"><div class="titlepage"><div><div><h3 class="title"><a id="JeusServiceSessionRouter_Create"/>생성</h3></div></div></div>
+    
+
+    <p>분산 세션 서버를 사용할 때 엔진별 세션 서버(세션 라우터)를 추가 생성 한다.</p>
+
+    <div class="variablelist"><dl><dt><span class="term"><span><strong class="guilabel">Engine Name</strong></span></span></dt><dd>
+          <p>분산 세션 서버를 사용하고자 하는 엔진을 선택 한다. 보통 ejb 엔진에서 사용할 경우
+          <em class="replaceable"><code>ejb-engine-name</code></em> , 서블릿 엔진에서 사용할 경우
+          <em class="replaceable"><code>servlet-engine-name</code></em>이 나타나며, 이는 해당 엔진 당 고유한
+          분산 세션 서버 이름을 의미한다. 이 항목은 분산 세션 서버를 해당 엔진에서 사용하기 위한 필수 항목이다.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">Replication Group</strong></span></span></dt><dd>
+          <p>해당 분산 세션 서버의 논리적인 그룹 이름을 지정해 준다. 이 지정된 이름은 다른 분산 세션 서버 설정에서
+          아래의 Backup Group의 설정에 필요하다. 즉, 다른 분산 세션 서버에서 해당 세션 서버를 되도록이면 백업 분산
+          세션 서버로 사용하고자 할 때 Backup Group에 해당 설정값을 적어주면 된다.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">Backup Group</strong></span></span></dt><dd>
+          <p>특별히 선호하는 백업 분산 세션 그룹의 이름을 설정한다. 다른 분산 세션 서버 설정 중의 Replication
+          Group의 값을 적어주면 된다. 이 값이 설정되었을 경우 설정 값의 그룹을 백업 분산 세션 서버로 선택하는데 최우선
+          조건으로 사용한다.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">Location</strong></span></span></dt><dd>
+          <p>해당 분산 세션 서버의 물리적인 Machine이름, 즉 위치(Location) 정보를 설정한다. 하나의 서버
+          이름일 수도 있고 여러 서버가 rack안에 구성된 경우 rack의 상징적인 이름일 수도 있다. 내부적으로 백업 세션 서버를
+          구성할 때 여기서 설정된 Location 정보와 되도록이면 다른 Location에 존재하는 분산 세션 서버를 백업으로
+          선택할 것이다.</p>
+        </dd><dt><span class="term"><span><strong class="guilabel">파일 스토리지 관련 설정</strong></span></span></dt><dd>
+          <p><a href="JeusServiceP2PSessionServerService.html#JeusServiceP2PSessionServerService_Configuration_default_file_db" title="파일 스토리지">파일 스토리지</a>의
+          설정과 동일하다. 단, 여기서 설정한 파일 스토리지 설정은 상위 설정보다 우선하므로, 세션 라우터별 특별한 파일 스토리지를
+          설정할 수 있다.</p>
+        </dd></dl></div>
+  </div>
+</div><div xmlns="" align="center"/></body></html>

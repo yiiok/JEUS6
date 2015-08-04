@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jeus-system xmlns="http://www.tmaxsoft.com/xml/ns/jeus"
+    xmlns:ns2="http://java.sun.com/xml/ns/javaee" xmlns:ns3="http://java.sun.com/xml/ns/persistence" version="6.0">
+    <node>
+        <name>permWS</name>
+        <engine-container>
+            <name>container1</name>
+            <command-option>-Xms256m -Xmx256m -XX:MaxPermSize=128m -XX:-DisableExplicitGC</command-option>
+            <engine-command>
+                <type>servlet</type>
+                <name>engine1</name>
+            </engine-command>
+            <engine-command>
+                <type>ejb</type>
+                <name>engine1</name>
+            </engine-command>
+            <tm-config>
+                <pooling>
+                    <min>10</min>
+                    <max>20</max>
+                    <period>600000</period>
+                </pooling>
+                <active-timeout>300000</active-timeout>
+                <commit-timeout>120000</commit-timeout>
+                <capacity>20000</capacity>
+            </tm-config>
+            <system-logging>
+                <name>console1</name>
+                <level>INFO</level>
+                <handler>
+                    <console-handler>
+                        <name>handler1</name>
+                        <level>FINE</level>
+                    </console-handler>
+                </handler>
+            </system-logging>
+        </engine-container>
+        <enable-webadmin>true</enable-webadmin>
+    </node>
+</jeus-system>

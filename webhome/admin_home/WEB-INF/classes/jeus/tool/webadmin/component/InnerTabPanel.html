@@ -1,0 +1,18 @@
+<span jwcid="$content$">
+<div class="topTabPanel" jwcid="@Any" id="ognl:clientId">
+	<ul class="top_nav">
+		<li jwcid="@For" source="ognl:tabIndexes" value="ognl:index">
+			<a jwcid="@DirectLink" listener="listener:onChangeTab" parameters="ognl:{index, userParameter}" class="ognl:model.activeTabIndex == index ? 'selected' : ''" onclick="ognl:'javascript:jeus.onChangeInnerTabPanel(this, \'' + clientId + '\', ' + index + '); return false;'"><span jwcid="@RenderBlock" block="component:label"/></a>
+		</li>
+	</ul>
+	<span jwcid="@For" source="ognl:tabIndexes" value="ognl:index" renderTag="ognl:false">
+	<div class="top_content" jwcid="@Any" id="ognl:clientId + '_' + index" style="ognl:model.activeTabIndex == index ? 'display: block;' : 'display: none;'">
+		<span jwcid="@RenderBlock" block="ognl:model.getTabBody(page, index)"/>
+	</div>
+	</span>
+</div>
+<span jwcid="label@Block">
+	<span jwcid="@Insert" value="ognl:model.getTabLabel(page, index)" class="ognl:#icon=model.getTabIcon(index), #icon == null ? '' : #icon + ' tabLabel'"></span>
+</span>
+</span>
+

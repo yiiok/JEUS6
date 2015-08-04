@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceVirtualHost.CreatePage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Virtual Host Create"/>
+        
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="new java.lang.String[]{pageName}"/>
+    </component>
+
+    <component id="generalForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:vhc.general.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="name" type="jeus:Field">
+        <binding name="field" value="component:nameField"/>
+    </component>
+
+    <component id="nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="virtualHost"/>
+        <binding name="elementName" value="literal:virtualHostName"/>
+        <binding name="validators" value="validators:required,pattern=\w*[%common.exception.0066]"/>
+    </component>
+
+    <component id="host_list" type="jeus:Field">
+        <binding name="field" value="component:host_listField"/>
+    </component>
+
+    <component id="host_listField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="virtualHost"/>
+        <binding name="elementName" value="literal:hostList"/>
+        <binding name="translator" value="bean:listTranslator"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+    
+	<bean name="listTranslator" class="jeus.tool.webadmin.component.translator.ListTranslator"/>
+
+    <component id="createOk" type="Submit">
+        <binding name="value" value="message:common.label.create"/>
+        <binding name="listener" value="listener:onCreateOk"/>
+    </component>
+
+    <asset name="delete" path="context:/image/table/delete.gif"/>
+    <property name="virtualHost" persist="session"/>
+</page-specification>

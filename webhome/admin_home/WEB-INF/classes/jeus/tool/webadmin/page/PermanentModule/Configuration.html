@@ -1,0 +1,51 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+	    <form jwcid="form"/>
+    	<span jwcid="@If" condition="ognl:!applications.empty">
+		    <span jwcid="applicationsFor">
+			<span jwcid="@If" condition="ognl:modules.empty">
+			    <table class="table">
+					<tr>
+						<th style="width: 20px;text-align: center;"><img jwcid="docImg2" alt="message:pmd.description.alt"/></th>
+						<th style="width: 20%;"><span jwcid="@Insert" value="message:application.absolute_path.label"/></th>
+						<th style="width: 80%;text-align: left"><span jwcid="@Insert" value="ognl:application.application.absolutePath"/></th>
+						<th style="width: 20px;text-align: center;"><a jwcid="configAppLink2"><img jwcid="editImg3" alt="message:pmd.app.config.alt"/></a></th>
+						<th style="width: 20px;text-align: center;"><a jwcid="deleteAppLink2" disabled="ognl:!@jeus.tool.webadmin.hivemind.Lock@isEnabledEdit(getSettings(), getVisit())"><img jwcid="deleteImg3" alt="message:pmd.app.remove.alt"/></a></th>
+					</tr>
+			    </table>
+    			<span dojoType="dijit.Tooltip" connectId="ognl:components.docImg2.clientId" jwcid="@Any" position="below, after">
+					<pre jwcid="@Insert" value="ognl:appDescriptor" renderTag="ognl:true"></pre>
+				</span>	
+			    <br/>
+			</span>
+			<span jwcid="@Else">
+			    <table class="table">
+					<tr>
+						<th style="width: 20px;text-align: center;"><img jwcid="docImg" alt="message:pmd.description.alt"/></th>
+						<th style="width: 20%;"><span jwcid="@Insert" value="message:ModuleExplorer.module_name.label"/></th>
+						<th style="width: 80%;"><span jwcid="@Insert" value="message:ModuleExplorer.module_path.label"/></th>
+						<th style="width: 20px;text-align: center;"><a jwcid="configAppLink"><img jwcid="editImg" alt="message:pmd.app.config.alt"/></a></th>
+						<th style="width: 20px;text-align: center;"><a jwcid="deleteAppLink" disabled="ognl:!@jeus.tool.webadmin.hivemind.Lock@isEnabledEdit(getSettings(), getVisit())"><img jwcid="deleteImg" alt="message:pmd.app.remove.alt"/></a></th>
+					</tr>
+			    	<tr jwcid="applicationFor">
+			    		<td style="text-align: center;"><img jwcid="moduleImg"/></td>
+			    		<td style="text-align: center;"><span jwcid="@Insert" value="ognl:module.nameForTable"/></td>
+			    		<td><span jwcid="@Insert" value="ognl:module.path"/></td>
+			    		<td style="text-align: center;"><a jwcid="configModuleLink"><img jwcid="editImg2" alt="message:pmd.module.config.alt"/></a></td>
+			    		<td style="text-align: center;">
+			    		<span jwcid="@If" condition="ognl:modules.size() > 1"><a jwcid="deleteModuleLink" disabled="ognl:!@jeus.tool.webadmin.hivemind.Lock@isEnabledEdit(getSettings(), getVisit())"><img jwcid="deleteImg2" alt="message:pmd.module.remove.alt"/></a></span></td>
+			    	</tr>
+			    </table>
+    			<span dojoType="dijit.Tooltip" connectId="ognl:components.docImg.clientId" jwcid="@Any" position="below, after">
+					<pre jwcid="@Insert" value="ognl:appDescriptor" renderTag="ognl:true"></pre>
+				</span>	
+			    <br/>
+			</span>			    
+		    </span>
+		    <br/>
+		</span>
+		<span jwcid="@Else">
+			<span jwcid="@Insert" value="message:pmd.not.exist.application" class="field_label"/>
+		</span>	    
+    </span>
+</html>

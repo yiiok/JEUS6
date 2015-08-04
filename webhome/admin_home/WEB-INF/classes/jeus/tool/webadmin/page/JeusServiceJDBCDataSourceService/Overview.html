@@ -1,0 +1,160 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <form jwcid="dsForm">
+	        <table class="table">
+	            <tr>
+					<th>
+						<span jwcid="@Insert" value="message:jds.dataSourceId.label"/>
+					</th><!--	            
+	                <th>
+	                    <span jwcid="export_name_column"/>
+	                </th>
+	                --><th>
+	                    <span jwcid="vendor_column"/>
+	                </th>
+	                <th>
+	                    <span jwcid="class_name_column"/>
+	                </th>
+	                <th>
+	                    <span jwcid="datasource_type_column"/>
+	                </th>
+	                <th>
+	                    <span jwcid="actions_column"/>
+	                </th>
+	                <th style="width: 20px;">
+	                    &nbsp;
+	                </th>
+	            </tr>
+	            <tr jwcid="eachDatabase">
+					<td>
+						<a jwcid="@ExternalLink" page="JeusServiceJDBCDataSourceService_Configuration" parameters="ognl:database.objectName">
+							<span jwcid="@Insert" value="ognl:database.dataSourceId"/>
+						</a>
+					</td><!--	            
+	                <td>
+	                    <span jwcid="export_name_value"/>
+	                </td>
+	                --><td>
+	                    <span jwcid="vendor_value"/>
+	                </td>
+	                <td>
+	                    <span jwcid="class_name_value"/>
+	                </td>
+	                <td>
+	                    <span jwcid="datasource_type_value"/>
+	                </td>
+	                <td align="center">
+	                    <a jwcid="bindLink"></a><input jwcid="bind" onclick="jeus.fireEvent(previousSibling, 'click');" class="form_button"/>
+	                    <a jwcid="testLink"></a><input jwcid="test" onclick="jeus.fireEvent(previousSibling, 'click');" class="form_button"/>
+	                    <a jwcid="@DirectLink" listener="listener:onCreate" parameters="ognl:database.dataSourceId"></a><input jwcid="@Button" label="message:common.label.create" onclick="jeus.fireEvent(previousSibling, 'click');" class="form_button" disabled="ognl:database.datasourceType == 'DataSource'"/>
+	                    <a jwcid="@DirectLink" listener="listener:onRefresh" parameters="ognl:database.dataSourceId"></a><input jwcid="@Button" label="message:dsc.datasource.refresh" onclick="jeus.fireEvent(previousSibling, 'click');" class="form_button" disabled="ognl:database.datasourceType == 'DataSource'"/>
+	                </td>
+	                <td align="center">
+	                    <a jwcid="deleteLink" disabled="ognl:!@jeus.tool.webadmin.hivemind.Lock@isEnabledEdit(getSettings(), getVisit())"><img jwcid="delete" alt="delete"/></a>
+	                </td>
+	            </tr>
+	        </table>
+	        <br/>
+	        <span jwcid="condDuplicate">
+	            <span jwcid="duplicate_message" class="field_warning"/>
+	            <table width="100%" border="1" cellspacing="0" cellpadding="0" class="table">
+	                <tr>
+						<th>
+							<span jwcid="@Insert" value="message:jds.dataSourceId.label"/>
+						</th><!--	                
+	                    <th>
+	                        <span jwcid="export_name_column2"/>
+	                    </th>
+	                    --><th>
+	                        <span jwcid="vendor_column2"/>
+	                    </th>
+	                    <th>
+	                        <span jwcid="class_name_column2"/>
+	                    </th>
+	                    <th>
+	                        <span jwcid="datasource_type_column2"/>
+	                    </th>
+	                    <th width="20">
+	                        &nbsp;
+	                    </th>
+	                </tr>
+	                <tr jwcid="eachDuplicatedDatabase">
+						<td>
+							<span jwcid="@Insert" value="ognl:duplicatedDatabase.dataSourceId"/>
+						</td><!--		                
+	                    <td>
+	                        <span jwcid="export_name_value2"/>
+	                    </td>
+	                    --><td>
+	                        <span jwcid="vendor_value2"/>
+	                    </td>
+	                    <td>
+	                        <span jwcid="class_name_value2"/>
+	                    </td>
+	                    <td>
+	                        <span jwcid="datasource_type_value2"/>
+	                    </td>
+	                    <td align="center">
+	                        <!--<a jwcid="deleteLink2"><img jwcid="delete2" border="0"/></a>-->
+	                    </td>
+	                </tr>
+	            </table>
+	        </span>
+	        <div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+				<a jwcid="createLink" class="create_link"><span jwcid="create_label"/></a>
+			</div>
+        </form>
+
+        <span jwcid="condCDS">
+            <form jwcid="cdsForm">
+	            <table width="100%" border="1" cellspacing="0" cellpadding="0" class="table">
+	                <tr>
+						<th>
+							<span jwcid="@Insert" value="message:jds.dataSourceId.label"/>
+						</th><!--		                
+	                    <th>
+	                        <span jwcid="cds_export_name_column"/>
+	                    </th>
+	                    --><th>
+	                        <span jwcid="is_pre_conn_column"/>
+	                    </th>
+	                    <th>
+	                        <span jwcid="count_column"/>
+	                    </th>
+	                    <th>
+	                        <span jwcid="cds_actions_column"/>
+	                    </th>
+	                    <th style="width: 20px;" >
+	                        &nbsp;
+	                    </th>
+	                </tr>
+	                <tr jwcid="eachClusterDs">
+						<td>
+							<a jwcid="@ExternalLink" page="JeusServiceJDBCClusterDataSourceService_Configuration" parameters="ognl:clusterDs.objectName">
+								<span jwcid="@Insert" value="ognl:clusterDs.dataSourceId"/>
+							</a>
+						</td><!--	                
+	                    <td>
+	                        <span jwcid="cds_export_name_value"/>
+	                    </td>
+	                    --><td>
+	                        <span jwcid="is_pre_conn_value"/>
+	                    </td>
+	                    <td>
+	                        <span jwcid="count_value"/>
+	                    </td>
+	                    <td align="center">
+	                        <a jwcid="cds_bindLink"></a><input jwcid="cds_bind" onclick="jeus.fireEvent(previousSibling, 'click');" class="form_button"/>
+	                    </td>
+	                    <td align="center">
+	                        <a jwcid="cds_deleteLink" disabled="ognl:!@jeus.tool.webadmin.hivemind.Lock@isEnabledEdit(getSettings(), getVisit())"><img jwcid="delete2" alt="delete"/></a>
+	                    </td>
+	                </tr>
+	            </table>
+	            <div class="form_button_layer" jwcid="@jeus:CheckLock" renderTag="ognl:true">
+	            	<a jwcid="cds_createLink" class="create_link"><span jwcid="cds_create_label"/></a>
+	            </div>
+            </form>
+        </span>
+    </span>
+</html>

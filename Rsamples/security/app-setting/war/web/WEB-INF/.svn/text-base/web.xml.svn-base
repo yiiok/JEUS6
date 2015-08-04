@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee">
+	<display-name>SecuritySample</display-name>
+
+	<servlet>
+		<servlet-name>noejb</servlet-name>
+		<servlet-class>loginModule.NoEJB</servlet-class>
+	</servlet>	
+	<servlet>
+		<servlet-name>checked</servlet-name>
+		<servlet-class>webpages.OnlyOne</servlet-class>
+	</servlet>	
+	<servlet>
+		<servlet-name>excluded</servlet-name>
+		<servlet-class>webpages.WithYou</servlet-class>
+	</servlet>	
+	<servlet>
+		<servlet-name>unchecked</servlet-name>
+		<servlet-class>webpages.JoinUs</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>mainpage</servlet-name>
+		<servlet-class>loginModule.MainPage</servlet-class>
+		<run-as>
+				<role-name>king</role-name>
+		</run-as>
+	</servlet>
+	
+	<login-config>
+		<auth-method>
+				FORM
+		</auth-method>
+		<form-login-config>
+				<form-login-page>/login.html</form-login-page>
+				<form-error-page>/error.html</form-error-page>
+		</form-login-config>
+	</login-config>
+	
+	<security-constraint>
+		<web-resource-collection>
+				<web-resource-name>resource1</web-resource-name>
+				<url-pattern>/mainpage</url-pattern>
+				<!--url-pattern>/checked</url-pattern-->
+		</web-resource-collection>
+		<auth-constraint>
+				<role-name>R1</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<security-constraint>
+		<web-resource-collection>
+				<web-resource-name>resource2</web-resource-name>
+				<url-pattern>/checked</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+				<role-name>admin</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<security-constraint>
+		<web-resource-collection>
+				<web-resource-name>resource3</web-resource-name>
+				<url-pattern>/excluded</url-pattern>
+		</web-resource-collection>
+		<auth-constraint/>
+	</security-constraint>
+
+	<servlet-mapping>
+		<servlet-name>mainpage</servlet-name>
+		<url-pattern>/mainpage</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>unchecked</servlet-name>
+		<url-pattern>/unchecked</url-pattern>
+	</servlet-mapping>	
+	<servlet-mapping>
+		<servlet-name>checked</servlet-name>
+		<url-pattern>/checked</url-pattern>
+	</servlet-mapping>	
+	<servlet-mapping>
+		<servlet-name>excluded</servlet-name>
+		<url-pattern>/excluded</url-pattern>
+	</servlet-mapping>	
+	<servlet-mapping>
+		<servlet-name>noejb</servlet-name>
+		<url-pattern>/noejb</url-pattern>
+	</servlet-mapping>
+	
+	<security-role>
+			<role-name>R1</role-name>
+	</security-role>
+	<security-role>
+			<role-name>admin</role-name>
+	</security-role>
+	<security-role>
+			<role-name>king</role-name>
+	</security-role>
+</web-app>

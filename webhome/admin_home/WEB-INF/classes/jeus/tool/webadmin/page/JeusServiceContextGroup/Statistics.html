@@ -1,0 +1,28 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <form jwcid="statisticsForm">
+	        <table border="1" cellpadding="3" width="100%" jwcid="statisticsTable"/>
+	        <span jwcid="cgs_webmodule_name_labelColumnValue@Block">
+	            <a jwcid="webmoduleLink"><span jwcid="webmoduleName"/></a>
+	            <!--<span jwcid="choose">
+	                <span jwcid="whenNotNull">
+	                    <a jwcid="webmoduleLink"><span jwcid="webmoduleName"/></a>
+	                </span>
+	                <span jwcid="whenNull">
+	                    <span jwcid="moduleName"/>
+	                </span>
+	            </span>-->
+	        </span>
+	        <span jwcid="cgs_webmodule_actions_labelColumnValue@Block">
+	            <a jwcid="reloadLink"></a><input jwcid="reload" class="form_button" onclick="jeus.fireEvent(previousSibling, 'click');"/>
+	            <a jwcid="suspendLink"></a><input jwcid="suspend" class="form_button" onclick="jeus.fireEvent(previousSibling, 'click');"/>
+	            <a jwcid="resumeLink"></a><input jwcid="resume" class="form_button" onclick="jeus.fireEvent(previousSibling, 'click');"/>
+	            <a jwcid="terminateLink"></a><input jwcid="terminate" class="form_button" onclick="jeus.fireEvent(previousSibling, 'click');"/>
+	            <a jwcid="restartLink"></a><input jwcid="restart" class="form_button" onclick="jeus.fireEvent(previousSibling, 'click');"/>
+	        </span>
+			<div class="form_button_layer">
+            	<a jwcid="@PageLink" page="ognl:pageName"></a><input jwcid="@Button" class="form_button" onclick="jeus.fireEvent(previousSibling, 'click');" label="message:common.label.refresh"/>
+            </div>
+        </form>
+    </span>
+</html>

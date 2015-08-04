@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jeus-web-dd xmlns="http://www.tmaxsoft.com/xml/ns/jeus" version="6.0">
+    <context-path>/security</context-path>
+		<auto-reload>
+	  	  <enable-reload>true</enable-reload>
+	   		<check-on-demand>true</check-on-demand>
+		</auto-reload>
+		
+		<role-mapping>
+				<role-permission>
+						<principal>jeus</principal>
+						<principal>developer</principal>
+						<principal>tester</principal>
+						<principal>customer</principal>
+						<role>R1</role>
+				</role-permission>
+				<role-permission>
+						<principal>administrator</principal>
+						<principal>developer</principal>
+						<principal>customer</principal>
+						<role>admin</role>
+				</role-permission>
+				<role-permission>
+						<principal>customer</principal>
+						<role>king</role>
+				</role-permission>
+		</role-mapping>	
+</jeus-web-dd>

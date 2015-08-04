@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<project name="hello-servlet" default="build">
+    <import file="../../common.xml"/>
+    <property name="src" value="src"/>
+    <property name="build" value="build"/>
+    <property name="dist.dir" value="dist"/>
+    <property name="appname" value="helloservlet"/>
+
+    <target name="init">
+        <mkdir dir="${build}"/>
+        <mkdir dir="${dist.dir}"/>
+    </target>
+
+    <target name="build" depends="compile">
+	   <antcall target="webinfo"/>
+	   <antcall target="package"/>
+    </target>
+
+    <target name="compile" depends="init">
+       <echo message="compile"/>
+       <javac srcdir="${src}" destdir="${build}">
+            <classpath refid="jeus.libraries"/>
+            <classpath path="${extra.classpath}"/>
+         </javac>
+    </target>
+	
+	<target name="webinfo">
+		<copy todir="${dist.dir}">
+			<fileset dir="web">
+			</fileset>
+		</copy>
+
+		<copy todir="${dist.dir}/WEB-INF">
+            <fileset dir="src/conf">
+            </fileset>
+        </copy>
+
+		<copy todir="${dist.dir}/WEB-INF/classes">
+            <fileset dir="build">
+            </fileset>
+        </copy>
+	</target>
+
+	 <target name="package">
+	     <jar destfile="${appname}.war" basedir="${dist.dir}"/>
+	 </target>
+
+</project>

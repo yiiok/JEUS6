@@ -1,0 +1,33 @@
+<html jwcid="@jeus:DOJOShell" title="Login">
+<style jwcid="@Style" href="asset:login_css"/> 
+<body jwcid="@Body">
+<script jwcid="@Script" script="Login.script" />
+<span jwcid="condFailed"> 
+	<script jwcid="alertScript"/> 
+</span>
+<div dojoType="dijit.Declaration" widgetClass="jeus.Login" >
+	<form jwcid="login@Form" success="listener:onLoginOk">
+		<div id="submit_container">
+			<div class="input">
+				<input jwcid="username" tabindex="1"/>
+				<input jwcid="password" tabindex="2"/>
+			</div>
+			<div id="submit">
+				<input class="button" jwcid="ok@ImageSubmit" image="asset:login_image" tabindex="3" alt="login"/>
+			</div>
+		</div> 
+	</form>
+	<script type="dojo/connect">
+    if(window.opener){
+        window.opener.location.reload();
+        window.close();
+    }else{
+        window.location.reload();
+    }
+	</script>
+</div>
+<div dojoType="jeus.Login" style="display: none;"></div>
+
+</body>
+</html>
+

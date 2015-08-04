@@ -1,0 +1,116 @@
+9
+
+dir
+781
+svn://192.168.1.134/JEUS6/testenv/tags/fix8/Rsamples/webservice
+svn://192.168.1.134/JEUS6
+
+
+
+2011-10-27T05:29:11.220273Z
+705
+taeju
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+e2cfb00e-0bd0-4642-a9bb-23a1f3b27570
+
+jaxrpc
+dir
+
+jaxrpc_data_type
+dir
+
+jaxrpc_saaj_msg_handler
+dir
+
+jaxrpc_ws_security
+dir
+
+jaxws
+dir
+
+jaxws_addressing
+dir
+
+jaxws_async
+dir
+
+jaxws_asyncprovider
+dir
+
+jaxws_attachment
+dir
+
+jaxws_fast_infoset
+dir
+
+jaxws_handler
+dir
+
+jaxws_jms_transport
+dir
+
+jaxws_provider_dispatch
+dir
+
+jaxws_restful
+dir
+
+jaxws_rm
+dir
+
+jaxws_security
+dir
+
+readme.txt
+file
+
+
+
+
+2015-08-04T02:19:18.000000Z
+604735319a36b6ccedbd8a77f6a4145a
+2009-07-15T06:53:54.873011Z
+465
+leechigon
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1284
+
+uddi
+dir
+
+xml
+dir
+

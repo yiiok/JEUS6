@@ -1,0 +1,58 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <form jwcid="threadPoolForm">
+            <span jwcid="threadPoolLabel">
+	            <input jwcid="filterTextField" style="width:450px"/>
+	            <input jwcid="filterButton" style="width:100px" class="form_button"/>
+            </span>
+            <span jwcid="condExist">
+            	<span jwcid="eachThreadPoolMap">
+
+            		<span jwcid="@jeus:FormSection" title="ognl:threadPoolsKey"/>
+            		
+		            <table class="table" style="margin-bottom: 20px;">
+		                <tr>
+		                	<th><span jwcid="@Insert" value="message:tpmo.overview.name.label"/></th>
+		                	<th style="width: 10%"><span jwcid="@Insert" value="message:tpmo.overview.corePoolSize.label"/></th>
+		                	<th style="width: 10%"><span jwcid="@Insert" value="message:tpmo.overview.maximumPoolSize.label"/></th>
+		                	<th style="width: 10%"><span jwcid="@Insert" value="message:tpmo.overview.keepAliveTime.label"/>(ms)</th>
+		                	<th style="width: 10%"><span jwcid="@Insert" value="message:tpmo.overview.poolSize.label"/></th>
+		                	<th style="width: 10%"><span jwcid="@Insert" value="message:tpmo.overview.activeCount.label"/></th>
+		                	<th style="width: 10%"><span jwcid="@Insert" value="message:tpmo.overview.task.label"/></th>
+		                	<th style="width: 10%"><span jwcid="@Insert" value="message:tmo.infos.threadExecutionTime.label"/>(ms)</th>
+		                </tr>
+		                <tr jwcid="eachThreadPool">
+		                    <td><a jwcid="threadLink"><span jwcid="@Insert" value="ognl:threadPool.name"/></a></td>
+		                    <td align="center"><span jwcid="@Insert" value="ognl:threadPool.corePoolSize"/></td>
+		                    <td align="center"><span jwcid="@Insert" value="ognl:threadPool.maxPoolSize"/></td>	                    	                    
+		                    <td align="center"><span jwcid="@Insert" value="ognl:threadPool.keepAliveTime"/></td>
+		                    <td align="center"><span jwcid="@Insert" value="ognl:threadPool.poolSize"/></td>	                    
+		                    <td align="center"><span jwcid="@Insert" value="ognl:threadPool.activeCount"/></td>
+							<td>
+								<table style="border: none;border-collapse: collapse;">
+									<tr>
+										<td style="border: none;padding: 0 6px 0 0;"><span jwcid="@Insert" value="message:tpmo.overview.taskCount.label"/></td>
+										<td style="border: none;padding: 0 6px 0 0;"><span jwcid="@Insert" value="ognl:threadPool.taskCount"></span></td>
+									</tr>
+									<tr>
+										<td style="border: none;padding: 0 6px 0 0;"><span jwcid="@Insert" value="message:tpmo.overview.completedTaskCount.label"/></td>
+										<td style="border: none;padding: 0 6px 0 0;"><span jwcid="@Insert" value="ognl:threadPool.completedTaskCount"></span></td>
+									</tr>
+								</table>
+							</td>
+							<td>
+								<span jwcid="@Delegator" delegate="ognl:@jeus.tool.webadmin.component.TimeStatisticField@createGraphDelegate(threadPool.threadExecutionTime, null)"/>							
+							</td>						
+		                </tr>
+		            </table>
+		        </span>
+	            <div class="form_button_layer">
+					<a jwcid="@PageLink" page="ognl:pageName"></a><input jwcid="@Button" class="form_button" onclick="jeus.fireEvent(previousSibling, 'click');" label="message:common.label.refresh"/>
+            	</div>
+            </span>
+            <span jwcid="condNotExist">
+                <span jwcid="notFoundMessage" class="field_description"/>
+            </span>
+        </form>
+    </span>
+</html>

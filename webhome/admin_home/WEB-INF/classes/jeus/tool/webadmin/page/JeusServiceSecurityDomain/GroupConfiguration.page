@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.JeusServiceSecurityDomain.GroupConfigurationPage">
+	
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Security Domain Configuration"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="new java.lang.String[]{'JeusServiceSecurityDomain_GroupConfiguration'}"/>
+    </component>
+
+    <component id="repositoryConfigGroupForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:domain.accounts.repository.group.label"/>
+        <binding name="success" value="listener:onRepositoryGroupOk"/>
+    </component>
+
+    <component id="group_name" type="jeus:ReadOnlyTextField">
+        <binding name="parentElement" value="group"/>
+        <binding name="elementName" value="literal:name"/>
+    </component>
+
+    <component id="sub_group" type="jeus:Field">
+        <binding name="field" value="component:sub_groupField"/>
+        <binding name="label" value="'Sub Group'"/>
+    </component>
+
+    <component id="sub_groupField" type="jeus:Palette">
+        <binding name="model" value="groupModel"/>
+        <binding name="selected" value="subGroupSelected"/>
+        <binding name="disabled" value="!@jeus.tool.webadmin.hivemind.Lock@isEnabledEdit(getSettings(), getVisit())"/>
+    </component>
+
+    <component id="group_description" type="jeus:Field">
+        <binding name="field" value="component:group_descriptionField"/>
+    </component>
+
+    <component id="group_descriptionField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="group"/>
+        <binding name="elementName" value="literal:description"/>
+    </component>
+
+</page-specification>

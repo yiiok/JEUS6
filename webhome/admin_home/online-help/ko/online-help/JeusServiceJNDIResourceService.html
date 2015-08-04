@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta xmlns="" http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>네이밍 서버</title><link rel="stylesheet" href="../stylesheet.css" type="text/css"/><meta name="generator" content="DocBook XSL Stylesheets V1.72.0"/><link rel="start" href="index.html" title="WebAdmin 온라인 도움말"/><link rel="up" href="index.html" title="WebAdmin 온라인 도움말"/><link rel="prev" href="JeusServiceMQExtResourceService.html" title="MQ 데이터 소스"/><link rel="next" href="JeusServiceP2PSessionServerService.html" title="분산 세션 서버"/></head><body><div class="section" lang="ko"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="JeusServiceJNDIResourceService"/>네이밍 서버</h2></div></div></div>
+  
+
+  
+
+  <p><span class="bold"><strong>네비게이션 경로</strong></span>: Home &gt;
+  <em class="replaceable"><code>node-name</code></em> &gt; JEUS 매니저 서비스 &gt; 네이밍 서버</p>
+
+  <div class="section" lang="ko"><div class="titlepage"><div><div><h3 class="title"><a id="d4e2870"/>개요</h3></div></div></div>
+    
+
+    <p>이 페이지에서는 JEUS 네이밍 서버(JNSServer, JNSLocal)에 대한 설정을 한다.</p>
+  </div>
+
+  <div class="section" lang="ko"><div class="titlepage"><div><div><h3 class="title"><a id="JeusServiceJNDIResourceService_Configuration_server"/>서버</h3></div></div></div>
+    
+
+    <p>JNSServer와 관련된 설정을 한다.</p>
+
+    <div class="section" lang="ko"><div class="titlepage"><div><div><h4 class="title"><a id="d4e2876"/>기본 설정</h4></div></div></div>
+      
+
+      <div class="variablelist"><dl><dt><span class="term">Use Nio</span></dt><dd>
+            <p>JNSServer가 Nonblocking I/O를 사용해서 통신을 할지의 여부를 지정한다.</p>
+          </dd><dt><span class="term">Export Cos Naming</span></dt><dd>
+            <p>JEUS가 COS Naming Server(tnameserver)로 작동할 것인지 아닌지를 정한다. 만약
+            true이면, tnameserver는 JEUS_BASEPORT+4 포트를 가지고 실행을 시작할 것이다.</p>
+          </dd><dt><span class="term">Backlog Size</span></dt><dd>
+            <p>다른 Naming Server의 접속을 받아들이는 한계인 back log의 크기를 정한다.</p>
+          </dd></dl></div>
+    </div>
+
+    <div class="section" lang="ko"><div class="titlepage"><div><div><h4 class="title"><a id="d4e2891"/>쓰레드 풀</h4></div></div></div>
+      
+
+      <div class="variablelist"><dl><dt><span class="term">Min</span></dt><dd>
+            <p>JNSServer 쓰레드 풀에 pooling되는 객체의 최소값을 지정한다.</p>
+          </dd><dt><span class="term">Max</span></dt><dd>
+            <p>JNSServer 쓰레드 풀에 pooling되는 객체의 최대값을 지정한다.</p>
+          </dd><dt><span class="term">Period</span></dt><dd>
+            <p>JNSServer 쓰레드 풀에 pooling되는 객체를 정리하는 시간을 지정한다.</p>
+          </dd></dl></div>
+    </div>
+  </div>
+
+  <div class="section" lang="ko"><div class="titlepage"><div><div><h3 class="title"><a id="JeusServiceJNDIResourceService_Configuration_local"/>지역</h3></div></div></div>
+    
+
+    <p>JNSLocal과 관련된 설정을 한다.</p>
+
+    <div class="section" lang="ko"><div class="titlepage"><div><div><h4 class="title"><a id="d4e2909"/>쓰레드 풀</h4></div></div></div>
+      
+
+      <div class="variablelist"><dl><dt><span class="term">Min</span></dt><dd>
+            <p>JNSLocal 쓰레드 풀에 pooling되는 객체의 최소값을 지정한다.</p>
+          </dd><dt><span class="term">Max</span></dt><dd>
+            <p>JNSLocal 쓰레드 풀에 pooling되는 객체의 최대값을 지정한다.</p>
+          </dd><dt><span class="term">Period</span></dt><dd>
+            <p>JNSLocal 쓰레드 풀에 pooling되는 객체를 정리하는 시간을 지정한다.</p>
+          </dd></dl></div>
+    </div>
+  </div>
+</div><div xmlns="" align="center"/></body></html>

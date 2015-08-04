@@ -1,0 +1,2 @@
+@echo off
+java -classpath "%JEUS_HOME%\lib\system\bootstrap.jar -Djava.library.path=%JEUS_HOME%\lib\system -Djeus.home=%JEUS_HOME% -Djeus4.home=%JEUS4_HOME% -Djeus4.servlethome=%JEUS4_HOME%\webhome\servlet_home -Djeus4.ejb.classloadingmode=JAR -Djeus4.ejbhome=%JEUS4_HOME%\webhome\ejb_home -Djeus4.clienthome=%JEUS4_HOME%\webhome\client_home jeus.server.Bootstrapper jeus.tool.converter.version.XMLVersionConverter %*

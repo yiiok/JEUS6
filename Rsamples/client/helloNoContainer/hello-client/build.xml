@@ -1,0 +1,9 @@
+<project name="hello-client" default="build" basedir=".">
+    <property name="is.jar.module" value="true"/>
+
+    <import file="../../../common/common-build.xml"/>
+
+    <property name="run.class" value="helloejb.HelloClient"/>
+    <target name="run" depends="runjavaclient"/>
+    
+</project>

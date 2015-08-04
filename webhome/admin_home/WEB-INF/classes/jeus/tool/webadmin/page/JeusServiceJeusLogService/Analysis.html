@@ -1,0 +1,68 @@
+<body jwcid="@jeus:SubBorder" style="height: 100%; width: 100%;">
+<span jwcid="condAvailable" renderTag="ognl:false">
+	<div dojoType="dijit.layout.BorderContainer" id="logmain_sub" style="height: 100%;width: 100%;padding: 0;">
+		<div id="levelPane" dojoType="dijit.layout.ContentPane" region="top" splitter="true" style="height: 40%;padding: 5px;">
+	        <form jwcid="levelForm" ignoreLock="ognl:true">
+	            <span jwcid="condLogger">
+	                <span jwcid="logger_name"/>
+	                <span jwcid="level">
+	                    <input jwcid="levelField"/>
+	                </span>
+	                <span jwcid="condConfigurable">
+	                    <span jwcid="apply_recursively">
+	                        <input jwcid="apply_recursivelyField"/>
+	                    </span>
+	                </span>
+	                <span jwcid="use_parent_handlers">
+	                    <input jwcid="use_parent_handlersField"/>
+	                </span>
+	            </span>
+	        </form>
+		</div>
+		<div id="handlerPane" dojoType="dijit.layout.ContentPane" region="center" style="padding: 5px;">
+	        <form jwcid="handlerListForm">
+	            <table class="table">
+	                <tr>
+	                    <th><span jwcid="logger_name_column"/></th>
+	                    <th><span jwcid="handler_type_column"/></th>
+	                    <th><span jwcid="handler_name_column"/></th>
+	                    <th><span jwcid="handler_level_column"/></th>
+	                    <th width="20">&nbsp;</th>
+	                </tr>
+	                <tr jwcid="eachHandler">
+	                    <td><span jwcid="logger_name_value"/></td>
+	                    <td><span jwcid="handler_type_value"/></td>
+	                    <span jwcid="condParentHandler" renderTag="ognl:false">
+	                        <td><span jwcid="handler_name_value"/></td>
+	                    </span>
+	                    <span jwcid="@Else" renderTag="ognl:false">
+	                        <td><a jwcid="handlerLink"><span jwcid="handler_name_value2"/></a></td>
+	                    </span>
+	                    <td><span jwcid="handler_level_value"/></td>
+	                    <td align="center">
+	                        <span jwcid="condOnlyOne">
+	                            <a jwcid="deleteLink" disabled="ognl:!@jeus.tool.webadmin.hivemind.Lock@isEnabledEdit(getSettings(), getVisit())"><img jwcid="delete" alt="delete"/></a>
+	                        </span>     
+	                    </td>
+	                </tr>
+	            </table>
+	        </form>
+			<div class="form_button_layer">
+				<a jwcid="createLink" class="create_link"><span jwcid="create_label"/></a>
+			</div>
+		</div>
+	</div>
+</span>
+<span jwcid="condUnavailable" renderTag="ognl:false">
+    <table width="734" height="529" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="426" height="410" valign="top"><img jwcid="logo" width="426" height="410"/></td>
+        <td width="308" valign="bottom"><img jwcid="description_top" width="308" height="34"/></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td valign="top"><img jwcid="description_bottom" width="308" height="119"/></td>
+      </tr>
+    </table>
+</span>
+</body>

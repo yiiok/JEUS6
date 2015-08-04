@@ -1,0 +1,510 @@
+SETLOCAL
+SET SAMPLE_DIR=<<YOUR SAMPLE DIRECTORY>>
+
+cd %SAMPLE_DIR%
+
+cd ejb\basic\containerManaged\ejb11
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd ejb\basic\containerManaged\ejb20
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd ejb\basic\beanManaged
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd ejb\basic\statefulSession
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd ejb\basic\statelessSession
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd ejb\basic\messageDriven
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd ejb\ejb3\statefulSession
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd ejb\ejb3\statelessSession
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd ejb\ejbql\basic
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd ejb\ejbql\relationQuery
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd ejb\ejbql\aggregation
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd ejb\relation\mtom
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd ejb\relation\otom
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd jsf\carstore
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd jsf\helloDuke
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd ant_task\deployment
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd ant_task\wsgen
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd ant_task\wsimport
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd ant_task\xjc
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd ant_task\schemagen
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd ant_task\appcompiler
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd ant_task\bootdown
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd ant_task\java2wsdl
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd ant_task\wsdl2java\importserver
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd ant_task\wsdl2java\genclient
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd getting_started\webservices\from_java
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd getting_started\webservices\from_wsdl
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd getting_started\helloejb
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd getting_started\helloservlet
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd getting_started\hellojpa
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd snmp\manual
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd client\hello
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd client\helloNoContainer
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd client\helloJnlp
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd client\helloApplet
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd jmx\jndi
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd jmx\jeus
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd jmx\jmx
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd scheduler\StandaloneClientSchedule
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd scheduler\RemoteClientSchedule
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd scheduler\EJBSchedule
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\jaxrpc_data_type\noDataBinding
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\jaxrpc_data_type\cal1UsingValueType
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\jaxrpc_data_type\cal3UsingGeneratedHolderType
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\jaxrpc_data_type\cal2UsingStandardHolderType
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\jaxrpc_data_type\dataHandlerOnly
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\jaxrpc_data_type\cal4UsingExceptionAsSOAPFault
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\uddi\wsdl2uddi
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\uddi\subscription
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\uddi\dsig
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\uddi\client
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\jaxws_provider_dispatch\dispatch
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\jaxws_provider_dispatch\provider
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\wsit\addressing
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\wsit\security\usernameAuthentication
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\wsit\security\mutualCertificatesSecurity\mutualCertificatesSecurityClient_war
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\wsit\security\mutualCertificatesSecurity\mutualCertificatesSecurity_war
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\wsit\rm\fromjava
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\wsit\rm\fromwsdl
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\jaxrpc_ws_security\basicAuthentication\basicAuthWeb
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\jaxrpc_ws_security\basicAuthentication\basicAuthEjb
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\jaxrpc_ws_security\messageLevelSecurity\pingSecurityServiceJavaeeClient
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\jaxrpc_ws_security\messageLevelSecurity\pingSecurityServiceJavaeeClientUsingAPI
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\jaxrpc_ws_security\messageLevelSecurity\pingSecurityService
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\jaxrpc\from_ejb\address
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\jaxrpc\from_java\rpcenc
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\jaxrpc\from_java\doclit
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\jaxrpc\javaeeclient\withwsdl
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\jaxrpc\javaeeclient\withoutwsdl
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\jaxrpc_saaj_msg_handler\fileAttachment
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\jaxws_handler\soap_handler
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\jaxws_handler\logical_handler
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\jaxws_async
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\jaxws\from_ejb
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\jaxws\from_java
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\jaxws\javaeeclient
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\jaxws\from_wsdl
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\xml\xjc
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\xml\schemagen
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\jaxws_restful
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\jaxws_mtomswaref\swaref
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\jaxws_mtomswaref\mtom
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\jaxws_fast_infoset
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+cd webservice\jaxws_asyncprovider
+call jant
+call jant run
+call jant undeploy
+cd %PREV_PWD%
+
+ENDLOCAL

@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceWebEngine.SessionPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Session Configuration"/>
+        
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="@jeus.tool.webadmin.page.PageNames@JEUSSERVICE_WEBENGINE_NAMES"/>
+        <binding name="subtabNames" value="{'general', 'p2p'}"/>
+    </component>
+
+    <component id="general" type="Block"/>
+    <component id="p2p" type="Block"/>
+    <component id="p2p_general" type="Block"/>
+    <component id="p2p_file_db" type="Block"/>
+
+    <component id="session_configForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:wec.session_config.title"/>
+        <binding name="success" value="listener:onSessionConfigOk"/>
+        <binding name="parentElement" value="webEngine"/>
+        <binding name="elementName" value="literal:sessionConfig"/>
+
+    </component>
+
+   <component id="timeout" type="jeus:Field">
+        <binding name="field" value="component:timeoutField"/>
+        <binding name="unit" value="message:common.unit.minutes"/>
+    </component>
+
+    <component id="timeoutField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="sessionConfig"/>
+        <binding name="elementName" value="literal:timeout"/>
+		<binding name="translator" value="translator:number2"/>
+    </component>
+
+    <component id="distributable" type="jeus:Field">
+        <binding name="field" value="component:distributableField"/>
+    </component>
+
+    <component id="distributableField" type="jeus:JAXBCheckbox">
+        <binding name="parentElement" value="sessionConfig"/>
+        <binding name="elementName" value="literal:distributable"/>
+    </component>
+    
+    <component id="shared" type="jeus:Field">
+        <binding name="field" value="component:sharedField"/>
+    </component>
+
+    <component id="sharedField" type="jeus:JAXBCheckbox">
+        <binding name="parentElement" value="sessionConfig"/>
+        <binding name="elementName" value="literal:shared"/>
+    </component>
+
+    <component id="reloadPersistent" type="jeus:Field">
+        <binding name="field" value="component:reloadPersistentField"/>
+    </component>
+
+    <component id="reloadPersistentField" type="jeus:JAXBCheckbox">
+        <binding name="parentElement" value="sessionConfig"/>
+        <binding name="elementName" value="literal:reloadPersistent"/>
+    </component>
+
+    <component id="urlRewriting" type="jeus:Field">
+        <binding name="field" value="component:urlRewritingField"/>
+    </component>
+
+    <component id="urlRewritingField" type="jeus:JAXBCheckbox">
+        <binding name="parentElement" value="sessionConfig"/>
+        <binding name="elementName" value="literal:urlRewriting"/>
+    </component>
+
+    <component id="session_id_cookieSection" type="jeus:FormSection">
+        <binding name="title" value="message:cgc.response_header.cookie.title"/>
+    </component>
+
+   <component id="jsessionidName" type="jeus:Field">
+        <binding name="field" value="component:jsessionidNameField"/>
+    </component>
+
+    <component id="jsessionidNameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="sessionCookie"/>
+        <binding name="elementName" value="literal:jsessionidName"/>
+    </component>
+    
+   <component id="version" type="jeus:Field">
+        <binding name="field" value="component:versionField"/>
+    </component>
+
+    <component id="versionField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="sessionCookie"/>
+        <binding name="elementName" value="literal:version"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=0"/>
+    </component>
+
+   <component id="domain" type="jeus:Field">
+        <binding name="field" value="component:domainField"/>
+    </component>
+
+    <component id="domainField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="sessionCookie"/>
+        <binding name="elementName" value="literal:domain"/>
+    </component>
+
+   <component id="cookie_path" type="jeus:Field">
+        <binding name="field" value="component:cookie_pathField"/>
+    </component>
+
+    <component id="cookie_pathField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="sessionCookie"/>
+        <binding name="elementName" value="literal:path"/>
+    </component>
+
+   <component id="max_age" type="jeus:Field">
+        <binding name="field" value="component:max_ageField"/>
+    </component>
+
+    <component id="max_ageField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="sessionCookie"/>
+        <binding name="elementName" value="literal:maxAge"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=-1"/>
+    </component>
+
+    <component id="secure" type="jeus:Field">
+        <binding name="field" value="component:secureField"/>
+    </component>
+
+    <component id="secureField" type="jeus:JAXBCheckbox">
+        <binding name="parentElement" value="sessionCookie"/>
+        <binding name="elementName" value="literal:secure"/>
+    </component>    
+
+
+<!--  -->
+
+    <component id="p2pForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:wec.session.p2p.title"/>
+        <binding name="useForm" value="false"/>
+    </component>
+
+    <component id="condP2P" type="If">
+        <binding name="condition" value="p2PAvailable"/>
+    </component>
+
+    <component id="p2p_warning" type="Insert">
+        <binding name="value" value="message:common.exception.0036"/>
+    </component>
+
+    <component id="central_warning" type="Insert">
+        <binding name="value" value="message:common.exception.0037"/>
+    </component>
+
+    <component id="p2p_tab" type="jeus:InnerTabPanel">
+        <binding name="model" value="new jeus.tool.webadmin.component.GeneralTabModel(new java.lang.String[]{'wec.session.p2p.general.label', 'wec.session.p2p.file_db.label'}, new java.lang.String[]{'p2p_general', 'p2p_file_db'})"/>
+    </component>
+
+    <component id="p2p_generalForm" type="jeus:JEUSForm">
+        <binding name="success" value="listener:onP2PGeneralOk"/>
+        <binding name="refresh" value="listener:onP2PGeneralReset"/>
+    </component>
+
+    <component id="engineName" type="jeus:Field">
+        <binding name="field" value="component:engineNameField"/>
+    </component>
+
+    <component id="engineNameField" type="jeus:JAXBInsert">
+        <binding name="parentElement" value="sessionRouter"/>
+        <binding name="elementName" value="literal:engineName"/>
+    </component>
+    
+    <component id="location" type="jeus:Field">
+        <binding name="field" value="component:locationField"/>
+    </component>
+
+    <component id="locationField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="sessionRouter"/>
+        <binding name="elementName" value="literal:location"/>
+    </component>
+    
+    <component id="replicationGroup" type="jeus:Field">
+        <binding name="field" value="component:replicationGroupField"/>
+    </component>
+
+    <component id="replicationGroupField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="sessionRouter"/>
+        <binding name="elementName" value="literal:replicationGroup"/>
+    </component>
+    
+    <component id="backupGroup" type="jeus:Field">
+        <binding name="field" value="component:backupGroupField"/>
+    </component>
+
+    <component id="backupGroupField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="sessionRouter"/>
+        <binding name="elementName" value="literal:backupGroup"/>
+    </component>            
+    
+    <component id="p2p_file_dbForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+
+    </component>
+
+    <component id="file_db_ok" type="Submit">
+        <binding name="value" value="message:JEUSForm.ok.label"/>
+        <binding name="message" value="message:p2p.filedb.ok.confirm"/>
+        <binding name="listener" value="listener:onP2PFileDbOk"/>
+    </component>
+
+    <component id="file_db_cancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+
+    <component id="file_db_reset" type="Submit">
+        <binding name="value" value="message:JEUSForm.reset.label"/>
+        <binding name="message" value="message:JEUSForm.reset.confirm"/>
+        <binding name="listener" value="listener:onP2PFileDbReset"/>
+    </component>
+
+    <component id="startup_clear_to" type="jeus:Field">
+        <binding name="field" value="component:startup_clear_toField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="startup_clear_toField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="fileDb"/>
+        <binding name="elementName" value="literal:startupClearTo"/>
+        <binding name="translator" value="translator:number2,valueType=Long"/>
+        <binding name="validators" value="validators:min=-1"/>
+    </component>
+
+    <component id="path" type="jeus:Field">
+        <binding name="field" value="component:pathField"/>
+    </component>
+
+    <component id="pathField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="fileDb"/>
+        <binding name="elementName" value="literal:path"/>
+    </component>
+
+    <component id="passivation_to" type="jeus:Field">
+        <binding name="field" value="component:passivation_toField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="passivation_toField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="fileDb"/>
+        <binding name="elementName" value="literal:passivationTo"/>
+        <binding name="translator" value="translator:number2,valueType=Long"/>
+        <binding name="validators" value="validators:min=-1"/>
+    </component>
+
+    <component id="min_hole" type="jeus:Field">
+        <binding name="field" value="component:min_holeField"/>
+    </component>
+
+    <component id="min_holeField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="fileDb"/>
+        <binding name="elementName" value="literal:minHole"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=0"/>
+    </component>
+
+    <component id="packing_rate" type="jeus:Field">
+        <binding name="field" value="component:packing_rateField"/>
+    </component>
+
+    <component id="packing_rateField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="fileDb"/>
+        <binding name="elementName" value="literal:packingRate"/>
+        <binding name="translator" value="translator:number2,valueType=Float"/>
+        <binding name="validators" value="validators:min=0.0,max=1.0"/>
+    </component>
+
+</page-specification>

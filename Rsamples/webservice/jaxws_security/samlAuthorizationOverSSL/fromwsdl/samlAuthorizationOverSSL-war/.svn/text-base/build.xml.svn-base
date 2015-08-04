@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="samlAuthorizationOverSSL-war" default="all" basedir=".">
+
+    <property name="is.war.module" value="true" />
+
+    <import file="../../../../../common/common-build.xml" />
+
+    <!--
+    <target name="-post-compile">
+        <antcall target="wsgen">
+            <param name="sib.file" value="test.Calculator" />
+        </antcall>
+    </target>
+    -->
+
+    <target name="-pre-compile">
+        <mkdir dir="${build.classes.dir}" />
+        <antcall target="wsimport">
+            <param name="package.name" value="test" />
+            <param name="binding.file" value="" />
+            <param name="wsdl.file" value="${src.web}/WEB-INF/wsdl/serverwar.wsdl" />
+        </antcall>
+    </target>
+
+    <property name="run.uri" value="samlAuthorizationOverSSL-war/serverwar" />
+
+    <target name="run" depends="launch" />
+
+    <target name="all" depends="build, deploy, run" />
+
+    <target name="do-compile">
+
+        <if>
+            <available file="${src.dir}" type="dir" />
+            <then>
+                <echo>Compiling ${module.name}...</echo>
+                <mkdir dir="${build.classes.dir}" />
+                <javac srcdir="${src.dir}" source="${javac.source}" target="${javac.target}" excludes="${javac.excludes}" debug="${javac.debug}" debuglevel="${javac.debuglevel}" destdir="${build.classes.dir}" includes="**">
+                    <classpath refid="classpath" />
+                    <classpath refid="jeus.libraries.classpath" />
+                </javac>
+            </then>
+        </if>
+
+        <!-- copy src/conf files to META-INF -->
+        <if>
+            <available file="${src.conf}" type="dir" />
+            <then>
+                <mkdir dir="${build.classes.dir}/META-INF" />
+                <copy todir="${build.classes.dir}/META-INF">
+                    <fileset dir="${src.conf}" includes="**/*" />
+                </copy>
+            </then>
+        </if>
+    </target>
+
+    <target name="launch" depends="getBrowser" description="launches the application in a browser">
+
+        <!-- Default the value of run.uri to be module.name -->
+        <property name="run.uri" value="${module.name}" />
+        <echo>
+            Trying to launch the browser with the url
+            https://${javaee.server.name}:8089/${run.uri}
+
+            If the above does not work, you may open a browser and copy and paste the above URL.
+        </echo>
+        <fail unless="default.browser" message="Could not find brower, please set default.browser" />
+
+        <condition property="extra-args" value="url.dll,FileProtocolHandler">
+            <os family="windows" />
+        </condition>
+        <condition property="extra-args" value="">
+            <not>
+                <os family="windows" />
+            </not>
+        </condition>
+        <exec executable="${default.browser}" spawn="true">
+            <arg line="${extra-args} https://${javaee.server.name}:8089/${run.uri}" />
+        </exec>
+    </target>
+
+</project>

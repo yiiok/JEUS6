@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="usernameAuthenticationClient_war" default="all" basedir=".">
+
+    <property name="is.war.module" value="true" />
+
+    <import file="../../../../../common/common-build.xml" />
+
+    <target name="-pre-compile">
+        <mkdir dir="${build.classes.dir}" />
+        <antcall target="wsimport">
+            <param name="package.name" value="com.tmax" />
+            <param name="binding.file" value="" />
+            <param name="wsdl.file" value="http://localhost:8088/usernameAuthentication_war/NewWebServiceService?wsdl" />
+        </antcall>
+    </target>
+
+    <property name="run.uri" value="usernameAuthenticationClient_war/NewServlet" />
+
+    <target name="run" depends="launch" />
+
+    <target name="all" depends="build, deploy, run" />
+
+</project>

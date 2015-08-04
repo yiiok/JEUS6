@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE script PUBLIC
+	"-//Apache Software Foundation//Tapestry Script Specification 3.0//EN"
+	"http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
+<script>
+
+<input-symbol key="specifications" class="jeus.tool.webadmin.mq.IMQResourceSpecifications" required="yes"/>
+<input-symbol key="source" required="yes"/>
+<input-symbol key="target" required="yes"/>
+
+<initialization>
+dojo.connect(dojo.byId("${source.clientId}"), "onchange", (function(){
+	var vendors = {};
+	var mqresources = null;
+	var mqresource = null;
+    <foreach key="mq" expression="specifications.mqList">
+        mqresources = new Array();
+        <foreach key="mqspec" expression="specifications.getSpecificationsByMq(mq)">
+            mqresource = new Object();
+            mqresource.id = "${mqspec.id}";
+            mqresource.label = "${mqspec.label}"
+            mqresources[mqresources.length]=mqresource;
+        </foreach>
+        vendors["${mq}"] = mqresources;
+	</foreach>
+    return function(e){
+        var drivers = vendors[e.target.value];
+        var target = dojo.byId("${target.clientId}");
+        
+		while(target.length &gt; 0){
+			target.remove(0);
+		}
+		
+        if(!drivers)return;
+
+		dojo.forEach(drivers, function(driver, index){
+			target.options[index] = new Option(driver.label, driver.id);
+		});
+    };
+})());
+
+</initialization>
+
+</script>

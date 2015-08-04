@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.1.2-JEUS 6.0-20060731. --><xs:schema xmlns:tns="http://server.fromjava/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://server.fromjava/">
+
+<xs:element name="addNumbers" type="tns:addNumbers"></xs:element>
+
+<xs:element name="addNumbersResponse" type="tns:addNumbersResponse"></xs:element>
+
+<xs:complexType name="addNumbers">
+<xs:sequence>
+<xs:element name="arg0" type="xs:int"></xs:element>
+<xs:element name="arg1" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addNumbersResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

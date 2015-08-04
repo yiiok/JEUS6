@@ -1,0 +1,184 @@
+<html jwcid="mainBorder" >
+    <span jwcid="wizTabPanel">
+        <span jwcid="datasource">
+            
+            <form jwcid="datasourceForm">
+                <span jwcid="dbms">
+                    <input jwcid="dbmsField"/>
+                </span>
+                <span jwcid="datasource_list">
+                    <input jwcid="datasource_listField" style="width:100%;"/>
+                </span>
+                <script jwcid="datasource_script"/>
+                <div class="form_button_layer">
+                	<input jwcid="datasourceNext" class="form_button" style="width:100px;"/>
+                </div>
+            </form>
+        </span>
+        <span jwcid="properties">
+            <form jwcid="propertiesForm">
+		        <span jwcid="vendor">
+		        	<input jwcid="vendorField"/>
+		        </span>
+	            <span jwcid="data_source_class_name">
+	                <input jwcid="data_source_class_nameField" style="width:85%;"/>
+	            </span>
+	            <span jwcid="data_source_type">
+	                <input jwcid="data_source_typeField"/>
+	            </span>
+				<span jwcid="@jeus:Field" field="component:data_source_idField">
+					<input jwcid="data_source_idField@jeus:JAXBTextField" parentElement="ognl:database" elementName="dataSourceId" validators="validators:$dataSourceIdValidator"/>
+				</span>                 
+	            <span jwcid="export_name">
+	                <input jwcid="export_nameField"/>
+	            </span>
+				<span jwcid="@jeus:Field" field="component:data_source_targetField">
+					<input jwcid="data_source_targetField@jeus:JAXBTextArea" parentElement="ognl:database" elementName="dataSourceTarget" translator="bean:listTranslator" style="width:98%;" rows="4" nowrap="true"/>
+				</span>     		        
+	            <span jwcid="database_name">
+	                <input jwcid="database_nameField"/>
+	            </span>
+	            <span jwcid="port_number">
+	                <input jwcid="port_numberField"/>
+	            </span>
+	            <span jwcid="server_name">
+	                <input jwcid="server_nameField"/>
+	            </span>
+	            <span jwcid="user">
+	                <input jwcid="userField"/>
+	            </span>
+	            <span jwcid="password">
+	                <input jwcid="algorithmField"/>
+	                <input jwcid="passwordField"/>
+	            </span>
+				<span jwcid="@jeus:Field" field="component:login_timeoutField">
+	                <input jwcid="login_timeoutField@jeus:JAXBTextField" parentElement="ognl:database" elementName="loginTimeout" translator="translator:number2" validators="validators:min=0"/>
+	            </span>
+	            
+		        <span jwcid="additional_properties">
+		            <input jwcid="additional_propertiesField" style="width:98%;" rows="4" nowrap="true"/>
+		        </span>
+		        <span jwcid="description">
+		            <input jwcid="descriptionField" style="width:98%;"/>
+		        </span>
+				<span jwcid="autoCommit">
+					<input jwcid="autoCommitField"/>
+				</span>
+		        <span jwcid="stmtQueryTimeout">
+		        	<input jwcid="stmtQueryTimeoutField"/>
+		        </span>
+		        <span jwcid="close_policy_on_leak">
+		        	<input jwcid="close_policy_on_leakField"/>
+		        </span>
+	            <div class="form_button_layer">
+	            	<input jwcid="propertiesPrevious" class="form_button" style="width:100px;"/>
+	            	<input jwcid="propertiesNext" class="form_button" style="width:100px;"/>
+	            </div>
+            </form>
+        </span>
+        <span jwcid="pool">
+            <form jwcid="poolForm">
+                <span jwcid="condPool">
+                    <span jwcid="poolingSection"/>
+                    <span jwcid="min">
+                        <input jwcid="minField"/>
+                    </span>
+                    <span jwcid="max">
+                        <input jwcid="maxField"/>
+                    </span>
+                    <span jwcid="step">
+                        <input jwcid="stepField"/>
+                    </span>
+                    <span jwcid="period">
+                        <input jwcid="periodField"/>
+                    </span>
+                    <span jwcid="wait_free_connectionSection"/>
+                    <span jwcid="enable_wait">
+                        <input jwcid="enable_waitField"/>
+                    </span>
+                    <span jwcid="wait_time">
+                        <input jwcid="wait_timeField"/>
+                    </span>                    
+                    <span jwcid="pool_blind">
+                       <span jwcid="@jeus:FormSection" title="message:dsc.pool.connection_vaildation.title"></span>
+                        <span jwcid="check_query">
+                            <input jwcid="check_queryField" style="width:90%"/>
+                        </span>
+                        <span jwcid="check_query_timeout">
+                            <input jwcid="check_query_timeoutField"/>
+                        </span>
+                        <span jwcid="non_validation_interval">
+                            <input jwcid="non_validation_intervalField"/>
+                        </span>                              
+                        <span jwcid="check_query_period">
+                            <input jwcid="check_query_periodField"/>
+                        </span>
+                        <span jwcid="check_query_retrial_count">
+                            <input jwcid="check_query_retrial_countField"/>
+                        </span>
+                        
+                        <span jwcid="check_query_class">
+                            <input jwcid="check_query_classField" style="width:90%"/>
+                        </span>
+                        <span jwcid="destroy_policy_on_check_query">
+                            <input jwcid="destroy_policy_on_check_queryField"/>
+                        </span>
+
+
+						<span jwcid="@jeus:FormSection" parentElement="ognl:connectionPool" elementName="connectionTrace"/>
+						<span jwcid="connection_trace_enabled">
+                        	<input jwcid="connection_trace_enabledField"/>
+                        </span>
+						<span jwcid="@jeus:Field" field="component:connection_trace_get_connection_traceField">
+							<input jwcid="connection_trace_get_connection_traceField@jeus:JAXBCheckbox" parentElement="ognl:connectionTrace" elementName="getConnectionTrace"/>
+						</span>
+						<span jwcid="@jeus:Field" field="component:connection_trace_auto_commit_traceField">
+							<input jwcid="connection_trace_auto_commit_traceField@jeus:JAXBCheckbox" parentElement="ognl:connectionTrace" elementName="autoCommitTrace"/>
+						</span>                           
+                        
+                        <span jwcid="@jeus:FormSection" title="message:common.title.etc"/>
+                        <span jwcid="useSqlTrace">
+                            <input jwcid="useSqlTraceField"/>
+                        </span>
+                                                                    
+                        <span jwcid="delegation_datasource">
+                            <input jwcid="delegation_datasourceField"/>
+                        </span>
+                        <span jwcid="keepConnectionHandleOpen">
+                        	<input jwcid="keepConnectionHandleOpenField"/>
+                        </span>
+						<span jwcid="initSql">
+                           	<input jwcid="initSqlField"/>
+                        </span>                          
+                        <span jwcid="max_use_count">
+                            <input jwcid="max_use_countField"/>
+                        </span>
+
+                        
+                        <span jwcid="stmt_caching_size">
+                            <input jwcid="stmt_caching_sizeField"/>
+                        </span>
+                        <span jwcid="stmt_fetch_size">
+                            <input jwcid="stmt_fetch_sizeField"/>
+                        </span>
+
+ 
+                         <span jwcid="delegation_dba">
+                            <input jwcid="delegation_dbaField"/>
+                        </span>
+                        <span jwcid="dba_timeout">
+                            <input jwcid="dba_timeoutField"/>
+                        </span>
+                    </span>
+                </span>
+                <span jwcid="@Else">
+                	<span key="dsc.pool.required"/>
+                </span>
+                <div class="form_button_layer">
+                	<input jwcid="poolPrevious" class="form_button" style="width:100px;"/>
+					<input jwcid="createOk" class="form_button" style="width:100px;"/>
+                </div>
+        	</form>
+        </span>
+    </span>
+</html>

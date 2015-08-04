@@ -1,0 +1,45 @@
+<body jwcid="@jeus:SubBorder" style="height: 100%; width: 100%; padding: 5px">
+    <span jwcid="tabPanel">
+        <form jwcid="form">
+        	<span jwcid="@If" condition="ognl:infos == null" renderTag="ognl:false">
+				<span jwcid="@Insert" value="message:wtbmo.common.error01" class="field_label"></span>        	
+        	</span>
+        	<span jwcid="@Else" renderTag="ognl:false">
+        		<span jwcid="@For" source="ognl:infos" value="ognl:info" volatile="ognl:true" renderTag="ognl:false">
+	        		<span jwcid="@jeus:FormSection" title="ognl:'HTH : ' + info.name"></span>
+	        		<span jwcid="@jeus:ReadOnlyTextField" label="message:wtbmo.field.pid" value="ognl:info.pid"></span>
+	        		<span jwcid="@jeus:ReadOnlyTextField" label="message:wtbmo.field.status" value="ognl:info.status"></span>
+	        		<table class="table">
+	        			<tr>
+	        				<th>Server Name</th>
+	        				<th>Server Group Name</th>
+	        				<th>Server Process Number</th>
+	        				<th>Process ID</th>
+	        				<th>Status</th>
+	        				<th>Count</th>
+	        				<th>avg</th>
+	        				<th>rt</th>
+	        				<th>clid</th>
+	        				<th>svc</th>
+	        			</tr>
+	        			<tr jwcid="@For" source="ognl:info.process" value="ognl:subInfo" volatile="ognl:true">
+	        				<td align="center"><span jwcid="@Insert" value="ognl:subInfo[0]"></span></td>
+	        				<td align="center"><span jwcid="@Insert" value="ognl:subInfo[1]"></span></td>
+	        				<td align="center"><span jwcid="@Insert" value="ognl:subInfo[2]"></span></td>
+	        				<td align="center"><span jwcid="@Insert" value="ognl:subInfo[3]"></span></td>
+	        				<td align="center"><span jwcid="@Insert" value="ognl:subInfo[4]"></span></td>
+	        				<td align="center"><span jwcid="@Insert" value="ognl:subInfo[5]"></span></td>
+	        				<td align="center"><span jwcid="@Insert" value="ognl:convert(subInfo[6])"></span></td>
+	        				<td align="center"><span jwcid="@Insert" value="ognl:subInfo[7]"></span></td>
+	        				<td align="center"><span jwcid="@Insert" value="ognl:subInfo[8]"></span></td>
+	        				<td align="center"><span jwcid="@Insert" value="ognl:subInfo[9]"></span></td>
+	        			</tr>
+	        		</table>
+        		</span>
+        	</span>
+            <div class="form_button_layer">
+            	<a jwcid="@PageLink" page="ognl:pageName"></a><input jwcid="@Button" class="form_button" onclick="jeus.fireEvent(previousSibling, 'click');" label="message:common.label.refresh"/>
+            </div>
+        </form>
+    </span>
+</body>

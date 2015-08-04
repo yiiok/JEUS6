@@ -1,0 +1,24 @@
+<project name="jms/queue" default="all" basedir=".">
+    <property name="is.multi.module" value="false"/>
+    <property name="is.jar.module" value="true"/>
+
+    <import file="../../common/common-build.xml"/>
+
+    <target name="all" depends="build, run"/>
+
+    <target name="run">
+        <echo>Please execute receive first, and execute send paralelly</echo>
+    </target>
+
+    <target name="send">
+        <antcall target="runjavaclient">
+            <param name="run.class" value="jms.topic.TopicSend"/>
+        </antcall>
+    </target>
+
+    <target name="receive">
+        <antcall target="runjavaclient">
+            <param name="run.class" value="jms.topic.TopicReceive"/>
+        </antcall>
+    </target>
+</project>

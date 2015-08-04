@@ -1,0 +1,21 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <form jwcid="form">
+            <span jwcid="exist">
+                <span jwcid="totalSessionCount"/>
+                <span jwcid="passivatedSessionCount"/>
+                <span jwcid="totalSessionMemory"/>
+                <span jwcid="sessionPeakMemory"/>
+                <span jwcid="memory1MinuteDifference"/>
+                <span jwcid="memory5MinuteDifference"/>
+                <span jwcid="memory15MinuteDifference"/>
+                <div class="form_button_layer">
+                    <input jwcid="refreshButton" type="button" class="form_button refresh"/>
+                </div>
+            </span>
+            <span jwcid="@Else" renderTag="ognl:false">
+                <span class="field_label" jwcid="noSession"/>
+            </span>
+        </form>
+    </span>
+</html>

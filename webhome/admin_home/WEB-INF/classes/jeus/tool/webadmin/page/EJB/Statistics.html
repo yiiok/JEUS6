@@ -1,0 +1,303 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <form jwcid="form">
+            <span jwcid="stats"/>
+            <div class="form_button_layer">
+				<input jwcid="refreshButton" type="button" class="form_button refresh"/>
+            </div>
+        </form>
+
+        <!-- Stats for each EJB type -->
+        <span jwcid="StatefulSessionBean">
+        	<!-- EJB Stats -->
+            <!-- JSR-77 -->
+    		<span jwcid="@jeus:CountStatisticField" label="message:ejb.statistics.remove_count.label" 
+    			description="message:ejb.statistics.remove_count.description"
+    			count="ognl:getStateful().removeCount"
+    			renderUnderline="ognl:true"/>
+            <!-- JEUS -->
+    		<span jwcid="@jeus:CountStatisticField" label="message:ejb.statistics.request_count.label" 
+    			description="message:ejb.statistics.request_count.description"
+    			count="ognl:getStateful().requestCount"
+    			renderUnderline="ognl:true"/>    
+			<span jwcid="@jeus:CountStatisticField" label="message:ejb.statistics.committed_count.label" 
+    			description="message:ejb.statistics.committed_count.description"
+    			count="ognl:getStateful().committedCount"
+    			renderUnderline="ognl:true"/>
+    		<span jwcid="@jeus:CountStatisticField" label="message:ejb.statistics.rolledback_count.label" 
+    			description="message:ejb.statistics.rolledback_count.description"
+    			count="ognl:getStateful().rolledbackCount"
+    			renderUnderline="ognl:true"/>    
+			<span jwcid="@jeus:CountStatisticField" label="message:ejb.statistics.timeout_rolledback_count.label" 
+    			description="message:ejb.statistics.timeout_rolledback_count.description"
+    			count="ognl:getStateful().timeoutRolledbackCount"
+    			renderUnderline="ognl:true"/>
+    			
+        	<!-- <span jwcid="@RenderBlock" block="ognl:components.createCountBlock"/> -->
+			<span jwcid="@jeus:CountStatisticField" label="message:ejb.statistics.create_count.label" 
+    			description="message:ejb.statistics.create_count.description"
+    			count="ognl:getStateful().createCount"
+    			renderUnderline="ognl:true"/>        	
+        	
+            <!-- <span jwcid="@RenderBlock" block="ognl:components.ejbBean"/> -->
+			<span jwcid="@jeus:RangeStatisticField" label="message:ejb.statistics.total_ejb_bean_count.label" 
+    			description="message:ejb.statistics.total_ejb_bean_count.description"
+    			renderBottom="ognl:true"
+    			range="ognl:getStateful().totalEJBBeanCount"
+    			renderUnderline="ognl:true"/>
+			<span jwcid="@jeus:RangeStatisticField" label="message:ejb.statistics.active_ejb_bean_count.label" 
+    			description="message:ejb.statistics.active_ejb_bean_count.description"
+    			renderBottom="ognl:true"
+    			range="ognl:getStateful().activeEJBBeanCount"
+    			renderUnderline="ognl:true"/>
+    			            
+            <!-- <span jwcid="@RenderBlock" block="ognl:components.methodReady"/> -->
+			<span jwcid="@jeus:RangeStatisticField" label="message:ejb.statistics.method_ready_count.label" 
+    			description="message:ejb.statistics.method_ready_count.description"
+    			renderBottom="ognl:true"
+    			range="ognl:getStateful().methodReadyCount"
+    			renderUnderline="ognl:true"/>
+    			
+            <!-- <span jwcid="@RenderBlock" block="ognl:components.passive"/> -->
+			<span jwcid="@jeus:RangeStatisticField" label="message:ejb.statistics.passive_count.label" 
+    			description="message:ejb.statistics.passive_count.description"
+    			renderBottom="ognl:true"
+    			range="ognl:getStateful().passiveCount"
+    			renderUnderline="ognl:true"/>
+    			
+            <!-- <span jwcid="@RenderBlock" block="ognl:components.EJBObject"/> -->
+			<span jwcid="@jeus:CountStatisticField" label="message:ejb.statistics.auto_removed_ejb_object_count.label" 
+    			description="message:ejb.statistics.auto_removed_ejb_object_count.description"
+    			count="ognl:getStateful().autoRemovedEJBObjectCount"
+    			renderUnderline="ognl:true"/>
+			<span jwcid="@jeus:RangeStatisticField" label="message:ejb.statistics.total_ejb_object_count.label" 
+    			description="message:ejb.statistics.total_ejb_object_count.description"
+    			renderBottom="ognl:true"
+    			range="ognl:getStateful().totalEJBObjectCount"
+    			renderUnderline="ognl:true"/>
+			<span jwcid="@jeus:RangeStatisticField" label="message:ejb.statistics.active_ejb_object_count.label" 
+    			description="message:ejb.statistics.active_ejb_object_count.description"
+    			range="ognl:getStateful().activeEJBObjectCount"
+    			renderUnderline="ognl:true"/>
+    			
+            <!-- <span jwcid="@RenderBlock" block="ognl:components.thread"/> -->
+			<span jwcid="@jeus:ReadOnlyTextField" label="message:ejb.statistics.total_thread_count.label" 
+    			value="ognl:getStateful().totalThreadCount.current"
+    			renderUnderline="ognl:true"/>
+			<span jwcid="@jeus:RangeStatisticField" label="message:ejb.statistics.active_thread_count.label" 
+    			description="message:ejb.statistics.active_thread_count.description"
+    			renderBottom="ognl:true"
+    			range="ognl:getStateful().activeThreadCount"
+    			renderUnderline="ognl:true"/>
+        </span>
+
+        <span jwcid="StatelessSessionBean">
+        	<!-- EJB Stats -->
+            <!-- JSR-77 -->
+    		<span jwcid="@jeus:CountStatisticField" label="message:ejb.statistics.remove_count.label" 
+    			description="message:ejb.statistics.remove_count.description"
+    			count="ognl:stateless.removeCount"
+    			renderUnderline="ognl:true"/>
+            <!-- JEUS -->
+    		<span jwcid="@jeus:CountStatisticField" label="message:ejb.statistics.request_count.label" 
+    			description="message:ejb.statistics.request_count.description"
+    			count="ognl:stateless.requestCount"
+    			renderUnderline="ognl:true"/>    
+			<span jwcid="@jeus:CountStatisticField" label="message:ejb.statistics.committed_count.label" 
+    			description="message:ejb.statistics.committed_count.description"
+    			count="ognl:stateless.committedCount"
+    			renderUnderline="ognl:true"/>
+    		<span jwcid="@jeus:CountStatisticField" label="message:ejb.statistics.rolledback_count.label" 
+    			description="message:ejb.statistics.rolledback_count.description"
+    			count="ognl:stateless.rolledbackCount"
+    			renderUnderline="ognl:true"/>    
+			<span jwcid="@jeus:CountStatisticField" label="message:ejb.statistics.timeout_rolledback_count.label" 
+    			description="message:ejb.statistics.timeout_rolledback_count.description"
+    			count="ognl:stateless.timeoutRolledbackCount"
+    			renderUnderline="ognl:true"/>
+        
+            <!-- <span jwcid="@RenderBlock" block="ognl:components.ejbBean"/> -->
+			<span jwcid="@jeus:RangeStatisticField" label="message:ejb.statistics.total_ejb_bean_count.label" 
+    			description="message:ejb.statistics.total_ejb_bean_count.description"
+    			renderBottom="ognl:true"
+    			range="ognl:stateless.totalEJBBeanCount"
+    			renderUnderline="ognl:true"/>
+			<span jwcid="@jeus:RangeStatisticField" label="message:ejb.statistics.active_ejb_bean_count.label" 
+    			description="message:ejb.statistics.active_ejb_bean_count.description"
+    			renderBottom="ognl:true"
+    			range="ognl:stateless.activeEJBBeanCount"
+    			renderUnderline="ognl:true"/>
+            
+            <!-- <span jwcid="@RenderBlock" block="ognl:components.methodReady"/> -->
+			<span jwcid="@jeus:RangeStatisticField" label="message:ejb.statistics.method_ready_count.label" 
+    			description="message:ejb.statistics.method_ready_count.description"
+    			renderBottom="ognl:true"
+    			range="ognl:stateless.methodReadyCount"
+    			renderUnderline="ognl:true"/>
+    			            
+            <!-- <span jwcid="@RenderBlock" block="ognl:components.thread"/> -->
+			<span jwcid="@jeus:ReadOnlyTextField" label="message:ejb.statistics.total_thread_count.label" 
+    			value="ognl:stateless.totalThreadCount.current"
+    			renderUnderline="ognl:true"/>
+			<span jwcid="@jeus:RangeStatisticField" label="message:ejb.statistics.active_thread_count.label" 
+    			description="message:ejb.statistics.active_thread_count.description"
+    			renderBottom="ognl:true"
+    			range="ognl:stateless.activeThreadCount"
+    			renderUnderline="ognl:true"/>
+    			
+            <span jwcid="webService"/>
+            <span jwcid="condWS">
+				<span jwcid="@jeus:ReadOnlyTextField" label="message:ejb.statistics.webservices.request.label" 
+	    			value="ognl:numberOfRequests"
+	    			renderUnderline="ognl:true"/>
+                
+				<span jwcid="@jeus:ReadOnlyTextField" label="message:ejb.statistics.webservices.failed_request.label" 
+	    			value="ognl:numberOfFailedRequests"
+	    			renderUnderline="ognl:true"/>
+	    			                
+				<span jwcid="@jeus:ReadOnlyTextField" label="message:ejb.statistics.webservices.successful_request.label" 
+	    			value="ognl:numberOfSuccessfulRequests"
+	    			renderUnderline="ognl:true"/>
+	    			
+				<span jwcid="@jeus:ReadOnlyTextField" label="message:ejb.statistics.webservices.service_time.label" 
+	    			value="ognl:serviceTime"
+	    			renderUnderline="ognl:true"/>
+	    			
+				<span jwcid="@jeus:ReadOnlyTextField" label="message:ejb.statistics.webservices.max_response_time.label" 
+	    			value="ognl:maxResponseTime"
+	    			renderUnderline="ognl:true"/>
+	    			
+				<span jwcid="@jeus:ReadOnlyTextField" label="message:ejb.statistics.webservices.last_response_time.label" 
+	    			value="ognl:lastResponseTime"
+	    			renderUnderline="ognl:true"/>
+            </span>
+        </span>
+
+        <span jwcid="EntityBean">
+        	<!-- EJB Stats -->
+            <!-- JSR-77 -->
+    		<span jwcid="@jeus:CountStatisticField" label="message:ejb.statistics.remove_count.label" 
+    			description="message:ejb.statistics.remove_count.description"
+    			count="ognl:entity.removeCount"
+    			renderUnderline="ognl:true"/>
+            <!-- JEUS -->
+    		<span jwcid="@jeus:CountStatisticField" label="message:ejb.statistics.request_count.label" 
+    			description="message:ejb.statistics.request_count.description"
+    			count="ognl:entity.requestCount"
+    			renderUnderline="ognl:true"/>    
+			<span jwcid="@jeus:CountStatisticField" label="message:ejb.statistics.committed_count.label" 
+    			description="message:ejb.statistics.committed_count.description"
+    			count="ognl:entity.committedCount"
+    			renderUnderline="ognl:true"/>
+    		<span jwcid="@jeus:CountStatisticField" label="message:ejb.statistics.rolledback_count.label" 
+    			description="message:ejb.statistics.rolledback_count.description"
+    			count="ognl:entity.rolledbackCount"
+    			renderUnderline="ognl:true"/>    
+			<span jwcid="@jeus:CountStatisticField" label="message:ejb.statistics.timeout_rolledback_count.label" 
+    			description="message:ejb.statistics.timeout_rolledback_count.description"
+    			count="ognl:entity.timeoutRolledbackCount"
+    			renderUnderline="ognl:true"/>
+        
+			<span jwcid="@jeus:RangeStatisticField" label="message:ejb.statistics.ready_count.label" 
+    			description="message:ejb.statistics.ready_count.description"
+    			range="ognl:entity.readyCount"
+    			renderUnderline="ognl:true"/>
+			<span jwcid="@jeus:RangeStatisticField" label="message:ejb.statistics.pooled_count.label" 
+    			description="message:ejb.statistics.pooled_count.description"
+    			range="ognl:entity.pooledCount"
+    			renderUnderline="ognl:true"/>
+           
+            <!-- <span jwcid="@RenderBlock" block="ognl:components.createCountBlock"/> -->
+			<span jwcid="@jeus:CountStatisticField" label="message:ejb.statistics.create_count.label" 
+    			description="message:ejb.statistics.create_count.description"
+    			count="ognl:entity.createCount"
+    			renderUnderline="ognl:true"/>
+    			
+            <!-- <span jwcid="@RenderBlock" block="ognl:components.ejbBean"/> -->
+			<span jwcid="@jeus:RangeStatisticField" label="message:ejb.statistics.total_ejb_bean_count.label" 
+    			description="message:ejb.statistics.total_ejb_bean_count.description"
+    			renderBottom="ognl:true"
+    			range="ognl:entity.totalEJBBeanCount"
+    			renderUnderline="ognl:true"/>
+			<span jwcid="@jeus:RangeStatisticField" label="message:ejb.statistics.active_ejb_bean_count.label" 
+    			description="message:ejb.statistics.active_ejb_bean_count.description"
+    			renderBottom="ognl:true"
+    			range="ognl:entity.activeEJBBeanCount"
+    			renderUnderline="ognl:true"/>
+            
+            <!-- <span jwcid="@RenderBlock" block="ognl:components.passive"/> -->
+			<span jwcid="@jeus:RangeStatisticField" label="message:ejb.statistics.passive_count.label" 
+    			description="message:ejb.statistics.passive_count.description"
+    			renderBottom="ognl:true"
+    			range="ognl:entity.passiveCount"
+    			renderUnderline="ognl:true"/>
+    			
+            <!-- <span jwcid="@RenderBlock" block="ognl:components.EJBObject"/> -->
+			<span jwcid="@jeus:CountStatisticField" label="message:ejb.statistics.auto_removed_ejb_object_count.label" 
+    			description="message:ejb.statistics.auto_removed_ejb_object_count.description"
+    			count="ognl:entity.autoRemovedEJBObjectCount"
+    			renderUnderline="ognl:true"/>
+			<span jwcid="@jeus:RangeStatisticField" label="message:ejb.statistics.total_ejb_object_count.label" 
+    			description="message:ejb.statistics.total_ejb_object_count.description"
+    			renderBottom="ognl:true"
+    			range="ognl:entity.totalEJBObjectCount"
+    			renderUnderline="ognl:true"/>
+			<span jwcid="@jeus:RangeStatisticField" label="message:ejb.statistics.active_ejb_object_count.label" 
+    			description="message:ejb.statistics.active_ejb_object_count.description"
+    			range="ognl:entity.activeEJBObjectCount"
+    			renderUnderline="ognl:true"/>
+    			
+            <!-- <span jwcid="@RenderBlock" block="ognl:components.thread"/> -->
+			<span jwcid="@jeus:ReadOnlyTextField" label="message:ejb.statistics.total_thread_count.label" 
+    			value="ognl:entity.totalThreadCount.current"
+    			renderUnderline="ognl:true"/>
+			<span jwcid="@jeus:RangeStatisticField" label="message:ejb.statistics.active_thread_count.label" 
+    			description="message:ejb.statistics.active_thread_count.description"
+    			renderBottom="ognl:true"
+    			range="ognl:entity.activeThreadCount"
+    			renderUnderline="ognl:true"/>
+        </span>
+
+        <span jwcid="MessageDrivenBean">
+        	<!-- EJB Stats -->
+            <!-- JSR-77 -->
+    		<span jwcid="@jeus:CountStatisticField" label="message:ejb.statistics.remove_count.label" 
+    			description="message:ejb.statistics.remove_count.description"
+    			count="ognl:mdb.removeCount"
+    			renderUnderline="ognl:true"/>
+            <!-- JEUS -->
+    		<span jwcid="@jeus:CountStatisticField" label="message:ejb.statistics.request_count.label" 
+    			description="message:ejb.statistics.request_count.description"
+    			count="ognl:mdb.requestCount"
+    			renderUnderline="ognl:true"/>    
+			<span jwcid="@jeus:CountStatisticField" label="message:ejb.statistics.committed_count.label" 
+    			description="message:ejb.statistics.committed_count.description"
+    			count="ognl:mdb.committedCount"
+    			renderUnderline="ognl:true"/>
+    		<span jwcid="@jeus:CountStatisticField" label="message:ejb.statistics.rolledback_count.label" 
+    			description="message:ejb.statistics.rolledback_count.description"
+    			count="ognl:mdb.rolledbackCount"
+    			renderUnderline="ognl:true"/>    
+			<span jwcid="@jeus:CountStatisticField" label="message:ejb.statistics.timeout_rolledback_count.label" 
+    			description="message:ejb.statistics.timeout_rolledback_count.description"
+    			count="ognl:mdb.timeoutRolledbackCount"
+    			renderUnderline="ognl:true"/>
+        
+			<span jwcid="@jeus:CountStatisticField" label="message:ejb.statistics.message_count.label" 
+    			description="message:ejb.statistics.message_count.description"
+    			count="ognl:mdb.messageCount"
+    			renderUnderline="ognl:true"/>
+            <!-- <span jwcid="@RenderBlock" block="ognl:components.ejbBean"/> -->
+			<span jwcid="@jeus:RangeStatisticField" label="message:ejb.statistics.total_ejb_bean_count.label" 
+    			description="message:ejb.statistics.total_ejb_bean_count.description"
+    			renderBottom="ognl:true"
+    			range="ognl:mdb.totalEJBBeanCount"
+    			renderUnderline="ognl:true"/>
+			<span jwcid="@jeus:RangeStatisticField" label="message:ejb.statistics.active_ejb_bean_count.label" 
+    			description="message:ejb.statistics.active_ejb_bean_count.description"
+    			renderBottom="ognl:true"
+    			range="ognl:mdb.activeEJBBeanCount"
+    			renderUnderline="ognl:true"/>
+        </span>
+    </span>
+</html>

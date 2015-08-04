@@ -1,0 +1,40 @@
+<span jwcid="$content$">
+    <span jwcid="condModify">
+        <span jwcid="readOnlyName"/>
+    </span>
+    <span jwcid="@If" condition="ognl:logging instanceof jeus.xml.binding.jeusDD.AccessLogType" renderTag="ognl:false">
+    </span>
+    <span jwcid="@Else" renderTag="ognl:false">
+		<span jwcid="level">
+	        <input jwcid="levelField"/>
+	    </span>    
+    </span>
+    <span jwcid="logging_blind">
+	    <span jwcid="condCreate">
+	        <span jwcid="name">
+	            <input jwcid="nameField"/>
+				<div dojoType="dijit.form.DropDownButton" baseClass="customizeTable">
+					<span><img jwcid="@Image" image="asset:help_image"/></span>
+					<div dojoType="dijit.TooltipDialog">
+						<span jwcid="@XTree" rootNode="ognl:loggerNameRoot" showRoot="false" style="width: 300px;height: 300px;overflow: auto;">
+							<script type="dojo/method" event="onClick" args="item, node">
+								var store = this.model.store;
+								var data = store.getValue(item, "data");
+								if(!!data){
+									dojo.byId('nameField').value = data;
+								}
+							</script>
+						</span>						
+					</div>
+				</div>
+	            
+	        </span>
+	    </span>    
+        <span jwcid="use_parent_handlers">
+            <input jwcid="use_parent_handlersField"/>
+        </span>
+        <span jwcid="filter_class">
+            <input jwcid="filter_classField" style="width:98%;"/>
+        </span>
+    </span>
+</span>

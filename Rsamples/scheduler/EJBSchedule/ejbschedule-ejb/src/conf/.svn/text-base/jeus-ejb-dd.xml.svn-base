@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<jeus-ejb-dd xmlns="http://www.tmaxsoft.com/xml/ns/jeus" version="6.0">
+    <module-info/>
+    <beanlist>
+        <jeus-bean>
+            <ejb-name>EJBSchedule</ejb-name>
+            <export-name>ScheduleApp</export-name>
+        </jeus-bean>
+    </beanlist>
+</jeus-ejb-dd>

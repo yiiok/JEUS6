@@ -1,0 +1,20 @@
+<project name="doclit" default="all" basedir=".">
+    <property name="is.ear.module" value="true" />
+
+    <import file="../../../../common/common-build.xml" />
+
+    <path id="sub-components">
+        <filelist dir="./doclit-client" files="build.xml" />
+        <filelist dir="./doclit-war" files="build.xml" />
+    </path>
+
+    <target name="all" depends="build, deploy, run" />
+
+    <property name="run.uri" value="DocLitEchoService/AddNumbersImplService" />
+    <target name="run" depends="launch" />
+
+    <target name="runclient">
+        <ant dir="./doclit-client" target="run" inheritall="false" />
+    </target>
+
+</project>

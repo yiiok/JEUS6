@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceMQExtResourceService.CreatePage">
+
+	<inject property="mQResourceSpecificationsSource" type="state" object="MQResourceSpecificationsSource"/>
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="message:dsc.title"/>
+        
+    </component>
+
+    <component id="wizTabPanel" type="jeus:WizardTabPanel">
+        <binding name="tabNames" value="new java.lang.String[]{'mqresource', 'properties', 'create'}"/>
+    </component>
+
+    <component id="mqresource" type="Block"/>
+    <component id="properties" type="Block"/>
+    <component id="create" type="Block"/>
+
+    <component id="mqresourceForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:mqc.mqresource.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="mqresource_script" type="Script">
+        <binding name="script" value="literal:/jeus/tool/webadmin/script/MQResource.script"/>
+        <binding name="source" value="component:mq_vendorField"/>
+        <binding name="target" value="component:mqresource_listField"/>
+        <binding name="specifications" value="mQResourceSpecificationsSource.mQResourceSpecifications"/>
+    </component>
+
+    <component id="mq_vendor" type="jeus:Field">
+        <binding name="label" value="message:mqc.mqvendor.label"/>
+        <binding name="field" value="component:mq_vendorField"/>
+    </component>
+
+    <component id="mq_vendorField" type="PropertySelection">
+        <binding name="model" value="mqModel"/>
+        <binding name="value" value="selectedMq"/>
+    </component>
+    
+    <component id="choose" type="contrib:Choose"/>
+    
+    <component id="whenOtherVendor" type="contrib:When">
+        <binding name="condition" value="mq.vendor == @jeus.xml.binding.jeusDD.JmsVendorType@OTHERS"/>
+    </component>
+
+    <component id="otherwise" type="contrib:Otherwise"/>
+
+    <component id="mq_other_class_name" type="jeus:Field">
+        <binding name="field" value="component:mq_other_class_nameField"/>
+    </component>
+
+    <component id="mq_other_class_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="mq"/>
+        <binding name="elementName" value="literal:factoryClassName"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="mqresource_list" type="jeus:Field">
+        <binding name="label" value="message:mqc.mqresource_list.label"/>
+        <binding name="field" value="component:mqresource_listField"/>
+    </component>
+
+    <component id="mqresource_listField" type="PropertySelection">
+        <binding name="model" value="mqResourceModel"/>
+        <binding name="value" value="selectedMqResource"/>
+        <binding name="size" value="6"/>
+    </component>
+
+    <component id="mqresourceNext" type="Submit">
+        <binding name="value" value="message:common.label.next"/>
+        <binding name="listener" value="listener:onMQResourceNext"/>
+    </component>
+
+    <component id="propertiesForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:mqc.properties.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="export_name" type="jeus:Field">
+        <binding name="field" value="component:export_nameField"/>
+    </component>
+
+    <component id="export_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="mq"/>
+        <binding name="elementName" value="literal:exportName"/>
+        <binding name="validators" value="validators:required,pattern=\w*[%common.exception.0066]"/>
+    </component>
+
+    <component id="vendor" type="jeus:ReadOnlyTextField">
+        <binding name="parentElement" value="mq"/>
+        <binding name="elementName" value="literal:vendor"/>
+    </component>
+
+    <component id="mq_factory_class_name" type="jeus:ReadOnlyTextField">
+        <binding name="parentElement" value="mq"/>
+        <binding name="elementName" value="literal:factoryClassName"/>
+    </component>
+
+    <component id="mq_resource_type" type="jeus:ReadOnlyTextField">
+        <binding name="parentElement" value="mq"/>
+        <binding name="elementName" value="literal:resourceType"/>
+    </component>
+
+    <component id="condQueueType" type="If">
+        <binding name="condition" value="mq.resourceType == @jeus.xml.binding.jeusDD.TypeResourceType@Q"/>
+    </component>
+
+    <component id="queue" type="jeus:Field">
+        <binding name="field" value="component:queueField"/>
+    </component>
+
+    <component id="queueField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="mq"/>
+        <binding name="elementName" value="literal:queue"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="condQueueManager" type="If">
+        <binding name="condition" value="mq.vendor == @jeus.xml.binding.jeusDD.JmsVendorType@IBMMQ and mq.resourceType != @jeus.xml.binding.jeusDD.TypeResourceType@T"/>
+    </component>
+
+    <component id="queue_manager" type="jeus:Field">
+        <binding name="field" value="component:queue_managerField"/>
+    </component>
+
+    <component id="queue_managerField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="mq"/>
+        <binding name="elementName" value="literal:queueManager"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="condTopicType" type="If">
+        <binding name="condition" value="mq.resourceType == @jeus.xml.binding.jeusDD.TypeResourceType@T"/>
+    </component>
+
+    <component id="topic" type="jeus:Field">
+        <binding name="field" value="component:topicField"/>
+    </component>
+
+    <component id="topicField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="mq"/>
+        <binding name="elementName" value="literal:topic"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="additional_properties" type="jeus:Field">
+        <binding name="field" value="component:additional_propertiesField"/>
+    </component>
+
+    <component id="additional_propertiesField" type="jeus:JAXBTextArea">
+		<binding name="parentElement" value="mq"/>
+        <binding name="elementName" value="literal:property"/>
+        <binding name="translator" value="bean:typePropertyTranslator"/>
+    </component>
+	
+	<bean name="typePropertyTranslator" class="jeus.tool.webadmin.component.translator.TypePropertyTranslator"/>
+
+
+
+    <component id="propertiesPrevious" type="Submit">
+        <binding name="value" value="message:common.label.previous"/>
+        <binding name="listener" value="listener:onPropertiesPrevious"/>
+    </component>
+
+    <component id="propertiesNext" type="Submit">
+        <binding name="value" value="message:common.label.next"/>
+        <binding name="listener" value="listener:onPropertiesNext"/>
+    </component>
+
+    <component id="condBooted" type="If">
+        <binding name="condition" value="@jeus.tool.webadmin.util.NodeUtils@isBooted(visit)"/>
+    </component>
+
+    <component id="bind_now" type="jeus:Field">
+        <binding name="label" value="message:mqc.create.bind_now.label"/>
+        <binding name="field" value="component:bind_nowField"/>
+    </component>
+
+    <component id="bind_nowField" type="Checkbox">
+        <binding name="value" value="bindNow"/>
+    </component>
+
+    <component id="createPrevious" type="Submit">
+        <binding name="value" value="message:common.label.previous"/>
+        <binding name="listener" value="listener:onCreatePrevious"/>
+    </component>
+
+    <component id="createOk" type="Submit">
+        <binding name="value" value="message:common.label.create"/>
+        <binding name="listener" value="listener:onCreateOk"/>
+    </component>
+
+    <component id="createForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:mqc.create.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <property name="selectedMq" persist="session"/>
+    <property name="selectedMqResource" persist="session"/>
+    <property name="mq" persist="session"/>
+    <property name="bindNow"/>
+</page-specification>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.OnlineHelp.HelpPage">
+	<asset name="jeus_css" path="context:/css/jeus.css"/>
+	<asset name="onlinehelp_css" path="context:/css/onlinehelp.css"/>
+	<asset name="submit" path="context:/image/help/but_search_none.gif"/>
+</page-specification>

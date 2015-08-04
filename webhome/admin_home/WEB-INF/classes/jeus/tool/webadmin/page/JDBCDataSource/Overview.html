@@ -1,0 +1,28 @@
+<html jwcid="mainBorder">
+    <span jwcid="tabPanel">
+	<form jwcid="statisticsForm">
+	    <span jwcid="condHasDataSources">
+			<table border="1" cellpadding="3" width="100%" style="text-align:center;" jwcid="statisticsTable"/>
+			<span jwcid="jds_export_name_labelColumnValue@Block">
+		    	<a jwcid="datasourceLink"><span jwcid="export_name"/></a>
+		    </span>
+		    <span jwcid="jds_actions_labelColumnValue@Block">
+			    <a jwcid="@DirectLink" listener="listener:onRefresh" parameters="ognl:currentStats.objectName"></a><input jwcid="@Button" label="message:dsc.datasource.refresh" onclick="jeus.fireEvent(previousSibling, 'click');" class="form_button"/>
+				<a jwcid="enable_disableLink"></a><input jwcid="enable_disable" class="form_button" onclick="jeus.fireEvent(previousSibling, 'click');"/>
+				<span jwcid="condCP">
+	            	<a jwcid="shrinkLink"></a><input jwcid="shrink" class="form_button" onclick="jeus.fireEvent(previousSibling, 'click');"/>
+				</span>
+                <span jwcid="condXA">
+                	<a jwcid="resyncLink"></a><input jwcid="resync" class="form_button" onclick="jeus.fireEvent(previousSibling, 'click');"/>
+				</span>
+            </span>
+			<div class="form_button_layer">
+                <a jwcid="@PageLink" page="ognl:pageName"></a><input jwcid="@Button" class="form_button" onclick="jeus.fireEvent(previousSibling, 'click');" label="message:common.label.refresh"/>
+            </div>
+		</span>
+		<span jwcid="condHasNoDataSources">
+			<span jwcid="no_datasources" class="field_label"/>
+		</span>
+    </form>
+    </span>
+</html>

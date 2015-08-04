@@ -1,0 +1,26 @@
+<span jwcid="mainBorder@jeus:MainBorder" title="ActivateChanges">
+    <span jwcid="tabPanel@jeus:TabPanel" pageNames="ognl:pageName">
+        <form jwcid="form@jeus:JEUSForm" class="sync" ignoreLock="ognl:true" title="message:lock.activateChanges.label" description="message:lock.activateChanges.description" useDefaultButtons="false" listener="listener:onActivateChanges">
+
+			<table class="table">
+				<tr>
+					<th style="width:20px;"></th>
+					<th><span jwcid="@Insert" value="message:lock.activateChanges.key.label"/></th>
+					<th style="width:20px;"></th>
+				</tr>
+				<tr jwcid="@For" source="ognl:targets" value="ognl:target" renderTag="true">
+					<td style="text-align: center"><span jwcid="@Checkbox" value="ognl:target.checked"/></td>
+					<td><a jwcid="selectActivateTarget@ExternalLink" page="ActivateChanges" parameters="ognl:target.key"><span jwcid="@Insert" value="ognl:target.key"/></a></td>
+					<td style="text-align: center"><a jwcid="@DirectLink" listener="listener:onDeleteTarget" parameters="ognl:target.key" renderer="ognl:@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@build('lock.activateChanges.delete.confirm', target.key)"><img jwcid="@Image" image="asset:delete" alt="delete"/></a></td>
+				</tr>
+			</table>
+			<div class="form_button_layer">
+				<input jwcid="activateChangesSubmit@Submit" class="form_button" value="message:lock.activateChanges.label" message="message:lock.activateChanges.confirm" disabled="ognl:targets == null || targets.isEmpty()"/>
+			</div>
+			<div jwcid="selectedTargetDetail@If" condition="ognl:selectedTarget != null" renderTag="true" style="clear: both;">
+				<span jwcid="@jeus:FormSection" title="ognl:selectedTarget.key"/>
+				<div style="overflow: auto;"><pre style="overflow:hidden; word-break:keep-all; word-wrap: break-word; white-space: -moz-pre-wrap;"><span jwcid="@Insert" value="ognl:selectedTarget.content"/></pre></div>
+			</div>
+        </form>
+    </span>
+</span>
