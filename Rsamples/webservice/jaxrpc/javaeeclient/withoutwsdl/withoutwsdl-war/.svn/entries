@@ -2,7 +2,7 @@
 
 dir
 781
-svn://192.168.1.134/JEUS6/testenv/tags/fix8/Rsamples/webservice/jaxrpc/javaeeclient/withoutwsdl/withoutwsdl-war
+svn://192.168.1.134/JEUS6/testenv/trunk/Rsamples/webservice/jaxrpc/javaeeclient/withoutwsdl/withoutwsdl-war
 svn://192.168.1.134/JEUS6
 
 
@@ -32,7 +32,7 @@ file
 
 
 
-2015-08-04T02:13:41.000000Z
+2015-08-04T02:24:20.000000Z
 cd3a234bfed3cecf6b9e2ea38b06ece9
 2009-07-15T06:53:54.873011Z
 465

@@ -9,7 +9,7 @@
                     <input jwcid="export_nameField"/>
                 </span>
 				<span jwcid="@jeus:Field" field="component:data_source_targetField">
-					<input jwcid="data_source_targetField@jeus:JAXBTextArea" parentElement="ognl:clusterDs" elementName="dataSourceTarget" translator="bean:listTranslator" style="width:98%;" rows="4" nowrap="true"/>
+					<input jwcid="data_source_targetField@jeus:JAXBTextArea" parentElement="ognl:clusterDs" elementName="dataSourceTarget" translator="bean:listTranslator" style="width:98%;" rows="4" nowrap="true" validators="validators:$dataSourceTargetValidator"/>
 				</span>                  
 				<span jwcid="@jeus:Field" field="component:load_balanceField">
 					<input jwcid="load_balanceField@jeus:JAXBCheckbox" parentElement="ognl:clusterDs" elementName="loadBalance"/>

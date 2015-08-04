@@ -168,6 +168,10 @@
         <type>queue</type>
         <name>basic/QueueCF</name>
     </connection-factory>
+	<connection-factory>
+        <type>xaqueue</type>
+        <name>basic/XAQueueCF</name>
+    </connection-factory>
     <destination>
         <type>queue</type>
         <name>queue/Example1</name>

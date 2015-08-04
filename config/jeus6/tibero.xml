@@ -5,7 +5,7 @@
 			<data-source-class-name>com.tmax.tibero.jdbc.ext.TbConnectionPoolDataSource</data-source-class-name>
 			<data-source-type>ConnectionPoolDataSource</data-source-type>
 			<database-name>tibero</database-name>
-			<server-name>192.168.32.203</server-name>
+			<server-name>192.168.1.133</server-name>
 			<port-number>8629</port-number>
 			<user>jeusdb1</user>
 			<password>{base64}amV1c2RiMQ==</password>
@@ -45,7 +45,7 @@
 			<data-source-class-name>com.tmax.tibero.jdbc.ext.TbConnectionPoolDataSource</data-source-class-name>
 			<data-source-type>ConnectionPoolDataSource</data-source-type>
 			<database-name>tibero</database-name>
-			<server-name>192.168.32.203</server-name>
+			<server-name>192.168.1.133</server-name>
 			<port-number>8629</port-number>
 			<user>jeusdb1</user>
 			<password>jeusdb1</password>
@@ -76,7 +76,7 @@
 			<data-source-class-name>com.tmax.tibero.jdbc.ext.TbConnectionPoolDataSource</data-source-class-name>
 			<data-source-type>ConnectionPoolDataSource</data-source-type>
 			<database-name>tibero</database-name>
-			<server-name>192.168.32.203</server-name>
+			<server-name>192.168.1.133</server-name>
 			<port-number>8629</port-number>
 			<user>jeusdb1</user>
 			<password>jeusdb1</password>
@@ -108,7 +108,7 @@
 			<data-source-class-name>com.tmax.tibero.jdbc.ext.TbConnectionPoolDataSource</data-source-class-name>
 			<data-source-type>LocalXADataSource</data-source-type>
 			<database-name>tibero</database-name>
-			<server-name>192.168.32.203</server-name>
+			<server-name>192.168.1.133</server-name>
 			<port-number>8629</port-number>
 			<user>jeusdb1</user>
 			<password>{base64}amV1c2RiMQ==</password>
@@ -148,7 +148,7 @@
 			<data-source-class-name>com.tmax.tibero.jdbc.ext.TbConnectionPoolDataSource</data-source-class-name>
 			<data-source-type>LocalXADataSource</data-source-type>
 			<database-name>tibero</database-name>
-			<server-name>192.168.32.203</server-name>
+			<server-name>192.168.1.133</server-name>
 			<port-number>8629</port-number>
 			<user>jeusdb1</user>
 			<password>jeusdb1</password>
@@ -179,7 +179,7 @@
 			<data-source-class-name>com.tmax.tibero.jdbc.ext.TbConnectionPoolDataSource</data-source-class-name>
 			<data-source-type>LocalXADataSource</data-source-type>
 			<database-name>tibero</database-name>
-			<server-name>192.168.32.203</server-name>
+			<server-name>192.168.1.133</server-name>
 			<port-number>8629</port-number>
 			<user>jeusdb1</user>
 			<password>jeusdb1</password>
@@ -211,7 +211,7 @@
 			<data-source-class-name>com.tmax.tibero.jdbc.ext.TbXADataSource</data-source-class-name>
 			<data-source-type>XADataSource</data-source-type>
 			<database-name>tibero</database-name>
-			<server-name>192.168.32.203</server-name>
+			<server-name>192.168.1.133</server-name>
 			<port-number>8629</port-number>
 			<user>jeusdb1</user>
 			<password>{base64}amV1c2RiMQ==</password>
@@ -251,7 +251,7 @@
 			<data-source-class-name>com.tmax.tibero.jdbc.ext.TbXADataSource</data-source-class-name>
 			<data-source-type>XADataSource</data-source-type>
 			<database-name>tibero</database-name>
-			<server-name>192.168.32.203</server-name>
+			<server-name>192.168.1.133</server-name>
 			<port-number>8629</port-number>
 			<user>jeusdb1</user>
 			<password>jeusdb1</password>
@@ -282,7 +282,7 @@
 			<data-source-class-name>com.tmax.tibero.jdbc.ext.TbXADataSource</data-source-class-name>
 			<data-source-type>XADataSource</data-source-type>
 			<database-name>tibero</database-name>
-			<server-name>192.168.32.203</server-name>
+			<server-name>192.168.1.133</server-name>
 			<port-number>8629</port-number>
 			<user>jeusdb1</user>
 			<password>jeusdb1</password>
@@ -314,7 +314,7 @@
 			<data-source-class-name>com.tmax.tibero.jdbc.ext.TbXADataSource</data-source-class-name>
 			<data-source-type>XADataSource</data-source-type>
 			<database-name>tibero</database-name>
-			<server-name>192.168.32.203</server-name>
+			<server-name>192.168.1.133</server-name>
 			<port-number>8629</port-number>
 			<user>jeusdb1</user>
 			<password>jeusdb1</password>
@@ -338,7 +338,7 @@
 			<data-source-class-name>com.tmax.tibero.jdbc.ext.TbConnectionPoolDataSource</data-source-class-name>
 			<data-source-type>ConnectionPoolDataSource</data-source-type>
 			<database-name>tibero</database-name>
-			<server-name>192.168.32.203</server-name>
+			<server-name>192.168.1.133</server-name>
 			<port-number>8629</port-number>
 			<user>sys</user>
 			<password>tibero</password>
@@ -363,7 +363,7 @@
 			<property>
 				<name>URL</name>
 				<type>java.lang.String</type>
-				<value>jdbc:tibero:thin:@192.168.32.203:8629:tibero</value>
+				<value>jdbc:tibero:thin:@192.168.1.133:8629:tibero</value>
 			</property>
 			<property>
 				<name>User</name>

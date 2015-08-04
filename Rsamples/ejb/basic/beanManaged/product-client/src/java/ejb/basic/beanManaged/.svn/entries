@@ -2,7 +2,7 @@
 
 dir
 781
-svn://192.168.1.134/JEUS6/testenv/tags/fix8/Rsamples/ejb/basic/beanManaged/product-client/src/java/ejb/basic/beanManaged
+svn://192.168.1.134/JEUS6/testenv/trunk/Rsamples/ejb/basic/beanManaged/product-client/src/java/ejb/basic/beanManaged
 svn://192.168.1.134/JEUS6
 
 
@@ -32,7 +32,7 @@ file
 
 
 
-2015-08-04T02:13:45.000000Z
+2015-08-04T02:24:22.000000Z
 d081dd05f0f758f2e01b827b246fb204
 2009-07-15T06:53:54.873011Z
 465
@@ -66,7 +66,7 @@ file
 
 
 
-2015-08-04T02:13:45.000000Z
+2015-08-04T02:24:22.000000Z
 a0e67c8ea15ae781505b3063365058f3
 2009-07-15T06:53:54.873011Z
 465
@@ -100,7 +100,7 @@ file
 
 
 
-2015-08-04T02:13:45.000000Z
+2015-08-04T02:24:22.000000Z
 79fbdba570686d580cb763c7653fb7e3
 2009-07-15T06:53:54.873011Z
 465
@@ -134,7 +134,7 @@ file
 
 
 
-2015-08-04T02:13:45.000000Z
+2015-08-04T02:24:22.000000Z
 feeb09d64016a25eaddbac663eb72c24
 2009-07-15T06:53:54.873011Z
 465

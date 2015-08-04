@@ -2,14 +2,14 @@
 
 dir
 781
-svn://192.168.1.134/JEUS6/testenv/tags/fix8/Tconfig/jeus6/jeus6_jms_engine1
+svn://192.168.1.134/JEUS6/testenv/trunk/Tconfig/jeus6/jeus6_jms_engine1
 svn://192.168.1.134/JEUS6
 
 
 
-2010-03-22T09:06:16.160165Z
-582
-jungeun_lee
+2013-08-28T04:15:15.640353Z
+734
+taeju
 
 
 svn:special svn:externals svn:needs-lock
@@ -32,11 +32,11 @@ file
 
 
 
-2015-08-04T02:13:57.000000Z
-17595d543520ce12ae197fe12dc39871
-2010-03-22T09:06:16.160165Z
-582
-jungeun_lee
+2015-08-04T02:24:29.000000Z
+82de2aff16127a373a155677eea4d691
+2013-08-28T04:15:15.640353Z
+734
+taeju
 
 
 
@@ -58,5 +58,5 @@ jungeun_lee
 
 
 
-6202
+6320
 

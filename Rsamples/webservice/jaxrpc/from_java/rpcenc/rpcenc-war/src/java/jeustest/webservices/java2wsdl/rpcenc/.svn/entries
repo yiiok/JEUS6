@@ -2,7 +2,7 @@
 
 dir
 781
-svn://192.168.1.134/JEUS6/testenv/tags/fix8/Rsamples/webservice/jaxrpc/from_java/rpcenc/rpcenc-war/src/java/jeustest/webservices/java2wsdl/rpcenc
+svn://192.168.1.134/JEUS6/testenv/trunk/Rsamples/webservice/jaxrpc/from_java/rpcenc/rpcenc-war/src/java/jeustest/webservices/java2wsdl/rpcenc
 svn://192.168.1.134/JEUS6
 
 
@@ -32,7 +32,7 @@ file
 
 
 
-2015-08-04T02:13:39.000000Z
+2015-08-04T02:24:19.000000Z
 2b9f7f66995f7fd52a066fe68e9841f4
 2009-07-15T06:53:54.873011Z
 465
@@ -66,7 +66,7 @@ file
 
 
 
-2015-08-04T02:13:39.000000Z
+2015-08-04T02:24:19.000000Z
 b9d6a75ebe4d343dcaebe5e82eda10e4
 2009-07-15T06:53:54.873011Z
 465

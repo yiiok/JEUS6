@@ -20,6 +20,7 @@ SET CLASS_PATH=%CLASS_PATH%;%JEUS_HOME%\lib\system\javaee.jar
 SET CLASS_PATH=%CLASS_PATH%;%JEUS_HOME%\lib\system\jaxws-tools.jar
 SET CLASS_PATH=%CLASS_PATH%;%JEUS_HOME%\lib\system\jeus.jar
 SET CLASS_PATH=%CLASS_PATH%;%JEUS_HOME%\lib\system\jeus-ws.jar
+SET CLASS_PATH=%CLASS_PATH%;%JEUS_HOME%\lib\system\wsdl4j.jar
 SET CLASS_PATH=%CLASS_PATH%;%JEUS_HOME%\lib\system\jeusapi.jar
 SET CLASS_PATH=%CLASS_PATH%;%JEUS_HOME%\lib\system\jeusjaxb.jar
 SET CLASS_PATH=%CLASS_PATH%;%JEUS_HOME%\lib\system\jeusutil.jar

@@ -2,7 +2,7 @@
 
 dir
 781
-svn://192.168.1.134/JEUS6/testenv/tags/fix8/Rsamples/client/helloApplet
+svn://192.168.1.134/JEUS6/testenv/trunk/Rsamples/client/helloApplet
 svn://192.168.1.134/JEUS6
 
 
@@ -32,7 +32,7 @@ file
 
 
 
-2015-08-04T02:13:50.000000Z
+2015-08-04T02:24:27.000000Z
 c98838124e70c12ec8a7873621168cf7
 2009-07-15T06:53:54.873011Z
 465

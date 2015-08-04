@@ -65,6 +65,11 @@
         <set name="dataSourceId" value="component:data_source_idField"/>
     </bean>
        
+    <bean name="dataSourceTargetValidator" class="jeus.tool.webadmin.page.JeusServiceJDBCDataSourceService.DataSourceTargetValidator">
+        <set name="jeusSystem" value="jeusSystem"/>
+        <set name="dataSourceIdValue" value="clusterDs.dataSourceId"/>
+        <set name="exportNameValue" value="clusterDs.exportName"/>
+    </bean>
     <bean name="listTranslator" class="jeus.tool.webadmin.component.translator.ListTranslator"/>  
 
 </page-specification>

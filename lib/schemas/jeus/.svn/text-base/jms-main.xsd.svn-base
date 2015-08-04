@@ -895,7 +895,61 @@
                     </xs:unique>
                 </xs:element>
             </xs:choice>
+            <xs:element name="dead-letter-destination" type="valuableToken" minOccurs="0" default="JEUSMQ_DLQ">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[
+                        [Description]: 이 Destination에서 정상적으로 처리되지 못한 메시지들을 보관할 Destination의 이름이다.
+                        기본값인 JEUSMQ_DLQ는 시스템에서 제공하는 Queue이며 따로 설정하지 않아도 자동으로 생성된다.
+                        만약 설정된 Destination이 존재하지 않는다면 기본값으로 대체된다.
+                    ]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="expiration-policy" type="expiration-policyType" minOccurs="0" default="Delete">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[
+                        [Description]: 이 Destination에서 전달되지 못하고 만료된 메시지들을 처리할 방법을 설정한다.
+                        (Delete: 만료된 메시지를 삭제, Redirect: 만료된 메시지를 dead-letter-destination으로 재전송)
+                        기본값은 Delete이다.
+                    ]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="redelivery-delay" type="positiveLongType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[
+                        [Description]: Transaction rollback 혹은 Recover된 메시지가 재전송되기까지의 지연시간을 설정한다.
+                        단위는 ms.
+                    ]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="override-client-attributes" type="override-client-attributesType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[
+                        [Description]: 이 Destination에 보내지는 메시지들에 한해서 클라이언트 프로그래밍에 의해서 설정되는 값들에 우선하여
+                        이 설정값들을 적용시킨다.
+                    ]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
 
+    <xs:simpleType name="expiration-policyType">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="Delete"/>
+            <xs:enumeration value="Redirect"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="override-client-attributesType">
+        <xs:sequence>
+            <xs:element name="expiration-time" type="positiveLongType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[
+                        [Description]: MessageProducer에 의해 정의된 timeToLive (expiration-time) 설정에 우선하여 이 값을 적용시킨다.
+                        단위는 ms.
+                        [Non-Dynamic]:
+                    ]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
         </xs:sequence>
     </xs:complexType>
 

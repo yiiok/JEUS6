@@ -2,7 +2,7 @@
 
 dir
 781
-svn://192.168.1.134/JEUS6/testenv/tags/fix8/Rsamples/getting_started/hellojpa/hellojpa-ejb/src/java/hellojpa
+svn://192.168.1.134/JEUS6/testenv/trunk/Rsamples/getting_started/hellojpa/hellojpa-ejb/src/java/hellojpa
 svn://192.168.1.134/JEUS6
 
 
@@ -32,7 +32,7 @@ file
 
 
 
-2015-08-04T02:13:28.000000Z
+2015-08-04T02:24:15.000000Z
 3de10c012d81d2fdc9073f34d1aedd2e
 2009-07-15T06:53:54.873011Z
 465
@@ -66,7 +66,7 @@ file
 
 
 
-2015-08-04T02:13:28.000000Z
+2015-08-04T02:24:15.000000Z
 eb07b641c14a33d937db066d86c32c43
 2009-07-15T06:53:54.873011Z
 465
@@ -100,7 +100,7 @@ file
 
 
 
-2015-08-04T02:13:28.000000Z
+2015-08-04T02:24:15.000000Z
 2edcca723809fc188727ec0f334745d3
 2009-07-15T06:53:54.873011Z
 465

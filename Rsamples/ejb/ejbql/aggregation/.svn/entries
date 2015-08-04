@@ -2,7 +2,7 @@
 
 dir
 781
-svn://192.168.1.134/JEUS6/testenv/tags/fix8/Rsamples/ejb/ejbql/aggregation
+svn://192.168.1.134/JEUS6/testenv/trunk/Rsamples/ejb/ejbql/aggregation
 svn://192.168.1.134/JEUS6
 
 
@@ -38,7 +38,7 @@ file
 
 
 
-2015-08-04T02:13:47.000000Z
+2015-08-04T02:24:25.000000Z
 82b9b98842c0142650052b0348816a78
 2009-07-15T06:53:54.873011Z
 465

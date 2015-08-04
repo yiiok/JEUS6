@@ -192,6 +192,15 @@
         <binding name="elementName" value="literal:enableWebadmin"/>
     </component>
     
+    <component id="suspend_on_boot" type="jeus:Field">
+        <binding name="field" value="component:suspend_on_bootField"/>
+    </component>
+
+    <component id="suspend_on_bootField" type="jeus:JAXBCheckbox">
+        <binding name="parentElement" value="webadminConfig"/>
+        <binding name="elementName" value="literal:suspendOnBoot"/>
+    </component>
+
     <component id="useBaseport" type="jeus:Field">
         <binding name="field" value="component:useBaseportField"/>
     </component>

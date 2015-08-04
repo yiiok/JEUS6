@@ -2,7 +2,7 @@
 
 dir
 781
-svn://192.168.1.134/JEUS6/testenv/tags/fix8/Rsamples/client
+svn://192.168.1.134/JEUS6/testenv/trunk/Rsamples/client
 svn://192.168.1.134/JEUS6
 
 
@@ -44,7 +44,7 @@ file
 
 
 
-2015-08-04T02:13:50.000000Z
+2015-08-04T02:24:27.000000Z
 2df739a1f540a1e729baf4d008541f7d
 2009-07-15T06:53:54.873011Z
 465

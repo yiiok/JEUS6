@@ -2,7 +2,7 @@
 
 dir
 781
-svn://192.168.1.134/JEUS6/testenv/tags/fix8/Rsamples/webservice/jaxrpc_ws_security/messageLevelSecurity/pingSecurityService/pingSecurityService-war/web/WEB-INF
+svn://192.168.1.134/JEUS6/testenv/trunk/Rsamples/webservice/jaxrpc_ws_security/messageLevelSecurity/pingSecurityService/pingSecurityService-war/web/WEB-INF
 svn://192.168.1.134/JEUS6
 
 
@@ -32,7 +32,7 @@ file
 
 
 
-2015-08-04T02:13:43.000000Z
+2015-08-04T02:24:20.000000Z
 5f3cd54efd22c0a65a857b70a33696ca
 2009-07-15T06:53:54.873011Z
 465
@@ -66,7 +66,7 @@ file
 
 
 
-2015-08-04T02:13:43.000000Z
+2015-08-04T02:24:20.000000Z
 c8352fa8349e315428817840bc4ffac6
 2009-07-15T06:53:54.873011Z
 465
@@ -100,7 +100,7 @@ file
 
 
 
-2015-08-04T02:13:43.000000Z
+2015-08-04T02:24:20.000000Z
 f1e137d928bdf5abc777cebb66d79443
 2009-07-15T06:53:54.873011Z
 465

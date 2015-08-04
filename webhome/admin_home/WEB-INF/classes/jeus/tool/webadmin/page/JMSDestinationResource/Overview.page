@@ -60,7 +60,7 @@
     
     <component id="destinationTable" type="jeus:JEUSTable">
         <binding name="source" value="destinations"/>
-        <binding name="columns" value="literal:dnc.name.label, dnc.exportName.label:exportName, dnc.type.label:type, dnc.message.count.label:messageCount, dnc.pending.message.count.label:pendingMessageCount, dnc.delivered.message.count:deliveredMessageCount, dnc.expired.message.count:expiredMessageCount, !dnc.consumer, !dnc.usingBytes, !dnc.action, !dnc.remove"/>
+        <binding name="columns" value="literal:dnc.name.label, dnc.exportName.label:exportName, dnc.type.label:type, dnc.message.count.label:messageCount, dnc.pending.message.count.label:pendingMessageCount, dnc.delivered.message.count:deliveredMessageCount, dnc.remaining.pending.message.count:remainingPendingMessageCount, dnc.waiting.ack.message.count:waitingAckMessageCount, dnc.expired.message.count:expiredMessageCount, !dnc.consumer, !dnc.usingBytes, !dnc.action, !dnc.remove"/>
         <binding name="row" value="destination"/>
         <binding name="pagesDisplayed" value="@java.lang.Integer@MAX_VALUE"/>
         <binding name="currentPageClass" value="literal:table_current_page"/>

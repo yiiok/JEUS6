@@ -268,6 +268,14 @@
       </xs:element>
 
       <xs:group ref="library-ref-group"/>
+
+      <xs:element name="web-security" type="webSecurityType" minOccurs="0">
+          <xs:annotation>
+              <xs:documentation><![CDATA[
+                  [Description]: 웹 애플리케이션에 국한된 보안 설정을 할 수 있다.
+              ]]></xs:documentation>
+          </xs:annotation>
+      </xs:element>
     </xs:sequence>
     <xs:attribute name="version" type="jeus-versionType" use="optional" default="5.0"/>
   </xs:complexType>
@@ -301,6 +309,16 @@
                         [Value Type Description]: Boolean
                         [Defined Value]: [true]: 해당 설정을 활성화 한다.
                                                 [false]: 해당 설정을 비활성화 한다.
+                    ]]></xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="reload-timeout" type="xs:long" default="30000">
+        <xs:annotation>
+          <xs:documentation><![CDATA[
+                        [Description]: Servlet auto-reload를 시도할 때 timeout까지 대기할 시간을 지정한다. 단위는 milisecond이다.
+                        [Value Description]: Long값으로 이 설정의 값을 정한.
+                        [Value Type Description]: Millisecond 값
+                        [Example]: <reload-timeout>50000</reload-timeout>
                     ]]></xs:documentation>
         </xs:annotation>
       </xs:element>
@@ -503,4 +521,18 @@
     </xs:sequence>
   </xs:complexType>
 
+    <xs:complexType name="webSecurityType">
+        <xs:sequence>
+            <xs:element name="redirect-strategy-ref" type="valuableToken" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[
+                        [Description]: javax.servlet.http.HttpServletResponse.sendRedirect(String)를 수행할 때 사용할 Strategy를 설정한다.
+                        설정하는 클래스 이름은 jeus.servlet.security.RedirectStrategy 인터페이스를 구현해야 한다.
+                        redirect의 경우 CRLF injection을 막고 싶을 때는 jeus.servlet.security.RejectCrlfRedirectStrategy를 설정하고,
+                        CR 또는 LF를 빈 문자열로 치환하고 싶을 때는 jeus.servlet.security.RemoveCrlfRedirectStrategy를 설정한다.
+                    ]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
 </xs:schema>

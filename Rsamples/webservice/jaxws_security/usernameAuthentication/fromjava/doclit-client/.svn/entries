@@ -2,7 +2,7 @@
 
 dir
 781
-svn://192.168.1.134/JEUS6/testenv/tags/fix8/Rsamples/webservice/jaxws_security/usernameAuthentication/fromjava/doclit-client
+svn://192.168.1.134/JEUS6/testenv/trunk/Rsamples/webservice/jaxws_security/usernameAuthentication/fromjava/doclit-client
 svn://192.168.1.134/JEUS6
 
 
@@ -32,7 +32,7 @@ file
 
 
 
-2015-08-04T02:13:31.000000Z
+2015-08-04T02:24:17.000000Z
 2b926d887f4e9580b1a13b75f4ac07a8
 2009-07-15T06:53:54.873011Z
 465

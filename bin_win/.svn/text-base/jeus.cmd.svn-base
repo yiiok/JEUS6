@@ -11,19 +11,47 @@ CALL %JEUS_HOME%\bin\jeus.properties.cmd
 
 IF ERRORLEVEL == 3 EXIT /B
 
+IF DEFINED USERNAME (
+	SET BOOT_PARAMETER=-U%USERNAME% -P%PASSWORD% %*
+) ELSE (
+	SET BOOT_PARAMETER=%*
+)
+
+REM if the option "-h" is set just print out the help message without starting process
+SET BOOT_PARAMETER_HELP_REMOVED=%BOOT_PARAMETER:-h=%
+IF DEFINED BOOT_PARAMETER (
+IF NOT "%BOOT_PARAMETER%"=="%BOOT_PARAMETER_HELP_REMOVED%" (
+ECHO.
+ECHO jeus  start JEUS Server
+ECHO.
+ECHO Usage:
+ECHO      jeus [-h] [-protectkey] [-d] [-xml] [-U^<username^>] [-P^<password^>]
+ECHO           [-f^<filename^>] [-D^<property=value^>] [-properties=^<filename^>]
+ECHO.
+ECHO      arguments:
+ECHO        -h: show this help page
+ECHO        -protectkey: use protected secret key
+ECHO        -d: boot dynamic mode
+ECHO        -xml: use XML ^(deprecated^)
+ECHO        -U^<username^>: set username
+ECHO        -P^<password^>: set password
+ECHO        -f^<filename^>: set filename of username and password
+ECHO        -D^<property=value^>: set system property. This option can be used more
+ECHO                            than once.
+ECHO        -properties=^<filename^>: set system properties from the specified
+ECHO                                system property file.
+
+EXIT /B
+)
+)
+
+REM echo environment
 ECHO **************************************************************
 ECHO   - JEUS Home         : %JEUS_HOME%
 ECHO   - JEUS Base Port    : %JEUS_BASEPORT%
 ECHO   - Added Java Option : %JAVA_ARGS%
 ECHO   - Java Vendor       : %JAVA_VENDOR%
 ECHO **************************************************************
-
-
-IF DEFINED USERNAME (
-	SET BOOT_PARAMETER=-U%USERNAME% -P%PASSWORD% %*
-) ELSE (
-	SET BOOT_PARAMETER=%*
-)
 
 REM execute jeus with echo
 @echo on

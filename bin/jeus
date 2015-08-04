@@ -31,13 +31,6 @@ fi
 # set JEUS properties
 . "${JEUS_HOME}/bin/jeus.properties"
 
-echo "***************************************************************"
-echo "  - JEUS Home         : ${JEUS_HOME}                           "
-echo "  - JEUS Base Port    : ${JEUS_BASEPORT}                       "
-echo "  - Java Vendor       : ${JAVA_VENDOR}                         "
-echo "  - Added Java Option : ${JAVA_ARGS}                           "
-echo "***************************************************************"
-
 # set boot parameter
 BOOT_PARAMETER=$*
 
@@ -45,6 +38,40 @@ if [ ! -z "${USERNAME}" ]
 then
     BOOT_PARAMETER="-U${USERNAME} -P${PASSWORD} $*"
 fi
+
+# if the option "-h" is set just print out the help message without starting process
+case ${BOOT_PARAMETER} in
+  *-h*)
+      echo "
+jeus  start JEUS Server
+
+Usage:
+      jeus [-h] [-protectkey] [-d] [-xml] [-U<username>] [-P<password>]
+           [-f<filename>] [-D<property=value>] [-properties=<filename>]
+
+      arguments:
+        -h: show this help page
+        -protectkey: use protected secret key
+        -d: boot dynamic mode
+        -xml: use XML (deprecated)
+        -U<username>: set username
+        -P<password>: set password
+        -f<filename>: set filename of username and password
+        -D<property=value>: set system property. This option can be used more
+                            than once.
+        -properties=<filename>: set system properties from the specified
+                                system property file.
+      "
+      exit;;
+esac
+
+# echo environment
+echo "***************************************************************"
+echo "  - JEUS Home         : ${JEUS_HOME}                           "
+echo "  - JEUS Base Port    : ${JEUS_BASEPORT}                       "
+echo "  - Java Vendor       : ${JAVA_VENDOR}                         "
+echo "  - Added Java Option : ${JAVA_ARGS}                           "
+echo "***************************************************************"
 
 # execute jeus with echo
 set -x

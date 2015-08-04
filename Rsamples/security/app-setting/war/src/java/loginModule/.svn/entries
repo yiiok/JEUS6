@@ -2,7 +2,7 @@
 
 dir
 781
-svn://192.168.1.134/JEUS6/testenv/tags/fix8/Rsamples/security/app-setting/war/src/java/loginModule
+svn://192.168.1.134/JEUS6/testenv/trunk/Rsamples/security/app-setting/war/src/java/loginModule
 svn://192.168.1.134/JEUS6
 
 
@@ -32,7 +32,7 @@ file
 
 
 
-2015-08-04T02:13:49.000000Z
+2015-08-04T02:24:26.000000Z
 2175a204a93e240b221f9005b2668946
 2009-07-15T06:53:54.873011Z
 465
@@ -66,7 +66,7 @@ file
 
 
 
-2015-08-04T02:13:49.000000Z
+2015-08-04T02:24:26.000000Z
 824d7c53d68f7954a8781a0744a2f5e6
 2009-07-15T06:53:54.873011Z
 465
@@ -100,7 +100,7 @@ file
 
 
 
-2015-08-04T02:13:49.000000Z
+2015-08-04T02:24:26.000000Z
 59c20869968533f9bfe2edb434c62c98
 2009-07-15T06:53:54.873011Z
 465

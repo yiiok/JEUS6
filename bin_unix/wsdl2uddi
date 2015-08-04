@@ -38,6 +38,7 @@ BOOT_PARAMETER=$*
 CLASS_PATH="${JEUS_HOME}/lib/system/jeus.jar"
 CLASS_PATH="${CLASS_PATH}:${JEUS_HOME}/lib/system/jeusapi.jar"
 CLASS_PATH="${CLASS_PATH}:${JEUS_HOME}/lib/system/jeus-ws.jar"
+CLASS_PATH="${CLASS_PATH}:${JEUS_HOME}/lib/system/wsdl4j.jar"
 CLASS_PATH="${CLASS_PATH}:${JEUS_HOME}/lib/system/javaee.jar"
 CLASS_PATH="${CLASS_PATH}:${JEUS_HOME}/lib/system/jeusutil.jar"
 CLASS_PATH="${CLASS_PATH}:${JEUS_HOME}/lib/system/jeusjaxb.jar"

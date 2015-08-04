@@ -2,7 +2,7 @@
 
 dir
 781
-svn://192.168.1.134/JEUS6/testenv/tags/fix8/Rsamples/webservice/jaxws_attachment/mtom/src/java/mtom/client
+svn://192.168.1.134/JEUS6/testenv/trunk/Rsamples/webservice/jaxws_attachment/mtom/src/java/mtom/client
 svn://192.168.1.134/JEUS6
 
 
@@ -32,7 +32,7 @@ file
 
 
 
-2015-08-04T02:13:45.000000Z
+2015-08-04T02:24:21.000000Z
 8c9d400049ceae44b39c82d637fce7a0
 2009-07-15T06:53:54.873011Z
 465

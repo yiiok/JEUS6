@@ -534,6 +534,13 @@
                     ]]></xs:documentation>
                 </xs:annotation>
             </xs:element>
+            <xs:element minOccurs="0" name="preceding-command" type="xs:token">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[
+                        [Descrption]: 엔진 컨테이너의 JVM을 실행할 때 앞서 수행할 command를 지정한다.
+                    ]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
             <xs:element minOccurs="0" name="user-class-path" type="xs:token">
                 <xs:annotation>
                     <xs:documentation><![CDATA[
@@ -2381,12 +2388,11 @@
             <xs:element minOccurs="0" name="check-absolute-path" type="xs:boolean" default="false">
                 <xs:annotation>
                     <xs:documentation><![CDATA[
-                        [Description]: JEUSMain.xml에서 application의 absolute-path를 지정하고 이 설정을 하면
-						absolute-path로 지정된 디렉토리를 오토 디플로이 디렉토리로 설정하여
-						해당 디렉토리에 추가, 삭제되는 application에 대해서 자동적으로 deploy, undeploy를 수행한다.
-						이 태그를 설정하지 않으면, <path>에 설정된 어플리케이션에 대한 오토 디플로이를 실행한다.
-						이 값이 true이면, 디렉토리 내 모든 어플리케이션에 대해 오토 디플로이를 설정하여, 각각의 어플리케이션이
-						변경될 때 자동으로 리디플로이(redeploy)를 수행한다.
+                        [Description]: 특정 디렉토리를 오 디플로이 홈으로 설정할 것인지 혹은 특정 appliation에 대하여 오토 디플로이를 설정할 것인지 결정한다.
+                        특정 디렉토리를 오토 디플로이 홈으로 설정할 경우 이 값을 true로 하며 이 경우 absolute-path에 명시한 디렉터리가 오토 디플로이 홈으로써 동작한다.
+                        오토 디플로이 홈은 주기적으로 감시되므로 추가, 삭제, 변경되는 application들에 대한 deploy, undeploy, redeploy가 자동으로 수행된다.
+                        한편 특정 application에 대하여 오토 디플로이를 설정할 경우 이 값을 false로 한다.
+                        그러면 absolute-path 및 path로 결정되는 경로의 application 변경이 주기적으로 감시되어 변경이 감지될 경우 redeploy가 자동으로 수행된다.
                     ]]></xs:documentation>
                 </xs:annotation>
             </xs:element>
@@ -2394,7 +2400,7 @@
             <xs:element minOccurs="0" name="auto-deploy-check-interval" type="nonNegativeLongType" default="10000">
                 <xs:annotation>
                     <xs:documentation><![CDATA[
-                        [Description]: application이 변경되었는지 check하는 주기를 설정할 수 있다.
+                        [Description]: 오토 디플로이의 동작 주기를 설정한다.
                         [Performance Recommendation]: 너무 자주 check하게 되면 성능저하가 생길 수 있으므로
                         필요한 간격만큼만 설정하도록 한다.
                     ]]></xs:documentation>
@@ -3126,21 +3132,29 @@
 
     <xs:complexType name="webadmin-configType">
         <xs:sequence>
-            <xs:element minOccurs="0" maxOccurs="1" name="use-baseport" type="xs:boolean" default="false">
+            <xs:element minOccurs="0" name="suspend-on-boot" type="xs:boolean" default="false">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[
+                            [Description]: 웹 어드민 디플로이 이후 접근 가능 여부를 설정한다.
+                            이 값이 true 일 경우 콘솔 툴에서 resume-webadmin 을 수행해야만 접근 가능하다.
+                    ]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="use-baseport" type="xs:boolean" default="false">
                 <xs:annotation>
                     <xs:documentation><![CDATA[
                             [Description]: JEUS BASEPORT(9736)을 통해서 webadmin을 접속할지 여부를 결정한다. plain-listener의 port가 지정되면 이 정보는 무시된다.
                     ]]></xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element minOccurs="0" maxOccurs="1" name="plain-listener" type="plain-listenerType">
+            <xs:element minOccurs="0" name="plain-listener" type="plain-listenerType">
                 <xs:annotation>
                     <xs:documentation><![CDATA[
                             [Description]: webadmin plain listener에 대한 설정
                     ]]></xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element minOccurs="0" maxOccurs="1" name="ssl-listener" type="ssl-listenerType">
+            <xs:element minOccurs="0" name="ssl-listener" type="ssl-listenerType">
                 <xs:annotation>
                     <xs:documentation><![CDATA[
                             [Description]: webadmin ssl listener에 대한 설정
@@ -3159,14 +3173,14 @@
     </xs:complexType>
     <xs:complexType name="plain-listenerType">
         <xs:sequence>
-            <xs:element minOccurs="0" maxOccurs="1" name="enabled" type="xs:boolean" default="true">
+            <xs:element minOccurs="0" name="enabled" type="xs:boolean" default="true">
                 <xs:annotation>
                     <xs:documentation><![CDATA[
                             [Description]: http plain listener의 사용 여부
                     ]]></xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element minOccurs="0" maxOccurs="1" name="port" type="xs:int">
+            <xs:element minOccurs="0" name="port" type="xs:int">
                 <xs:annotation>
                     <xs:documentation><![CDATA[
                             [Description]: http plain listener의 port number
@@ -3177,14 +3191,14 @@
     </xs:complexType>
     <xs:complexType name="ssl-listenerType">
         <xs:sequence>
-            <xs:element minOccurs="0" maxOccurs="1" name="enabled" type="xs:boolean" default="false">
+            <xs:element minOccurs="0" name="enabled" type="xs:boolean" default="false">
                 <xs:annotation>
                     <xs:documentation><![CDATA[
                             [Description]: http ssl listener의 사용 여부
                     ]]></xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element minOccurs="0" maxOccurs="1" name="port" type="xs:int">
+            <xs:element minOccurs="0" name="port" type="xs:int">
                 <xs:annotation>
                     <xs:documentation><![CDATA[
                             [Description]: http ssl listener의 port number

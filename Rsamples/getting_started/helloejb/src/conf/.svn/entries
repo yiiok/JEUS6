@@ -2,7 +2,7 @@
 
 dir
 781
-svn://192.168.1.134/JEUS6/testenv/tags/fix8/Rsamples/getting_started/helloejb/src/conf
+svn://192.168.1.134/JEUS6/testenv/trunk/Rsamples/getting_started/helloejb/src/conf
 svn://192.168.1.134/JEUS6
 
 
@@ -32,7 +32,7 @@ file
 
 
 
-2015-08-04T02:13:27.000000Z
+2015-08-04T02:24:14.000000Z
 82a98c96aa8b54d631f3ddb23372b4f5
 2009-07-15T06:53:54.873011Z
 465
@@ -66,7 +66,7 @@ file
 
 
 
-2015-08-04T02:13:27.000000Z
+2015-08-04T02:24:14.000000Z
 34e37fdad69616f07a2f57bc694f1e1b
 2009-07-15T06:53:54.873011Z
 465

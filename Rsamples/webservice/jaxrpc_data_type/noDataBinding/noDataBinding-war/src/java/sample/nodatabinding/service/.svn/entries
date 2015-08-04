@@ -2,7 +2,7 @@
 
 dir
 781
-svn://192.168.1.134/JEUS6/testenv/tags/fix8/Rsamples/webservice/jaxrpc_data_type/noDataBinding/noDataBinding-war/src/java/sample/nodatabinding/service
+svn://192.168.1.134/JEUS6/testenv/trunk/Rsamples/webservice/jaxrpc_data_type/noDataBinding/noDataBinding-war/src/java/sample/nodatabinding/service
 svn://192.168.1.134/JEUS6
 
 
@@ -32,7 +32,7 @@ file
 
 
 
-2015-08-04T02:13:30.000000Z
+2015-08-04T02:24:16.000000Z
 537c47ceb93d40b20d853cf2344f2590
 2009-07-15T06:53:54.873011Z
 465

@@ -2,7 +2,7 @@
 
 dir
 781
-svn://192.168.1.134/JEUS6/testenv/tags/fix8/Rsamples/webservice/jaxws_security/usernameAuthentication/fromwsdl/usernameAuthentication_war/web/WEB-INF
+svn://192.168.1.134/JEUS6/testenv/trunk/Rsamples/webservice/jaxws_security/usernameAuthentication/fromwsdl/usernameAuthentication_war/web/WEB-INF
 svn://192.168.1.134/JEUS6
 
 
@@ -35,7 +35,7 @@ file
 
 
 
-2015-08-04T02:13:31.000000Z
+2015-08-04T02:24:17.000000Z
 a88db1bb8e35844c17863f57f262237e
 2009-07-15T06:53:54.873011Z
 465

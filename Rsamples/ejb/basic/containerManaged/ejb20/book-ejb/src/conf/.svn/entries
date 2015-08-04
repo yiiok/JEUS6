@@ -2,7 +2,7 @@
 
 dir
 781
-svn://192.168.1.134/JEUS6/testenv/tags/fix8/Rsamples/ejb/basic/containerManaged/ejb20/book-ejb/src/conf
+svn://192.168.1.134/JEUS6/testenv/trunk/Rsamples/ejb/basic/containerManaged/ejb20/book-ejb/src/conf
 svn://192.168.1.134/JEUS6
 
 
@@ -32,7 +32,7 @@ file
 
 
 
-2015-08-04T02:13:45.000000Z
+2015-08-04T02:24:22.000000Z
 180c4fa99bd2c25db0a6339940060114
 2009-07-15T06:53:54.873011Z
 465
@@ -66,7 +66,7 @@ file
 
 
 
-2015-08-04T02:13:45.000000Z
+2015-08-04T02:24:22.000000Z
 a52bce67d1cc1c4d0cdbe10be53e6824
 2009-07-15T06:53:54.873011Z
 465

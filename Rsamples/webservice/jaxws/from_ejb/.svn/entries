@@ -2,7 +2,7 @@
 
 dir
 781
-svn://192.168.1.134/JEUS6/testenv/tags/fix8/Rsamples/webservice/jaxws/from_ejb
+svn://192.168.1.134/JEUS6/testenv/trunk/Rsamples/webservice/jaxws/from_ejb
 svn://192.168.1.134/JEUS6
 
 
@@ -32,7 +32,7 @@ file
 
 
 
-2015-08-04T02:13:44.000000Z
+2015-08-04T02:24:21.000000Z
 9f7eb0f4a37fba916405a92398d8795d
 2009-07-15T06:53:54.873011Z
 465

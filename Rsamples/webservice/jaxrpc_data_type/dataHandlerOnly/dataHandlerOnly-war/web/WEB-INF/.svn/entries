@@ -2,7 +2,7 @@
 
 dir
 781
-svn://192.168.1.134/JEUS6/testenv/tags/fix8/Rsamples/webservice/jaxrpc_data_type/dataHandlerOnly/dataHandlerOnly-war/web/WEB-INF
+svn://192.168.1.134/JEUS6/testenv/trunk/Rsamples/webservice/jaxrpc_data_type/dataHandlerOnly/dataHandlerOnly-war/web/WEB-INF
 svn://192.168.1.134/JEUS6
 
 
@@ -32,7 +32,7 @@ file
 
 
 
-2015-08-04T02:13:31.000000Z
+2015-08-04T02:24:16.000000Z
 79571f75e74a96952103524a4a251e5c
 2009-07-15T06:53:54.873011Z
 465
@@ -66,7 +66,7 @@ file
 
 
 
-2015-08-04T02:13:31.000000Z
+2015-08-04T02:24:16.000000Z
 9c49bc4922d163db3a2cae021a339a08
 2009-07-15T06:53:54.873011Z
 465

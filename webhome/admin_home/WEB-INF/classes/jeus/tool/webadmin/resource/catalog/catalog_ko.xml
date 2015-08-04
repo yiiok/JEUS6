@@ -1977,6 +1977,8 @@
     <text key="cdsc.create.title">새 클러스터 데이터 소스 생성 - 생성</text>
     <text key="cdsc.create.bind_now.label">이 클러스터 데이터 소스를 지금 바인드 하시겠습니까?</text>
 
+    <text key="dsc.duplicate.jndiname.samecontainer.failed">container[{1}]에서 JNDI 이름[{0}]이 중복됩니다.</text>
+
     <!-- TmaxExtResourceService  -->
     <!-- short name webtc -->
     <text key="JeusServiceTmaxExtResourceService_Create">새 WebT 데이터 소스 생성</text>
@@ -2397,6 +2399,9 @@
     <text key="dnc.usingBytes">사용중인 메모리(k)</text>
     <text key="dnc.action">명령</text>
     <text key="dnc.remove">삭제</text>
+    
+    <text key="dnc.remaining.pending.message.count">전송대기 메시지수</text>
+    <text key="dnc.waiting.ack.message.count">수신확인대기 메시지수</text>
 
     <text key="dnc.relay_section.label">릴레이</text>
 

@@ -2,7 +2,7 @@
 
 dir
 781
-svn://192.168.1.134/JEUS6/testenv/tags/fix8/Rsamples/ejb/basic/statelessSession/calc-client/src/java/ejb/basic/statelessSession
+svn://192.168.1.134/JEUS6/testenv/trunk/Rsamples/ejb/basic/statelessSession/calc-client/src/java/ejb/basic/statelessSession
 svn://192.168.1.134/JEUS6
 
 
@@ -32,7 +32,7 @@ file
 
 
 
-2015-08-04T02:13:46.000000Z
+2015-08-04T02:24:23.000000Z
 6fcf328aeeb3c9dd31454e5ca8204238
 2009-07-15T06:53:54.873011Z
 465
@@ -66,7 +66,7 @@ file
 
 
 
-2015-08-04T02:13:46.000000Z
+2015-08-04T02:24:23.000000Z
 c80b574d1f5ee32eb7bf3b2c56fd88dc
 2009-07-15T06:53:54.873011Z
 465
@@ -100,7 +100,7 @@ file
 
 
 
-2015-08-04T02:13:46.000000Z
+2015-08-04T02:24:23.000000Z
 330932f81fe5990214ef367b379712ac
 2009-07-15T06:53:54.873011Z
 465

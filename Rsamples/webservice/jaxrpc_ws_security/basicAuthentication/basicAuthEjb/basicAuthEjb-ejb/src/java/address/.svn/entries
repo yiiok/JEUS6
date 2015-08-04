@@ -2,7 +2,7 @@
 
 dir
 781
-svn://192.168.1.134/JEUS6/testenv/tags/fix8/Rsamples/webservice/jaxrpc_ws_security/basicAuthentication/basicAuthEjb/basicAuthEjb-ejb/src/java/address
+svn://192.168.1.134/JEUS6/testenv/trunk/Rsamples/webservice/jaxrpc_ws_security/basicAuthentication/basicAuthEjb/basicAuthEjb-ejb/src/java/address
 svn://192.168.1.134/JEUS6
 
 
@@ -32,7 +32,7 @@ file
 
 
 
-2015-08-04T02:13:42.000000Z
+2015-08-04T02:24:20.000000Z
 335cf71860543d6666de25524ea79344
 2009-07-15T06:53:54.873011Z
 465
@@ -66,7 +66,7 @@ file
 
 
 
-2015-08-04T02:13:42.000000Z
+2015-08-04T02:24:20.000000Z
 f98b7edca7b3ab3c51f6df96759cec87
 2009-07-15T06:53:54.873011Z
 465
@@ -100,7 +100,7 @@ file
 
 
 
-2015-08-04T02:13:42.000000Z
+2015-08-04T02:24:20.000000Z
 4df673468450796219e3fe7c6c4bc62a
 2009-07-15T06:53:54.873011Z
 465
@@ -134,7 +134,7 @@ file
 
 
 
-2015-08-04T02:13:42.000000Z
+2015-08-04T02:24:20.000000Z
 751dbdbf5697edb93101e36b6c2bdb5b
 2009-07-15T06:53:54.873011Z
 465
@@ -168,7 +168,7 @@ file
 
 
 
-2015-08-04T02:13:42.000000Z
+2015-08-04T02:24:20.000000Z
 dc81cc911bf90252c10080ed7cbaeee9
 2009-07-15T06:53:54.873011Z
 465
@@ -202,7 +202,7 @@ file
 
 
 
-2015-08-04T02:13:42.000000Z
+2015-08-04T02:24:20.000000Z
 be5d7fa070e27e163ee2fdd6f6cb95a7
 2009-07-15T06:53:54.873011Z
 465

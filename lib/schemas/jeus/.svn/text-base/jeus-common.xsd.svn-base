@@ -352,6 +352,12 @@
         </xs:complexContent>
     </xs:complexType>
 
+    <xs:simpleType name="valuableToken">
+        <xs:restriction base="xs:token">
+            <xs:minLength value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+
     <xs:simpleType name="off-intType">
         <xs:annotation>
             <xs:documentation><![CDATA[
@@ -492,7 +498,7 @@
 
     <xs:complexType name="handlerPropertySetType">
         <xs:sequence>
-            <xs:element minOccurs="0" maxOccurs="unbounded" name="property" type="propertyType">
+            <xs:element name="property" type="propertyType" minOccurs="0" maxOccurs="unbounded">
                 <xs:annotation>
                     <xs:documentation><![CDATA[
                         [Description]: handler 등에게 전달할 property들을 설정한다.
@@ -522,7 +528,7 @@
     </xs:complexType>        
     <xs:complexType name="propertiesType">
         <xs:sequence>
-            <xs:element minOccurs="0" maxOccurs="unbounded" name="property" type="propertyType"/>
+            <xs:element name="property" type="propertyType" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -761,6 +767,13 @@
                 <xs:annotation>
                     <xs:documentation><![CDATA[
                         [Description]: MySQL DBMS인 경우
+                    ]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tibero">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[
+                        [Description]: Tibero DBMS인 경우
                     ]]></xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
@@ -1603,11 +1616,11 @@
                     <xs:documentation><![CDATA[
                         [Description]: key와 인증서를 저장하고 있는 파일을 지정한다.
                         [Value Description]: 절대경로, 상대경로 모두 허용된다.
-                                             만일 상대경로가 사용된다면 jeus_home/config/nodename 아래에서 해당 파일을 찾는다.
+                                             만일 상대경로가 사용된다면 ${JEUS_HOME}/config/${NODE_NAME} 아래에서 해당 파일을 찾는다.
                                              그리고 JVM인자로 jeus.ssl.keystore과 javax.net.ssl.keyStore을
                                              이용해서 설정할 수 있다.
                                              우선순위는 설정 태그 값 > jeus > javax 이다.
-                                             기본 값은 jeus_home/config/nodename/keystore 이다.
+                                             기본 값은 ${JEUS_HOME}/config/${NODE_NAME}/keystore 이다.
                     ]]></xs:documentation>
                 </xs:annotation>
             </xs:element>
@@ -1615,7 +1628,7 @@
                 <xs:annotation>
                     <xs:documentation><![CDATA[
                         [Description]: keystore파일을 열기 위한 password이다.
-                                       password를 암호화해서 저장할 때에는 {algorithm}ciphertext 와 같은 형식으로 쓴다. ex) {DES}FQrLbQ/D8O1lDVS71L28rw==
+                                       {DES}FQrLbQ/D8O1lDVS71L28rw==와 같은 형식으로 적기를 권장한다.
                         [Value Description]: 이 설정은 JVM인자로 jeus.ssl.keypass과 javax.net.ssl.keyStorePassword를
                                              이용해서 설정할 수 있다.
                                              우선순위는 태그 설정 값 > jeus > javax 이다.

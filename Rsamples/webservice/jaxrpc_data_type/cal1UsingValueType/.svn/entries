@@ -2,7 +2,7 @@
 
 dir
 781
-svn://192.168.1.134/JEUS6/testenv/tags/fix8/Rsamples/webservice/jaxrpc_data_type/cal1UsingValueType
+svn://192.168.1.134/JEUS6/testenv/trunk/Rsamples/webservice/jaxrpc_data_type/cal1UsingValueType
 svn://192.168.1.134/JEUS6
 
 
@@ -32,7 +32,7 @@ file
 
 
 
-2015-08-04T02:13:30.000000Z
+2015-08-04T02:24:16.000000Z
 64a607c97f48f5c88a12640140ae9b54
 2009-07-15T06:53:54.873011Z
 465

@@ -2,7 +2,7 @@
 
 dir
 781
-svn://192.168.1.134/JEUS6/testenv/tags/fix8/Rsamples/quickstart/lib/petstore/searchindex
+svn://192.168.1.134/JEUS6/testenv/trunk/Rsamples/quickstart/lib/petstore/searchindex
 svn://192.168.1.134/JEUS6
 
 
@@ -32,7 +32,7 @@ file
 
 
 
-2015-08-04T02:13:29.000000Z
+2015-08-04T02:24:16.000000Z
 b384b051192081c8b9ac5333ac5c7224
 2009-07-15T06:53:54.873011Z
 465
@@ -66,7 +66,7 @@ file
 
 
 
-2015-08-04T02:13:29.000000Z
+2015-08-04T02:24:16.000000Z
 f1d3ff8443297732862df21dc4e57262
 2009-07-15T06:53:54.873011Z
 465
@@ -100,7 +100,7 @@ file
 
 
 
-2015-08-04T02:13:29.000000Z
+2015-08-04T02:24:16.000000Z
 09a03c19b64be12edb532ca1408e356e
 2009-07-15T06:53:54.873011Z
 465

@@ -2,7 +2,7 @@
 
 dir
 781
-svn://192.168.1.134/JEUS6/testenv/tags/fix8/Rsamples/webservice/jaxrpc_ws_security/basicAuthentication/basicAuthWeb/basicAuthWeb-client
+svn://192.168.1.134/JEUS6/testenv/trunk/Rsamples/webservice/jaxrpc_ws_security/basicAuthentication/basicAuthWeb/basicAuthWeb-client
 svn://192.168.1.134/JEUS6
 
 
@@ -32,7 +32,7 @@ file
 
 
 
-2015-08-04T02:13:42.000000Z
+2015-08-04T02:24:20.000000Z
 8124aa98b58c9251b046b9c79fbd94a4
 2009-07-15T06:53:54.873011Z
 465

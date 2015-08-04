@@ -390,7 +390,6 @@
                     [Description]: EJB 엔진이 원격 클라이언트의 요청을 받고 처리하는 쓰래드의 최대 갯수를 설정한다.
                     이 값만큼의 쓰래드가 이미 사용되고 있다면 요청은 쓰래드가 사용가능하게
                     될 때까지 기다리게 된다. 0으로 설정되면 최대 갯수를 제한하지 않는다.
-                    이 설정은 세션 빈과 엔터티 빈에 적용된다.
                     ]]></xs:documentation>
                 </xs:annotation>
             </xs:element>
@@ -440,6 +439,17 @@
                     인스턴스 초기화를 제대로 구현해 줘야 한다. 이런 경우에만 빈풀을 사용하도록 한다.
                     [Performance Recommendation]: PRE DESTROY callback이 이전 상태가 남아 있지 않도록 초기화를 잘 시키는 경우에,
                     이 옵션을 켜서 매번 빈 인스턴스를 만들지 않도록 한다.
+                    ]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="allow-concurrent-access" type="xs:boolean" default="false">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[
+                    [Description]: stateful 세션 빈에 대해서만 적용되는 element로, EJB client 들이 해당 stateful 세션 빈에
+                    동시 접근이 가능한지 여부를 결정한다. true 로 설정할 경우에는 빈 인스턴스 단위로 synchronized 키워드가 적용된다.
+                    false 로 설정할 경우에는 stateful 세션 빈에 동시 접근하려 할 때 ConcurrentAccessException 이 발생한다.
+                    EJB 3.1 부터는 표준 dd 의 access-timeout 을 사용하도록 한다.
                     ]]></xs:documentation>
                 </xs:annotation>
             </xs:element>

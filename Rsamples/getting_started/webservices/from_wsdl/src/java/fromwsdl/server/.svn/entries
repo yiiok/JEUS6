@@ -2,7 +2,7 @@
 
 dir
 781
-svn://192.168.1.134/JEUS6/testenv/tags/fix8/Rsamples/getting_started/webservices/from_wsdl/src/java/fromwsdl/server
+svn://192.168.1.134/JEUS6/testenv/trunk/Rsamples/getting_started/webservices/from_wsdl/src/java/fromwsdl/server
 svn://192.168.1.134/JEUS6
 
 
@@ -32,7 +32,7 @@ file
 
 
 
-2015-08-04T02:13:27.000000Z
+2015-08-04T02:24:14.000000Z
 5237235b2dac53deadf5e4bf48e31d69
 2009-07-15T06:53:54.873011Z
 465

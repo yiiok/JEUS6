@@ -2,7 +2,7 @@
 
 dir
 781
-svn://192.168.1.134/JEUS6/testenv/tags/fix8/webhome/app_home/exploded/jsf/locale
+svn://192.168.1.134/JEUS6/testenv/trunk/webhome/app_home/exploded/jsf/locale
 svn://192.168.1.134/JEUS6
 
 
@@ -32,7 +32,7 @@ file
 
 
 
-2015-08-04T02:13:12.000000Z
+2015-08-04T02:24:07.000000Z
 cb542cf1fb7f3fd0c152e453dc3029cb
 2010-03-24T03:49:24.641665Z
 587
@@ -66,7 +66,7 @@ file
 
 
 
-2015-08-04T02:13:12.000000Z
+2015-08-04T02:24:07.000000Z
 dc311bcd0582c6d9ee6fef953ddc5170
 2010-03-24T03:49:24.641665Z
 587

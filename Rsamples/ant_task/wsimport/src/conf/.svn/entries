@@ -2,7 +2,7 @@
 
 dir
 781
-svn://192.168.1.134/JEUS6/testenv/tags/fix8/Rsamples/ant_task/wsimport/src/conf
+svn://192.168.1.134/JEUS6/testenv/trunk/Rsamples/ant_task/wsimport/src/conf
 svn://192.168.1.134/JEUS6
 
 
@@ -32,7 +32,7 @@ file
 
 
 
-2015-08-04T02:13:48.000000Z
+2015-08-04T02:24:26.000000Z
 ac8d98600a1cb610c58d3297462d814a
 2009-07-15T06:53:54.873011Z
 465
@@ -66,7 +66,7 @@ file
 
 
 
-2015-08-04T02:13:48.000000Z
+2015-08-04T02:24:26.000000Z
 7d8b0ff678f093a29c8d0cce653d9ec8
 2009-07-15T06:53:54.873011Z
 465

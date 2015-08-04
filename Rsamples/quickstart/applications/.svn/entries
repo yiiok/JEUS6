@@ -2,7 +2,7 @@
 
 dir
 781
-svn://192.168.1.134/JEUS6/testenv/tags/fix8/Rsamples/quickstart/applications
+svn://192.168.1.134/JEUS6/testenv/trunk/Rsamples/quickstart/applications
 svn://192.168.1.134/JEUS6
 
 
@@ -32,7 +32,7 @@ file
 
 
 
-2015-08-04T02:13:29.000000Z
+2015-08-04T02:24:16.000000Z
 b1f692c0c7b37cca326017eb6cac7813
 2009-07-15T06:53:54.873011Z
 465

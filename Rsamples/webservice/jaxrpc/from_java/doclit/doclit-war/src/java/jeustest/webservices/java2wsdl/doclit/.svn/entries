@@ -2,7 +2,7 @@
 
 dir
 781
-svn://192.168.1.134/JEUS6/testenv/tags/fix8/Rsamples/webservice/jaxrpc/from_java/doclit/doclit-war/src/java/jeustest/webservices/java2wsdl/doclit
+svn://192.168.1.134/JEUS6/testenv/trunk/Rsamples/webservice/jaxrpc/from_java/doclit/doclit-war/src/java/jeustest/webservices/java2wsdl/doclit
 svn://192.168.1.134/JEUS6
 
 
@@ -32,7 +32,7 @@ file
 
 
 
-2015-08-04T02:13:40.000000Z
+2015-08-04T02:24:19.000000Z
 366a4fd364a39a9c0b258b29183627bf
 2009-07-15T06:53:54.873011Z
 465
@@ -66,7 +66,7 @@ file
 
 
 
-2015-08-04T02:13:40.000000Z
+2015-08-04T02:24:19.000000Z
 3341ed8c30c99fe142221004a494cbe3
 2009-07-15T06:53:54.873011Z
 465

@@ -2,7 +2,7 @@
 
 dir
 781
-svn://192.168.1.134/JEUS6/testenv/tags/fix8/Rsamples/ant_task/appcompiler
+svn://192.168.1.134/JEUS6/testenv/trunk/Rsamples/ant_task/appcompiler
 svn://192.168.1.134/JEUS6
 
 
@@ -32,7 +32,7 @@ file
 
 
 
-2015-08-04T02:13:48.000000Z
+2015-08-04T02:24:26.000000Z
 57176c734c68fa0c237d3e15b38ee2c1
 2009-07-15T06:53:54.873011Z
 465
@@ -66,7 +66,7 @@ file
 
 
 
-2015-08-04T02:13:48.000000Z
+2015-08-04T02:24:26.000000Z
 921a17e0e504332c5296799bab53fb3d
 2009-07-15T06:53:54.873011Z
 465

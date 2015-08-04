@@ -508,5 +508,10 @@
         <set name="dataSourceId" value="component:data_source_idField"/>
     </bean>
    
+    <bean name="dataSourceTargetValidator" class="jeus.tool.webadmin.page.JeusServiceJDBCDataSourceService.DataSourceTargetValidator">
+        <set name="jeusSystem" value="jeusSystem"/>
+        <set name="dataSourceId" value="component:data_source_idField"/>
+        <set name="exportName" value="component:export_nameField"/>
+    </bean>
 	<bean name="listTranslator" class="jeus.tool.webadmin.component.translator.ListTranslator"/>  
 </page-specification>
